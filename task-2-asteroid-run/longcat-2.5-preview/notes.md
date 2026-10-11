@@ -38,9 +38,9 @@ Two quick decisions before I build:
 
 None.
 
-## Verdict: **works**
+## Verdict: **partially works**
 
-Boots straight into an autopilot attract demo (title 'ASTEROID BELT / PRESS ANY KEY' overlay, chase cam behind a primitive-built ship, lit low-poly rocky asteroids, starfield + nebula); the AI scores within the first seconds (score 20). Minor: the controls legend reads '← → RUST' (typo for rotate). Build was interrupted once by a sandbox reset at 507 s and resumed in the same session with the identical 'Build it.' (build time = 507 + 338.1 s). The only console line was Chromium's 404 for /favicon.ico (not counted).
+Boots straight into an autopilot attract demo (title 'ASTEROID BELT / PRESS ANY KEY', chase cam behind a primitive-built ship, lit low-poly rocky asteroids, starfield + nebula) and the published capture shows the AI at 20 points. But the autopilot does not really play: in an evaluation-only 90 s idle probe (same headless setup, unpublished) the score stayed 0, the ship drifted to the arena edge and sat under a '!! TURN BACK !!' warning from ~30 s to 90 s. Player input works (thrust/turn/fire, 'AUTOPILOT' badge returns after 3 s idle). Minor: the controls legend reads '← → RUST' (typo for rotate). Build was interrupted once by a sandbox reset at 507 s and resumed in the same session with the identical 'Build it.' (build time = 507 + 338.1 s). The only console line was Chromium's 404 for /favicon.ico (not counted).
 
 ## Console errors (headless Chromium, SwiftShader WebGL, 1280x720, ~10 s)
 
