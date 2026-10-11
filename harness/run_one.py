@@ -28,6 +28,7 @@ MODELS = {
     "muse-spark-1.3":      ("opencode/muse-spark-1.3-contributor-free", "xhigh"),
 }
 TIMEOUT = 2400  # 40 min per phase
+MAX_ATTEMPTS = 2  # provider-error policy (task 2+): current attempt + one retry
 
 def paths(task, folder):
     # model's fresh empty dir lives OUTSIDE the bench tree so the model cannot see spec/other runs
@@ -63,7 +64,7 @@ def oc_run(task, folder, agent, message, session=None, tag="phase"):
     cmd += [message]
     logf = os.path.join(meta, f"{tag}.jsonl")
     errf = os.path.join(meta, f"{tag}.stderr")
-    attempt = 0
+    attempt = 0; total_dt = 0.0
     while True:
         attempt += 1
         log(meta, f"START {tag} attempt {attempt} agent={agent} model={mid} variant={var or 'default'} session={session}")
@@ -75,18 +76,21 @@ def oc_run(task, folder, agent, message, session=None, tag="phase"):
             except subprocess.TimeoutExpired:
                 rc, timed_out = -9, True
                 subprocess.run(["sudo", "pkill", "-9", "-f", f"--dir {jd}"])
-        dt = time.time() - t0
+        dt = time.time() - t0; total_dt += dt
         for g in glob.glob(os.path.join(OCHOME, "config", "chromium*")) + glob.glob(os.path.join(OCHOME, "cache", "chromium*")):
             shutil.rmtree(g, ignore_errors=True)   # model's self-test Chromium profiles: not part of the output
         log(meta, f"END {tag} attempt {attempt} rc={rc} timeout={timed_out} secs={dt:.1f}")
         # rate limit detection -> retry same request (logged, not a re-roll)
         txt = open(logf).read()[-20000:] + open(errf).read()[-5000:]
-        rl = (("rate limit" in txt.lower()) or (" 429" in txt) or ('"statusCode":429' in txt)) and not timed_out
+        rl = (("rate limit" in txt.lower()) or (" 429" in txt) or ('"statusCode":429' in txt)
+              or ("[504]" in txt) or ("upstream idle timeout" in txt.lower())) and not timed_out
         produced = '"type":"text"' in txt or '"type":"tool_use"' in txt
-        if rl and attempt < 4 and rc != 0:
-            log(meta, f"RATE-LIMIT detected on {tag}; retrying same request after 90s")
+        # task-2 policy: provider failure (429/504) -> the current attempt plus ONE more identical retry, then stop.
+        if rl and attempt < MAX_ATTEMPTS and rc != 0:
+            log(meta, f"PROVIDER-ERROR (429/504) detected on {tag}; retrying same request after 90s (logged retry, not a re-roll)")
             time.sleep(90); continue
-        return rc, dt, timed_out, attempt
+        if rl and rc != 0: log(meta, f"PROVIDER-ERROR on {tag} after {attempt} attempts; giving up (broken, no output)")
+        return rc, round(total_dt, 1), timed_out, attempt   # dt = sum of all attempts (retry wait excluded)
 
 def session_from(logf):
     for line in open(logf):
@@ -229,7 +233,7 @@ def capture(task, folder, outdir):
     # Chromium's own /favicon.ico request is invisible to page listeners but logs a generic 404 console line.
     # If no page-visible 404 was seen, that generic line can only be the favicon -> drop it.
     G = "console.error: Failed to load resource: the server responded with a status of 404 (File not found)"
-    if G in errors and not any(e.startswith("http 404:") for e in errors):
+    if G in errors and not any(e.startswith("http 404:") and not e.endswith("/favicon.ico") for e in errors):
         errors.remove(G)
     errors = [e for e in errors if not e.endswith("/favicon.ico")]
     webm = glob.glob(os.path.join(vid_dir, "*.webm"))[0]
