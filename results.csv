@@ -2,4 +2,5 @@ task,model,model_id,variant,plan_s,build_s,total_s,questions,fix_used,verdict,co
 task-1-voxel-zen-garden,longcat-2.5-preview,opencode/longcat-2.5-preview-free,high,39.9,842.6,882.5,0,no,works,0
 task-1-voxel-zen-garden,space-bunny,opencode/space-bunny-free,max,97.9,3862.6,3960.5,1,no,works,0
 task-1-voxel-zen-garden,mimo-v2.6-flash,opencode/mimo-v2.6-flash-free,default,143.7,2685.9,2829.6,0,no,works,0
+task-1-voxel-zen-garden,step-5-preview,opencode/step-5-preview-free,high,165.6,3657.4,3823.0,1,no,broken (no output),1
 task-1-voxel-zen-garden,muse-spark-1.3,opencode/muse-spark-1.3-contributor-free,xhigh,31.5,111.5,143.0,1,no,works,0
