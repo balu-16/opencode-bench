@@ -75,7 +75,7 @@ def oc_run(task, folder, agent, message, session=None, tag="phase"):
                 timed_out = False
             except subprocess.TimeoutExpired:
                 rc, timed_out = -9, True
-                subprocess.run(["sudo", "pkill", "-9", "-f", f"--dir {jd}"])
+                subprocess.run(["sudo", "pkill", "-9", "-f", "--", f"--dir {jd}"])   # "--" so pkill does not parse the pattern as an option
         dt = time.time() - t0; total_dt += dt
         for g in glob.glob(os.path.join(OCHOME, "config", "chromium*")) + glob.glob(os.path.join(OCHOME, "cache", "chromium*")):
             shutil.rmtree(g, ignore_errors=True)   # model's self-test Chromium profiles: not part of the output
