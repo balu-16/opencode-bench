@@ -1,0 +1,1497 @@
+{
+  "info": {
+    "id": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+    "slug": "witty-mountain",
+    "projectID": "global",
+    "directory": "/tmp/ocb/task-1-voxel-zen-garden/muse-spark-1.3",
+    "path": "tmp/ocb/task-1-voxel-zen-garden/muse-spark-1.3",
+    "title": "Voxel Japanese Garden Demo Plan",
+    "agent": "build",
+    "model": {
+      "id": "muse-spark-1.3-contributor-free",
+      "providerID": "opencode",
+      "variant": "xhigh"
+    },
+    "version": "1.19.0",
+    "summary": {
+      "additions": 0,
+      "deletions": 0,
+      "files": 0
+    },
+    "cost": 0,
+    "tokens": {
+      "input": 20810,
+      "output": 13574,
+      "reasoning": 4875,
+      "cache": {
+        "read": 190570,
+        "write": 0
+      }
+    },
+    "permission": [
+      {
+        "permission": "question",
+        "pattern": "*",
+        "action": "deny"
+      },
+      {
+        "permission": "plan_enter",
+        "pattern": "*",
+        "action": "deny"
+      },
+      {
+        "permission": "plan_exit",
+        "pattern": "*",
+        "action": "deny"
+      }
+    ],
+    "time": {
+      "created": 1791704563992,
+      "updated": 1791704809542
+    }
+  },
+  "messages": [
+    {
+      "info": {
+        "role": "user",
+        "time": {
+          "created": 1791704564061
+        },
+        "agent": "plan",
+        "model": {
+          "providerID": "opencode",
+          "modelID": "muse-spark-1.3-contributor-free",
+          "variant": "xhigh"
+        },
+        "summary": {
+          "diffs": []
+        },
+        "id": "msg_129ea015d001dWmpP3YXiFUKeA",
+        "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd"
+      },
+      "parts": [
+        {
+          "type": "text",
+          "text": "\"Deliver one self-contained index.html (Three.js via CDN allowed, no other external assets). It must run when opened and start an automatic demo or attract mode without any user input. Build a 3D voxel Japanese garden in Three.js: a pagoda, cherry blossom trees, a koi pond with koi swimming on curved paths, and falling petal particles. Add a day/night cycle with a time slider and lighting that changes smoothly. The camera slowly orbits by default, and the user can drag to orbit.\"",
+          "id": "prt_129ea016a001fBwA6167iSDDLI",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ea015d001dWmpP3YXiFUKeA"
+        }
+      ]
+    },
+    {
+      "info": {
+        "parentID": "msg_129ea015d001dWmpP3YXiFUKeA",
+        "role": "assistant",
+        "mode": "plan",
+        "agent": "plan",
+        "variant": "xhigh",
+        "path": {
+          "cwd": "/tmp/ocb/task-1-voxel-zen-garden/muse-spark-1.3",
+          "root": "/"
+        },
+        "cost": 0,
+        "tokens": {
+          "total": 8222,
+          "input": 8101,
+          "output": 101,
+          "reasoning": 20,
+          "cache": {
+            "write": 0,
+            "read": 0
+          }
+        },
+        "modelID": "muse-spark-1.3-contributor-free",
+        "providerID": "opencode",
+        "time": {
+          "created": 1791704564913,
+          "completed": 1791704566730
+        },
+        "finish": "tool-calls",
+        "id": "msg_129ea04b1002u2YbczLjo0yl6g",
+        "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd"
+      },
+      "parts": [
+        {
+          "type": "step-start",
+          "id": "prt_129ea092a001NfobMIhQwqjLRe",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ea04b1002u2YbczLjo0yl6g"
+        },
+        {
+          "type": "reasoning",
+          "text": "",
+          "time": {
+            "start": 1791704566062,
+            "end": 1791704566189
+          },
+          "metadata": {
+            "openai": {
+              "itemId": "rs_6acb3df524e6acaa06b64ca6:rs_01a129ea077274648ce827b5c1d8d8dc",
+              "reasoningEncryptedContent": "Q-PaDgF4SPBObo4eO0XqI-mC5GrVNBTk1Yh-1mTYvKjHJnoB19oNuKykocQO4aW0oHdL1EWdBrC8nhFztD-_YfGGsU0Froec0ENiEPmnQhAtN9EnNXqCnt17J8XxQsYMdZf3Fy5PhylO759MTqD62PPEyep3Rh4gTR2xnRHYOCgpO9zkX60GOhoPnpu9I1ImeVXYyyH9x63OfWQtaR9xgLJfhn4tZbSpI8wkK6Jz4Gi8Te9ahCMbHGGRFHo2ErXpOXcX82ypf2LR0Au1N1oF2OyuljMF1_Rq9VjgApG1M6W7D1-bcR69xbQY_PlhflXKfNkKhrjAoHNJj14s7ocwdk1tSuv3W6LeSPzMKPMQc8effi2yiP92tDF-6SdaDJ8S7ZCMYocCoibbySg5vl27zXdWzE08QI_vVyudtETrN0Mb0ej0lNJQXTs8BRqQfYE9CREAbfQ5kskEKlmd-NBVvEtOjQXoenB4LA-Ow_DNIXHU18sIJ1rVeQiPXqXP67KEup20obYwBMXAcTmym-Khmnk6zp6b_SbC7uZEetAGZMQ4qPccHeBTbSKW1baLuPx5bQw45FhAjEpim-j-xGwGNWDPVo4mUewOQjZaumCClMCswXwJO0nxzDD-J43dIIAIhLN8NZcUutk2DnUtDfgnPOUJdeetzk5TpYr-5AoUO3dAOXFmsvCrHa7HfxeCJxTRsovLuyNd4RXiDYNLDFTS--ufPE7WkMH6--XGszw9UMdhoSykETo0-pm_Hvonmlc-xQyL_cqnj-LzBF65-OuO2isqEMpCoCvr1QzT0e_yju7KLCyixGrCfxB74dzAAjEmnXHUoxSEyquAF6y3zS3Axt8bglWenErzOSMcChCbaRe9FCWmWLpF7azYF5a4RSIavkGbFOuXOVvMfKpZ9ncHjc5uBDCvWVHbkDlQAuhduYBeZO1yLEllWB_J8--BFWacyMkygCprtgbfktlwhOePWWwg_Z9oNOldFsz1Me2FiAu44w5zRVIvYFyUJppNQWlJ8c4dvDbJwIlf7Bk4yjsaFHsqVA7tCnhAT1LGZGeYc7UuJkyKvvsgRJi4nNZiObh3hE_Iuh5Layo_QYn3f8Qdk1gpQDcKlnXksudB-T_FtBdUjdAklhSfcZrN-8CZ5y2BcrhA1wOaOMg7ZPH76UyGXUrgY3Wu2D385foJnzlS8o1Og41Yfy5I2k81_FTeH8P0_Oi8x2NlRdUH5r6XSksmi0Jhwb9UqZJaBCJsQeHs6Ldr09mkpYNeY6U5QqtJLFnd5mDhEaoBwu6iYgzgIkTrK9kvoQbXgedXwVl2ZN9W9sBkASAYe0vYoifuTnkqSoEOUIG6PMJ5w1v_8USFuWi-GxAGMJSn9s4ZIv4_gEXrFCWzXrMpOeEKyuWvbELds6HRTH4xJT5CRAGIijaVyw"
+            }
+          },
+          "id": "prt_129ea092e001LKRduZEMiENWVC",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ea04b1002u2YbczLjo0yl6g"
+        },
+        {
+          "type": "text",
+          "text": "Attract-mode voxel garden with pagoda, koi, and day/night cycle — drafting your build plan.",
+          "time": {
+            "start": 1791704566410,
+            "end": 1791704566418
+          },
+          "metadata": {
+            "openai": {
+              "itemId": "rs_01a129ea081e76f3bbb0f8836eaea175",
+              "phase": "commentary"
+            }
+          },
+          "id": "prt_129ea0a8a001cNnQx9k7gPGnV7",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ea04b1002u2YbczLjo0yl6g"
+        },
+        {
+          "type": "tool",
+          "tool": "read",
+          "callID": "call_01a129ea08fc719a815564ffaaaed347",
+          "state": {
+            "status": "completed",
+            "input": {
+              "filePath": "/tmp/ocb/task-1-voxel-zen-garden/muse-spark-1.3"
+            },
+            "output": "<path>/tmp/ocb/task-1-voxel-zen-garden/muse-spark-1.3</path>\n<type>directory</type>\n<entries>\n\n\n(0 entries)\n</entries>",
+            "metadata": {
+              "preview": "",
+              "truncated": false,
+              "loaded": [],
+              "display": {
+                "type": "directory",
+                "path": "/tmp/ocb/task-1-voxel-zen-garden/muse-spark-1.3",
+                "entries": [],
+                "offset": 1,
+                "totalEntries": 0,
+                "truncated": false
+              }
+            },
+            "title": "tmp/ocb/task-1-voxel-zen-garden/muse-spark-1.3",
+            "time": {
+              "start": 1791704566698,
+              "end": 1791704566709
+            }
+          },
+          "metadata": {
+            "openai": {
+              "itemId": "fc_01a129ea08fc719a815564ffaaaed347"
+            }
+          },
+          "id": "prt_129ea0aa2001BQ9kV2d8TU0S1Y",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ea04b1002u2YbczLjo0yl6g"
+        },
+        {
+          "reason": "tool-calls",
+          "type": "step-finish",
+          "tokens": {
+            "total": 8222,
+            "input": 8101,
+            "output": 101,
+            "reasoning": 20,
+            "cache": {
+              "write": 0,
+              "read": 0
+            }
+          },
+          "cost": 0,
+          "id": "prt_129ea0bbc001xq6ceyyxzxTTES",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ea04b1002u2YbczLjo0yl6g"
+        }
+      ]
+    },
+    {
+      "info": {
+        "parentID": "msg_129ea015d001dWmpP3YXiFUKeA",
+        "role": "assistant",
+        "mode": "plan",
+        "agent": "plan",
+        "variant": "xhigh",
+        "path": {
+          "cwd": "/tmp/ocb/task-1-voxel-zen-garden/muse-spark-1.3",
+          "root": "/"
+        },
+        "cost": 0,
+        "tokens": {
+          "total": 10203,
+          "input": 236,
+          "output": 1313,
+          "reasoning": 605,
+          "cache": {
+            "write": 0,
+            "read": 8049
+          }
+        },
+        "modelID": "muse-spark-1.3-contributor-free",
+        "providerID": "opencode",
+        "time": {
+          "created": 1791704566738,
+          "completed": 1791704583810
+        },
+        "finish": "stop",
+        "id": "msg_129ea0bd2002g3iltp9npsEPRg",
+        "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd"
+      },
+      "parts": [
+        {
+          "type": "step-start",
+          "id": "prt_129ea0e550016lrpjVRBb4i1tA",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ea0bd2002g3iltp9npsEPRg"
+        },
+        {
+          "type": "reasoning",
+          "text": "Designing a single-file ThreeJS CDN architecture with voxel rendering, auto demo, day-night cycle, and camera controls while balancing performance and asset constraints.",
+          "time": {
+            "start": 1791704567386,
+            "end": 1791704572494
+          },
+          "metadata": {
+            "openai": {
+              "itemId": "rs_6acb3df6faae2a6997e84446:rs_01a129ea0c967125ab4f64c4b6bcf32c"
+            }
+          },
+          "id": "prt_129ea0e5a001edRbiEESuu40cp",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ea0bd2002g3iltp9npsEPRg"
+        },
+        {
+          "type": "reasoning",
+          "text": "Choosing ES modules with importmap over UMD and custom orbit controls to ensure file:// compatibility and reduce CDN dependencies.",
+          "time": {
+            "start": 1791704572499,
+            "end": 1791704573450
+          },
+          "metadata": {
+            "openai": {
+              "itemId": "rs_6acb3df6faae2a6997e84446:rs_01a129ea0c967125ab4f64c4b6bcf32c",
+              "reasoningEncryptedContent": "Q-PaDgFM1Owcswf8QMqv5ghnFjCGwlnlhscuRoymfWjfiY9IGEP5f99m5blyHRq_RM38gFODPFPcCT5jj_kr4TZgfAfMDZW9yqlaxqd6f80rOmxHOmymyEfaI2EYmEy47aKhDeHdzp1YsbkttAadWbW5Dt0L-i9lWzh952O0XARoaIge-U2yIvyMHqy49rICEJ3YjY75WNe5E06uR82Bju2AAYbUJuZOF4-nOJ0IAKJjM1UqpRZ31IySm3h5TS_hMAYVKJkAB9IxhLdusTjKmFiLatVmQkvts0EBN-dgt75_Rq9WrvS5qCgenT1m7j0BTcd3t6V1k5ykq6h73SC8eo9Yv653v_Xq4hb2kRG5EzohF6YzHOFyxwgogR33BCtmfNyvgbh8B2FS4olw5k3iTIizji2mejj4TJQ8YSYI-d__YlqK6nww9f8IS2-QnEiZsM43plnS9VYPQP_51xkePlGtQDkyZ-cJjM-vCpga_MLwOy4KXwxLg1nKJfeDQy5oV9DMyPy3JPsgLQYSDEh_2UkIat11M7OTnsvOOcXw_SmdLMRSR36_ET-0ceECPpbF02cvwIRti5IzAcHQkWEgt0pWHL1Yvj-scwmdy8EsaGIJGLKblQ-PeUrwPv-XqH1D6kHeCN_DRcCULDJOqPgoEQ-eowDpSTYmEKl2TEwJsem5Wbj9_2nwj4ZnTMilMMNJ6z6hLPnLmpKWq6FHRqv6EncxTg6LgcvlOi_gypii88We4sstVRGgWP64msfkUJuT5uk5lyVLdcsZXC9lUalNN7TdEO5jx8x94FJvbcH3Y-br1a5BC_CQe-ABYSd5pgfnWtvnjsRKeL5r5owE4SOQcOH2RasL2ensIhv9TzhSRj5aNicSZtRUmHd5W6GK_KpNgY7HwxC5j4UG2qJp5PgcFyU2MOkC3GVoDG20O4KH_D7qBsnIMldY87XY0yWIxkPnqO09cXv69XzX6DGojjNojumsCfb40mJ73czCKLuBatqq_KraEjxBDG55f5hMw268sZR_01pfB7Kpp9-F1gzB-n7PpzbwTBaSgTjhnCeEbQGdpr1FRAjn280MTSZCBrtjSno4Cv_ixliNfOFMhbFdF9z32qGQJo3oe9lx3HszuINItxC9dBIE8mOOkH1afRm6IMZw8HQxtCVO1ggTsG5WPelmfcU8yaYUdI_RRc5czW7aZ7JlSzwTrUwx4Py5IfWlwwq9fmCpSc767Y3HoIkeADqbmHHCSuTaoS6x5HfuE_OR5yd14TpBbT_O0ptvLJAQt__y7AzoAjpisvtRhWxSlP8PCwU9r5MmeOvx_76HBY0ZE8FSjuYgzr1gDa8Yw-vY531MdDQWLceHpNQKcDdpdmWGnpLE_iFK7K_ELWuFjREWdev8UYK8B4GHXJfFcdrisQWhT4GWAB4roKQV2leMG2zOnoMsSx5APAHggv7mVAu-bsnZlCsF5uIkSFsSxITmD3TdZts_Ag7cswm4bJ_F5U-1ede3qIt23_JXoB8ASKDJ9mLmIF5VrMUQH9yZyenpRZKxffhsOkKFFCcpadAb_tDyPhHcjyb9lV5VSGG7sZLi1KL5E6FIatO2Cc5xiXKc6Wdi-ecMYO9YHIscA5ocHlKueB1CUKtj13_B_CWODhDer_FhN2XmZKnv63gBQBhlViUlDiiEjhLRq7PHg22Xjpo-ztgNKgUNP2g9zcAGcSrHwr1udZ0Fex0D-XH-zqzN341iYLMIH0eVnfyIZ6ix-Y1lnWPPWXclZ21XGoWXLJQtTooGOd1RuiFFmlwbH6G3-mawJodQ6lW2XXEVwUSaLltqBCrEZAi2chP4TWK01-O7gR25PK_bS9nviouYkOpIYsmFYGK0950H-PFvqRr-CIm3BnvH_kL6Jf6ffnnfQKSBrf-6o2VIhjN3EHfDLffsTB-SmgEltnVOB5W87tWDR2FvE9zvraYmz2308e34Wn4Nk1ckS5bimM30ZMmj210OFf5G2JfaC6pi0OMd3quFxW1IlBJV2dA391pjS2BWO7l-U0JIS2M5kUBuBC_CQJ6WNjDi9XTD80CMCVMgb4iH4UI4MkavEEtZRCCl-qTQcQstVyQKdRyG4PoZV6GR3rp9b0-4z6DfVsq6KAw0zcFz7vUZZf-TtH-Q2Rue1eCvstx1icCC8516n8jHiMKYxzvFFpM76BXoja9Q9C4guy57QbQfZFfSSLnOSuGFPa9aSsyr4EQv5wWVWQpiCn2vuvLkSQIHBwaqvSJrAQFGSe5JUrpwj3Wel-Nej6lUeyKOM-0-uykAXq4C8OP0YMTW0D1sMnoE7-kQVWkHY63h7ATyIPwj2hJ-nebOV7mP93UcQoL4d27I8hWpwX14B67FPusXaUDndiMPsV5Xpgl6UMcYzlAlr-znSi5-R_c6mVylXDX_emsAdCFcSjnevtB10iMwM5Jqs_0ucowuxkXcal3OEfD2X2pPnyqX7aQKwYDGNWWXatylYINv5fiUo1-m2KGIxQFTkfCJ8C5nTtnFTohzaVfkrRTBlA__1h1_QMPF5nKVsCLUurgfwgYbs_cxEHK-AectW8xM0hwD8IctzU8kF-yOivYVMssAHnGWbeW9G5wc6hzZqVTjrnFFMSgE-WDDeXts6HLdtqiCr-XJwkjqFEeUl66w4fNS8IPb9cHjg8PE94bkKauLdFFrsV6zwCcm3ApXtE6vQJKW2CsoP4v3yRkLpvoACayE2UBxwmrqhVSBBvzGvMGn6gctf_lKqEZWOFaJXc2AkXrWks4kg7FH36ZCIixkpi5G2w1Si_V9Hsr_DymVMcIQReATBrocUJGSOiv5IP_9KEoXrShXktt9DJaWD4co-jUBH_qQ3YwgmM6VB-XHc6KqyuMRqFKgPSfaTXeijhQ6180ZTplglLvsmSrC6CLowCEqT-7uM0ISfD4nQNjx3F9QrLQunW23xbfK8_q0TyUCjYrZvHFDvYYOK1U5wufmpFT3t2rjKX0AZUHXNA9HCasuWMc3zAm5rSLhJReOOeCd2Nv-MAmO1HLDwiAndUbrGvqhefS4L6WK4PyY94mHutUFtYWJwYemioN0xDxLgozpZZ0y5n-xFsJCEK82NM3VBbEchv4-Ld-OLVqd15QIrFrsDvMJ3dCzqPgg_6CgDv9EGb6PjTk8V8STozrlFjUNB3aQGO6mJCroRw1X7ZLwO1s03Vk5K2kd9NTU8teFuazsTERsTItDBo1MrEzroBtOQ47Yih5JhK3ti0-jlR2GjBmHDzYIAa4eb4DH6PgzUlCPKbjNhj4-Jsckbz31I5x5bO6Dkkevi1ld9DsSjV7LP-JW2E6C4b6ub1mwOBBpwIZocgK9JmMzN-YJmjMPdKdhAjF36qksbrLEo1Jf2qsqCknMFiFkUE77be45bi3BT2gYM4K4DqKEBQ3ng8yw63bqHXBWN3lZyT_IBZ9vhLR5v72U_IBGGduczagar0lGC_ObHqEIqZdTW7PiaUlbSZwLLvv3T3rTATdlAyF_XcHjrVaHv-ifbzxnoW4PN8-m1uOaxV0IGISnlhmA_BHM5bEH0TcxWcrbaL7TM_PvnwMhOlusl1jGGhswTMwggwqlxkCDOJ_5SYF37X-es-vg1HFt17WfUDNYUiTrcqKJ70LM2Thcadp_o49vNgJn6-F28FuODxmy6QvkRcKqdWHb9gUdo1FnaSu-Sof2yPl-9zPSECmRF1AekpgNCMv2mgBPSZ6awaiKJ8Sf6kPXBBTvNXY-rvldmZf0vLd40JwAeBtrGR5CZhBRK4t3zrXA4XD0qKuEjenm80p4yAGJEcEPzAeZoOIV5YH3kciwS0SIKR4Aonr3Nun5OWnK0JaELYClFGynI4MRi-OBFESY81hWGJhDmK2F6AI9S7Aaiw1_hDZ4lx4KD2banSMOW1JR4oSM00V1vNg4CyBxdlEktcAhcx3yVrWjy3c_Xc7C1E4EpquYfPRAIqLTKOl3K3gw9Geteptu-ENFiEvL9xk7CAMrHM7wrr6rBQCE37q0kl_VaURiOz-cnPBE71goJf4NPYr1ZxKkmW3PGJuGvn_2lpC3ozmCdTn50LkDtekElu4m0iLS2JopV17CF8MQOJq0mTeCZA35l812o1lqnC3t-v1ZQzL3WlBhmib8rL3Qqnqf-lOOnIjTpJM9HU9CCsbIvJ-Dj5kc1O4DSj3e-5R2Bkjk6_RcVk8cdbuuLa21XY8f6rLEJMb-JrkGvntoF5RTLN7l_4ds33rnTtWyeGjDA0ZV_NeoUFWd1MbwXDBOUYBVyQvpo5lLtvnB9U_kzzCNl-UQHb9WYjMqaVlYIC7baXFPbaKl65Z3sUOyhWQdkeMnJb5IRH6Qu1W851QLB4dN-OGj-tC7u1W4fu2pWmj00lRWght9PDHyeeBFRJMwxzx2yt11Tab69qRxaTWJ781Uz5kzdkRfyg1q-T6uSVoP73H-_8TAaEck06yrd9DxINwIRqk-lxEzj__uByBLKH4IDNgkb8vxYYDFm-_T_U0VEzuQChmzEptRcc6Fe4NUvGUKamE_JI2XzsuewM2jjHyMrjDRqnkKr8vZJ4o5D2AD3O-Dmd6Z-R2RuC-voupP8wi8vCvs1e2pjnw6ACrW8z80Gzk-QnEQabZc7eei-iNNm0lleDUGy37jya1gV63BQo2d01MwnBrgH8KxCynU-tjN9NEPXHKEqILmUtdRIRGjFBb_zI84O2KFPx-1X9Hc3hOl-tZygKQQx1Y5JPQBi24zdCQLiwfuccq1--WE8fKALsGeP_kIsWUTXuKU4UdIpmuvfspLKYRL5Jt51MrS9U023M9YJe61E01jT2XFt2Q-dCaAHvgaCnS4o2B7EFDv68vmMPXPZxR8s62TEkIvG6MBQfp8buF3X9ohuHa_jgK82MpEWEDNVJdXRjE-kVlQn6vovpyShFUwUFJHjTla2kke8LJoATqWCmPCAOFvzZqikWUBrRd8ULI84wE5fHB5DPmVv3Y2nAxjcCP4VFAB1oWe99uEkKcf6H-hG5vMpk7YkTnqioJdB3v5m2PLUqgPdBOsB_gj2RWylUhwk5axh0t-LsgyXMLtwVs2zUo74tsDZWHzoH5gNxkcpOjcBunSUw5LFjNlKAW4ge2jfKCSmkdhyZgScbMzOyGWLWVGewx6-E0BikF-_yfZ4h6qMC04LFC5SQ0VeZAj8-X2we5y8UYBLBu30KpWSQm0atzZDFdIaQKaVE06Nt0RGGkxKKZWX_xcSv8OfQaqgIRsfH0bzULIHmcjAo7Rd_xbcgvxjJ0jRCSzhgjvwGEak8GPt26PACTa5GwD_1zO8fKDvqSuYhU37tQli6XIX6juhsGnFkfsXOmkG76c-mzW5vGqLVPv14wg2QT_S1rUE5K1CC3ENbGuAiD7mJYKaU5ZSzbS1Jnr6D6vHgERFQI95TR-rpOb2ug_k6LdHuwf3zcy7G0_TApYJ1qx0Y8fTHz14cHdf5aBgOQCAJNgXNfm0ZI6tp-O_likQAd1lfUzjsYtj719bwX0GgNS2Qrd_0YO60B4GQ"
+            }
+          },
+          "id": "prt_129ea22530016AyPGRZ9cW32Ft",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ea0bd2002g3iltp9npsEPRg"
+        },
+        {
+          "type": "text",
+          "text": "## Plan: 3D Voxel Japanese Garden — single `index.html`\n\n**Goal:** One self-contained `index.html` (Three.js CDN only) that runs on double-click/`file://` with no input, showing auto-orbiting voxel garden.\n\n### 1. Delivery constraint decisions\n- **Three.js via CDN, no build step:** Use ES modules + `importmap` pinned to a version, e.g. `three@0.160.0` from `unpkg` or `jsdelivr` with fallback. No `OrbitControls` import — implement ~30-line custom drag-orbit to avoid second CDN dependency and `file://` CORS issues.\n- **No other external assets:** All geometry is `BoxGeometry` voxels; all textures procedural (vertex colors / canvas-generated sprite for petals if needed). No fonts, HDRs, or images.\n- **Must auto-start:** No click-to-start. `requestAnimationFrame` loop starts on `load`, auto-orbit + auto day-cycle + koi + petals all running by default.\n\n### 2. File structure (single file)\n```\nindex.html\n  <style> — fullscreen canvas, overlay UI (title, time slider, day/night readout, pause/play)\n  <script type=\"importmap\"> — three CDN mapping\n  <script type=\"module\">\n    1. Imports, renderer/scene/camera/fog setup, shadows on\n    2. Lighting rig: sun DirectionalLight + HemisphereLight + ambient + lantern PointLights + moon\n    3. Voxel helpers: `addVoxel(x,y,z,color,size)`, shared BoxGeometry + materials cache, InstancedMesh for grass/trees/petals\n    4. Garden builders: base island, pond basin + water, pagoda(), cherryTree(), stone lanterns, bridge/fence/rocks\n    5. Koi system: N=8-12 voxel fish, each on curved path `pos(t)` in pond ellipse\n    6. Petal particle system: InstancedMesh ~300 quads falling + sway + recycle\n    7. Day/night cycle: `timeOfDay 0-24`, sky/sun/fog/lantern lerp, UI slider two-way bound\n    8. Camera: auto-orbit + pointer drag + wheel zoom + touch\n    9. Resize + animate loop with delta clamp\n```\n\n### 3. Scene contents\n- **Base:** 32×32 voxel grass island on stone plinth, stone path voxels, fence posts.\n- **Pagoda (center-back):** 3 tiers: red pillars + cream walls + dark grey overhanging roofs (stepped voxels for slope), top spire `sorin` stack. Windows emissive at night.\n- **Cherry trees (×3-4):** Brown trunk column with branches, pink canopy = ~80-150 jittered voxels in blob, 2-3 pink shades.\n- **Koi pond (front):** Recessed blue basin, semi-transparent animated water plane (opacity + slight y bob / moving normals via vertex offset), stone rim. Koi: body 3-4 voxels (white/orange/black variants) + tail voxel wagging by `sin(t)`, oriented along path tangent.\n- **Extras for depth:** Stone lanterns with warm `PointLight` (only intense at night), arched bridge or stepping stones, rocks, low shrubs.\n- **Sky:** `scene.background` color lerp + fog lerp; sun sphere + moon sphere on circular arc; stars (`Points`, visible at night via opacity).\n\n### 4. Day/night + lighting (smooth)\n- State: `timeOfDay` float, `autoCycle=true`, speed ~24h in ~90s.\n- UI: range slider `0-24 step 0.1` + label (e.g. `18.5 — Dusk`) + pause/play button.\n- Per-frame: sun angle = `(time-6)/12*PI`; `sun.position` on arc; `DirectionalLight` color/intensity lerp (warm dawn → white noon → orange dusk → dim blue night); `HemisphereLight` sky/ground lerp; lantern lights + window emissive intensity = smoothstep around night; stars opacity at night.\n\n### 5. Camera\n- Default: `radius ~28, height ~14, lookAt(0,3,0)`, `angle += 0.05 rad/s`.\n- Drag: `pointerdown/move` adjusts `theta/phi` (clamp phi), pauses auto-orbit 4s after release, then resumes. Wheel: zoom clamp 15-45. Works with mouse + touch via Pointer Events.\n\n### 6. Petals + koi motion\n- Petals: spawn over tree positions, `y -= fallSpeed`, `x/z += sin(t)*sway`, rotation spin, reset to top when `y<0`.\n- Koi: per-fish `t_i = t*speed_i + phase_i`, path: ellipse + sine wobble inside pond bounds to look curved, `mesh.rotation.y = atan2(tangent)`; tail wag scale/rotation.\n\n### 7. Performance / robustness\n- Reuse geometries/materials, prefer `InstancedMesh` for repeats; cap pixel ratio at 2; shadow map 2048 only on sun; delta clamp to avoid jumps.\n- Handle WebGL fail with overlay message.\n\n### 8. Verification (build phase)\n1. Write file, open via `file://` + local server, confirm no console errors.\n2. Check: auto-orbit without input, koi swimming curves, petals falling, slider scrubs lighting smoothly, drag orbits and auto-resumes.\n\n**Open question:** Do you want the day-cycle to default to auto-advancing, or start at a fixed golden-hour time with an opt-in cycle? I propose auto-advancing from ~10:00 so users immediately see change.\n",
+          "time": {
+            "start": 1791704573468,
+            "end": 1791704583782
+          },
+          "metadata": {
+            "openai": {
+              "itemId": "msg_01a129ea247b776dacfa5722648c883f"
+            }
+          },
+          "id": "prt_129ea261c001VfC49hFjE61fZx",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ea0bd2002g3iltp9npsEPRg"
+        },
+        {
+          "reason": "stop",
+          "type": "step-finish",
+          "tokens": {
+            "total": 10203,
+            "input": 236,
+            "output": 1313,
+            "reasoning": 605,
+            "cache": {
+              "write": 0,
+              "read": 8049
+            }
+          },
+          "cost": 0,
+          "id": "prt_129ea4e79001my0ZDMWFD2WXKF",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ea0bd2002g3iltp9npsEPRg"
+        }
+      ]
+    },
+    {
+      "info": {
+        "role": "user",
+        "time": {
+          "created": 1791704690920
+        },
+        "agent": "plan",
+        "model": {
+          "providerID": "opencode",
+          "modelID": "muse-spark-1.3-contributor-free",
+          "variant": "xhigh"
+        },
+        "summary": {
+          "diffs": []
+        },
+        "id": "msg_129ebf0e8001H0cnIpPM5p6XBq",
+        "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd"
+      },
+      "parts": [
+        {
+          "type": "text",
+          "text": "\"No preference. Use your own judgment.\"",
+          "id": "prt_129ebf0ef00132u6z5RBnVR1JW",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ebf0e8001H0cnIpPM5p6XBq"
+        }
+      ]
+    },
+    {
+      "info": {
+        "parentID": "msg_129ebf0e8001H0cnIpPM5p6XBq",
+        "role": "assistant",
+        "mode": "plan",
+        "agent": "plan",
+        "variant": "xhigh",
+        "path": {
+          "cwd": "/tmp/ocb/task-1-voxel-zen-garden/muse-spark-1.3",
+          "root": "/"
+        },
+        "cost": 0,
+        "tokens": {
+          "total": 10954,
+          "input": 2618,
+          "output": 674,
+          "reasoning": 125,
+          "cache": {
+            "write": 0,
+            "read": 7537
+          }
+        },
+        "modelID": "muse-spark-1.3-contributor-free",
+        "providerID": "opencode",
+        "time": {
+          "created": 1791704691461,
+          "completed": 1791704697900
+        },
+        "finish": "stop",
+        "id": "msg_129ebf305002fRoRvREVb0EpUU",
+        "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd"
+      },
+      "parts": [
+        {
+          "type": "step-start",
+          "id": "prt_129ebf87c0013DHqUq7RSXx7IN",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ebf305002fRoRvREVb0EpUU"
+        },
+        {
+          "type": "reasoning",
+          "text": "",
+          "time": {
+            "start": 1791704692867,
+            "end": 1791704693367
+          },
+          "metadata": {
+            "openai": {
+              "itemId": "rs_6acb3e74838eff7602944d16:rs_01a129ebf551760c963d685e263d5f18",
+              "reasoningEncryptedContent": "Q-PaDgE0QTX8ROIrLbTNfJOOAimRg1CuI-gAfoH6g7oncM2S8rGEcGg07pTqBNnnama5sPT0HRMLUeklXUR0xLh4FEsvI65Cs6tteBsSQsFeT5LkUTFe7pQ6eMQxr-K80v9UDDbbEXqkMc87Xygh5Q_bh0rvP5ph-C_6p-xwUrNnUEsfVM4Lk1c-LQyo8fX42fqhc4QTySKzvaeuzCTPAXrhL10XQFiLD0LOf3YLX5eJkFJNtYn9LF7NAkkAJzP_1yBQDiEnpzo1SfuKnlGdciPRav60oAkSt1b-BSZjgLlTuci2cWH1hFlfygXGTIRitgFIs2l5CifFQTMR4TDUxk1wNQ2DySawbgv0JwzaW7K8_4vqVRht9VaIfZF-7GbREDZXol4mX5mZ6F3vXJBAH5dIym4ahkall4zgr4LX1iUWjarpVrTsrRyP2M4JKyolyw55HvL-KXSjtKRGkSrjuMzAs6WbiHZ4irdIp_xggTC-0NFM7AdjP15dR6YBJHuoZC8YE-aGoewqBZT0u42CLcBLzogUOc6BFOskb8ChqngFmpW9PlmqqT4r73c4IDSOsTSACbc-MTIKVaWeElSAkHkmcsVMP6bwoGuA0h9LJHCPesB0wCM2mZtnoe-VplSerpQN69996gY1Du9pKCIbQ-poJYE2Jz3s1fxmKkZM0xbWJTg8HggQoPrfMdAycPgM5Fys29XjG39bSDxatb6qdnFUT5AYhj7CTOTuzmFYQd72CFa3NopHdSY-8_Sv6ZwqK7YoqbYrIy8QqcLBfXZDzw8S_vyCWgszLVfO72wPTO4uClYXB0qW6_AeHgc3kBVjy5TCqFztQt3figuSB30j_cutwVbThL1Akl-hIj0a_-yHSZYkl-wJLZTNaBU8hNNQTGEGonlkn_s6hhYUvDLwkuRveLjsgHym3tQt74i_m87QsdgkcF9bMtRogbJtjnvF7AXGx-v6cc2McfRuokanOInVGv2-Zbjo2CYf6GnqkU7Fae6_pk6Vhd52SoHBWB-ayvRX8wj-mGWivCbT_42oHMQ4fZGC_p94ShqJDqfZF42VArJrdEsZ5Jl0UFr5RdSNpOtWUf_FnReYxQo9RpGPDlP1sHDDKiFZJ8J_Kn4dLoO_ky-OQm1Gow7wPwLGar_qlFo-fc8-elxVIq4xJjXDjpTz7bTzUIFs-jI7e9xnqcpSBmAW7I4Xw6C4PEsxU7Ok9GetCy8C0Gv2ngxH_nSbIg3yqRYpK4nm7keWj6JsXEOltol0p1J4AUa9pMCoXM7ePYO3A8UM0L81nUIhF2dYIaD12j5imBGJzGvh9aigW2mqre-CX5vYr3CqTbc5jW-ul6hG2P8rnw5ALMgN33_2OetMHd9cNcbSwsHi2nubx_WdskUNrWNgx7apy9UMu3PUC3IlnTojPu5rPmCh7w"
+            }
+          },
+          "id": "prt_129ebf883001oGN4VqaVpzenPC",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ebf305002fRoRvREVb0EpUU"
+        },
+        {
+          "type": "text",
+          "text": "Final decision: **auto-advancing day cycle, starting at 10:00.**\n\n### Build plan for `index.html`\n\n**1. Single-file setup:**\n- One self-contained `index.html`, Three.js via CDN `importmap` pinned to `0.160.0` (unpkg primary + jsdelivr fallback note). No other assets, no build step.\n- Custom ~30-line drag-orbit instead of `OrbitControls` import to keep `file://` opening reliable.\n- `type=\"module\"` script auto-starts on load: auto-orbit + koi + petals + day-cycle all running, zero input required.\n\n**2. Voxel system:**\n- Shared `BoxGeometry(1,1,1)` + material cache by color. Helper `vox(x,y,z,color,sx,sy,sz)`.\n- `InstancedMesh` for grass tufts, canopy blobs, petals. Regular meshes for pagoda/trees/lanterns (counts are low).\n\n**3. Garden contents:**\n- Base: 32x32 grass island on stepped stone plinth, stone path, fence, rocks/shrubs.\n- Pagoda (back-center): 3 tiers, red pillars, cream walls, stepped dark roofs with overhang, spire stack. Windows use emissive material for night glow.\n- Cherry trees (x4): brown trunk/branch columns, ~100 jittered pink voxels per canopy in 3 shades.\n- Pond (front): recessed basin, transparent animated water plane, stone rim, small bridge/stepping stones.\n- Stone lanterns (x4) with warm `PointLight`s, sun + moon spheres, `Points` stars.\n\n**4. Koi (curved paths):**\n- 10 voxel koi: 3-body voxels + wagging tail, color variants (white, orange, white/orange, black).\n- Each: `pos(t)` = ellipse + sine wobble constrained inside pond, `rotation.y` from tangent. Tail wags with `sin(t*10)`.\n\n**5. Petals:**\n- ~300 instanced small pink quads/boxes, spawn above trees, fall + sway + spin, recycle at `y<0`.\n\n**6. Day/night + slider:**\n- State `timeOfDay=10.0`, `autoCycle=true`, full day ~90s.\n- UI overlay: title, `0-24` slider + readout label + pause/play button. Slider scrubs manually; any manual scrub keeps auto-cycle off until play pressed.\n- Per-frame smooth lerp: sun position on arc, sun color/intensity, hemisphere colors, sky/fog color, stars opacity, lantern intensity, window emissive.\n\n**7. Camera:**\n- Default slow orbit: `radius 28, height 14, lookAt(0,3,0)`, `0.05 rad/s`.\n- Pointer drag to orbit (phi clamped), wheel to zoom (15-45), touch via Pointer Events. Auto-orbit resumes 4s after interaction.\n\n**8. Verify on build:**\n- Open via `file://`, check console clean, confirm orbit/koi/petals/cycle/slider/drag all work.\n\nReady to build on your approval.\n",
+          "time": {
+            "start": 1791704693395,
+            "end": 1791704697868
+          },
+          "metadata": {
+            "openai": {
+              "itemId": "msg_01a129ebf8f0747f8e2487c68a4f77b9"
+            }
+          },
+          "id": "prt_129ebfa93001VD47H8HWLkiavR",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ebf305002fRoRvREVb0EpUU"
+        },
+        {
+          "reason": "stop",
+          "type": "step-finish",
+          "tokens": {
+            "total": 10954,
+            "input": 2618,
+            "output": 674,
+            "reasoning": 125,
+            "cache": {
+              "write": 0,
+              "read": 7537
+            }
+          },
+          "cost": 0,
+          "id": "prt_129ec0c1d001siw44XCc4gVr0M",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ebf305002fRoRvREVb0EpUU"
+        }
+      ]
+    },
+    {
+      "info": {
+        "role": "user",
+        "time": {
+          "created": 1791704699989
+        },
+        "agent": "build",
+        "model": {
+          "providerID": "opencode",
+          "modelID": "muse-spark-1.3-contributor-free",
+          "variant": "xhigh"
+        },
+        "summary": {
+          "diffs": []
+        },
+        "id": "msg_129ec1455001FspLhQesbDJx4C",
+        "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd"
+      },
+      "parts": [
+        {
+          "type": "text",
+          "text": "\"Build it.\"",
+          "id": "prt_129ec14a4001O9Bepqa7pdPbee",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ec1455001FspLhQesbDJx4C"
+        }
+      ]
+    },
+    {
+      "info": {
+        "parentID": "msg_129ec1455001FspLhQesbDJx4C",
+        "role": "assistant",
+        "mode": "build",
+        "agent": "build",
+        "variant": "xhigh",
+        "path": {
+          "cwd": "/tmp/ocb/task-1-voxel-zen-garden/muse-spark-1.3",
+          "root": "/"
+        },
+        "cost": 0,
+        "tokens": {
+          "total": 14921,
+          "input": 7308,
+          "output": 258,
+          "reasoning": 3914,
+          "cache": {
+            "write": 0,
+            "read": 3441
+          }
+        },
+        "modelID": "muse-spark-1.3-contributor-free",
+        "providerID": "opencode",
+        "time": {
+          "created": 1791704700599,
+          "completed": 1791704741951
+        },
+        "finish": "tool-calls",
+        "id": "msg_129ec16b7002ZsawKJFkBwA1ul",
+        "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd"
+      },
+      "parts": [
+        {
+          "type": "step-start",
+          "id": "prt_129ec19c40014AyOuhqxwinl1k",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ec16b7002ZsawKJFkBwA1ul"
+        },
+        {
+          "type": "reasoning",
+          "text": "Implementing a self-contained Threejs voxel garden with CDN importmap, auto demo, day-night cycle, and camera controls.",
+          "time": {
+            "start": 1791704701385,
+            "end": 1791704708743
+          },
+          "metadata": {
+            "openai": {
+              "itemId": "rs_6acb3e7cd9a7ccea1be34729:rs_01a129ec1818734c84b0e45b7e2fd996"
+            }
+          },
+          "id": "prt_129ec19c90010ijnZ57O2vtSxu",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ec16b7002ZsawKJFkBwA1ul"
+        },
+        {
+          "type": "reasoning",
+          "text": "Validating CDN importmap compatibility for Threejs modules and outlining voxel terrain construction.",
+          "time": {
+            "start": 1791704708748,
+            "end": 1791704717005
+          },
+          "metadata": {
+            "openai": {
+              "itemId": "rs_6acb3e7cd9a7ccea1be34729:rs_01a129ec1818734c84b0e45b7e2fd996"
+            }
+          },
+          "id": "prt_129ec368c001GcfA47MLhjlD9n",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ec16b7002ZsawKJFkBwA1ul"
+        },
+        {
+          "type": "reasoning",
+          "text": "Designing a sunken pond with a rim and pagoda tiers using instanced meshes for canopy voxels.",
+          "time": {
+            "start": 1791704717011,
+            "end": 1791704728939
+          },
+          "metadata": {
+            "openai": {
+              "itemId": "rs_6acb3e7cd9a7ccea1be34729:rs_01a129ec1818734c84b0e45b7e2fd996"
+            }
+          },
+          "id": "prt_129ec56d30011HeGvnppKuwePy",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ec16b7002ZsawKJFkBwA1ul"
+        },
+        {
+          "type": "reasoning",
+          "text": "Adding instanced meshes for canopy and petals plus koi motion and day-night lighting transitions.",
+          "time": {
+            "start": 1791704728944,
+            "end": 1791704736776
+          },
+          "metadata": {
+            "openai": {
+              "itemId": "rs_6acb3e7cd9a7ccea1be34729:rs_01a129ec1818734c84b0e45b7e2fd996"
+            }
+          },
+          "id": "prt_129ec8570001o4nZxZLqj0e0GR",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ec16b7002ZsawKJFkBwA1ul"
+        },
+        {
+          "type": "reasoning",
+          "text": "Implementing time slider with keyframe color interpolation and camera orbit controls.",
+          "time": {
+            "start": 1791704736781,
+            "end": 1791704740529
+          },
+          "metadata": {
+            "openai": {
+              "itemId": "rs_6acb3e7cd9a7ccea1be34729:rs_01a129ec1818734c84b0e45b7e2fd996",
+              "reasoningEncryptedContent": "Q-PaDgELQaHh81yCNG5mMdQLjtD-ZgmpRtlnSZtLmLv5zueeKI2k7I1fIiRZ0yteDBNbYptknqlQ3RoJ-9CTAQPTTdMdlxkJA7ZUd1mGjAIKEppBMpTpSfD5FqY9dtulc3dn50QVwBenBvXGvKGc3sI66dMf9_yqfDQ-yl6X0TIJIN139tQGN39uVulPPKmgZuy17KHKY1TqR_ig_m9Atr3mA1F_83yBkllAQDoV1Q88lxkcNN-Xu8mgcPzXBjPaV5f4eKsl__fzJP8PN9hqtwzCg_aRv1QaTbC1SIxac1z6HX2RU8t7Rchp37l2nvO7SVGP4JSdDnjgcKOVKcQV3s65k_Wsrv7WtFcYW7UEE1LlM_ZDLyuGnhlYLEbdpWNRIubea6YRbUWcwzOxrlc46DVQYpBRk_WbVne21odtAYXb-woiWrcNxdKe7YYo4kYqbLgACpcqFkSaWZtstEUfALpoZjhfvKWk0mqBanP_8_UmbhYWmTqGy9WC-m0Ss67yewvSquWRaYYRHh5bYdlEcylU9l6kLXHr3UsGTrp__4muE5DrmkCL4KHRvPvMOK7lSzNryBy4j7zC9DGbMo_i_RbNVdhAMO7fz5Ofxp3Og3oVEe4-vCFTEE_vgUca724i7hMGJSZO5a4Ge-kXFYZnFbTniM2HoiDiTgcxSpI6AYHwklb_1YKcddE0X1HTJzFInENcHz0QogFwjhjjMUA2ZhBs1ZPgVi48PM96IyPu-FYydfDt2v8KTd25hpfxW3_Sb0W8KFl0O0xQ3naboFDUrlXXcBaIPn5p10oD85lQRtRLdEaiPkLxWFsRdK_4E_DApVmQzAknOfoEJmqr-hqwXsG2WPK61cm8x2dFpKXc0R94jZdhBX6wm5CxagJKjrkWefX154EcXn7sZ772w_pFfUZjcxRf2UfMWvpXgh5O02cSQlBPxqkmV5by7GoCBPe3qIH4k3l-TaSIb0a851iCZOBo-wogK0mbTyz5fxFpa08b5Dji8jv96Yy6a8hzFJvL6OIQIdAWVCj5WBeOxUCNYgVJbn6dxSOCLligGdRTBjQeGwxPk7q_bxpg_tarIJCqZCIpfGY9yvaveDydFWHu5dhYms8ueUvYq0YszUaC5VOxj3_0c7nND0lXakoG5SVjfKsWz2pPaV7Oj-5xIjmwK6VgtiaiA7N33CBd_cbMWDjIUuInFqDEiZ_h8pqdhrhq7qMXT-NPXgiJDGHMHRbKJDoNwmp8YVhYbtQl4XVcVk4EyaZ-vgfXBtETOB1dYVrRApuQbEqMT6d6i3UkzwKbGuqyMVCx9fwNLe7r4zBL1PC8w1f-xdnX8w5UErXSorMFGWg8up8Pp1-taEpjNOnJ2xxawsb8gXPJfJtNWI5xR2ciwJY4Kaj5F_qGRYMdbxOegG5lqW6umzVDZ4nK_A2TXDSUmFi8AzgvuT4Cy-jM9es6_MC8g0vGvuzbVcfZ1EEYtVGVQffEnix59iHKpUWeRBFJxO9qGMHSg-xhc6pOZ6vg2JJDUPf0IJs38wPj6ljo2_crLsMlj7JCnK3qgMHHlz3u5F6s2SiRlQG-5Cqe3E-YGRhbb4adMj5dAHiYPVS2G4v-Bpv3cPoB9ZrHPt1rEA-c4kIQ0yb1Wp4wTZbTa9-wahwH3J-8ppCDqkazFiCkhDWKN0g0zYAKUHyPdsyHUkl0XsIvTLp3BLtmN88YVNqv07iwy3I9OKEpHUJHf3KO8JwLq9lqXTl441cX5Oq4DPLBxr7SIiach26_aZKIML9ZxB-tGdbfJDaTO9Va1PuwTvXgU3ZSY_3VBFoltfYzSmERue6FJcW0s-mj8Rgekg7inyUHOKazBBh65VCo6bw31Ttle9uiR9Z5CiBG7WHWnT5OLVPv2J3TSjVzm3U3z0oTYZrp6_Nc7TJTZGdyG-HVaDsq2jQsvPPuV2YZPpfx7xsfPA63KFUxelt2SXluNTSk-fG1-6YfLzTa4H0C2d3RdbuU-nCfxWds26Z1m4OJKxDuGPuIvoIQ_fzymaR4fslMbCTFIsd3edD008t5jOnEcx5a6FKxiKLNOSST3ipQBBy5Afdd2IjjasxI0hRDzZGfZktbl_woueW6QbjbASFjk9MbbrjHAdNyNyazsqXkNg2nlgbzeibjfi2mFU08Q8BtHXu-eecKFPvbNjvWlSeB3gjjmgL04lyJbO5_R_Vx8hDZ07U_UP1kcUabI2jPuqYiXOwKAN0tLJwdDrcmEpZgDvVAf453a3Gd3yMC4yzHtmmWHUYE8ToG5QD8bDP9flPzFVOgILy9Kt20Uycr3c9FCeAulrUIv68zRfz5BPEowEwKWzp4P756M8nZQ7C_tp7vh09v7tFdMlaxfq5SIh0ekbm9a1OarhggBYsKh6eQpDCyXs4YAL9XBySABNaGFCI08JT_A3UfqTAY9HWUhkZElgVkUYlTYlpxdxTKaumgILIdFclljhzNF64s3QvF35M0RzxdEKrXhueuyLnVZoCq_JVxegohcFCkk2ygpoxjB9CZY-4CYxAtOb5gkuo90QhYpaWVnvH_IEP3wFr4OsEtCf-PrjAlFn2Tp-5eXs-RtBr01Ij2cJAKztyiw8Sa5wm09reX5wBn4okONn7745QAP7Dd8PyFHv-pVs4Cnj0exQJB9-n2zFBWMI1MueE9m1-6HeIcaDL_KS_UYMTGTkzYzV0RCpGcW83qdY4vfG1coHC9VgdJeege1WS5U5WdUhaC27z7sYppcniqa07HtXcs63TQ8kIVZGIVw4h3JLf5qzf_odd-TuuipKZud3cNmtnrGfcRygbnRPeSSQPhAQwqBPkrV0j1ByzxGKB1ECrklXlPv__ZmN6bPKPWXRuXjhrRxeTRtQtu3pZjF6UFq7PlYe0fdgN2bp00my9e9nnZnx3i199esSaVcO02Yhwde0yPhL-GIvlFGBIXJHAthXrIewEWL-dhGONriTVxU0KlVmd5K3hawfkWDJyCpzz-wXTw3epqs-mwaehKaRjP1aN8jULEPzoCx0RkomjcEtu7kbJQ3jko7ZeAlQHp8xHWJ6U4JieiH0hXOeT5flxWphy3UEAaC69ot6Ee4tNA1yVaunj2TOPdhBnPhojOktnbbKBqShX_nEryd1I0U-JfLwPiklaCyt9Q8G7uSHX-V6iA9tCQ0XO2D55bPu1Ycky-2jz32ncU1a49krO3o1plZD3gpzMUNbIgLl0s3GJeoTVeDdoMfZfm4HQ-j4_TWs8HfY-fQ7Ktm1maqtvhYBqZxvaWMYe1sXNBM-UYX4HKhOGxDsYIEsvyEmnJB-rcInxq9etfbWlW8vX69eR_xTQxCxvCQUK0nWFvAjN8H9embNiHH6ufb59lmn1qF2TyhTda_lbolF1vLw9Bb3ekjJtWjRzUscNKXFh30N0aLlat_JxiDLO7bCgK_8spf8K6kjd889uPPvMY0-ydmiK2xOO1C0s3i9CyU0WEaKYbQwa197BJG52L8U-dSCTRn9pyaTr1PRYyXJouIhVzUu0QGlDNGeX8gmTIsEQleaurahrDMD0CeMRmdAtJFJLPyvS8yc4ivHDGnZiRWEiehMpjn2zGGiKOi12voop8CvbBk4PSwOvkojqJnuG5efmnnu1IQafQ5iqRZcsAAy-iXzFkk4vrfQjjfkD7QER-nmhWjuwAs1WtvxGbEVlliT51rgXCSTdia_i6U2LDlE6qbOrC4dIX3CHAn1vscgj0EOR12WtuW-Phu8npZW-Dyjto8KdDWtC6T9XM0pfGMrh22ejpeD_5TQthAPBH3x3b1qpjTbbssZLwL63r9wuvOCU5BjJY1heWPdqLomRviEQ8qqT9bvHzLQ2dKhMtf6WyRwcF3mdp-FZ1tnrEkoI1h3uM14I___RtG0RF5GLcqgAVqE9Vr661zl5-8p3iNEUUC7GvIZXkVnQ0NaY-jtCeY6fs19Lyj-oPDyVjiz5pbmgMTT63yYR7_DBcgcFqSbURvK5cQvTVxYfTaxgCD8nUIEs5N1SU-Z9UCRn91KGWLuBCR8FiHl5tO2PUBC3nGATfTbK0-T52uNHdaXI5AIuRUOiEKWxMq-zXmRM1vV90s7F4p25xXbdvh2pAxJPKSjlEtRv4Jpl4Wh0RGCT5VLTRqti_pPusR3y8OrWRLYaaRksbDclY_4UUs2tlPt1wthByQMxxxGLwZK_qekkFd_-WZHtBz73Pq4mQSExbw7VYL_MfN1eJ0HFGJS9vBzAkFk5yCPclsOjwnGIhILSJNXCfMRA2Fql4_GH8JEB5N41UTanOxcUEfDDVUG3D9w1mnc8Jn_EtN75UbMwYL4y4Nnko7YJW5irestVQmHdrsCPOo7gEU51k96hY56Pai6kJOQ8_2wzc7ntSAWAP56DGxGGrAByvGibNgwaNXs2o2PjeM-MMAZDA7Y2rfcUX0uX3JVUwP_ocxGmhYfTb4L0wKGrETUhgBSoe2YVWARv3MSO4uASqx3EglkN0IEy9uEQ3rJAs79kpWJaPSFRyJ4R0Y73bKQo03Anv-4HKujrvrSN4Au9J6VvH-Ze04sNIjjpC831B9XKDANxUO3hENOVsXHIMrp1kQgL4-PVr7DiqjbjdPyIFAZxBDMSf1oBOkn3X3aT6fsJqyBIc4S0LqW_q-s-_rU3vYA-MhT4xC7pGuOLMeX8Fxwx8DQDSRLsR481RL1j2QmEaM4PTKylwAaUMpe9ki7qht8UmZzkzbv93-H_Y_1SskgpRO8AvZITaGz97zZbl1lJ52kZ3M3ZeFtrYHXTmHWzBi43fKCJQixYByrYiSuZc5F7r0cbv0mD5LvD1alsnXqFW2ubP2IduolH-GtP2pC1ZGKmTX9YtuivNycyOtBHYRN3rRkTePf2SAi2md9ShLzaH9UKTyqXyInGeGBr-km7_qoe9Wvy8k2ePwXUySHCkpvggX8b_J4bAXuWnhk-xdHdyxylypSQxkknbTzv53CjQpcO3bL7bTwo8qrn_bV8VACpoWFWhHXO5oLdJqmjrKP5BURMr7mwHSDobfxZ5RIchZir2W5CDAMAJb2jWtQ-9zpSt4x5ApgT0_rTiA97Axet6nWVYvvOVy81DgaFwjO9JfGL5UqFRkmGYriBoN8E1yVpYrGYosvTuZy5KAZ80Smm00vOmOVH9RW2KwrM5c_fQvXG1-B2lmx16ERaiZIySO_gaEXLOP4R2zBTJmfcviaIjBMudP35QY7XhBuTLPdgGrzt1VAtppIrLuwWb0lLwSqIt0OpV3vTlexME7UwPsaHGdVADfIBnsOUhDjq0BXxT6nPVkjRPidh3ZSb7bNUr872xfXZOL0GjVUCYt2N0vuG0AF6GTHfN8gmPEnjws0ziZY0Qp2T8tQlcmFlsTCW-ZrBTtQ5fjn405KSrEC0J3KkaQ1HHcV6WyOpa2r9xPQpmTQ5iSqHEQGYIaFIEbBssRoZusJ2aVVGMXgN2I-de8tOwBOJnQGeq23dSUk3dwVI5S8m75F82smEXKKlaVN8TRFpjG5ePcvSddYOEDh_PammzkgKbTzEJin1xuCtPbIWpszPbuXqOwp9BbO9evgusBtyPVo5nl1jgcRX4cIj4CSqlxknWQKyqg2qiNFwDcxOsn6WwTbdhVW-9GpXnMvO2rsiuZ3NI6QlBUv53fFeU7TnMVis5itGVAXdOa4ppRzm9doRvl2L1Y9bd2eVF6VTTXIHsYFKKjD0dn_MNwAaNAiugj4eNdowMFMbDJAsjZpbAYv2TO3_YnJD1gW1DfK_VCv25VUwX7yVe52Dy218w8qRs_WfR7MVHlSQYTllEJ0gpKKTD3Hj8o-7ErdCpKEAP4ECkYTOHMDbyF_2OrCs-YA-vSaAmAHmYjXrWOdvRrM9RFff8VQY3REH0DPUMVm6gIMUvCz7Vl-uKJ9fVh_1vFztIJuD_L1nnQivW0UlM0WMLRvTc4n6n_DB7NleLqPbqzrYhZzjQgqfivuLYNsOfDYd5JKG1H1RBrsZUxAxpSEDhtSXcZGbFpdmFY3HyplwQ2O_aZBlWPs-2y6JyELlhUHArqtn6InFOZ1zUXSaSFMJ47asj9d-GgBSG0SgIUZ9whAPGkriMoObeM7ESORK1iolerhtRQV8hnAARa1M9yFjekyuWikFR_gKitzWROGt16NYFwgAkMdOxl5NjXIYqy9rgcd8OdTl8aaPGOltmw7XFiaRxW_Fp14LRCn-5O8ByTgA6uB_y3CmTiIesUjMsSyc0Ij9tzhhwlIiWRm2z79uDWjbIYVyjTLjF9wF8sB1DRfqlQQijjdDKvp_fcFJ79yzPfpCPLl2USxiS5avKV5p9HO4qOJ_koZnumgC1dlioZOAZBMsX5l6xPvMH72GxuGIQi4aVIoAAbAij9RJKVUxr1nrLUUudvvfmK7MX9noZ3_JhXQOzRgaPLj_CWAK1H-TpFpv8VcoF53sHIiVmsyEDtWuo1Hmz7tnkPJFHkfczW7iqLQPec2INWBMK5onThYHdnKvPiqlomBbXwsDH92To_k1i_JfwKMsLUxY1SWFIIpeixl-ZlZBVFpk2RO-AG_YO8gBoy7hFFo0gVf0bWWbz9pBrWLhpDWrD9dY1nZbTPEH3PuaUGdTS7RBlZXHRBSfl0JDpa698OjaDW_uUWhbgmG5PfTjUE23MUjUbqfg-iTjDdNSobfzytIj5K0ZEH0drt9ZJo62nQfdS1re37Ovu0ShmZGsh_-W7XYay1rRB7q5VV3o-BPQxU7sYjvo5N0b5EKPON9guGAgi0AUoxOq82Hrtw0E4kLm0oAPYpFCDBk3g0lHKyE5xFk8_mhdY8CVIpkup5NRhUNu23TNvEM3FrPdENbDIs8sAs8wTW2c2SfIvdY-MIy3rguY891v-ICX9MpdYMdXyGV2SNugcU7WzEvizwnwdRxaC97dJ-ATOzEiwo_Oze0byC1WwI5MgRIemwnEFVzFrJpOAGa7sV5hKQDKLr4hHsp1nO__3QgW9SZR5k45D6qOxljhUzhwweHVc6TI1xf1UptHrKvclmUKD2je0LWJ7p583J_L_LKDsAK67Bf_uvMKPqtKZdXE5M9UCKnvqbdYLtTLYnZ4sgfcSN7eYQfRs7_eBQuqwN12knsLJv551A9d2ztQDxR_tBGrr01K3W-ucUAh0MOF1_z1OK0eTZfK6gxTyMC4r4ioNtGZ6mLWkNXox-AEmG2dyh2StiSKkdIXw8QQkbDFwxyr3QNzYzWLKd_oDQSKsgGqfByxRSMcMGLs3nPKlOSR0ev9s98HGxakYZk7ZzdVaBgOSYuWViWZh6HAxQ9L2ZITXVcNdkWK6UD6DVwjMg4Pk7BD9ULX2qAxPb4WE_ndbFDQadbEDfwysamaRpmCzjoWjEs4EPjE7yBIOC2rbhfs9qTHCTHoC3C8GUP-BCw6lOsY5OVaocSwTu5G_Cx_cz3SBBcx3U_wca-BtmLv8l_-3aPCt7Qh4AHgLsyAQLkQVWNrTcClCq4S1kumoGTqMj3sSQS0ed7e_n1OCgtqLJ293gKhZAN_wi13OMT-UYi_-F5rH_b0L10e3jsdC26065GM8WIOcpvW5Rk5ewF_3vPhTEED0M2oPdL0AEwWHk1efCBSVs7ulyKcYcnN3XqL5uSn8m8Z-3RtNbvI5U6jVb21w0BRZ5OsojB9Pl3yKBz3PfPjPEH_g6VOX6PWr4R08fVkBmpE5fsKhG4fbb6aI8bRiO67x2JKnlb3TVwdPo04WYkj5M3CHAwJDXRg0hz10GOjssLT6-I29UakyH4brAobrQkAUcbKUOkIAVHMnL1wMczNCkEBf09c8HSoeIdptT9HO6IWX-Fjd8puLpsDod-SOQvtg1xfZwMvlDMKlTvfNlqI85BoXtsUhlUuY_Cmkun_q_NsMlSdVeZsxAN5Hhu35puqk-yIfD9hD2KmB0AD6jGQeOLBMwaADpiIxEOCXuLUKQkFXXSHfut8mD_I7bpX9obRJFPW020ZpMbn90pZprwPh6A-TVW_K9hzWUPwAJkucjhyX5zu0Id4oE7lc7tA728Ok_cR-zKPHobYftcyjmrdq8dPj-mDU7X5p6zKrdV96XWF_-WED4Y-inbINsEg9BvmsIu0TrGWKavZYDiKaCp5tZuMd7YmpFyjjOsHnoaGYoWgv5uNeD7arhlbvxzNqlFgDcibgTbHqYLxy_uUUr-S_cfmuzEUP2DhWyig5n5GedxxOETjqK45BiJdJs7WVWktvqNqqfxZ64xmszf8dqvvk7S7SqLA2bZPJHyPSSdT4q6XZbX6kdGgEzNxxnJeW-FGNCNYLTPcyWUPR-ChsEnlZwtQjtG2B6WvawGPT-ga7uJy9thsrIPgogtfxk-q4wfKwbx_tcxuE5g-NC_8BOBmlbpvQ3r0d5-CgMC5S24n5K5QHY2rMKjg7Cr0Sde8-KB8CE6MsrM4eHUv-QoONGO-89W2m9w6JD8kvJB_LpmLzgOaZfCU_hsRWL0-14K1GH5sMdqB9nGDpe307tBe0uCfgukC_wY_YzI9c0EaIoLYM7KOEKlqj8_0yJAFD4zUCKxRKD9__boPY9Y_F7R-ZBdgtPcWJDmO_ZGHKhkh5d49Qo53PxOzxoVx29wwFdBjHETm-tlmMbajnyPRzAaUB-rK9HhCuMi1--_51D6F863s2JbrN7cENoZ-Er0T4KtOogP7rI_fjET2jdLmBqicfce86LkwhpdFcrn7XfykrKbsytfnf9QUCpPAdktBHFzQ51oVLprq5g_lxtEpn4y66IHPtpYX0mWB6FSekP94KFr_Ry3F4_wnIEYBdWmaqKjfTxUStyZbY2Vf0lyOGzrVqRFMFQVgAlIT9rSRayEYtE88w4FjbtnSfq3VdQdJgafnHTsb_Q6cVNkjQSgVhUxEQX1HFneTvGehgM7rUn1yABi5Hj2Xn-zwmB_q1W7_twhGmd0J7uuncXeDoMh4w8AOqKZEiqdNuQ68p9gn3nyBLfu-lJq6RR1dFHvtnzaBUD6VrPpW4u5pMd5dGwQUdS0GGm3F_F5tcUZw1quS-gk5vehXJzHpuczxkpFXCc8Foq0AgFSklBKYx1p_sUyW0jPrSPGAlbqv-Ucoulc0wNfyGH_bZnwDgaZXL1XEOrzZ0HMqAn7DYQs3W9vzId6e0vuY3Vpt0Ag1MF_qmEw03ipvfvkoX3VSfxXbq0sP0cUcvHJSVsUX0r3lVbFrFUGBsOYT2SDO6UN2Ly983OxM_7a8Jt6Wrvmk7yjqFAXHWBG14FuC5bCJmjr3QOAehk2A272TAxF1gxixmX0BdGd2Yg8965JFJ7rmn_A8bOPbWrX5WhYtwdHRBVeoGMh54LN5ED8wTKAdbFwzQ_fOBtZ1mURzqJa3mEn2p4j9n9o6miB6b5aElDlFfmUF5gJGxUaCp7Xdx2Loa62_XaFFS-k30nSd0ID52eyFYNc0xsfpCgxTenrJLg6UavrJ3FE-W1jVjoPj6g3o-aUqTsIDz4YDv4sOiSbqrzFgUxYlKefya91CUFT5IG967pURFpiQMmhOdAR_aWo1u8rbHfGmzaq5OhNA1ZyozX5NdXFRFsXhuQc2n16Sn9KlYKeu91K0tc6rkGlTrI-yrASFDJV6aCfM3xPa7LfDK6ph5I3S5nIIPEEj-DVBYClY82r7g6BUMOXQUdDxzJ3zw6pxzmF8HRHLAUG05wTMtMFuTOeEtJAEFWCaNhdJF8KTYO_oncSYNesTaShr1b5so3NQzUf8siq2eM_ZDcdEndrO335YbmBhMGEDQ2G0iKgVQPE9jTWOheIBHPTNCuLOYBd0duBLNtL6t6C2JiOB8Ah20hAe0eRec6UlyPiq7gx8xQBCUGxJWN-79GlLm5cgA9v2wkrgukp9DEJYSqDlWK-53CytELBgiGrS86uoZg7ghkQGekna5m3UbFJT8gpN18AtzRHFwEiV0PUKkGCcE3yk2GGfx3URLmhOwfRtqvx61DwHSIHzpTzRUgTTyyl3_XGKon7CpHIEYMj_u_V__KMjInbLkOQefPM3ikUf4qfDrgvRXh0GQ7_vh2-FANtccPBjYuHjw0hYNAum3y-o8I2IYE01KsGh8VS8pqf9ZOv7yOHElYAT1VD3ld2tAo0FC_9iQi5P7XzqIPGY5KyQNXq9_I4ZWZnJViObvpBH7M7-3is_UbgkzVKByYoiCPQ7sitzBtWb5qe47YsPAnphDDa80sDiDM5v5dsZoCclio_xCseYaBXWl-ns2eVb5pRHMCNhKC1tfqvdYAdvTF0u-tmaXCvr_ViyxfcCFbCQIUVKmsdey9qGC4QcOJJbqor0vqgFKep4eOr4Ou2_pV5Bd9JrGxhu94h5wzliDjNd6SEfFTEmC4m8VxW4g_EGz8wZ_Ia1H7XIhrkzuLr7gVyywE6aSz9PXmqpCKWFuaAEd0VvmmDLxUvmW-EcdqVwm1oXuWCeFjVWvZ4NCoUmq7163u-ePOO7ESFjVbrIR7BnqZMOVhWDwLwi3RjQLya865hli8-JXuf0Y82weSN5JjyHwlIzxlCXI7MDE96zihIzQZC5c1a7qHBxD31sLSuODNkKB2lsBziNyt5bVwMu0vsJ_ZRlFGtVXuoLkyBJKg_n2_7Lp8YuNm_8qv2jrzsESqjS2d3VGXU0VNXRRTHrwqFnANkDYga_sIaoeKGUBzQDL0gbGi4AR9MzuxMUAdCo2zboZRGIhEoXUatmz5C-3yvd0ZYeJW4Uuy6FCSzDzlzvx3esSTFEQ4lfgXPpg1umFFXEb2UdWgk2TckKTCrKZfMvmnZejzgTnMQWOSl12-N48UNsBqDIdnCVXMjj0x7qHt-p7QTd7uuEj8LLPNR0AG-3Y_Jm2uyoSPqxq19b2j73Wgeywr_2MdOYU0TIgUrL-XopMCwA6wWqFBxhoDhDoiFYzAqmmjVjNvFgTV616kVcksz_P_ir3QKTJcA63nz1CzdxnvBCRlhltiRivOnJsQ0EpZew3JxO9KbJUKu5Mc-8Xa-kyJkI6VIqZL3f6Ckoyf_8GIAJjElRE_w_6f-hg821fmE0UAPcI99gDXEXruHh1Ir12khE1cAbA85vLnnAuL59K4xFRO-Al2ZywnFVXKCry_858Zqct5BSCV3U4G1UmlUaaS2CpdK7lbpXVn5UPwI8k2vLtDNSnNRyrhnYsPwYv7Mh37OSH6F8R1iEmUsOd9cShDk1BqQk1m3yWSK0P2bWp9YLbIFOZvERudzIS5-MR4nXcNCefqim9-k1VNyGq8ssipfrlJdpwRweUrg3WHI3Ek6aosNQEJrG3O0y2k1kNLFhcRzwGFeJjJ7h5SIgniZ9HoKPwztOlb4L7eQQhTVwPF6Bla-Ve-bAR48BhzhjHlv02VZ59NN1MxAIsDJZv0bddf_bF2XtepalnovU-oP-qHKj5zBDImRoujqMdIJgSMK2xe4vgeT0zDCXx0nVYBvi_Ga5XdckEaUtnewiAFgNQv073-C_nH204id8EINXUqIor2EZyrF9a_CU1hTagFx3brFNcaCFM93ElDPf9mfpRRMkMHATxeZZsJuWtj7DE_o4JBO-Un9O5msLOET7SrA80dS96A1vemYsLmLqGL72Dh2n-pw66NR72vEfs023MNBolMcJWf1pzguR4B2Pjb5wRjposXEyRXuAI94v7SsavBnmhAmkW9ztKCQ8RfwIXnDZZuDM6m62m9pU3FPfHfwcnCDdLSaztSaa33swnMYpWrdBStN97mP4PUGCc564JJ3J6Pwnw18IGIGx39BX4gOOB2h6NuZWRZbakgSc82b49g2L-BFSYyu79aSq-CsbOJmB-Mjewk6NueHZT9Hv1Rny4EAJgH_6ni50gKpIl5Fb5qq0y_UBOn4Hgx6QiSEiZJiLp5R7j6_BycTVn_4qqCoYmnv4BXgpDBlDN2UDylX7wHHN6pMDcXLo5MnYy913tU-6pdsYkX936E02rcj5FOWZokJvT2VYF1WQcRlMoZtaA_nbGRvYW0-PvtVNN7bhYHm-LBlogqStOWqDyl3YfJTqoY5yCFySeEldpAr-kFsIyo8A5y3A_QiWNagq6H95GF9M1fWWg_G82qm39VBu27ck-99pSzcB2hmc-jZx-Y2F9yKnP30Ms4ApO8Anbp03fq5IJ3Fig67FUpaWDoTbFAvy91VWQlenwa5qpdHImUThjC5lZQsaDmGSbTXlL6DcQBqu9HuW1gzDzeZxWPdyVt5TR0F8wBZk9ovJRpcDfWmaMQkhcQa7LNv6nZMG76X6zyNVzTmf8amJzEau6fWaPq-FhEu7Ue0LIkNMYFb5WA6mYdAoT0mbJPrA1-C-au9VicN6cVVLk35YqJL9cxwRRKjoareURd1SkxYaRXwKW7i0zsa1X-6h-tDQ5DQmLHcL84aPg_dD_OhWH7mPt-PM1AQGgjrnMFhacZuu0tRdXGFsRBltyYpeWjqkGKI1WCkCJS_d4UHxKkY8bOlfbFrB3zsnnymwLf5Im_u5O2kv4O31MxytaJAMDamaivn9axNlY1WTEMRrbv_Aoa_RVCnYWizo6DhFwoCfShgRD0E85T2wl8bCeStaoDLVSivm9xpoMZslVcdpgVXihG3c7vj1LEBq76RF41WetGK13YWsCTCtg3eBjZkrHhexUzqjrrpAKEJS8sxafJjYDXguss7PU-eBHlBOk-DcgQOr1up5txZcwnN4lpfQTuhkA2dtTu9dKdHoeAOreHKAsI8-Jbr-k8CzcwDnBNSW62NlEkmV_gus43zcgnnfFIuEy3boG_rE0CeTU_r3wePYNU7tWCcRcmxiycZ1YMvYH9RFQ3F86_HHUxtjf91EUayoB1hs61aAHQaJY8WM2SHJDGnO2lcnQ3QeI0oWIXgAB4nVBSGnkv-1VxG-VDj9Q6RItkZyWBlsHIF9PPCk5B5r-C_3Chh70KQ0Gzo4rjbTRuI5-Mp2VDRIJqfGhngP8GnU4wrlui65i1tyQ2TSD1bowQArnmnAUVeLxl_c647BFCoO-znfQC_3cCjoMwk3x2Rv9EMKyR0lBOTAeH2s8n2vqo8l2JvhsZIjtswQfSAwi3iGhrXDDO7skf9VE1FOsiJpj-sDO_Bhy4db4Bi4iqI0J8zvhDNWXrB7ZQAu8u2usDL7APGOjf_oqdoQv08jFqu0DabpB73NYIFvKbSQLXX2-m_pIk5Pwq4kA6RfDOCqzFJDIBP87AWIyVcJrIj0MMFOpK7NTso32wa65ixEiyhnUiT-vnLyU4QaS-wTZDAogMwsEzDRCas56eWnfFb4yZwPEs7p_nHtJxbZt1gi3kjm2n0FVghPC7JFOu8mdWTRdRzvP-GEmYlKm_zO3vjjg_zBGHlqBzkKQM9oRJT-hE4XWmEpCY10TAFgz19zLH3cjAula_89JBVl3q2zw2O7ThY1KAqzLfcQJ4827U7yCdo0WPrrEhuu1WyGe3U8uCRbTmYB2KOArIYGH8oqxNLw1TE7PZZQXY371PuKey-GhHWfniToL3aU-60hTcbxo6mCYMC6WKBYeqR7D2ycRBZ3outz6NLUoTJfpTxIs6MWwrMBqxs81MvLBa9pJry5NSv3mYcPmSH_a08JrRw8yMgZSGDRKNwMspGqQJISqtnGQiRxYPdDAPMQJ8_tS-E7jnR2Cm3iYhb-y4bEyIY022UQMJqg9jbd_EHy_f49OpRfEVa4rTdY3VSNZwzaEffIVjCZCAgoa2ggjtHG5SxPhK8JslLCvi5lL0O0Mbl2LonOUKszQDmkg0H76B9hiGyi8s1-v8zAti_RKZ3RPIth_nyvVdP-DsvtPpTgYlRmZxUUqOV8LlPV0-cnzBLmh0G5S3EwNAF2RnoRfpYHidtcu-iMQsudrKTpByC5PRAU_ROS8PtBOJdRqCSeWw_hOs-bhfD5nQJA6BnLE7P4ePMW01pbldY5tFstadtGPw8Yrwu0Q4iYwC8E16tLRu8nTxPmlKcT8pUEZrpq_s0bh47CMCrRK5DyseFkYcdTKIKGbGOyXzTZHRoId_C6g9Bcr55OxgcZ-ukwIjz1Vdx7Z9y7SCKtLye3eISJHhB8_KYDnlgbdLhWov_SLd-KqBdJXD-F2fTROpWoO8YljNwRTn0tPsxaA_Nh6rVTUWXI1IfttAjbcFIwOPirY2M9gsJ3C_OVT6Hsu5OR_9vNP6Hxr6GvNfZr3_TuvlzTkBGrb2JlmEgOqePycbG8JEJVlQbSn75yUzARcl_1ZSr1fWoSRN8Q6ZD7ZcAqj1BB_Dd3MG4zon4jt6ZdJuXdbjQEn9tPX_NkL91FvwFUxdjwiGkF9r-2WtZqsasrzTiE6lX-BZ26MgVoYX-JCdjAjy272Yxro8jIKMY7S6KI9y4gczy_A9wtURFsQu4bVLZxRYk1po7YFFUT6zmwrzrquIefHpfkdvVkI_vHWRB9kuLThufp27tg4qBS7Jh1vxZaYj-j2fS_Hvbg3Gs500yw_hGYCXh9yiKfvilQt3cyKKJ9XJxzEps0etefWxul8doxRdxT-HzrYm0vaWReIKWEU25gAqJ_re6JyO_84-r1Ap4hPuc_k7k_TWykBZEKuGYiwYZMIxbhoPxut7n9qxtrK73dETigtTqprtHEg_fJ61EjftHyA4Ti0dZOmmL8OrpssZ0zz21ZqpcBrA5NrH0Qk3fpUjTHm54QhkW2Cz6XJ4vIP0L6sSiRjF1xvBrloYONhX-FqPvfWhvm19484NotUfxknwKQp5LoD7izX9PDUUOVpfelK5DhY_2HnhgTDpVUXr8ffR7-_dmCoqO4HW9B0gS6WkhIgok4E5vzW73DKUaAo-hCHQIZnR6OM3My_sKsVGE05fEX_Dw2KH6e6ksKPaAIovanXwKyoaGLK1OcZ1cKslEYzAkTZiz4ovqzz_wFGwLVn_KHc5mAtjQVxGqyLbyrA-N9Vc9Mntz4LPy29-JulvOkIWbYnH7EQTA-MG3TRZ7R0_E-Jr1kkJEfNWF4vMAcH_oI4uY6AvfeN8bZWwey2kYduPMvpQJz-_vz-DZCWGA1jiurnEO7bjD9sQzTp6W0LNQ-CO16EX6cQqEXcKdSsJKbYID_Az85nNpGsVV7Y8yEZUSrDDA_k7j9TT0hIdL2DNJr1RxthauLeJCOj7G3DkZhMCzWv2R8-i7p6viRi3ZvdOqqxuVl2k5PGauGvx48cWL1upPBgjL_LTvkZVZhQhZWuzdPwXav8fZlCxRbUerz2GXABczE3PWcJbzamVwxY9bsrwJ1qpULJ7o-4pYtNf-dpSmbO8g8bfjcr-92829tdKacdL8ZRItHGvTV7BQRJBuJYjcfo_Iy7h0GaumCZvJpDNRgkUgSdDZ5BU8DQ9QJ_Lj2hQvE2-x0-Pt2wdOueOj-uTQrBar1CgHHwCmmpLa0YaQFiBKbIAegmHBb2zEHdxHyeRuv0vS_PNBPPasLoj2yVI318A3CT2f8T_w1a7jC0lc_t7p2gi0TXDuQwKJL7jiBoXtZTFSnSBdhEoLh4YejIR_q8rseIc9PWb1HLeetuEfNfYBD3ufS3MGATEvhp20oGEnmA4wgSZewNGwzBaX0j9TvUh89kugPKfZwc8QPFvcUV4sXyoMDSNU1c0ucnRt0dUuwz4U1kzr8G_YBFzYCBJw_04ZuECeLw7AY3vzXJROA9QK2CTD43FlhXdQJrf9NxwARr5FwKW9IeWfR8edvE1xd2nmsgfkUbFRXnBwgw6d-lr4ewVrS6XqfWJIZPqnBUbG8Rtn-rHiTX6pzD390RB-zfZUeM1xIPX7_JDtZmQv9GvADjcVUObI0utSlvIjuqNboNOvwzTlxVjAmQmdMfNc6yEqN0VBtuFUqMgbKqiK80OvuvZOillFj0XQFyZAoVu3VRXKI7Fh7LwW0YZ0wQI_cWAB6PQM20gHO1w_EELez9a_es_nB2UqnBAHCvlVjjFQyM1LQ9xesJw0GlIG2J2fRhh3m8SraMAo_BkJUng756iFFoYagAaMST76UgTnLuPXdtBVA-5HrBCihCEp36J_isyDTa2dhhGH7ZBzn8s77P6dvh9b4UyGYa9woim-ySoxq6geDB6F-gIqXSgam7fBszrR6mufAKrX1BFKQB0RgYUk4rVgyW7_Sxpz4xWOhrXPL79oQkF8QW7U3Hly-s2IlGLJnAvHr5ENMuYEdlzmRXngIRwxhjCWed9MXwURJxsTZdjQrqFVlaPwEpOXmoL8rROwyFohlxFbUBBuhJmKS4HdOmvlmYsBg13f0tLk7hseK0oQkj-TF4JMIYoBVAGh2Uwq_Y8Cx1ge82hkrI6R-3CYUTnzWXUZjgWDDsxwEN3hHdsej1L8a7O6cdQtPyxMKqgQZolsGT5lTz4hQ855hmCXQ0T4PFJYupMCrnhfeFMkWXW0fXAI5arTQWbGKx9cYSL-wfpP5tHoja6lRWfaNLFh0BJsQdrFl00Zo6hF6ax1q6x4MS8gLc5En_xpG_Iwrr7xZspdgE4nW4A2exMqGDL4QYCGp961XhLghS4Nz9zlM912SIl1zIj_IHgIGEAaLiihKWzVR6aTDNzNJFGCHX7776VmBSZAm89j2M9JNppe6-ee9xbbEnMmd4KIpTu0H-r7ZWrhmugcaJH31TAbYOcE8soPdljtfL_ztJnUa-E2lHsAJ4_iMvaKLgzasna-K2at1fQzdmfGRjNNKjEQzMaoG38av_n1tyIS5m9YCBTB2H_383i3RYpuSDUU72f7HV9YSayBTncGIF76eJ6g-IoMtpg9LGLw09RUpExcKLaqSxwX60u-MgKs2hbpiPJE2xUECg6U06BYvsWCOrY8V4zw9Qk5Rl1Fno68eIYeLZSqbbCBBXNmXsbkNRMBI2Anfm1x22RC5pvXAlgCQHVCFwX8W4X29aiaUtjjp5V9uz1H-sGWFvls8lzPQUYR9ynoY4SHo1vwMOdM6uy-o3r4c08WJ5ai34bLNK4fDlcPDB2NlmrZbE9c1DsIQVUCz1kQqaf2Y8SST7li0SYm_3EhdplsVAhkSZuhvFnOxCypMBR8SprNSf-Nw8870ZuVnemgRFVL9Nkkr2o2VdBn9tugmHMgMKTcJDWl4v93lepW6ubfEArERxtAt0I3wTpXqfeROts4sPTRoUxRXg5nnvD3glUJB9Y9HIhrLMEV7POLi3hknYxsTGzjlIUdDXVnKpNGOfP_e7-4jgDytjc0glOEddiDk9FITxb4GrND4VUHrqhnOpKPIxqGni-K-XHga5E0YUKUUB1V3vTJDLysAuu6xtMt5Alrt8HGa4Sidu5LQKV4PQ8mlVMNjgK4uXkm0Xu8iH7mHO7WNPji1nLU_fq-_uNcfspNApR7J5x4CZUiP6Nm4Q85f6vU9EUNzmH7SQ2YvJV-Y6ir6-FHOA3dVisK0QfAcsC1TXhb36tL-QdWmzD0R7Pb1sDOIYzg3zMjf6oYhKuXDItjA8o-D_flWKA4mSn15Jyh2FMle8IVgFLityy-yprGuJ0ISbo5gXe_Qfe2IhXE_yozU9P2uF0xP7bc13roKkvuBkF4M5yjWQqyvKNABziacTv9HIW5IZ3P1fDkDkmtTFywQiCcPMyjRDyZLldv66Wgy9mlJxeuX2ON2GsjMTiG7hzygl9K6VdXERiMzb9424wiHtIVLAt2NcbBH9WPxyvPlUhYAGfm8qxOyK282ufznm0M0HY4bbhWv4DXWIZL4aNwZtLZ-j49n3D0S3Kn2G1kED3Vx9vAYit6eYrhCF5RmOwqIgWuXuUbhF_jgpNfzxd_pFvdeRIOXNjK6QFDkSqoJPgT78ExNWE1qdYEOXACxDS-p-IbFdt5zcZBoDPrjnsQyqhOd5_IOTEc3oKwHdOuxYgpEWYCWMoHkGX44bkrzm1L17KC8LNyRdbr54ggJaWFPZnfmn9TCQ11ur2d-vJIfPBQ57Qz5N0h7MW4NbI4m-Zbr5LszccvARiw1TBUc8Y8dmm9xt0gbfRH8Yntj2JkIx5-Ma0o3wN11zXcr2BAGBVcz2Z0iKznAUXgMRVt9OS03VdynWVavEdj9oHi-_2WyYKNhhjrpgQAsPwLSpSDAIOT-seEGQdTOWTsveq4iNUvPwyCwQJfqQMnvGbXEEVRhcKp8e13T2gN-2qeJFRwf8zC7-AeNT8kXlhcPtV0QOAox27IfLeibyRqqBJaXgvnct9u0xI0d5DqM8cYA7zyfrHlV2rfXYgbXtnA_jA1AKPHC2yiRPlnGL1spPj6CSo5D0BchH7SRg47jxEdLqAcKn17Na67Zz4cZdDl8qwWvjCTrhdBccPxPGk8pS-qpf4c8CMA6KvKPBaIbGZIdxZfsEJq7mVn95WCuxKqGJjxO-L7CKlWD94B-5fFSOuyG6ESbub7v50H7wyR2aWGCZ7pU6w88bxihnjx8NGjEcXRb4_BKoRcxfLd_FSFpccXFi9Qkqdxnh6aUgFziYBxL-gMJbwkT7xFLPkchMqbNgg1x5Lm11b7mhpE1evOuctY13fseC4tfD4lGC-trFSSWRaVBmsAYkcj9dfHnpZ9ccWn--PS_h6ctBB0SKT1WXN2FaALDd9W_2XPTmpUuVOehOjAPKdGimvysQhRvHJlvoWeg82fx0AYvETPqPAV0c9s2TyZPqo72-W4lVeHldb9C6DkCuaFYl2v0SLYSBEzFz4OPQx6EMOHu4IYLAYHJnarjXd5VAElka5OUIjb0CbTMuCkc4RVPza3weVxbRBsBBsYmhh5pdJ4MvxikoaTqJGrT-_LOel8ah6ismw7l_HDQfIczsQbwsXtfRgnPuautzeYoxHlx8cMfigU6fHwHwMmMesFCsyuaWu48M7dnzHRUwB75COnVwtMrfBZDCUt50v9q1dmYZ4fAvFNuvWfIoFrXE9kxUm-0Zu0kyJHgvxwWfNk757btbrYw-oCjl7f6jPsIeO1DBtvaQiTOWb9gZ195afu9M-r2-jznP9NDiDsde5c9JrqUtm7cdMSQwe0_Fm52GQYBGW8kPYPSx8t2Rc1b212qiOtRKm7oYljmGtTvwDl7Sagfrs3Yw3sd9KJGOoa6grpsJxnwQ_zI1cdedkxJJ2hNxDFxr6axRP1_IExeIvxX84URK0bYe9RS46NRwuxGSpMuLL3O9Az2JdpRXJnMnV30YvwDuj-5DQu6zXK5VyrUp5VYZ8nwMx_DWbotokXCBvWrPbDTTjHs71Wf0LU6kYiGAMd2KQsAOWIaPuoobru35VkwhQRHKXz2YV5rVgQCcC2vIdT3rcxFl4CZlDNU9RKP2b4zTUeWursUYClSMPz_SVKeFd7Ka3rjrzngbvAE3mp3xyaXSLDfYna66VoztE8xgKJbKJ603It6s_RaEICbO9SrXMD7B0vOw0uLqFbz8VnaiXzUN7WHIBdc5lY16BZq6aqTeFYFyblzii7RY0LVW2TpdzCI-_Y8a5vPXGA0nwFKig41H27QvOgB0AY_fj61kKwSLlSSCqNtyEv0qRWkMSuORlheUiS30XdX3WOQdY_n1U26YLHiRlycLr9NF675jPmEvF1mvTrayvteeyx3DuCYPR2zCA7_vBl_ZnFspjVrEZB1OuNw_t2jH37saeurBemTdsN3J4Ykk6j5fmNGC9vtAc1rq0PvEx-dDejWnvuQwfx46fI6QmuGl63l8QN3TCa0ipT8_bskXYrH_o9qm7Mia9pzMUXw6XspRvmXYycGCGd0lET6dsrPam0bhvuSk2136tARFuZDJuhp4Flw22a-0VHhpbwxb3cnZUJ_jSVayzSIUrCN3iFeon_W3OwHN0P2ZzOhuhZFp9I9fLnREUj9QXBUcPxFwxkPFS5FCVLdPBNVn5MfZpm1y_875t0gDwtAGd95ejKxkQiou7MzATCuu78-xPnq2QlL0PPw0EWo6cVEl3NpX4QAQfeikLiaPwrbG617MKPwN9_14h_FM8mXAFKqyPJKmLpKstOsqbdlGrmLtwSSxB-dtjZuwnkf_IxFGSk5ANuHFW67OXOMKn2ZWuE-6z7StNL1CgPrW1l92hDXudwmelkwkXPo46XYr8km3gpEQj2KB2hd256ZjDrqO4V1gDHAXZ2p5i_wRbAxdaf3rNHX8zW3h19UaDxFVsxHvLGutHlDhMiizfgCV8tkUXLgnYwEvIfG-z0ZkDabw4hg3oGJlIyeGMS2ZWd-qr83nco6pn-a44OaKEThhSUN3DIuKUuqldac281a9Re9cGyfahRqES6-7Dw_jSqIkwqGdYm-WUqxcAmZUeh8HSJuZ1xsltnxiD6yosquXU24I7ZJc589NeoB1wIeyfQ6zXjpNlPaAldl7UHvbk5TcwZedAe0uk_xCbxI5SbDdi7Krl7Xw9NiLXj0l_tTeftqzVrHh6b9fBgBDu1EBU5lVb5ho0y_cU57GNQaFqe9MljbajqqKwbuVN1vaz4_bxzgOxFIK8JxNQcXljKNFlsWIMcluvittxisllAREI4drz00CyTWxn_J7C9SHJszK_rIh9AXInZ0yQt-KvVS7VriTeQgolpgOdIGhlpAItFSsErxLTW8pkPt7q2x3UYSMoRGVA7s6ko5Nn3VBPdX2NASvoV1aloH7SIUyLKK4hSBtF1chSSJwo3ccY1dTEoI4MEskVhrZsxjAvqBh7hXRoKvVGRgp7i9XLpYj87mxpqoPpyxN7GQm1Hj5GARwKdGHCMGWIXi3UL5BVKJNWS-tO4mDtx1hmtzOLDK_LeAE_yHxsQnX1D9PkQmdOuArc2jGAeVPO_8u_s_zSXlCi6v75ZGWTzPiKz92FZ9_GVgTAk5LvTnWT68Z9lYf6wQFf6i69cqJgFfmJu_zhaaXVSelw78euGTNX0PAzsyCMxQ0LSDz3HBGa9T5AK07_nMQYAeFFOIuHeQrmvU2oBSbDirf7pz9vTU2E_l_yaNg1cc17l6bL_9qVsB7fYL1sWGQHlD6JevvEFSoIJ_pB9Ef2mKEb5_8nCDGTieS5lH0rC4POxuqmofwL_-aY3ql6Nkh_BD32jdBtsSoyC9EH3XE4HevYX8HRgstXsQSiqV_OymCn4cxhzB-hC9PJ8Z_OGylMq2gbrJpJmbdZYsUjxhdFRYy8vD2KWtNp3q3xxWwrYRB0Hti7qu3xWAvxpHujg65V3h4i6LMbjr_l34aKenUqXPtXFkUliMaJeFeKqWtLSOHs8cBlMm5KjJw0U4IDfadAkEnWwwONYHF7WbOhSOQ_biE9oqz4yA58T3n7s8xMJoVJVK81ZOKV_PTwEhTWfG9P1UtWeLw4MWfApR_o0ay9XyWDkAPKdy6VGL0nSWXO6oLo51NMhZ0vhTs6xo2xe8rVLFsJHDFcZBNitIZHOQad_UH4sLYgDuTTctK1d9_AMB-pS3_2r43bMjBJLdgm88LTWZVZDk2ZNS_dzZ18QzkihZF5YGFlMkRmxbE0PvPQlOBnjYpJK2lt-UPoFAws47ZXjNUpQXRiyxtm5fZXvjA9-ZfBHLDCRvXN7R6zalFbPCtecWXB9cTxIl8YGCK6wi2XC5tkhznyrRUrWy0ZkBiROtQekMnZz1e4zUcW8msOWXai5LfP6hMvRQFokJ9-newulPoiUbUMogOTFGs8s0SKx-u_Dc115H-XzBMAkjHW8W22N5vclGXsX1ETZaFhQ1SWMszoorU3iVjwSP1Y0JdrTShfEcMNjsggSYC6dCOIlicAZ6q8FJkzDosmT2LixA66QFjxZiaPpuhdq45rDrRYDdfa9OQA90uvkcqe8lraU-okewOv75iOepkIlTa-nBBjiA0kYcbKQyIzfIGOq2HJw3MUL0yrpjNUUIDgBelVTa1Gq7Kv3xNyBMXAekvHub_fQzGf_ms7Pl5x-d5ElQpe-cfN0KqCrmiFFYTi4m2TJ4eVfXEOZC1kCsoknXajhgf_ZJDjUb082ZKTQrPB3bB0A4C3TpifImVQmskaXf-24GEMpYLFA6Oof3KzQehorh7I2UwkoPFf-tDjh1Xlibtw3zzrhDcV3plxbDUVgPxCQ0zxpL4ADt1ty-Ccsi-e9hBtgYTL8yQ9DkGmoujMdZnmvLIHTmqVCjGB1KenR2VzruNKZhzAzEh9yp-2v4qs7hSuro_6sv9B90m7H6u1HgRP8aVK3-u2-infMflkgHMv8V8RWqzNPWHJaW8B0YKhQHpSimiCHvLqec37pEVppgTAHnTIaHWku7Gi4qsXo4nM_DrSYGDKCs5GfLJ1ODdLymh2Kc8ja0serJV67Q0zWYRODNnPtNVCvZTMXHdCwkKsdBSekBvukr9d-c1LTkE2HfgjEZjTWLYwkwnT9CftaU-AobKzlmDRJdiEpw9e4btVz_BiFO-hgWMdGtPcqfLFPA8iE83nTmZzp3EvYjQeWac7bPPgXT-ySESHveK_uKaztszRxLZL93Z3XSyWGBvIDMS-7XF3jNhDziS-tnU8mIfc0LbwT9HEOFWQV0WBoVrmP4vgzETOTQQO5GjcenucPjuGka_3o9WbxDvLsVCiPLnkvr-3JNwDgc7IMGlK_0yZmZ8tLi1h5VmOoUivIURu-aM2hp7pPMdWHe1M7FQvDhAnB1apzfCFVOL5QfAGSexO8XSZIctlR0dHpMpfrAnJS9eiQb8hxwKQUJv2pmCwYqepGRNkekySoMRz4Ge_pATlt-gSgXJbLfNjAM1k56WsF0lqgajB4JTqG6R_5AkppBZwVryu64kc9GB8_ojyEOBCiPh5zJUxoae7Fc8W7d0ZU8AeNZmKZn7BRBB9HKGijU66jet7KAGCAw1cwLF8DjJjHur3hZWaXk4OTU4DuGGraOj8DJlcoXu1ABJaoZMtCY96BFf2vHJsW0CRonZGbCqD9akt0yx2TWfaLzK6IENvRa5GsNds-IyiU83TSP9RbAUkHfWpQepIE3o3Em7oPIqEdZE9mgfRhKOZKnmyb5n4YdX1BSVbM9m4_uQcvAeLuaBzi9Ym9b_UOlA7vR8u9f4cynYTnJj37hUciEdpQn2icq2WrTsrewP6rCltUa_e7DsGgyOz2Phpi2EoMX8fwDoSNLjmDd5Nl2PM6U5M1sJILuHrlBCws5POXtPyuo_OqhJqkVMucXoWNVGZma1ChcyroJL1oahJ0ada9J7ES0pi08nGYF4XLG7MD-2-34et8H37gHQY1WrhgitfqxIrDFbRAfnNYgrCAwIQw781SdEKDPjKobk8GimToc4TmFbmTSeiR9BLVtxTbJh7I1ALkK8f2bTqo-QTDX8SjJ-tRuC4250zjBCkYc-VSyEjc5o1Ax30QmuT2inU8CQSMv9uyBba6UE12tY2n4aombLhFyo2UgA67NR8OHW_peBhmCuZ8TVujikwL6O-iP0aGuC-8jGrp1_e0ZhwpwFDTmKkR5TNkYkgBKifmOnGrV0-s7I8s-KQB8lpanUEQZdChIJi5ONEQGtWf1ykL2RFNRbF-rRS8841eGikggS8t-Ub1L_YkZ9W-EmKK1ErKzYj9EIhneeHaqsOIU1YP4XB-jculB1aC8wfSvwPcI-qBzlnJNbXnHkwYFFpbwcLFQWInITB1WNs7clSI3aceoFqKX_YKAAipEuIWAxj7ZEZe5OfQx62qje4grXqH4Bcc9r3xIdu_nF_ta2Ju_HKNHsnKHTXN1JJstgdNuzdMAqK-XYH8zTKN-YSJdDA8DGeAIEmNXM0m2BTQE6RyhVwz_1M06Qit0t3cvkkxnm_y1QjgTINZjbHZVOcqifwFdT8yK8jZPAhO9nq7s2nttsfAQ4Z2sBVa0d3CboK_wnqkbLAODI20CcHnT66sRVcgXuzQQ4IHhg98X8yvniR1320lIq_5Uz_e9cWHab0aVJwh_18U2lW_LAn43JBgIKRpy_Vbbe_mjp3xXbF4q5yJx4ky904OuWnc9m3H9j3XiHtl3z0HXHJ1QrrpEj0Hj9v3m_lYZ0dOdWFpEJq-aMv0YG8_YdPAsxb99suF_LzG1dL20vW-EvNsJCFbpHee3AMi625QrNhV42ZYD4E8IzdPoABRHcYtQFSLT85Rk3XWwX7dm3OBcBxHZM5SNEiUI_Cxn44_wll2wLZFkgsigCR-iSKwkczw9lxOiv4bwizxMOaogZ71iItcLAwE5L0QXP54CuwR2JOuzSHwndT-ujnRUGFWiS0m4F9TcAfXQcNVbsGG3soP1ZWMwHomIKUCsDgAA1o7xT8iXbYV2aDrIVOpVdEsgCm8ckd8XcAH7i6R1PnxgiS4dpEOtrQraaxLlqiE6FQxTmkjwR5MhJOpdSK436AK-VkTPGaTyNVfE_XJL6QjzjSysScTO4rhlv33GhK8YPJayMtwvjWJSqqyNX1h94tyUymlajg4eRCG7qCi0_eN6nCoWJT03phubvpT_47N3nnaWET-lE7YPEkge7FyPRJrP_q348mf9Etc9ZO1svmmG4qer9o5krJh3J-XgMmXZlZyubixvAp52-5AJ0B2IByGZq3dfD6cef--2bVkPsNW5nvsl7XhrL8jBvKAOr_Q1I5l7xvd2skP2bIoc2lg7UmDbOW_1rTd6vrKxw2UsPZwel6aLTnfpD24rFNYLaijvl5oyma9VAet8EuMJAZDFAF2cQ-JEoQ7vnm0n6q8A1b6EA_HalgWVgK9QSD6lgUghHuubzbsXTW23u7z8RqGK0HsmDAxRfHvBzaU4_FVNdBzPV-QPCHq5b0EE4Sm-c-hems4VhW0O9OkuPmMJ3pqdza3W-7D1SIQt-oLQ63HpsFML1R1NgbSeHePA3EIVVWP3EKIV-uA_8EASNylFGFkjygq0dTFIujTeAdK0xf0m3V6d_FvnUUQ3gI0zWv22lQ5WkLdk7tA3gZ_B4frG7yhvwkXx6YTWORMQNSb8ep0mkG7D2NEJTeJE_IeVr8f-MQmBNqzAP7C0ge1I7S5q1SJvyVc3fxbJR2kyfyx072E0owKufCPifpCppdoAtH1n--YUCKhUxFBLVHkv1KwVn-DZGz51toPmtOT-McMGgYVVYtzxIr2I3lroPF2oIWzM7578tHOZSOMKXAS-8nAe0XnS2bAsFIez8NuEUB0_DYPpTXJVF8MhJk_BMuAISzeteww4Zlqd445BlxnVetTn7ciu7DYgTJngMfTOifbZH-2w1oAymByO79PIOE7M2C3wqd_pOKM1ozjybBtJ9MvCfu1MUrYwcrrwuKX5XCYLGgeAWgZQJm5vxeQ6mZ69Q_XQwMCRWBg9W-wQY-i8PX-sT0TLmHk3Aphq8pkojL1uC5Hyp9ybl6t5LI0QkG5c5Xk6v_hUPz9Mi86xDNRhExCwIRR9G1wWR7aJL0SzC35CgAmHXe0occJX30d_oaaCggWTm6K-vvihZfALM5qNU6JQsnLFupX_7yD7exYglU17Gx7FAQtmN_BcEU4VF5bPgMvZxf0KVddA1pBiMnzgAeZf-Xgt_j2TBFSnagsqwvHKHr7oIW_aeIRHLErS005RU5b7VsA4pQdjYZs9yor_nWD2bHY5XeokNE9kY4JXcfpvor-RiBYk58Yg5YGN_f39QrG7DNzs-OE76LE08oVymUbCCaoSmul3DIEclv8SyioFIdrn67e9wFhBx1Vs-Teu21-6wZtoOWoi5HPb7ScI1kW9onbaiM3VN6Abck_7c046sQHOSYc7Zxo0HMSE0j-8tu5PNnf4-O_6UvJkh1A7lwEPZMKrd-mnk3Oys5qxEIdGTa4Uijlx9gtc6MTfqCcrLKhDjGTdAEQgKkopF9syjMCwDrVd7L8G-YGI6nTu8I-K-UYKYMx5ULsGyPPHIq6M1F37D7F2_MNbuT5nGKN1clJJ1M1gawBVLFaV9yQBJHllffLLqaVc5JAuvySiIbQPwRAAtI4tmzXnSxQHhVvhcwApPKeNSDlIKLbCpw_yE50BW46WGnI-lHlXaA2p516oInAddAEC35rdUBZBeCQNbDBysYkzM8FN78E6dbIUmc1zJnL-j36dGx3Yg6-M59MsiP0Rlmfd09criImHCHh3wA8CMv5PyBjaoR9PKYLS5L0X_BW7ZX6mAsN6heOOATibEwSi2KnYOFOgh7RFUb24Xk56klTIYos5zzvmMX42Qm8dHRyMbj4nKjelH4we-VKH22mOcIPnaHZEz82ls_F4r4xvLflc9_bRs1-ARQxlSlE7r0sAEhCrzqNe258c8UJvIUHTeTUu6ntGPQ9qkzJzGZ-EGlvE7zwlmrpbfK4w5d6CtTKQpgL1jJJYJrJBwDoDJjchSEPxIckcmWN0ZD0hs5ZZUb_B3bhg2_f-wa6ut7q9-LrJ9N6dv65L_4nL_cockLf2k2HuH7Snbr7ZUq10VCba7eTt8FYaYqO9ZLN22hOVblKQ556wmqS87zdw-qnwTFwOULju8CrD-dGYMji8RGt7yWWTGVN2lcNnNSAe1ifQ8XdzEqalKblF0U5s0H3zgvxrJyhkt7kh_S-kISESxQhK1xqBw7V-7vFPOv_aXLO7ZZR-4TURv1zUxP44zNx_xs2ucsI6pad1Yt-xeRNED6NGqtzPEedRbxz5dk8ZIV-3wmXATqnU7f_Cz1dL1_6_ccxrQUiFJmsolZnnpG6JCBejY0tPvrb3Dwr8DAwZKLUeQjUv2eNppxLH-cICVSJFaHJ3JgAYXo6NNsBbjy01Ah_S-M1lr_HGZgl61Az8nt-56-Q2XFzIgQxWTFwIHCOrBdRJBOKlI0JgXokFEcz8yo-9XXXrH0Gcvzg6_Abw3TE5B7mr7qgVmlF_YT_dB_4R4_Wefc8Z6isJp1-JLvuqCUBH7W62WL_lowflW5LDd98x7AFgdTMhL9dQXotfs-ZiypkFP9je0WoDWIppMaBlmtld0n65rwrYpcqfTDZnAawcjrMqVfrPs1jh8VPr7zPlS5mWyZ79_B9JLwJQ7KIIwfGVpBeq_qmadO9qyLA71ZlvqN1bu4McuZsONqBexn1e_Pb6c0DEhqSubloYKXyRLOAVVbzfb7IPbxDq6VC3RNs45QDd0OBhtOqXTxllsPMpa2WWZFQsoYNZ3HtqZL9Xd4Q9jPBX-2aVpQ_75JpCXoc_lk1L8h4Jidreowa6grtCZY101XwTMyVPWbzH7L4vjN5SVSnLAImlkDAKSrn3bh8cG4z710vGSRDUEGjhnyAqPPhdd50G35qVkX4o376eY09R0qIjsUxbTHBk7zeedhg8xQkwOfHCC9hEMLmZPs8S4um_BLqd9HhiKWQpzLBHOCmihPoBfvimlIhkjjyU-f9cTTJdUh6wY1M64G1DoCD-3NCMPJ92GdklNzagiQrz9l37Im2QKvIS8fqm6bgL82yvLU0HoUyehbC1oSUcFKaV3cwh86URJjWMKf8YZJqBYUSwKbAQMVHnhnMBYAZVOTNvjz8txjCVx3s2hBChxDcrvH09Lfy20EtuVTXk8CoGOIXSvgT4anjBFdL4NP7gSffLN7Y4HC-i-yvOOdTibzq_R--qqRY8g0diWCJ7mSZJVSXDUjGycvSl-bafiLynxNH7px5QhLOv56WITcliu1HpSbUe5S8gHVA2AhsRUJyurOWI4lOMPXDrYVDTIh528suOQcGHKNaq3ahBGvvKKhryDLlUP5pLj6n4IFgPw0NPdYUVPXwHogLRrdsF-BdtFV_Z5-fEv_a8DDPRLnmNKcy91c0G6gIbVGUJIA_rFfeiQXq-xNK7NQDvwV_-Tu99JiXr_AxcMeuTEtSXGNrt7IBk1fei0y848aaIHOQprvoCLVbXn42xrOuF3zOI7cpjYi4K9mexJ0xCC46kF9nmF3Hj-CvSDWxo8S7tIYEeVl2ibsuiB-I0iuwr2M_cBrfWp4FicCX5eUcQEa5OCPCXMtIIeMltRN77YaWmzEQFppWGhXx0e2fFS4iT4LE5X5EVHRLNi1crEW6QKSTyy8o7TNA9jyX6r4fJUlif9JXJ2kXETsqhWNEiLualue5hoSxL5e_WvMHs_MKF2W7Iq5c6HH-w_xjM42q9vz1IhuyQytQqK062UQfJFNjDEn-LKrfL_REjBWtWMYPN_1fcpcvQO6l2t94R1aQ84MhuoBN5GC3i3jZp-_8hNBG-diMY4wmrzwCCYQr0DVY76btmTP-qpTm8XFbjj_TtvBlpvL_WqjQVvO2ueKbAzOXawq4J2SdUakX_RMWt2_iSt-MIoVeP2stN49QtTD0dfM-JieI7qv_iwrx3XC9Wkx3vIMRNEj5eisYJzOvuxslDLgNsCod4nR7rJIN_-P4id8F6h5cAVfNEn8YtGQ4G0AvBM9YBtGM1kJeQ2l60WRzxqkKaEDcg_yMPyAl8UiqtWK5f9rBvqaNYIciEX_JeGHNx63TjPcR8b8o0kndBuGzK_m_LNwulUVKL3k-WIH0EhbkqWVxDC7oQQsgpb1s5oYMy6OuuVrg4EgNcbvLTDGjKfC7Mj2avVBE2I95XMYIUFEoRI8G1BOd5EvYeOtJFXxJbh_oNjLh4l_f64G1ueZGCpkVomZyl_LW6_OrNKYKOTOugNBb5jxE-_TyiwPiChfWCnJV8oFxd1FWORQZBD0LQxRyO6aQ4JxdXm6dkz9e5LWSfBVheUvtDing5bidkseQGPxqoaHQD79sa6hHN3iK-BG5fBF1aF0b9_1d4sZEQmmqhOgrNRQstLgPg-2EKSH_jxkY_pcHnwBLLlONlPZCPCYLvHLEDbeTv-wsizRTHNskBMUKQqXGrMHRtDdnPlqlpBUDPfBeDOm60eZwT7usFmcIlFyDS2v02e0drdEwRIxezuuRTScy_aQSB6Mw6jGTklJ_XNOBjQy34w_3I2DsqbMZg76EDwoFd4g-5ClujpgTy-pTwAB5Ag9zNI8UguNtPuxSMyjW8tJ_QCtpZe-rQteGMp9UwQnCvvwy2gopTktjwFahG51EUtr3GUt3HsrPqJLE_301wpqzEGBn_70GLYrBbkMrbRGioHU8TDOTVKmwBQXDYZkBSXUBryj971ldFB-uVNClE-cttqKuMqbdHxCQqPQJz1svkzpnT1L58W5jyV1m7ipY7_lHGCZgQm5u_F_wUSJausGJTiIxh2Sytxf4ORx3DdXKpUMYkC79-U8hkFWvEcSZtN2nCWDk8j685Hj4aMz01xEo1oEpNV4HodhsvAsONP8DWS9FedS3XHhhuydTbGejKPJ99mDSviUytF93cYwGSLDtOnY_OnOa8AZd-Fjd7wA2SBjsmasjk9uy2cmJ3_pSigNmCLtWbPQ_65SxvetN5hG4gXHrWx1xIVrhegrwZjh3_-MJLsKU1O6FzgfLsidPgI7ehyEiza1iamtbHEnHrlhWhAmYPFc0FsUy7qH2dWfOUAD2IP-YWhVSBj1NG89653rXI_RE7uMf5pnUkg5jiZoha3PPekAVWZpFW5KKjzwXbPDlGLRGSHrmKirJp1vQ65rtndcy9vINZBozgW-vZaBTi-EkN7iw5wCK5Yi7nC1jNVuEcDK72C1mGQop8l9VnVUXLDEtensPVYvXM4G3rTpZSZQjooIyLRyUQ9ugwT1rGGdGsLmtwHtk_KWM438BDN73BPJ6D0zo_Unv-WhPrrlM6J2LcgkYSrFEigOKZZjF0izVEYcUcq4GWlEonnUjvQuqEGfZoi6xpORwPqD78eNIDd3-et3_JCS1isfoscL7ye6a1DNulmnzlnZ6Pn5xmpUVwIrLgGJXmfBk_iBdVr1yUB6Xg1YI_YmNO78DgvTXa6sGxkU_oFYxMbj04NpAv2DeUgO_gIU4PX0__dk7htXtGe6uFKhjXvHsJ1Dsa6-_XYVZxO376tXFUfvMQvTBqBVExCeUtoEUv0rxfcTCJM_nY7PLFDiRR4kmRLbHhrClPiXKODiMTlzrqAcQOcWAyzJfd2AntC-rXKUiGmMj-P4Mxd6-uyZ2USOBoNzsPl7meo2ai1PkcvPm4AI8FbOHxVphTM14xTvoaUV6rnjigiuVnbOqcMJuNwFJCwXt7ChOsxG91A4YEmGZUGx-50gt3Tr63nPHYkMwSVm-FQfl9dEjcW-Ad9BFgdubUMmbvPGI0UeuNOqxo_uHzpQAoPDdMRIdusYhKuagznw3675YswgU23Lzd3ATb_yfAs40FZuk08jFS13NFUFLgucBCit4SUNDXwodBTxqifQMyc9Yz7vLj2trSeiByRd4Gj6eEp-IKuazIJEMoNSrxgRHy67ZhO16SxCBSo_M_x_JdxB7zkLtrGhdFGka3loj_QRCOR7jbCX0soHWKKKGjLZTJTTInmE88cq_-Kc2EXr61rz2xP2lcRAbCbV6MCoojZ4N4aw1piTJSntAVjPHNK6Omt6wTv6QwN0T7KEWEOD4klTeWskIOWN_pdW6i7hLnmj3QXqhIT-69xbyJaJXWL3g-72Cr1tUiUdH9P6DKA_EQ88kQUS_zX48U4PJWQfqBmXPLBd0swM9iGMaFE0uNl62XnNKunm_zun1gLTjz7w5iW0pUhqScQc5Op9bH1kYKyyT7B3mem0EM2KvcTM2vR_kA4LG-kfebS-wqGrOCnKrnQWO-Uo2sLHt4Ok_lznMkZz4LZbXbQ26E7bm0rkXpcMlZ3iHNQfr7C0B6u80VxiE41q03Kytn-LkIgEZcfwVUPyCoN0M7Md_WQJcAeAwSIV_pMvMAdT-3N9kHxK2ZkpOAgYeEnQMqPiLXY6ypbseKiMcHzPKQ6u0wmSoJ4x-mEr7REWaRMs8H_AS8Xb7fRSkEh_npwMVXc3qhC4mQXWYED_YXLjwZPjjWfdLPDBcYck02Ia4_R6h2zpTTnH6eLzF0qvhtQirXGLP-hkCXu8H3H-wt1KMUpgHv3R3nibmtMk7EXTQFOfueDp4EvmSghAbuvauxO1WJ5YYwtYZE5XRUPZ0-cgtUgjcx7a2PFimnG3AobeZlef6A7JVYASTyFI_0hLiam8ib9XLGRRfaRGd_3jiHmGNds3T-k1J7tF7XIyrXFw75tHIfD6-2YT4N2Zrqidm_koxnN_qejVMdEIBP-wT9bdB4rUKZlzX5Xw-rMzZTMd96P7iXC6ERNHx7vnpgfMtjVqtLZnBkysldMUmsVn3tmWKgiuqPz2PJLVf7ybfX9S_8w272arkRBTpjCEX2IastwG1FBMy6-kxwZCFO0RhXe_Rb9kWL9c8vNf6sk0uFJoOjwCRM4KMDx3vXhrtwA6qoQ6Ub6ziIEZfDqPfsqoDm1rcb-cxyCeFjkwy-V1I8nLgJwEiUKPJKVGQJDmPKT1xvxjpvQaZyPJ5_Y2D1ekE9cXshaJbVWsdAtdaqEXzCZKvXSvRJ2V05iDywJksnFJMBv6UON-jqln_LjobwtpNUbMDSJMexbC3M97LqcLkyLUdPKDjNErWLey1oxgoQ4oYobGfv5GuSqtAXpMeBmYukb0U3yWEGrjwCJ73O1X4tWWK8pSYwZImpvhTxKaMV-WQGBRnM-fRkAzqKWhT7CGd2Wjb4G6OwX16pvOKXdpe382VMpAP7bmdUtLlzgpWsVaHRc2EcXTefd7QnjQpG7iBcmsCFaY1gkmA3_tGogI9FPyrgm22CbmQR-2KtRdQASc9L9H4hC3Sncmzfj2BM46FpKvGvGBAxu7XI3v1_GvhCEsu1n5Cmsic-5b28jKp9M1excNiDKcDp2ofeYDTyTfeBem9QHZBpLxhjDwlrl3EsiYkfcyMXTXxXxR5rWinUPvft_1ETqGErt2szLfd_eOGQQIvFYWFVUWQjWqTiFLkkB0gTuZm5SX5Wbm_EYygiZPGvTleOms0Nm5acDR6hUycG5LdhjuEdSzinHboX58C48v0QyuixwQcCKKZsEg5Du8XjP3-BiAa5FrDhiIs2Tlupt0NBrV4t3T2lhODlSLaTl6T9q6nciRyG0zZA9ydum4MLoyTWXLBrSJHx1sNQSJ6LQvwwL3sPcw2hZaJqifJYv_IXaB5nMTGtRXjkKbvCQh-oGAClEF70V8Ovz1JLTnQN0TZpIO2jg_GDN-V3NI1JYtVdgavO3gDIUrMeSvv9650jvVmHF_Cj3WhBynuQ2rubcIZwszkGryET68b2X64nr6WvG-xigxp4ScX8NHerMs7wKKqZbkkDvlHsFrWorMv3EjQaRcEkL8-VDlvviozjwWzzNJoObL9KCr0VAIIM8KCnoTkkigyEnPpQfsNUFIa-prKvXNlgvRjmMCyxTUA6y392B_0ZFhFFmn-Ujt6FzcUvw36JffU4M1-z3DsboBCNQ2BfNehKX5FTdXIP3p17FxGk7MJIotMUMSDaTjnruZp7sFWQr1BaBG3UNJFkyR72Z6DRD_wVGJQfflOynsd3EqENu-dwJQRg0TJQZzVkdH2wbA8PYET6WbwGfaPYu__VoFLxDvHdfGxP8rRogXy-4RC7HtFG7J66k3c3Jjyow400nakjGor9nMqwToKtXEitBON_Gpy13675Xk8dWS-SYJit8S2YSBsGCVpqx2358jCuZgyDAJea69p3SDdj3dHnyqAdBBhuen3mSkg-BLPvMuAQMXsIG8CumPDSKHUatULvjnOR7cVzU05AErnidmNmFe-3eZgaDTp2VPNpaw-eU7a_-tKazPLxTwY2NXshjPXGdDIjTSOOgXxDUvIS4869eem6Q1c0y3qdBx9mhw70IVZHu90z4kJcbEXyc-9XUp_ce73xJmNcEAWT7CqKDtg_tAJxH6uIlJ1oe5cVOooSLGEnnDoAim07jznapwCyoq-amUPkuwgCcZ6Mk8mS9evcqHU_53_kHf8sB7hjB37TtrfQ2cyr4LM-xXBdNGQmQUz-SdzQ7rp7O06yvgwkCvVIRlcjIxRbfNrCokFpbd31xLYwXgz3uiAwDM4ymP_VqwaCV0GhQlq2d5zBY4G-1iEIZm03GFRzF7oiYL7PMaEm0w2xPHBxgtD6rO6lQpEUPwXm1SLbl9s5ANW3t4vCL_cpRUyVbAvFX8UEvjn68q-OPFVWx1P4hNyDLFgn3OsjXsi2Df1OR2qKILURfunAEDd3lTlEsnNEqxeQUTWsw0eDbNDCLIXibXsRZJPqg8Hj5lyJiK2S9wE2EHtU2AjDUwAqp7WNz0P2i1NmmFTY4mqTmP2Jv5aRq_yjuMBvMwL-_QITCENtUFxqjajY7Rcatu0esI0zJlUZWmLE6VGxZGdk0l_FDyi8y3Xclm4Wo7Z9aSv0uw4ypuFcNs4OHe2Im97vX_Afevi8s5Gy6QMVau5L1a6iSeep2X5a2EiG1gFEJhFxmy05OhuF5PxvFyK85eLDvZaSvB997CMDJM1bz3B8oCax0_WWzm6DyArErq5BuKe6MwB92MRqnd8arcrU87XHHe8NPbPCbw-wuEpeieftulL6usZoTczHIXt8eifw_4eWKXH5i4P4nmMBvPLGFigz1kv7NafY8T0HLDP_gxXTwtKXIH-aj6sjVXyTr5usoDEiNe9MMYyncnYIj3R7K7fafsRlVEWgfVszjoYLLJrihY0ZSwHPX7TYDfuoQ4dRF0Hg-dCt2e9bAeluneZSEIzmNio40E7ZLl5omscxxvLqLSE6PJD-p-M4v0Zm8_UvZWGOxMmtsXH4i7sfCqRP4y93Aiipj4SUDO65OuvriF6nW6ippkyhlStnGuRjzYmZ3UbgVuJR8E3dl4ZedvHwL3Rt2e2ekN3rATuwk9-TmiiG9SiQpq_3VVH1gmQ34_yw4R8R_0qmAm_hi5OzeVQjeKqMV66lQHxS9CkuDKoC1Iw6Ekm1Lgftw39JkwgCxK2EKSsseu9c_mdpNWBs5RaAkrDhC2cwIg1P6LtPqdCs_FtYhHv6kzs-2yscTfmN1eZFSsn3Z8umPIc1Vxpqwog3q6nwy69EfsRk_esjFZcWK_RLJJDN7o58wH-Cjve0U0dDZGmWrZri6xIcxHGWJ0ewvP9CvZQZTrTy3GNA4HattT0vrlMQRuuslJSGryF6uipBmp6u0Hu_IfeeDL-YYs-8ySnRE67i-ENt6dEnMg7ilq1t-Z995Sgpb2habBXrm5ZbyPxl0CFJk_4abKV0hnWP2Vck1fiG9FIHoqIf4j2_swPD9A6hyriyXMf2bfHj1Z2S0VV8AFm862e_vb5XUFrXR0AIvBfj5yU9AOIaSvToE8oEGEpiDlA8dMmwTAShLcJRlDibIAGHCbkLfdZHAWElg09uQkWxij44zs0eAQrrgpDbPufbzkWwiBRcrecJ6QXNgpVCIBRWYrMIQVM92jxDRrobG2ZPchkHuNL9j_a0oGbnLMRKoMOKEsbdA98xHq4XvMk1NkuCY7XmKKWSp5sG0FEEAQ62sBLtZmCCuMZYpC6cacvWPeFu5MpC93db2MbIXYRatse6ReBGVqDcCdFC22GUx34lpuwIa69JifFhgIcr7X_TJDAZgRgMGHlWnbPNikLbzDnhQ3sack_54sMvPODGk9o85VHEbisU5_vuc_MS8rR6hT7tK30LfzecvEXJGWo2Th17J-mhcyNyWD1QqVg8T1cgPuD0EVFHKLJp-PDnxwISpU4JByQJ7GiB-gmb613LsY63jbn5VJSwDq5rHbw1zBXBudffG1SHzwbAF9VyrspDQR76M41qYZa-a3YCygbKGx70rML6CTI2kiJpSjOCLstj8_8Ed5OR-xPegsg0d3ghp3qUkR9JcXnYeG-HBhP6DHWjTpr4ClNe-PRMpE6__wAfWenFtzktl4ki6fKzZqPOvg5zzYgSSar-7JOJ7T68C6Db2jVt6NyWPjp5cRePi8OcyqN5NaJ_D0FgsuXKdFbu2C7pEZ2QhmCyVqScTRFWuslIgpfqhZHiofifK1GZKQb_3NZZiOmg6l0S1PF3aaPtnCxgiWjA7So31CymgGNiJ5S62YxmPcDLk_ur0jZuCFsu3jWq7ythuv-n2aYCueI1NCxk6q-XtD2TA4Va6RHEPOaYThH2YrxKzuhSrciwT869IpomNMd314VMuQpRXD2LNT4bEBbnamCQ4lWCz9pewkpqIB2YKrR91FE5p0pXUPkg_bXgXNyzqKxE9qWI5Z7x87p6O5ucPy75vjF7GQoou9R7dp55AnuLxlqNFPrAy_dxcljn337bSVnLNyql9R7g14_EMIrmIL7-gA4oGeILXmWmJ6q8Ibegyn86JssAPZjPy8qCLGUYj6Mm80KoIb4APSrNLlTgsdGwQE_q-mblCawNOUE3OgCZM49g7d6C3FtzpM-8VjSJX9c8XY0MPlPqmiXwuLKk-tc-kqLzUFmPVXi3WroD2rjTbAYVJEV0QavHc_wJIVkcsR6Cml9sEGgUcmGyoa7-djag0eyc_dn2wYSHtR8YLln2DgJxbliuO6QOwRs3e6qq4n-xwn7dR3cRJMnE2VGyYnAtv_J8qmPoXHUpmLiHarTYHEsCM60x1Ma48spxRit8cygRQh7rs31zb0b7ONPhGRFZSrORFMhp1KRh4gsKt7SvFXsv1OFdK_IXKPI56SXpynuND65ps1PCfn3Es_66zbrqx2x1n0wUcScx5Q1ruEXOPSA1fNAWmkwfrDTFdl-zceo09eS8H6Uh2lWAX8gSGrHIy1yDDOoi4_FwJeFHr8dvR9bsxneZMD2WBKGgaB8npiNL4JYH1AF9laMANqWDL0Bu24s8zERaTHaqwAUpdK9Ja_fE9eqzX4pUaousCb-VCkygwz-ShFLbWe-ol2Pt3gcEK1HHorAtZySYJDOZCZ4NIgl63wYTPf1m_P0E-AuZpUuPnhFZRzHbPFJAEAt7H0Ugm5wgmANMyFuLCC0zd1Y1wVsmwKO4sNlLg7_GgrejQ13pioyAopQK46YV-ViB725Xnbheoze6tgQwC3R31tcUzyZaPNZilqbZVrRZPFXS6rHcp2AMmNh8o950CWO7CQeaRZ0y0Maa3q8JU20_ywrrQOiNCTmxsVEv3hIF3yw0ZrTFB9UipeFsadT6fEWSJqgzc8W_kWonguEY8dH3_QukQtNPCFCmEzeD3L9MhZ8ArF9pESRMScM1UV507N7qg3fAIy9Rag_V3Bq5UbcvCwN4nn6d_55RG_VWz79U13I-DZ_UoiTcD7xlqMBDTiwCTtePGofHDYh6Dp8bElnJSHYdCIjgYt4-chHYj7YqkiZdqbxIz-FNo60VKdRa7klv0WcDsGWgxfUv33EULNcVSNI9OP8ChlX2j0CaxfMjSkHkVWptXguE-_odj81DB6cGM05dIki4SDxQnWOAj1QQYf-qpE3zZE49VEVToqdtJPPX2eD22_xwb7bxFXepZTVwoKTqNfhcYMrm-aum-8l1eRx4Xi834G8x_lk1gcarifn708fgvk3Y-Wr3ordDB2ueEuaCHXPSvfkHjDtudWqrr8Jmc6m1CoqOMfEf4s-CM8294o7iCW3Yy0ZjYXUwTPrCMA-FsGKp3dPTryuTx4xUW39ArVtX3UINI6zT4McqVV3PvKwcXu08wvr8VzVzU8WXfIR_2zv406U6lzxsGcIeuai86Svi9hINCKhYsUo46-ZGJbDQBNPcmUZNXrBr5URgR3PHkPtNywXg6jo1H1nuGh3B88B1wjYiyKxTydok8p8rg6R49g0B_6vrRUinTmsrPN9-mdzdZRS1RrQIukFW_WXMQ3j4iHpuYA0neY1h6HX_Lel9fsEqw8SGgvWoNwt8twDGrl2REuC4niksRhnpdNfGopME3JOieLLi4rz8d-Qn0-Qor_Hf_etciyywRnvD-DAjOUmpa_RjTG6kUrE0x346q3YiPMU2Wfxsq3eVvov9dJYSCjbma9PJD2EEFXOemNUm77md-_QA73NbWtEEFMAUen5bUmml8VChgeeeCJeSITpao5OKNjga0b-97VxbeZYxl4F8kdZJxF6rk_6zlY8Ti8q4UnJoinu5OFh5Iswf68TXGQos-d1XzPOIRhUZmAuBZgbbRU_b-FWLFne4ziu11N1Vrlw1lnuwjL3sWNs8G-RVHcMIMyv0Y1lQm6sdrzo-JJTdD08govcwaNVOB6Xpz9gCjWrWEXt2eWaxaSQRbKW4_TPr1NC3efrGzK-9zwpLQr8MKpIqFp4RKoQDJQI7OA_XmcFNekl5JBqCsG8nwHPQm47s6OJk4sZJl6XAf0CvsX-lfWXerobhWqXKMtfsX2QnHx-qexdlhxmE_fNt89j4nfnAn2JKiptqWJXTz0EIQCNcAx9FnUyWuhHhCkBtVw4a6SB3zyzt02iAWEEW5tUY_BKbIeId_mO0zVbyMKJ-Ut7ZgTEqifwS42-NQUamw3YzfNcn6EqcSxIGzUvjJEueLxYUk8tT6FO07LLhMZFTxXunWT0BF-fpQpX_wSYx5tBYsygtBRJjnitKD6DlRAw03S5Ziks_ov0OHPS8SK-GzB2RQ3mRPZCjqQC4hQV3cO7LWTR1WqAZcKmQ8zKiZRmDltdIXfoYA6KpArdcPKH4SOiQHcsIwF64YxzOFEDfWK6cIESc5GcWu5IQRv_qhTvl3yx9bD_NzT8vvB-FDWFMmX74dUdhYoTyP9NgspyXTP6a6qVZOJrSew81aqcqFGfHBc1QBUOSPVOurRZxfyMc6rD4v4ejKva3RxW9NZ1XHQJ2EEQ_xObiI1deZQ-S32VfpQHRdGX6JI46NbW1G7oEQaJXRzd-XUP7RYjyIY5BpGXXu1_gUxQvnoRxjuIKw_Q0JEZQK8B-QtD3ikiNCdiVhaIUJHXGfQGEZFYyK2vJxX4TkXieEsfTYY1yfWpLeprCmpDmbp1bkib05lQA4qo11ZXYEruQOZRFhy94DGp_wuxFBazyV7K1h4yQYRH2rrSz3UJSC9j_pCfDZfef_ZE0l9LNA4Rix3kyMKmJ4mupQ-jJhAYIQmqNIHOV-z2KDSC2bRez4dgI_4v6kB2TuAZK3fgAaXCbohAjefRyrJpBtvhsN2mwNOhwYlgVS-QFjwCjmFhpBqwhaGHHY8MIZy8PIX391nE9EVp3Q56fODcoWDUXl2bzpp8OEzjJVKnndMaai_oTl7mk6HZT-2wfrfJ36Lfa8BUOOcQ3V2MgMwX0CFs2FXJ5nQ9-4Xgt93WZi6wDlroEBIqLCWMIqN9aSUoxnjX7rn3WUrTiw0uQw4PlbY1yVaHRM7shA2e7kgtHnD5__BPTF-Rb6tSXVpQu67cFgGI6eUD3AFosBaFdb4HpmE798eQe9hL3gCWSr_Vq-cimjvkiY_pk-6qAl3c04K5AlgW_wVVdXoNH_junPPbisdMm0JdCYP7lMrqwxRHHh8M56DnNd-D5cdIYvm2UEk3CkZFYyEPNZGF4ZVxjOZ5RQZNAlIVIMFcIbUXKssnLjbt9OETITcD9f1JHtqtntaL28pEDnTn-vFmEIJN-62VdJjGX39d853A3INMyFijdU-Y-sHCI3GRPnRFVCFqIl-Zoq_teSLMH9fYgxs2Z1nJziHXtrSm1hF0hBkbelpnMLk4qtS0b43OEJn21fKQBTlg36V9TnT4z2mW4UCotfvwfBD6hPJWfiClCcJaauUXQ1kiqa0siTS-Rhjq5qQ-z1SUlPuzmncRCdlvGTSePPhTe2zEcYkKS0SnfSg213xsu-B--p9yGrOCMmq8bepuVcJ7VpOFQr9pvitD3MugXXh2Knhr1oItYhGrX4OEHVyQosuFAP8OCbd0cZvyQr_yOTZlxuhqvsATsOarzmca-QKwPne_SxkRSmA5iWT0myUPk6XluLm_85e3oEmxbymwtpBMEOflX_P6bb7loanPtZekxvSjUoTPEleek07XPlD4adCsVmvnQQFEK1P4oLqTZWy3xhX3KDt2aDak7FD-d-Fgt7S3if7o8rwaerj9u3y4cygJzbgE0Yhp0n9q6lnTtxykt2TPRFCA4HqaVy9Z1eyx3r0pmGTnaHO7dBkdRdy644OqnOqpKpFkzYPwGh_-vAfGDbHSFkAnWq5lvlE8fHsm81_i9efL2tp_aI0LmQcEzZHkrVNv6PoGLeETZRhzUMCyLsYbigtEwlT1RqPnl6OCbPcpRMT4Riy4jm3hvMPmkKt4SEKo0otFOzKdS5qIC1xFQ43H9P7eYXAq_1zw2CHMh3N0VKxjOvV3_cx8t0nCQIZkFwz5PcpSgToplhIdJBdbmc2Gs-Nwo_1_j9TmgDgfrI4qU93EzlKSFDIhlVpDLX7ZQYVKTj_z8ec5lFOdU_IT7iLlYIXmqCSXn5FAwX8NsLjwkiiQDIZlc3lVhXkGPlER--V9OJz7zX16D9KDolEN_a4NoAbTR3nFUIhdYjZlSWMR4Lfnme23dNFqzpq-BM-kUJi6SDmrhvQsqpvt1wmZ5f6ixDHRM5w17sgP35JoyKO9cwiXv88Y2IK3omlGslKfOd7Bqh4Zpf_qNc5HOVk47r-kZCN-fwOe6tcsbAn07epHYLpsKyZmPP4MEsDPtfGbResOPcc6T_8LKiruGUmCKthgnRwBREdshlYnJVKim-PGXTa9BfXkHybYhedLPjrUOoJ7bNWghQV39Nsnnf0obktdikYETitw63VWEK5zM36mOzVKBDM7QSCvvgm9DBoszSMjIxaANw1Qj94ms-6zT8zgf7LJjUoVvQ6F4b1NkzJc9T_GGTxMZgCjPJDYRJrOQOudD4Lfv8Q97rnrmzlYFEP93pc0WKO8Fhh_gy_PuWBPb-1dLqbtbFbe1uZhH2_ZYcwVD8nZuiSxLZmVvAqYZqaLlP_SmWl29J-aHdSZGTfbH3Tm9dN-LB2IAuvWy0-Hdi8hApCKx2HzbVZJQ-jjoLdL3EATqiqxbA8xoH8z7hAq1OJZt7QSwVul0HaSMMb7eZs8bUYEo7fBl1TwxUGF3juo9b9qWwVHq2osxbOmum6gN93ATKlEfvvcl3TuzmYNX6lsuhGYe-E6bNuJJ2ImAAaulzy0MO5mtDiPcC5ptQ3Qdcs6W0Ob9WC8qzi5QNnT8saEvxYS-ll4YFZ2uYixUViTEAgcHOhGVQm0QYXY_NmzYfOiqZZ26v_Oeqbj8l7iiVLIgMmqzqa6C57i5JsX-Jh1NmQb36WPBOnHRM6-99mDZFitz-EtRy3DQRHIbDxE66OanBCpZHt1sTH9mXD3USCIc32CSoeANBxGg9Ma0IPqaWlfOdLiEhFLb0NsjTeOSVQnHWyobInty-8_2zEVWm01uS0eCa94kZgN8AvatZzjKJ30Bugg4drDZj-jbinz0ynRsUTexOV9YhySLdEwLvwQdzB3Q1bReKDAM32Qzy-Mks9qt-fphX7KmJJt7JKP9yXXod5_vcuKZOFL2NsBX63XM7sVXw4jq9NDwWLtfkOFXNYZQcjeU55OG_IID2Wv9yoM7axYUUPKNjkVUpiWo2Ka29oHvSZ3wP02Gwmin0F9YNPWRLDVsqzXX0kN05-hX3UeJCM8KMEvuZf0vwNvxrzMyUXIy-7iqOoisOxS6j9MOqYbO0C_rNqIVhRHxPkdfr79yqKEHF3mQHKMxD3ncYzWRAVzTJnsRRzKbvunz9zQ-Fr5LtNqMlvPkpM6XWFMTtqKF_7U7fR1Gw3eXeaaUdTUHpDO1AFvZTA4JRMIcawOH4uj1_g6NYb7rYu80dWB_90Ptl4zimc_cxvpfOS42L_n6eXJj5ty7mSrzPlPB-h9K6i0zLd1rWScG5_LOB4yp97XYAAC9SNDD6alU8E28TyQ5kjc-f__E9PDL8aJm3nv_qmm5q3-Nka7akw2Z1fcwYxCRIOVfXKtYMBWb7ninFZ7tjD60SUtWLqeQ8g5YZjU84mwiq-sHEIlNUFGz4wiIfWfPYDbV5qezDyWP9VrILCNop8A24okMPO3ppywmpIzxS-M6SgdtObtYHz8To1yC__dd8X-SLMwZ0F8ofLscx1di5REVrL4uoMY-0mPHCIuhbvvs_Iv_LUkb_yTCs3jpE16TRpp5e0GuOEeGr7qoiIlqeDx8DqfhvI7RI5fR7i1vUDMeRmJ45CGXJfPxWFRxOpNX0a6UQQ4GJctkLfiZwYgE8-KTSldCrAQEzyWw2-FzEV0iobxpbPfIazYAHw-yxbHv7aG4jpTlkT46jqWWYn7hLzyR4NvA2k7jeIzKh4D4ktCIP9Mp9KodCWOyTbH7GljriG4dEmM0-Cw1jyg73_XntamHO8WrHZgfiJIxTnttszo0m6hcHVCiXG9e4BvdlGDEZNREIr2VgKlCoasDWLZ-WfUyib80L_dQaBu0BjQD69o40BnW1EI6duZfEWVCG8NH6QZKqB9H5V0Trvx-g7uplUk0KHhiL58vtBbU5aJn9Sjm950wmwAvGXSft4_ruGO06o_fx90WSqCrjzOsCLZiFlgIrx_OxEBV2XoaczoAiWM3mbq8BkvNOhwM2c9r9MSly2p9O3kJqoSfC7cqZH1bx2Km9W8_NiTkdDBNSg58SdjMBqDLLjmwU8l6vyg-fzMNdpwdNyvfPB38-enYOnEcUeTVr9nwZg9i57fKIqhlG2aiWBYIzhsiKc3J6J853x1c-C8MvTnBLRISTLjkNWjkRNxkkJKK6fhawyJrsfLPVWo95iUY-BI4n37y6ZObC9oVmj2XRh0bg4mneWiNVByGe_Xb2Fnz08iiMY8K5ZUNi4f3kchYBKdNMox98sSJ6GHP6fnVNDkAgNZHNdeAxFbq9EGPMFaMo_LGH_FiEQNILyUHMirBBBT28kBOpR_u7zUMpyiKjstibpWAYOJJGnsYMwNze8KQNVIpWzj6QPmI9vHKYNyzyYDsCGU6KkmeJ4Hv0k577xJcxqfDtXzHJaNIn7OR_0wZZq3eNBBB3qNn_0EKit6yMh2TKhHu-yY1xXKRjhH8haAIpOqwuV4DpZImv-1MBvUlmSSzDw22Dc74fKbNEBmKOKCIO3AHRrhA5lK0o15mdw7EOVE6jlAfM_z4AXa-nuJVWMZkoiBbdgj7P_2CS5N-V2S_N3y4e-_8Az0Gy7jt8zKZhBKRgsXUHmH4Agh0Z1nEd68pt3lMpb4x-CbKwfE8GUZKeLxTFzngbxbdjHNyF9RCCBvbIY8hX15K7TigheSsuCunh8MMttJMkRFEd5OSKSzpQuRjfxn-YzO9n9xfDq3HXsZ6-6paTIO5DEVxap5lkmTPF3Fv8w0Y9kARgKcjb1kJvtlMYxsMZ1PQsuXDoqA8CPmgsyMTepJ-m10pF173nv5KHglGm01J2wbVv0KMGcwG4gvQ-CjQWDOBvtJi-bOvUVvPOaemV6K2X0KUK-Fj2CpQHixNb71brRL2_hnFDWWqvEslz8Rf6RlsaH862_eOMY89ddwYRlWv-wZ2fh-XtN-FdTppU_MyBCoI4qqyyJktzZtH6VU2w0046FyfSHUjTypAvgfu3HBNJWVOaXw_qTg7l4Ucz9GqQpzrJVI_nsIA3aE3Hng_Eg7D7TB_UXsCpjYjww9Awok0zF3VzvVZPC9t4XBA4fENVIfFNHWcfL_lF9TRLbdwrVBD9Qls-Zat3ISLryvQG23OdiU01BpCd3bt7m96QwCh0eWzZP9JVxK8y09eJtqwERBseOBbQvV7wOjU62ElzqPqmE99qYV-0VOjYqimNMWtjKsQZRsgRJW0gf_l4gGvkDJfpsvl5_TEq5Lzci8IyflpyGPUpXilElf5J_TqoFPTQrwWVGwy3u8YgIPcBk1-KH9zBEnvskQzuA9Jkztu4Jaq41YuaVtRllxC3-y2tLEE-Kg7CW4ksT6bIYCPH_zfBjr1QqGPRuagapcn0FOlN_z8sBrrKMV3EsjwFcsEkx2MdC-3Z5wKRBQefBRqRBLe7L9VtW8rbFL8dQjPgXePoz8YliXcLIpSOcEXN6j0FHKHWvg1v5MqpGKWOJxXHOTaq84RPxPy9F0b1ZhVk9mSYzCZ3Rugg7zn1UoqqR8tZcBw8Pug_tHJbUsvUhVAaiY6yninMhZ43YikeUimCAs_zuLLkxqQzwO4pIXuCn53FrsXRA3G18woL4aq3IwwNZ3sgVmEoUY_xC-yI6TePlzwxvTtOMzoHMugZoWNRxzChv74faWEo0mbKQ6gSGo73Z4qkAQAJIvmCLd4IwS3bA-aGJ1JNWX69Qof5rKWocOtLjaSPix7T7uB4iIizqLvElf2-_LyWXaBcXpCPVc6Mdq3sE6A_Opd7omU3Be21o93ZIBv-Yu2_TmUXwmeNoAyawo1qlSXkc39r2ZlML3S-7Lbmy5SX9SEfLNJaOS7VVWsfVhmCFFc4yAtD1siL8cb_L9cExXLoqUjOgfrrG-n0OltkudRd-zI29p6iLxwfvShN9tE8zep43JKK6FoeNtX6mCEExht4CyRUDGbm5MboMKNlPBN8tjD5ym54j9-AjD1X8nrggUHsdsHWbL9Tp7ycc03bBHHTaDzpvSLIN1CBWd7slJvujbRV_BHYAA11S1UeOVFeorljoslYqoxxGIT06Iixq08jJSkr9uUYWn7ZDsAsSfBv5s1CgbpM7JJ7mlzP6Yle6o_mPDrEgRXHzCwmfqIJFVePx7oVjul9UE57C3RcopMCtJhp95N7V8ERsi3rY5tNkhag_oRPbQXbS9gz0aQHbkGsZ3OgDYii_4MQocWIm9pumYL4ne-nXISQHQYv_UIe8J18cT7TBzUtWs-qZIJ1SiFVveNKiX9fYiNWAifppWsw53KfZ7SZietMfHtNJ8DzptErUFQbIiOhxW_wu1Rk4uOc3xuj-JGyXtP6BbvcjiIFJNsNKy0WWcK4cqgxHLi6y52DyxFUItIWtdG_hphKD5FMT2qsdQOwyJ2OXp1JfbMwxMZNdAx-fFKN-OBttivBv_TYLWQLhdFHrvmjOTvAU0_4Yuq2SrHpXKfMeo4sEPYiGBYXknbDMgHdp7s5dAE8MYO8O8eupAbG0HVcQpw2qyhk57tFoyge90zNHzOH-uEcyU6GwojdtBALex5Zs1xwyiGyuNVKEtoT-QfgUdX3rvCDJXswp96TFc10QzDZZuMhVBzkR7a97o6OSH-WRX_RyupJaCUKwCH0yRzRVDeMzl5COvO3oNXtTnFY16uETh9g-Uo7oC4duE8"
+            }
+          },
+          "id": "prt_129eca40c001hSwIVpRMy6LCAz",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ec16b7002ZsawKJFkBwA1ul"
+        },
+        {
+          "type": "text",
+          "text": "Got it — auto day-cycle from morning. Building the self-contained garden now.",
+          "time": {
+            "start": 1791704741422,
+            "end": 1791704741430
+          },
+          "metadata": {
+            "openai": {
+              "itemId": "rs_01a129ecb128709f85e7fc6d22ef2f1c",
+              "phase": "commentary"
+            }
+          },
+          "id": "prt_129ecb62e001phonoeNpENkmTd",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ec16b7002ZsawKJFkBwA1ul"
+        },
+        {
+          "type": "tool",
+          "tool": "todowrite",
+          "callID": "call_01a129ecb4cb758b9e004da83586d576",
+          "state": {
+            "status": "completed",
+            "input": {
+              "todos": [
+                {
+                  "content": "Write self-contained index.html with garden, koi, petals, day/night, orbit",
+                  "priority": "high",
+                  "status": "in_progress"
+                },
+                {
+                  "content": "Verify file runs (syntax check + open test)",
+                  "priority": "medium",
+                  "status": "pending"
+                }
+              ]
+            },
+            "output": "[\n  {\n    \"content\": \"Write self-contained index.html with garden, koi, petals, day/night, orbit\",\n    \"status\": \"in_progress\",\n    \"priority\": \"high\"\n  },\n  {\n    \"content\": \"Verify file runs (syntax check + open test)\",\n    \"status\": \"pending\",\n    \"priority\": \"medium\"\n  }\n]",
+            "metadata": {
+              "todos": [
+                {
+                  "content": "Write self-contained index.html with garden, koi, petals, day/night, orbit",
+                  "status": "in_progress",
+                  "priority": "high"
+                },
+                {
+                  "content": "Verify file runs (syntax check + open test)",
+                  "status": "pending",
+                  "priority": "medium"
+                }
+              ],
+              "truncated": false
+            },
+            "title": "2 todos",
+            "time": {
+              "start": 1791704741926,
+              "end": 1791704741934
+            }
+          },
+          "metadata": {
+            "openai": {
+              "itemId": "fc_01a129ecb4cb758b9e004da83586d576"
+            }
+          },
+          "id": "prt_129ecb662001BigtImEz1O6PgC",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ec16b7002ZsawKJFkBwA1ul"
+        },
+        {
+          "reason": "tool-calls",
+          "type": "step-finish",
+          "tokens": {
+            "total": 14921,
+            "input": 7308,
+            "output": 258,
+            "reasoning": 3914,
+            "cache": {
+              "write": 0,
+              "read": 3441
+            }
+          },
+          "cost": 0,
+          "id": "prt_129ecb83600121tIghqtGBa3s5",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ec16b7002ZsawKJFkBwA1ul"
+        }
+      ]
+    },
+    {
+      "info": {
+        "parentID": "msg_129ec1455001FspLhQesbDJx4C",
+        "role": "assistant",
+        "mode": "build",
+        "agent": "build",
+        "variant": "xhigh",
+        "path": {
+          "cwd": "/tmp/ocb/task-1-voxel-zen-garden/muse-spark-1.3",
+          "root": "/"
+        },
+        "cost": 0,
+        "tokens": {
+          "total": 25108,
+          "input": 202,
+          "output": 10196,
+          "reasoning": 5,
+          "cache": {
+            "write": 0,
+            "read": 14705
+          }
+        },
+        "modelID": "muse-spark-1.3-contributor-free",
+        "providerID": "opencode",
+        "time": {
+          "created": 1791704741958,
+          "completed": 1791704797927
+        },
+        "finish": "tool-calls",
+        "id": "msg_129ecb8460022LwFzt3XDMCDdb",
+        "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd"
+      },
+      "parts": [
+        {
+          "type": "step-start",
+          "id": "prt_129ecbf35001bpHW4MTtFuEFyJ",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ecb8460022LwFzt3XDMCDdb"
+        },
+        {
+          "type": "reasoning",
+          "text": "",
+          "time": {
+            "start": 1791704743738,
+            "end": 1791704743742
+          },
+          "metadata": {
+            "openai": {
+              "itemId": "rs_6acb3ea65a4c67548b624cf3:rs_01a129ecba62717897e4b5d14d0eb57d",
+              "reasoningEncryptedContent": "Q-PaDgEC7Oki0ZTlTwJVHUrkG8gDEaSSctp7vm4YPQ6KSmVvC8TlA0dOkOKkY1a0xwbQTCx7hzhb091n6JJHyrXIQ5AMSkyd7AZIhM3jM3CDvvK2_j-JWSNA4YjRk-fyAAaeV_5F37j8TGgr0Wb0ddgpwFryBWMF_7sPBtGMEr2d9-s7NUrMnTTb6LXHlC3lMDJLIEcCwjEecKD6qIXX5XbS5UbmFu00pVl-UYtEcMKZodQyVLQRh6xDILX3cJJ_1cPIFpxbypQCnUPLQLJUHSbRCZLXXu0vTpFN19ihySRXx3Bw9UNDXDIEC8jj383LIS1689F2nqDjdNc8euxjZTwDNY4aSNNdqNg2hLg0UoOSJDOr0bGYNa_POFGZaJSM0iJY2v1MDVcj6iRVtAlj9LPeTXQBymEwFi-ppIxhKQcSAR_nsXwnSqlVvtcRRveA8N-dXNgs_UoPOhTWA0JSGfsyLKfZe8S4jeb7gDbQrF6n2EOk3l3rlrqXmCaqlLOX9XAk0Seuv0x0g4fiiqjd5WO_qHt_VPe7zQUMelghoe6CJZljctJ0TxY3_vFQWAGJF4xQYD5NnK7Cukmr7x5TXoBHucPVhJUIk5qUYDs4xciO8iWLcErPySyWOkagfkKU-NMmsPU2XCwE7sF6bUu6XqT9LYTfgCKUO-S3Hte0zb7DRzo4dW9rJ7ouXVhBTDoDTssO0LFIXjXlzbOB941EAiZQyjPezHHecEM3etrjDyVULJ6hUyC4q0JUJLPssAKUp3n3bXquZDBNjmWANvhkhIyRR1kInjuooqHur261HOPY-LvYS5L3teeLcaoYY8B1UIbmZYBzAgms_YkJ6ehPZwWvbbSOJ-Ws-ZC0gSb_9oD0c2KMOfYAh_AbomY1MaaW4wKbnWcFyoVleIEWHpRkhcp2Pdoxbv5uol1og2-hLGA_W8vg08hCY0e5rRE-ktYfEet_nMRA5EaXjDQRfuWd2uKt2wsX3IsAB9v-HazF0YlcfXSZFx0ICP6SHi5irerG9Mbi1DIojq4AvMRTLdjrJ9wpFiTjGN3ctOmcPViDrjt6cls91a7P2WTMeP8YBAUzBY-pavq12n6NJtsMHIpxefjlzHLA2Ca4SFM0_zfarOmMk5SL0MqwNRBXQQt1fogaw2LWMJvQt82Y1G-TjXTwb-n-YgZizZ7G3cSptTNUQcU3gvVDXHp3K0qLmC0nMjS2-w2az-kP40ELvUMcZetRlb2ZWAg2k8y3F8FIvX21I3nst_LESLJafTkbKGx6NKjYSWyH_K4zRBywtMY7bPYmKMKbrO_vpRIUXjAYOagGMokc-vfuciqBdkTv_EcwzPnVrE8OK_GavdYOtpW6avdz_ucwHmmHMSZ_UdfIV0Qe0gZ68O6Ofxk6QUanxS_HkJPO2a88jHbfR0hYjHw4qg"
+            }
+          },
+          "id": "prt_129ecbf3a001nP7KwmKviRhxl5",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ecb8460022LwFzt3XDMCDdb"
+        },
+        {
+          "type": "tool",
+          "tool": "write",
+          "callID": "call_01a129ecba97715696a8e596f2feb0a9",
+          "state": {
+            "status": "completed",
+            "input": {
+              "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n<title>Voxel Zen Garden — Attract Mode</title>\n<style>\n  html, body { margin:0; padding:0; width:100%; height:100%; overflow:hidden; background:#070d24;\n    font-family: system-ui, -apple-system, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif; }\n  canvas { display:block; }\n  #titleCard {\n    position:fixed; top:14px; left:14px; z-index:10; color:#fff;\n    background:rgba(10,14,32,.62); border:1px solid rgba(255,255,255,.14);\n    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);\n    border-radius:14px; padding:12px 14px; max-width:300px;\n    box-shadow:0 8px 30px rgba(0,0,0,.35);\n  }\n  #titleCard h1 { margin:0 0 2px; font-size:17px; letter-spacing:.4px; font-weight:750; }\n  #titleCard h1 .jp { font-weight:400; opacity:.75; font-size:13px; margin-left:6px; }\n  #titleCard p { margin:6px 0 10px; font-size:12.5px; line-height:1.45; opacity:.85; }\n  #titleRow { display:flex; align-items:center; gap:8px; }\n  #clock { font-variant-numeric: tabular-nums; font-size:13px; font-weight:700;\n    background:rgba(255,255,255,.12); padding:5px 9px; border-radius:999px; white-space:nowrap; }\n  button {\n    cursor:pointer; border:1px solid rgba(255,255,255,.18); color:#fff;\n    background:rgba(255,255,255,.12); border-radius:999px; padding:6px 11px; font-size:12.5px;\n  }\n  button:hover { background:rgba(255,255,255,.22); }\n  button[aria-pressed=\"true\"] { background:#ff8c9e; border-color:#ff8c9e; color:#1a0e14; font-weight:700; }\n  #timebar {\n    position:fixed; left:50%; transform:translateX(-50%); bottom:14px; z-index:10;\n    display:flex; align-items:center; gap:10px; color:#fff;\n    background:rgba(10,14,32,.62); border:1px solid rgba(255,255,255,.14);\n    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);\n    border-radius:999px; padding:9px 14px; width:min(520px, calc(100vw - 28px));\n    box-shadow:0 8px 30px rgba(0,0,0,.35);\n  }\n  #timebar label { font-size:12px; opacity:.85; white-space:nowrap; }\n  #timeSlider { flex:1; accent-color:#ff9db4; height:22px; cursor:pointer; }\n  #hint {\n    position:fixed; right:14px; bottom:14px; z-index:9; color:rgba(255,255,255,.75);\n    font-size:11.5px; background:rgba(0,0,0,.35); padding:6px 10px; border-radius:999px;\n    pointer-events:none;\n  }\n  #err {\n    position:fixed; inset:auto 12px 64px 12px; z-index:20; display:none;\n    background:#3b0f18; color:#ffdfe6; border:1px solid #ff8c9e; border-radius:12px; padding:10px 12px;\n    font-size:13px;\n  }\n  @media (max-width:640px){ #hint{display:none} #titleCard{max-width:230px} }\n</style>\n<script type=\"importmap\">\n{ \"imports\": { \"three\": \"https://unpkg.com/three@0.160.0/build/three.module.js\" } }\n</script>\n</head>\n<body>\n<div id=\"titleCard\">\n  <h1>Voxel Zen Garden <span class=\"jp\">箱庭</span></h1>\n  <p>Attract mode running — pagoda, blossoms, koi &amp; petals. Drag to look around; orbit resumes on its own.</p>\n  <div id=\"titleRow\">\n    <span id=\"clock\">10:00 · Day</span>\n    <button id=\"playBtn\" aria-pressed=\"true\" title=\"Pause / resume day cycle\">❚❚ Pause</button>\n    <button id=\"petalBtn\" aria-pressed=\"true\" title=\"Toggle petals\">Petals</button>\n  </div>\n</div>\n<div id=\"timebar\">\n  <label for=\"timeSlider\">☀ Day / Night</label>\n  <input id=\"timeSlider\" type=\"range\" min=\"0\" max=\"24\" step=\"0.05\" value=\"10\" />\n  <span id=\"timeLabel\" style=\"font-size:12.5px;min-width:44px;text-align:right;font-variant-numeric:tabular-nums\">10.0h</span>\n</div>\n<div id=\"hint\">drag to orbit · scroll to zoom</div>\n<div id=\"err\"></div>\n<script type=\"module\">\nimport * as THREE from 'three';\n\nconst errBox = document.getElementById('err');\nfunction showErr(m){ errBox.style.display='block'; errBox.textContent=m; }\nwindow.addEventListener('error', e => { if(!errBox.textContent) showErr('Error: ' + (e.message||e.error)); });\n\n// ---------- renderer / scene / camera ----------\nlet renderer;\ntry {\n  renderer = new THREE.WebGLRenderer({ antialias:true });\n} catch(e){ showErr('WebGL not available: '+e.message); throw e; }\nrenderer.setSize(innerWidth, innerHeight);\nrenderer.setPixelRatio(Math.min(devicePixelRatio||1, 2));\nrenderer.shadowMap.enabled = true;\nrenderer.shadowMap.type = THREE.PCFSoftShadowMap;\nrenderer.outputColorSpace = THREE.SRGBColorSpace;\nrenderer.toneMapping = THREE.ACESFilmicToneMapping;\nrenderer.toneMappingExposure = 1.05;\ndocument.body.appendChild(renderer.domElement);\n\nconst scene = new THREE.Scene();\nscene.background = new THREE.Color(0x87ceeb);\nscene.fog = new THREE.Fog(0x87ceeb, 48, 110);\n\nconst camera = new THREE.PerspectiveCamera(45, innerWidth/innerHeight, 0.1, 400);\n\n// ---------- lights ----------\nconst sun = new THREE.DirectionalLight(0xffffff, 1.6);\nsun.castShadow = true;\nsun.shadow.mapSize.set(2048, 2048);\nsun.shadow.camera.left=-28; sun.shadow.camera.right=28;\nsun.shadow.camera.top=28; sun.shadow.camera.bottom=-28;\nsun.shadow.camera.near=1; sun.shadow.camera.far=140;\nsun.shadow.bias = -0.0006;\nscene.add(sun); scene.add(sun.target);\n\nconst hemi = new THREE.HemisphereLight(0xbfe3ff, 0x3d5a3a, 0.7);\nscene.add(hemi);\nconst amb = new THREE.AmbientLight(0xffffff, 0.12);\nscene.add(amb);\n\n// ---------- voxel helpers ----------\nconst unitBox = new THREE.BoxGeometry(1,1,1);\nconst matCache = new Map();\nfunction mat(color, opts={}){\n  const key = color + JSON.stringify(opts);\n  if(!matCache.has(key)){\n    matCache.set(key, new THREE.MeshStandardMaterial({ color, roughness:0.9, metalness:0.0, ...opts }));\n  }\n  return matCache.get(key);\n}\nfunction vox(w,h,d,x,y,z,color,opts={}){\n  const m = new THREE.Mesh(unitBox, opts.shared ? opts.shared : mat(color, opts.mat||{}));\n  m.scale.set(w,h,d); m.position.set(x,y,z);\n  m.castShadow = opts.cast!==false; m.receiveShadow = opts.receive!==false;\n  (opts.parent||scene).add(m);\n  if(opts.emissive){\n    m.material = m.material.clone();\n    m.material.emissive = new THREE.Color(opts.emissive);\n    m.material.emissiveIntensity = opts.emissiveIntensity||0;\n  }\n  return m;\n}\n\n// ---------- garden layout constants ----------\nconst POND = { cx:2, cz:8.5, w:12, d:7, waterY:-0.45 };\nconst windowMats = [];   // pagoda windows glow at night\nconst lanternLights = []; // point lights\nconst lanternBulbs = [];\n\n// ---------- island base ----------\n(function buildIsland(){\n  vox(36,3,36, 0,-2.6,0, 0x8d8f9a, {cast:false});            // stone plinth\n  vox(37,0.7,37, 0,-1.15,0, 0x6f7280, {cast:false});         // plinth trim\n  // grass top split around pond hole (pond x:-4..8, z:5..12)\n  const px0=POND.cx-POND.w/2, px1=POND.cx+POND.w/2, pz0=POND.cz-POND.d/2, pz1=POND.cz+POND.d/2;\n  const grass=0x5da95d, dirt=0x7a5c3e;\n  function slab(x0,x1,z0,z1){\n    const w=x1-x0, d=z1-z0, cx=(x0+x1)/2, cz=(z0+z1)/2;\n    vox(w,1,d, cx,-0.5,cz, dirt, {cast:false});\n    vox(w,0.28,d, cx,-0.02,cz, grass, {cast:false});\n  }\n  slab(-16,16,-16,pz0); slab(-16,16,pz1,16); slab(-16,px0,pz0,pz1); slab(px1,16,pz0,pz1);\n  // pond basin floor + inner walls\n  vox(POND.w,0.4,POND.d, POND.cx,-1.6,POND.cz, 0x1d3a4a, {cast:false});\n  vox(POND.w,0.35,POND.d, POND.cx,-1.35,POND.cz, 0x2e5a6e, {cast:false});\n  const wallC=0x4a4f5a;\n  vox(POND.w+1,1.4,0.7, POND.cx,-0.7,pz0-0.3, wallC,{cast:false});\n  vox(POND.w+1,1.4,0.7, POND.cx,-0.7,pz1+0.3, wallC,{cast:false});\n  vox(0.7,1.4,POND.d, px0-0.3,-0.7,POND.cz, wallC,{cast:false});\n  vox(0.7,1.4,POND.d, px1+0.3,-0.7,POND.cz, wallC,{cast:false});\n  // stone rim with jitter\n  let s=1;\n  const rnd=()=>{ s=(s*16807)%2147483647; return (s-1)/2147483646; };\n  for(let x=px0-0.8;x<=px1+0.8;x+=1.05){\n    for(const z of [pz0-0.85, pz1+0.85]){\n      vox(1,0.55,1, x+(rnd()-0.5)*0.15, 0.28, z+(rnd()-0.5)*0.15, rnd()>0.4?0xcfd2d8:0xb9bdc7);\n    }\n  }\n  for(let z=pz0;z<=pz1;z+=1.05){\n    for(const x of [px0-0.85, px1+0.85]){\n      vox(1,0.55,1, x, 0.28, z, 0xc4c8d1);\n    }\n  }\n  // stepping stones inside pond south edge + stone path north of pond\n  for(let i=0;i<4;i++) vox(1.3,0.35,1.0, -1+i*2.1, 0.05, 11.6-(i%2)*0.4, 0xd8dbe1);\n  for(let i=0;i<5;i++) vox(1.4,0.22,1.1, -3+i*1.9, 0.12, 2.6+(i%2)*0.35, 0xd8dbe1,{cast:false});\n})();\n\n// water\nconst waterMat = new THREE.MeshStandardMaterial({ color:0x3fa7c8, transparent:true, opacity:0.72, roughness:0.25, metalness:0.05 });\nconst water = new THREE.Mesh(new THREE.PlaneGeometry(POND.w-0.7, POND.d-0.7), waterMat);\nwater.rotation.x = -Math.PI/2;\nwater.position.set(POND.cx, POND.waterY, POND.cz);\nwater.receiveShadow = true;\nscene.add(water);\n// koi shadow-catcher disc under water (soft dark)\nconst pondShade = new THREE.Mesh(new THREE.PlaneGeometry(POND.w-0.7, POND.d-0.7),\n  new THREE.MeshBasicMaterial({color:0x06202e, transparent:true, opacity:0.25}));\npondShade.rotation.x=-Math.PI/2; pondShade.position.set(POND.cx,-1.14,POND.cz); scene.add(pondShade);\n\n// ---------- pagoda ----------\nconst pagoda = new THREE.Group(); pagoda.position.set(-4.5,0,-8); scene.add(pagoda);\n(function buildPagoda(){\n  vox(9,1,9, 0,0.5,0, 0xb9bdc7, {parent:pagoda});\n  vox(8,0.5,8, 0,1.2,0, 0x8f95a3, {parent:pagoda});\n  const pillar=0xc0392b, wall=0xf3e6cf, beam=0x8e2f24, roof=0x3a3f4a, roofEdge=0x2c303a;\n  let y=1.45;\n  const tiers=[ {w:5.2,h:2.4,r:7.6}, {w:4.3,h:2.1,r:6.4}, {w:3.4,h:2.0,r:5.2} ];\n  tiers.forEach((t,ti)=>{\n    // floor + pillars + walls\n    vox(t.w+0.6,0.4,t.w+0.6, 0,y+0.2,0, beam,{parent:pagoda});\n    const hw=t.w/2;\n    for(const sx of [-1,1]) for(const sz of [-1,1])\n      vox(0.55,t.h,0.55, sx*(hw-0.25), y+0.4+t.h/2, sz*(hw-0.25), pillar,{parent:pagoda});\n    vox(t.w,t.h,t.w, 0,y+0.4+t.h/2,0, wall,{parent:pagoda});\n    // door + windows (emissive at night)\n    const wm = new THREE.MeshStandardMaterial({color:0x5a3a22, roughness:0.8, emissive:0xffbe6e, emissiveIntensity:0});\n    windowMats.push(wm);\n    const win = new THREE.Mesh(unitBox, wm); win.scale.set(1.1,1.2,0.15); win.position.set(0,y+0.4+t.h/2+0.1,t.w/2+0.03); pagoda.add(win);\n    for(const s of [-1,1]){\n      const w2 = new THREE.Mesh(unitBox, wm); w2.scale.set(0.15,0.9,0.9); w2.position.set(s*(t.w/2+0.03), y+0.4+t.h/2, 0); pagoda.add(w2);\n    }\n    vox(1.3,1.7,0.2, 0,y+0.4+0.85,0, 0x4a2c17,{parent:pagoda}).position.z = t.w/2+0.02;\n    y += 0.4+t.h;\n    // roof: two stepped slabs + cap (voxel slope illusion)\n    vox(t.r,0.55,t.r, 0,y+0.27,0, roof,{parent:pagoda});\n    vox(t.r+0.5,0.3,t.r+0.5, 0,y+0.05,0, roofEdge,{parent:pagoda});\n    vox(t.r*0.66,0.6,t.r*0.66, 0,y+0.8,0, roof,{parent:pagoda});\n    vox(t.w*0.9,0.45,t.w*0.9, 0,y+1.25,0, beam,{parent:pagoda});\n    // upturned eave corners\n    for(const sx of [-1,1]) for(const sz of [-1,1])\n      vox(0.9,0.35,0.9, sx*(t.r/2-0.2), y+0.42, sz*(t.r/2-0.2), roofEdge,{parent:pagoda});\n    y += 1.45;\n  });\n  // spire (sorin): stacked gold voxel rings + jewel\n  const gold = new THREE.MeshStandardMaterial({color:0xd9a441, roughness:0.4, metalness:0.6, emissive:0x American =0});\n  let sy=y+0.2;\n  for(let i=0;i<5;i++){ const m=new THREE.Mesh(unitBox,gold); m.scale.set(1.5-i*0.18,0.28,1.5-i*0.18); m.position.set(0,sy,0); m.castShadow=true; pagoda.add(m); sy+=0.42; }\n  const jewel=new THREE.Mesh(unitBox,new THREE.MeshStandardMaterial({color:0xffd97a,emissive:0xff9d2e,emissiveIntensity:0.6,roughness:0.3}));\n  jewel.scale.set(0.55,0.9,0.55); jewel.position.set(0,sy+0.3,0); pagoda.add(jewel);\n})();\n\n// ---------- torii gate ----------\n(function torii(){\n  const g=new THREE.Group(); g.position.set(-3,0,0.2); scene.add(g);\n  const red=0xc23a2e;\n  vox(0.7,4.2,0.7, -2.2,2.1,0, red,{parent:g});\n  vox(0.7,4.2,0.7, 2.2,2.1,0, red,{parent:g});\n  vox(6.4,0.7,0.9, 0,4.4,0, red,{parent:g});\n  vox(7.0,0.45,1.1, 0,5.0,0, 0x2b2f38,{parent:g});\n  vox(5.2,0.45,0.6, 0,3.5,0, red,{parent:g});\n})();\n\n// ---------- cherry trees (voxel, instanced canopy) ----------\nconst canopyXforms=[]; // {x,y,z,s,color}\nconst pinkPalette=[0xf4a7c3,0xf7b8d0,0xe98fb0,0xffd1e0,0xef93b5];\nlet seed=7; const rand=()=>{ seed=(seed*16807)%2147483647; return (seed-1)/2147483646; };\nfunction cherryTree(tx,tz,scale=1){\n  const trunkC=0x6b4a2f, dark=0x54371f;\n  const h=3.6*scale;\n  for(let i=0;i<6;i++) vox(0.7*scale,0.8,0.7*scale, tx+Math.sin(i*0.7)*0.15, 0.4+i*0.7, tz+Math.cos(i*0.5)*0.12, i%2?dark:trunkC);\n  // branches\n  vox(2.4*scale,0.5,0.5, tx+0.6, h, tz, dark);\n  vox(0.5,0.5,2.2*scale, tx-0.5, h+0.4, tz+0.4, dark);\n  // canopy blob\n  const n=Math.floor(130*scale);\n  for(let i=0;i<n;i++){\n    const th=rand()*Math.PI*2, ph=Math.acos(2*rand()-1), r=(0.6+0.4*rand())*2.9*scale;\n    const x=tx+Math.sin(ph)*Math.cos(th)*r*1.15;\n    const y=h+1.1+Math.cos(ph)*r*0.75+(rand()-0.5)*0.5;\n    const z=tz+Math.sin(ph)*Math.sin(th)*r;\n    canopyXforms.push({x,y,z,s:0.55+rand()*0.5, c:pinkPalette[Math.floor(rand()*pinkPalette.length)]});\n  }\n}\ncherryTree(-10.5,-2.5,1.15); cherryTree(9,-4.5,1.0); cherryTree(11.5,5.5,0.9); cherryTree(-11.5,7,1.05); cherryTree(5,-11,0.85);\n// canopy instanced mesh\n(function buildCanopy(){\n  const geo=new THREE.BoxGeometry(1,1,1);\n  const m=new THREE.InstancedMesh(geo, new THREE.MeshStandardMaterial({roughness:0.95}), canopyXforms.length);\n  const d=new THREE.Object3D(); const col=new THREE.Color();\n  canopyXforms.forEach((p,i)=>{ d.position.set(p.x,p.y,p.z); d.scale.setScalar(p.s);\n    d.rotation.set((i*0.7)%0.6,(i*1.3)%0.6,0); d.updateMatrix(); m.setMatrixAt(i,d.matrix); m.setColorAt(i,col.setHex(p.c)); });\n  m.castShadow=true; m.receiveShadow=true; scene.add(m);\n})();\n// trunks already added as meshes; low shrubs + rocks + grass tufts\n(function scatter(){\n  for(let i=0;i<40;i++){\n    const x=(rand()-0.5)*30, z=(rand()-0.5)*30;\n    if(Math.abs(x-POND.cx)<7.5 && Math.abs(z-POND.cz)<5) continue;\n    if(Math.hypot(x+4.5,z+8)<6) continue;\n    vox(0.28,0.5+rand()*0.5,0.28, x,0.3,z, rand()>0.5?0x4c8f4c:0x6fbf6a,{cast:false});\n  }\n  for(let i=0;i<14;i++){\n    const x=(rand()-0.5)*28, z=(rand()-0.5)*28;\n    if(Math.abs(x-POND.cx)<7.5 && Math.abs(z-POND.cz)<5) continue;\n    const s=0.5+rand()*0.9;\n    vox(s,s*0.7,s, x,s*0.3,z, 0x9aa0ab);\n  }\n  for(let i=0;i<10;i++){\n    const x=(rand()-0.5)*26, z=(rand()-0.5)*26;\n    if(Math.abs(x-POND.cx)<7.5 && Math.abs(z-POND.cz)<5) continue;\n    vox(0.9,0.6,0.9, x,0.3,z, 0x3f7d3f);\n    vox(0.6,0.5,0.6, x+0.7,0.25,z+0.3, 0x4c8f4c);\n  }\n})();\n\n// ---------- stone lanterns ----------\nfunction stoneLantern(x,z){\n  const g=new THREE.Group(); g.position.set(x,0,z); scene.add(g);\n  vox(1.1,0.4,1.1, 0,0.2,0, 0x9aa0ab,{parent:g});\n  vox(0.5,1.3,0.5, 0,1.2,0, 0xb9bdc7,{parent:g});\n  vox(1.0,0.7,1.0, 0,2.2,0, 0xc9cdd6,{parent:g});\n  const bulbMat=new THREE.MeshStandardMaterial({color:0xfff2cf, emissive:0xffb45e, emissiveIntensity:0.4});\n  lanternBulbs.push(bulbMat);\n  const bulb=new THREE.Mesh(unitBox,bulbMat); bulb.scale.set(0.6,0.45,0.6); bulb.position.set(0,2.2,0); g.add(bulb);\n  vox(1.4,0.35,1.4, 0,2.75,0, 0x3a3f4a,{parent:g});\n  vox(0.9,0.35,0.9, 0,3.05,0, 0x3a3f4a,{parent:g});\n  vox(0.3,0.4,0.3, 0,3.35,0, 0x3a3f4a,{parent:g});\n  const pl=new THREE.PointLight(0xffaa55, 0, 14, 1.8); pl.position.set(x,2.4,z); scene.add(pl);\n  lanternLights.push(pl);\n}\nstoneLantern(-5.5,4.2); stoneLantern(9.5,4.2); stoneLantern(-9.5,-7.5); stoneLantern(3.5,-4.5);\n\n// ---------- wooden bridge over pond south rim ----------\n(function bridge(){\n  const g=new THREE.Group(); scene.add(g);\n  for(let i=0;i<7;i++){\n    const t=i/6, x=-1+t*6, y=0.55+Math.sin(t*Math.PI)*0.7;\n    vox(0.9,0.18,2.2, x,y,11.9, 0x8a5a33,{parent:g});\n  }\n  for(const s of [-1,1]) for(let i=0;i<7;i++){\n    const t=i/6, x=-1+t*6, y=0.55+Math.sin(t*Math.PI)*0.7+0.6;\n    vox(0.18,0.6,0.18, x,y,11.9+s*1.0, 0x6e4526,{parent:g});\n  }\n  vox(6.6,0.15,0.15, 2,1.9,10.9, 0x6e4526,{parent:g});\n  vox(6.6,0.15,0.15, 2,1.9,12.9, 0x6e4526,{parent:g});\n})();\n\n// ---------- sun / moon / stars ----------\nconst sunBall=new THREE.Mesh(unitBox,new THREE.MeshBasicMaterial({color:0xffdd66}));\nsunBall.scale.setScalar(3); scene.add(sunBall);\nconst moonBall=new THREE.Mesh(unitBox,new THREE.MeshBasicMaterial({color:0xe8ecff}));\nmoonBall.scale.setScalar(2.2); scene.add(moonBall);\nlet starPts, starMat;\n(function stars(){\n  const N=450, pos=new Float32Array(N*3); let k=0;\n  for(let i=0;i<N;i++){ const th=Math.random()*Math.PI*2, ph=Math.random()*Math.PI*0.48;\n    const r=150; pos[k++]=Math.cos(th)*Math.cos(ph)*r; pos[k++]=Math.sin(ph)*r+4; pos[k++]=Math.sin(th)*Math.cos(ph)*r; }\n  const g=new THREE.BufferGeometry(); g.setAttribute('position', new THREE.BufferAttribute(pos,3));\n  starMat=new THREE.PointsMaterial({color:0xffffff,size:1.4,sizeAttenuation:false,transparent:true,opacity:0});\n  starPts=new THREE.Points(g,starMat); scene.add(starPts);\n})();\n\n// ---------- koi ----------\nconst koiPalette=[0xff7f2a,0xffffff,0xff2e2e,0xffc93c,0x222222,0xff8c42,0xf5f5f5,0xff5a3c,0xffa726,0xe8e8e8];\nconst kois=[];\nfunction makeKoi(colorHex, phase){\n  const g=new THREE.Group(); scene.add(g);\n  const bodyMat=mat(colorHex);\n  const darkMat=mat(new THREE.Color(colorHex).multiplyScalar(0.75).getHex());\n  const b1=new THREE.Mesh(unitBox,bodyMat); b1.scale.set(0.42,0.32,0.7); b1.position.z=0.45; g.add(b1);\n  const b2=new THREE.Mesh(unitBox,bodyMat); b2.scale.set(0.5,0.38,0.8); g.add(b2);\n  const b3=new THREE.Mesh(unitBox,darkMat); b3.scale.set(0.36,0.28,0.55); b3.position.z=-0.6; g.add(b3);\n  const tail=new THREE.Mesh(unitBox,darkMat); tail.scale.set(0.1,0.42,0.4); tail.position.z=-1.05; g.add(tail);\n  const top=new THREE.Mesh(unitBox,darkMat); top.scale.set(0.1,0.3,0.4); top.position.set(0,0.3,-0.1); g.add(top);\n  g.traverse(o=>{ if(o.isMesh){o.castShadow=false;} });\n  const k={ g, tail,\n    rx:2.2+Math.random()*2.4, rz:1.0+Math.random()*1.5,\n    ox:(Math.random()-0.5)*2, oz:(Math.random()-0.5)*1.2,\n    speed:(0.25+Math.random()*0.3)*(Math.random()>0.5?1:-1),\n    phase, wob:1.5+Math.random()*2, wobAmp:0.3+Math.random()*0.4 };\n  kois.push(k); return k;\n}\nfor(let i=0;i<10;i++) makeKoi(koiPalette[i%koiPalette.length], i/10*Math.PI*2);\nfunction koiPos(k,t,out){\n  const a=t*k.speed+k.phase;\n  out.set(\n    POND.cx + k.ox*0.4 + Math.cos(a)*k.rx + Math.sin(t*0.9+k.phase)*k.wobAmp*0.4,\n    POND.waterY+0.06+Math.sin(t*2+k.phase)*0.04,\n    POND.cz + k.oz*0.4 + Math.sin(a)*k.rz + Math.cos(t*0.7+k.phase*2)*k.wobAmp*0.4\n  );\n  // clamp inside pond\n  out.x=Math.max(POND.cx-POND.w/2+1, Math.min(POND.cx+POND.w/2-1, out.x));\n  out.z=Math.max(POND.cz-POND.d/2+0.8, Math.min(POND.cz+POND.d/2-0.8, out.z));\n  return out;\n}\nconst _p=new THREE.Vector3(), _p2=new THREE.Vector3();\n\n// ---------- falling petals ----------\nconst PETALS=280;\nconst petalMesh=new THREE.InstancedMesh(new THREE.BoxGeometry(0.18,0.05,0.14),\n  new THREE.MeshStandardMaterial({roughness:0.8}), PETALS);\npetalMesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);\nscene.add(petalMesh);\nconst petals=[];\nconst petalCol=new THREE.Color();\nconst treeTops=[[-10.5,-2.5],[9,-4.5],[11.5,5.5],[-11.5,7],[5,-11]];\nfunction resetPetal(p, initial=false){\n  const t=treeTops[Math.floor(Math.random()*treeTops.length)];\n  p.x=t[0]+(Math.random()-0.5)*7; p.z=t[1]+(Math.random()-0.5)*7;\n  p.y=initial? Math.random()*11+0.5 : 9+Math.random()*4;\n  p.fall=0.5+Math.random()*0.9; p.ph=Math.random()*Math.PI*2;\n  p.sw=0.6+Math.random()*1.2; p.rot=Math.random()*Math.PI*2; p.rs=(Math.random()-0.5)*4;\n  p.s=0.7+Math.random()*0.9;\n}\nfor(let i=0;i<PETALS;i++){ const p={}; resetPetal(p,true); petals.push(p);\n  petalMesh.setColorAt(i, petalCol.setHex(pinkPalette[i%pinkPalette.length])); }\npetalMesh.instanceColor.needsUpdate=true;\nconst _d=new THREE.Object3D();\nlet petalsOn=true;\n\n// ---------- day / night cycle ----------\nconst KEYS=[ // t, sky, sun color, sunI, hemiSky, hemiGround, hemiI, lantern, stars, windows\n  {t:0,  sky:0x070d24, sun:0x33406e, sunI:0.12, hs:0x24305e, hg:0x0a0f1e, hi:0.25, lan:2.4, st:0.95, win:1.8},\n  {t:5,  sky:0x0a1028, sun:0x33406e, sunI:0.12, hs:0x24305e, hg:0x0a0f1e, hi:0.25, lan:2.4, st:0.95, win:1.8},\n  {t:6.5,sky:0xffb88c, sun:0xff9a3c, sunI:1.1,  hs:0xffd9b0, hg:0x5a4a3a, hi:0.5,  lan:0.6, st:0.08, win:0.7},\n  {t:9,  sky:0x9fd3ef, sun:0xfff2df, sunI:1.5,  hs:0xbfe3ff, hg:0x3d5a3a, hi:0.7,  lan:0,   st:0,    win:0},\n  {t:12, sky:0x87ceeb, sun:0xffffff, sunI:1.7,  hs:0xbfe3ff, hg:0x3d5a3a, hi:0.75, lan:0,   st:0,    win:0},\n  {t:16, sky:0x8ec9e8, sun:0xfff4e0, sunI:1.55, hs:0xbfe3ff, hg:0x3d5a3a, hi:0.7,  lan:0,   st:0,    win:0},\n  {t:17.5,sky:0xff9e6b,sun:0xff8c42, sunI:1.0,  hs:0xffc9a0, hg:0x4a3d2e, hi:0.55, lan:0.4, st:0,    win:0.3},\n  {t:18.5,sky:0xc96a7a,sun:0xff6b3d, sunI:0.5,  hs:0xd98a9a, hg:0x2e2430, hi:0.4,  lan:1.2, st:0.2,  win:1.0},\n  {t:19.5,sky:0x1a2350,sun:0x5a6aae, sunI:0.15, hs:0x2a3560, hg:0x0c1020, hi:0.3,  lan:2.2, st:0.75, win:1.6},\n  {t:21, sky:0x070d24, sun:0x33406e, sunI:0.12, hs:0x24305e, hg:0x0a0f1e, hi:0.25, lan:2.4, st:0.95, win:1.8},\n  {t:24, sky:0x070d24, sun:0x33406e, sunI:0.12, hs:0x24305e, hg:0x0a0f1e, hi:0.25, lan:2.4, st:0.95, win:1.8},\n];\nconst _c1=new THREE.Color(), _c2=new THREE.Color();\nfunction lerpKeyColor(a,b,f,prop,target){ target.copy(_c1.setHex(a[prop]).lerp(_c2.setHex(b[prop]),f)); }\nlet timeOfDay=10.0, autoCycle=true;\nconst DAY_LEN=95; // seconds per full day\nfunction applyTime(t){\n  let i=0; while(i<KEYS.length-2 && t>=KEYS[i+1].t) i++;\n  const a=KEYS[i], b=KEYS[i+1], f=THREE.MathUtils.clamp((t-a.t)/(b.t-a.t),0,1);\n  lerpKeyColor(a,b,f,'sky',scene.background); scene.fog.color.copy(scene.background);\n  lerpKeyColor(a,b,f,'sun',sun.color);\n  sun.intensity=THREE.MathUtils.lerp(a.sunI,b.sunI,f);\n  lerpKeyColor(a,b,f,'hs',hemi.color); lerpKeyColor(a,b,f,'hg',hemi.groundColor);\n  hemi.intensity=THREE.MathUtils.lerp(a.hi,b.hi,f);\n  const lan=THREE.MathUtils.lerp(a.lan,b.lan,f);\n  lanternLights.forEach(l=>l.intensity=lan*9);\n  lanternBulbs.forEach(m=>m.emissiveIntensity=0.15+lan*1.1);\n  const win=THREE.MathUtils.lerp(a.win,b.win,f);\n  windowMats.forEach(m=>m.emissiveIntensity=win);\n  starMat.opacity=THREE.MathUtils.lerp(a.st,b.st,f);\n  // sun / moon positions\n  const ang=(t-6)/12*Math.PI;\n  const sx=Math.cos(ang)*42, sy2=Math.sin(ang)*42;\n  const mang=ang+Math.PI, mx=Math.cos(mang)*42, my=Math.sin(mang)*42;\n  if(sy2>0){ sun.position.set(sx,Math.max(sy2,4),20); sunBall.position.set(sx,sy2,60); sunBall.visible=true; }\n  else { sun.position.set(mx,Math.max(my,6),20); sunBall.visible=false; }\n  moonBall.position.set(mx,my,60); moonBall.visible = my>0;\n  const night=Math.max(0,1-Math.max(sy2,0)/18);\n  waterMat.color.setHex(0x3fa7c8).lerp(_c1.setHex(0x0a1e33), night*0.8);\n  renderer.toneMappingExposure=1.05-night*0.15;\n}\n\n// ---------- camera: slow auto-orbit + drag ----------\nconst target=new THREE.Vector3(0,2.6,0);\nlet theta=0.6, phi=1.02, radius=30, lastInteract=-10, elapsed=0;\nconst AUTO_SPEED=0.07;\nfunction placeCam(){ camera.position.set(\n  target.x+radius*Math.sin(phi)*Math.sin(theta),\n  target.y+radius*Math.cos(phi),\n  target.z+radius*Math.sin(phi)*Math.cos(theta)); camera.lookAt(target); }\nlet dragging=false, px=0, py=0;\nrenderer.domElement.style.touchAction='none';\nrenderer.domElement.addEventListener('pointerdown',e=>{dragging=true;px=e.clientX;py=e.clientY;renderer.domElement.setPointerCapture(e.pointerId);});\nrenderer.domElement.addEventListener('pointermove',e=>{\n  if(!dragging) return;\n  const dx=e.clientX-px, dy=e.clientY-py; px=e.clientX; py=e.clientY;\n  theta-=dx*0.0055; phi-=dy*0.0045; phi=THREE.MathUtils.clamp(phi,0.25,1.42);\n  lastInteract=elapsed;\n});\naddEventListener('pointerup',()=>dragging=false);\nrenderer.domElement.addEventListener('wheel',e=>{e.preventDefault();radius=THREE.MathUtils.clamp(radius+e.deltaY*0.03,16,52);lastInteract=elapsed;},{passive:false});\n\n// ---------- UI ----------\nconst slider=document.getElementById('timeSlider'), timeLabel=document.getElementById('timeLabel'),\n      clock=document.getElementById('clock'), playBtn=document.getElementById('playBtn'), petalBtn=document.getElementById('petalBtn');\nlet scrubbing=false;\nslider.addEventListener('pointerdown',()=>scrubbing=true);\naddEventListener('pointerup',()=>scrubbing=false);\nslider.addEventListener('input',()=>{ timeOfDay=parseFloat(slider.value); });\nplayBtn.addEventListener('click',()=>{\n  autoCycle=!autoCycle;\n  playBtn.textContent=autoCycle?'❚❚ Pause':'▶ Play';\n  playBtn.setAttribute('aria-pressed',String(autoCycle));\n});\npetalBtn.addEventListener('click',()=>{\n  petalsOn=!petalsOn; petalMesh.visible=petalsOn;\n  petalBtn.setAttribute('aria-pressed',String(petalsOn));\n});\nfunction fmt(t){ const h=Math.floor(t)%24, m=Math.floor((t%1)*60); return String(h).padStart(2,'0')+':'+String(m).padStart(2,'0'); }\nfunction phaseName(t){ if(t<5||t>=20)return'Night'; if(t<7)return'Dawn'; if(t<16.5)return'Day'; if(t<18.7)return'Sunset'; return'Dusk'; }\n\n// ---------- loop (attract mode starts immediately) ----------\nconst clk=new THREE.Clock();\nfunction animate(){\n  requestAnimationFrame(animate);\n  const dt=Math.min(clk.getDelta(),0.05); elapsed+=dt;\n  if(autoCycle){ timeOfDay=(timeOfDay+dt*(24/DAY_LEN))%24; if(!scrubbing) slider.value=timeOfDay; }\n  else if(!scrubbing) slider.value=timeOfDay;\n  applyTime(timeOfDay);\n  timeLabel.textContent=timeOfDay.toFixed(1)+'h';\n  clock.textContent=fmt(timeOfDay)+' · '+phaseName(timeOfDay);\n  // auto orbit resumes 4s after interaction\n  if(!dragging && elapsed-lastInteract>4) theta+=AUTO_SPEED*dt;\n  placeCam();\n  // koi\n  for(const k of kois){\n    koiPos(k,elapsed,_p); koiPos(k,elapsed+0.12,_p2);\n    k.g.position.copy(_p);\n    k.g.rotation.y=Math.atan2(_p2.x-_p.x,_p2.z-_p.z);\n    k.g.rotation.z=Math.sin(elapsed*3+k.phase)*0.06;\n    k.tail.rotation.y=Math.sin(elapsed*9+k.phase)*0.55;\n  }\n  // petals\n  if(petalsOn){\n    for(let i=0;i<PETALS;i++){ const p=petals[i];\n      p.y-=p.fall*dt; p.ph+=dt*p.sw; p.rot+=dt*p.rs;\n      p.x+=Math.sin(p.ph)*dt*0.9; p.z+=Math.cos(p.ph*0.8)*dt*0.7;\n      if(p.y<0.15) resetPetal(p);\n      _d.position.set(p.x,p.y,p.z); _d.rotation.set(p.rot,p.ph,0); _d.scale.setScalar(p.s); _d.updateMatrix();\n      petalMesh.setMatrixAt(i,_d.matrix);\n    }\n    petalMesh.instanceMatrix.needsUpdate=true;\n  }\n  water.position.y=POND.waterY+Math.sin(elapsed*1.3)*0.03;\n  sun.target.position.set(0,0,0); sun.target.updateMatrixWorld();\n  renderer.render(scene,camera);\n}\naddEventListener('resize',()=>{\n  camera.aspect=innerWidth/innerHeight; camera.updateProjectionMatrix();\n  renderer.setSize(innerWidth,innerHeight);\n});\napplyTime(timeOfDay); placeCam();\nanimate();\n</script>\n</body>\n</html>\n",
+              "filePath": "/tmp/ocb/task-1-voxel-zen-garden/muse-spark-1.3/index.html"
+            },
+            "output": "Wrote file successfully.",
+            "metadata": {
+              "diagnostics": {},
+              "filepath": "/tmp/ocb/task-1-voxel-zen-garden/muse-spark-1.3/index.html",
+              "exists": false,
+              "truncated": false
+            },
+            "title": "tmp/ocb/task-1-voxel-zen-garden/muse-spark-1.3/index.html",
+            "time": {
+              "start": 1791704797886,
+              "end": 1791704797913
+            }
+          },
+          "metadata": {
+            "openai": {
+              "itemId": "fc_01a129ecba97715696a8e596f2feb0a9"
+            }
+          },
+          "id": "prt_129ecbf41001toABRmqgk13fOy",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ecb8460022LwFzt3XDMCDdb"
+        },
+        {
+          "reason": "tool-calls",
+          "type": "step-finish",
+          "tokens": {
+            "total": 25108,
+            "input": 202,
+            "output": 10196,
+            "reasoning": 5,
+            "cache": {
+              "write": 0,
+              "read": 14705
+            }
+          },
+          "cost": 0,
+          "id": "prt_129ed92de001XDUxaRJh9YIL70",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ecb8460022LwFzt3XDMCDdb"
+        }
+      ]
+    },
+    {
+      "info": {
+        "parentID": "msg_129ec1455001FspLhQesbDJx4C",
+        "role": "assistant",
+        "mode": "build",
+        "agent": "build",
+        "variant": "xhigh",
+        "path": {
+          "cwd": "/tmp/ocb/task-1-voxel-zen-garden/muse-spark-1.3",
+          "root": "/"
+        },
+        "cost": 0,
+        "tokens": {
+          "total": 25380,
+          "input": 188,
+          "output": 202,
+          "reasoning": 45,
+          "cache": {
+            "write": 0,
+            "read": 24945
+          }
+        },
+        "modelID": "muse-spark-1.3-contributor-free",
+        "providerID": "opencode",
+        "time": {
+          "created": 1791704797933,
+          "completed": 1791704799898
+        },
+        "finish": "tool-calls",
+        "id": "msg_129ed92ed002E9Ex2mt9jnx3na",
+        "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd"
+      },
+      "parts": [
+        {
+          "type": "step-start",
+          "id": "prt_129ed95c10013UtVXW5o84iZ67",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ed92ed002E9Ex2mt9jnx3na"
+        },
+        {
+          "type": "reasoning",
+          "text": "",
+          "time": {
+            "start": 1791704798662,
+            "end": 1791704798987
+          },
+          "metadata": {
+            "openai": {
+              "itemId": "rs_6acb3ede222082cbc3b54ddc:rs_01a129ed940770e49194f14f4bea1bfd",
+              "reasoningEncryptedContent": "Q-PaDgEBGSkpyKYpwMo6lRfyJn7OCTUC5AIQ3rH1FtB3AqIwn7bCtMsRlDgLDDyDdRXRn0IdlKgHl5Skf9lQsWoqIepF3ctJVmHDDpMsmOmAd4xDH8V_gYjK9yRF7PMDUj8butj53VJWzMM3FuxJkUhvrzdmSoHI8slXB5UWQd_UqUqHQ0UMXotg_e2hCbMoJAKPzNAlsSWgEZ_Rl4BHnzhLYcZWcVCEPa6JQ4i9jE4HIUCv8EQhq_nto5In2PHuNpvCB7_IVBWmeEtRcjnOU1aTT5oxwIR_jRZGtXsyi10Wr8YWJLyVBeMeRTmKfLJsX6_DJZliqlnOtAeXckarXZlLFb5aAEy0dRINl2UFbehCF9TKEYI1aZpuA9-71OeBbO-ZorWA4ftW-iJIMjzOvFk-UivHXUbOTUqVzxD4RT6w3ZJUgMmKSYqlxLBltbjNujgDuUjrogmTe0RNi4MSb9arYLzLSFmLFl3AF-CRfcONU-jjtmLPHmMJGwb-QZOBAE617qotThPxqPkdhIbdtkkVUB90f9HwFZZThwIy2f6UNW_1iyMvEBUiB7gTRWp614A1f9F44FIe35XMABofbAw7fQ2guWyFmUI-E5qQXRaH2RklEwKrwYktbz9hwu8XbByQjwz1n_iGsj-X4V5hjbEmU8x279Z995YswK203BbDdtnp0ayvaNZ4HVqKYh9AMKEeXO8tV3HATC3k4QtM9FWm7NgOdjjEyVD8oUu0PbNodU431fI_2rXuBzpw36q_ubhHXwDeTQyu5YHYvMpHZYKHX63YzeyKpkD1y9AHk20Jr2zeHxvopreb0N93YhoO54aie0jmXmxfqMZUPyI6FUFN7DqBZL8CDiyoLHaTqPirHFYANYHN8GvUXmfxLgr3T9z1FGlEm0nstVeiAVU8sr2M26wXxIKpSJ34SniUFen7209wD_pE7ksMpG_3rwBUDm7Qc_WUqVx-tu7OUZzUi4d-2Ex0McPWcQY_jcUFVLgqknPvAZELOlsbGheUO5DCwwN07JxHi91wEzYzK8n3fYUqwkPXhayksmKonvWMz_8XMR6wusWixKvoJymBhZOMbbFxGTqdGOUAs5pvWrPQoZ-Vf1OFZgHskgd3E_WnpSzHzYVOYlkb6WhNQ9UPL8nrbFRetLG9Fd6ZtBky5A8_8v64JsRMdKEU7Z-lxL5DswB8xozBvdFmz1j0rcbAVIYgJCy1mJwMR1274X0x2Kw-dXoqH3BNLEB7wV9KuFXfM67vs7W87Lx6J8rzCKHGW0x9k55C-BpSqM4HU-P2NU9ktHuU6ing-yx2kb4_-N1Ek-2hS6HObJbnNrWcf0OwyfWiLkbbmzk0kEfC4NIocucboim2AN19W8YtAWvmUotV1GhCTAhCpet8LsAHACozh-_6ODVQRHH6tNpDrM7EKw"
+            }
+          },
+          "id": "prt_129ed95c6001Pvfo9ZCa9Qqlr9",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ed92ed002E9Ex2mt9jnx3na"
+        },
+        {
+          "type": "text",
+          "text": "Draft written — I spotted a syntax slip to fix before verifying.",
+          "time": {
+            "start": 1791704799209,
+            "end": 1791704799215
+          },
+          "metadata": {
+            "openai": {
+              "itemId": "rs_01a129ed957a72f88c106d7434ba1465",
+              "phase": "commentary"
+            }
+          },
+          "id": "prt_129ed97e9001pEWiV8BMI6dN08",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ed92ed002E9Ex2mt9jnx3na"
+        },
+        {
+          "type": "tool",
+          "tool": "read",
+          "callID": "call_01a129ed9657723d87a9bdcde8f1cdbe",
+          "state": {
+            "status": "completed",
+            "input": {
+              "filePath": "/tmp/ocb/task-1-voxel-zen-garden/muse-spark-1.3/index.html",
+              "limit": 30,
+              "offset": 150
+            },
+            "output": "<path>/tmp/ocb/task-1-voxel-zen-garden/muse-spark-1.3/index.html</path>\n<type>file</type>\n<content>\n150:   const grass=0x5da95d, dirt=0x7a5c3e;\n151:   function slab(x0,x1,z0,z1){\n152:     const w=x1-x0, d=z1-z0, cx=(x0+x1)/2, cz=(z0+z1)/2;\n153:     vox(w,1,d, cx,-0.5,cz, dirt, {cast:false});\n154:     vox(w,0.28,d, cx,-0.02,cz, grass, {cast:false});\n155:   }\n156:   slab(-16,16,-16,pz0); slab(-16,16,pz1,16); slab(-16,px0,pz0,pz1); slab(px1,16,pz0,pz1);\n157:   // pond basin floor + inner walls\n158:   vox(POND.w,0.4,POND.d, POND.cx,-1.6,POND.cz, 0x1d3a4a, {cast:false});\n159:   vox(POND.w,0.35,POND.d, POND.cx,-1.35,POND.cz, 0x2e5a6e, {cast:false});\n160:   const wallC=0x4a4f5a;\n161:   vox(POND.w+1,1.4,0.7, POND.cx,-0.7,pz0-0.3, wallC,{cast:false});\n162:   vox(POND.w+1,1.4,0.7, POND.cx,-0.7,pz1+0.3, wallC,{cast:false});\n163:   vox(0.7,1.4,POND.d, px0-0.3,-0.7,POND.cz, wallC,{cast:false});\n164:   vox(0.7,1.4,POND.d, px1+0.3,-0.7,POND.cz, wallC,{cast:false});\n165:   // stone rim with jitter\n166:   let s=1;\n167:   const rnd=()=>{ s=(s*16807)%2147483647; return (s-1)/2147483646; };\n168:   for(let x=px0-0.8;x<=px1+0.8;x+=1.05){\n169:     for(const z of [pz0-0.85, pz1+0.85]){\n170:       vox(1,0.55,1, x+(rnd()-0.5)*0.15, 0.28, z+(rnd()-0.5)*0.15, rnd()>0.4?0xcfd2d8:0xb9bdc7);\n171:     }\n172:   }\n173:   for(let z=pz0;z<=pz1;z+=1.05){\n174:     for(const x of [px0-0.85, px1+0.85]){\n175:       vox(1,0.55,1, x, 0.28, z, 0xc4c8d1);\n176:     }\n177:   }\n178:   // stepping stones inside pond south edge + stone path north of pond\n179:   for(let i=0;i<4;i++) vox(1.3,0.35,1.0, -1+i*2.1, 0.05, 11.6-(i%2)*0.4, 0xd8dbe1);\n\n(Showing lines 150-179 of 533. Use offset=180 to continue.)\n</content>",
+            "metadata": {
+              "preview": "  const grass=0x5da95d, dirt=0x7a5c3e;\n  function slab(x0,x1,z0,z1){\n    const w=x1-x0, d=z1-z0, cx=(x0+x1)/2, cz=(z0+z1)/2;\n    vox(w,1,d, cx,-0.5,cz, dirt, {cast:false});\n    vox(w,0.28,d, cx,-0.02,cz, grass, {cast:false});\n  }\n  slab(-16,16,-16,pz0); slab(-16,16,pz1,16); slab(-16,px0,pz0,pz1); slab(px1,16,pz0,pz1);\n  // pond basin floor + inner walls\n  vox(POND.w,0.4,POND.d, POND.cx,-1.6,POND.cz, 0x1d3a4a, {cast:false});\n  vox(POND.w,0.35,POND.d, POND.cx,-1.35,POND.cz, 0x2e5a6e, {cast:false});\n  const wallC=0x4a4f5a;\n  vox(POND.w+1,1.4,0.7, POND.cx,-0.7,pz0-0.3, wallC,{cast:false});\n  vox(POND.w+1,1.4,0.7, POND.cx,-0.7,pz1+0.3, wallC,{cast:false});\n  vox(0.7,1.4,POND.d, px0-0.3,-0.7,POND.cz, wallC,{cast:false});\n  vox(0.7,1.4,POND.d, px1+0.3,-0.7,POND.cz, wallC,{cast:false});\n  // stone rim with jitter\n  let s=1;\n  const rnd=()=>{ s=(s*16807)%2147483647; return (s-1)/2147483646; };\n  for(let x=px0-0.8;x<=px1+0.8;x+=1.05){\n    for(const z of [pz0-0.85, pz1+0.85]){",
+              "truncated": true,
+              "loaded": [],
+              "display": {
+                "type": "file",
+                "path": "/tmp/ocb/task-1-voxel-zen-garden/muse-spark-1.3/index.html",
+                "text": "  const grass=0x5da95d, dirt=0x7a5c3e;\n  function slab(x0,x1,z0,z1){\n    const w=x1-x0, d=z1-z0, cx=(x0+x1)/2, cz=(z0+z1)/2;\n    vox(w,1,d, cx,-0.5,cz, dirt, {cast:false});\n    vox(w,0.28,d, cx,-0.02,cz, grass, {cast:false});\n  }\n  slab(-16,16,-16,pz0); slab(-16,16,pz1,16); slab(-16,px0,pz0,pz1); slab(px1,16,pz0,pz1);\n  // pond basin floor + inner walls\n  vox(POND.w,0.4,POND.d, POND.cx,-1.6,POND.cz, 0x1d3a4a, {cast:false});\n  vox(POND.w,0.35,POND.d, POND.cx,-1.35,POND.cz, 0x2e5a6e, {cast:false});\n  const wallC=0x4a4f5a;\n  vox(POND.w+1,1.4,0.7, POND.cx,-0.7,pz0-0.3, wallC,{cast:false});\n  vox(POND.w+1,1.4,0.7, POND.cx,-0.7,pz1+0.3, wallC,{cast:false});\n  vox(0.7,1.4,POND.d, px0-0.3,-0.7,POND.cz, wallC,{cast:false});\n  vox(0.7,1.4,POND.d, px1+0.3,-0.7,POND.cz, wallC,{cast:false});\n  // stone rim with jitter\n  let s=1;\n  const rnd=()=>{ s=(s*16807)%2147483647; return (s-1)/2147483646; };\n  for(let x=px0-0.8;x<=px1+0.8;x+=1.05){\n    for(const z of [pz0-0.85, pz1+0.85]){\n      vox(1,0.55,1, x+(rnd()-0.5)*0.15, 0.28, z+(rnd()-0.5)*0.15, rnd()>0.4?0xcfd2d8:0xb9bdc7);\n    }\n  }\n  for(let z=pz0;z<=pz1;z+=1.05){\n    for(const x of [px0-0.85, px1+0.85]){\n      vox(1,0.55,1, x, 0.28, z, 0xc4c8d1);\n    }\n  }\n  // stepping stones inside pond south edge + stone path north of pond\n  for(let i=0;i<4;i++) vox(1.3,0.35,1.0, -1+i*2.1, 0.05, 11.6-(i%2)*0.4, 0xd8dbe1);",
+                "lineStart": 150,
+                "lineEnd": 179,
+                "totalLines": 533,
+                "truncated": true
+              }
+            },
+            "title": "tmp/ocb/task-1-voxel-zen-garden/muse-spark-1.3/index.html",
+            "time": {
+              "start": 1791704799822,
+              "end": 1791704799887
+            }
+          },
+          "metadata": {
+            "openai": {
+              "itemId": "fc_01a129ed9657723d87a9bdcde8f1cdbe"
+            }
+          },
+          "id": "prt_129ed98000018FMzgYfECtm5N4",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ed92ed002E9Ex2mt9jnx3na"
+        },
+        {
+          "type": "tool",
+          "tool": "grep",
+          "callID": "call_01a129ed979873df87a6009eef8d3473",
+          "state": {
+            "status": "completed",
+            "input": {
+              "path": "/tmp/ocb/task-1-voxel-zen-garden/muse-spark-1.3",
+              "pattern": "American"
+            },
+            "output": "Found 1 matches\n/tmp/ocb/task-1-voxel-zen-garden/muse-spark-1.3/index.html:\n  Line 230:   const gold = new THREE.MeshStandardMaterial({color:0xd9a441, roughness:0.4, metalness:0.6, emissive:0x American =0});\n",
+            "metadata": {
+              "matches": 1,
+              "truncated": false
+            },
+            "title": "American",
+            "time": {
+              "start": 1791704799832,
+              "end": 1791704799869
+            }
+          },
+          "metadata": {
+            "openai": {
+              "itemId": "fc_01a129ed979873df87a6009eef8d3473"
+            }
+          },
+          "id": "prt_129ed9944001UdrbgSfGQTddmD",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ed92ed002E9Ex2mt9jnx3na"
+        },
+        {
+          "reason": "tool-calls",
+          "type": "step-finish",
+          "tokens": {
+            "total": 25380,
+            "input": 188,
+            "output": 202,
+            "reasoning": 45,
+            "cache": {
+              "write": 0,
+              "read": 24945
+            }
+          },
+          "cost": 0,
+          "id": "prt_129ed9a920014zvF3JfBVk7Eg9",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ed92ed002E9Ex2mt9jnx3na"
+        }
+      ]
+    },
+    {
+      "info": {
+        "parentID": "msg_129ec1455001FspLhQesbDJx4C",
+        "role": "assistant",
+        "mode": "build",
+        "agent": "build",
+        "variant": "xhigh",
+        "path": {
+          "cwd": "/tmp/ocb/task-1-voxel-zen-garden/muse-spark-1.3",
+          "root": "/"
+        },
+        "cost": 0,
+        "tokens": {
+          "total": 26497,
+          "input": 1375,
+          "output": 171,
+          "reasoning": 6,
+          "cache": {
+            "write": 0,
+            "read": 24945
+          }
+        },
+        "modelID": "muse-spark-1.3-contributor-free",
+        "providerID": "opencode",
+        "time": {
+          "created": 1791704799908,
+          "completed": 1791704801229
+        },
+        "finish": "tool-calls",
+        "id": "msg_129ed9aa4002psrzo4s1bZf0tT",
+        "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd"
+      },
+      "parts": [
+        {
+          "type": "step-start",
+          "id": "prt_129ed9d85001R6FCkRC530PpUA",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ed9aa4002psrzo4s1bZf0tT"
+        },
+        {
+          "type": "reasoning",
+          "text": "",
+          "time": {
+            "start": 1791704800649,
+            "end": 1791704800661
+          },
+          "metadata": {
+            "openai": {
+              "itemId": "rs_6acb3ee0265e25a814ce4a4f:rs_01a129ed9b9474fcafbd3a7ac3342ffe",
+              "reasoningEncryptedContent": "Q-PaDgFYBBxgj2YPnlDC9ZEAidRgGGHO4axRqTGCjOY_oTnbl-qlkuqoWasMlF_XLwK4GbTtXA0zbghAF5M2d8hHoegCbsu-lTF_3ZyJg6gyyNnvcyXLIeHW80VNNjDV7uGh-mpBpR3hWQmJAitHG7jvYQeb9EXN3pVDqIpPagmCy5ezM0m8j2GqiCUgHtfbuT1Jwf83ZdYbZzSQADQ52PJjVjuRi54OZCHV-Fh4_uLkZibqfiMKXQahBYpvX5qMOrWP8DCIacC_CzG4r0HcvFLEAWy2PXVAW4cMtOl6UELoE7n1G1RNytV4jrkXu_3gwTL8Y_YiHOc6Fp8joZkQFt74eIiZRS7lH8CW87IDR-UfyfC8Ao94C0GxYw4iMlc_Kcv5Cxyp2L6iydnCOgPtYZJHADxoTPa5bgC5ut7Gv959KKfMGGUYLOsS_JS95ZuBG1dpJlJIuvmqB2-0w5_XxB8ewl0QlI72CJHYtSFgjWaZErFY0Zs5oHXIWQESaSM25hmQMJ5xAfyjxib9YlcJagyuBL-zpbZuw1z2R8CkNyq6bkbPmVVetj3QL9wOet8akHqCte-hGXx3LL0KtcAvFDIoHEBsWmv9DRGZ3E7MLpQXi2AVc6syoIi9bQktyDQ5qNYpVTWhmV_uEByGPmkopbVCpusULuf9y8oZJdiCdfNSc5zaRnDY0Xk6qK7-mbdX-jUfU4RVlsM38OmktQhgXokTciVtxFgWfjgdm6jB1nT7M_bYglABO1rgE9pz_fyRyXcL7WQFJJzqNoT-ZRkhivpI2ldIEM76ucNtiClb8aQZ6O0bh41DodIm0suLGn5yWV7VVzkPMlBNXXnU2uOCNVfpnv3pkzAxRBArQ8ki6YZ1L9_YTtaFSSOyyDPyRLjRhnQKFIvgVvxTpX_Qtma1tspcqn56-6fXCSoNynU90ADdcnaaRfwEA7Dc4n2lXw0CxePUmgG3002EaPst4LqRmxLtBaZa7q4UCZ4PyJRLP96yDesEhM_50eHzYUc9Sd55uVLVd_R13w1Wxi32E9TURzFF_oiruNuK00l-vhiGhgPaE3RRiY9UYqP_QwQ9M3DIGQBO4mu3_pPqaSuRF1_kuhKaOlqFDAa89pgzWSpUHoCY6MO7W-tq-NlieLuepHvL9obYFwnc24vYR7EZyy1U9BmKqwLLbFzKxQudD-AnrIIeqqLP1JpDh4-DTXujmkNffggdmjd3-4sw-VFmt2rlJQCstJLgXBmnVjnU3YY3plaWhsotVuZ_NYsh1lDqO7UWlqqamkE3c9Hy99oLyV-lur8-kAFVlNeAfH08H9LZAAatDtmLumbXn9LTypuWG7wuOkkDU3OkxKAA_4LCLmpX9KfrMXO3fYwoGaJoMtKW8NA703D0yT-scvwW5xFbA__Xm6791SvHTjhtrM8YwA"
+            }
+          },
+          "id": "prt_129ed9d89001crZDlE6yYQNrmL",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ed9aa4002psrzo4s1bZf0tT"
+        },
+        {
+          "type": "tool",
+          "tool": "edit",
+          "callID": "call_01a129ed9bc47547a89e52faa1b53a11",
+          "state": {
+            "status": "completed",
+            "input": {
+              "filePath": "/tmp/ocb/task-1-voxel-zen-garden/muse-spark-1.3/index.html",
+              "newString": "  const gold = new THREE.MeshStandardMaterial({color:0xd9a441, roughness:0.4, metalness:0.6});",
+              "oldString": "  const gold = new THREE.MeshStandardMaterial({color:0xd9a441, roughness:0.4, metalness:0.6, emissive:0x American =0});"
+            },
+            "output": "Edit applied successfully.",
+            "metadata": {
+              "diagnostics": {},
+              "diff": "Index: /tmp/ocb/task-1-voxel-zen-garden/muse-spark-1.3/index.html\n===================================================================\n--- /tmp/ocb/task-1-voxel-zen-garden/muse-spark-1.3/index.html\n+++ /tmp/ocb/task-1-voxel-zen-garden/muse-spark-1.3/index.html\n@@ -226,9 +226,9 @@\n     vox(0.9,0.35,0.9, sx*(t.r/2-0.2), y+0.42, sz*(t.r/2-0.2), roofEdge,{parent:pagoda});\n   y += 1.45;\n });\n // spire (sorin): stacked gold voxel rings + jewel\n-const gold = new THREE.MeshStandardMaterial({color:0xd9a441, roughness:0.4, metalness:0.6, emissive:0x American =0});\n+const gold = new THREE.MeshStandardMaterial({color:0xd9a441, roughness:0.4, metalness:0.6});\n let sy=y+0.2;\n for(let i=0;i<5;i++){ const m=new THREE.Mesh(unitBox,gold); m.scale.set(1.5-i*0.18,0.28,1.5-i*0.18); m.position.set(0,sy,0); m.castShadow=true; pagoda.add(m); sy+=0.42; }\n const jewel=new THREE.Mesh(unitBox,new THREE.MeshStandardMaterial({color:0xffd97a,emissive:0xff9d2e,emissiveIntensity:0.6,roughness:0.3}));\n jewel.scale.set(0.55,0.9,0.55); jewel.position.set(0,sy+0.3,0); pagoda.add(jewel);\n",
+              "filediff": {
+                "file": "/tmp/ocb/task-1-voxel-zen-garden/muse-spark-1.3/index.html",
+                "patch": "Index: /tmp/ocb/task-1-voxel-zen-garden/muse-spark-1.3/index.html\n===================================================================\n--- /tmp/ocb/task-1-voxel-zen-garden/muse-spark-1.3/index.html\n+++ /tmp/ocb/task-1-voxel-zen-garden/muse-spark-1.3/index.html\n@@ -226,9 +226,9 @@\n     vox(0.9,0.35,0.9, sx*(t.r/2-0.2), y+0.42, sz*(t.r/2-0.2), roofEdge,{parent:pagoda});\n   y += 1.45;\n });\n // spire (sorin): stacked gold voxel rings + jewel\n-const gold = new THREE.MeshStandardMaterial({color:0xd9a441, roughness:0.4, metalness:0.6, emissive:0x American =0});\n+const gold = new THREE.MeshStandardMaterial({color:0xd9a441, roughness:0.4, metalness:0.6});\n let sy=y+0.2;\n for(let i=0;i<5;i++){ const m=new THREE.Mesh(unitBox,gold); m.scale.set(1.5-i*0.18,0.28,1.5-i*0.18); m.position.set(0,sy,0); m.castShadow=true; pagoda.add(m); sy+=0.42; }\n const jewel=new THREE.Mesh(unitBox,new THREE.MeshStandardMaterial({color:0xffd97a,emissive:0xff9d2e,emissiveIntensity:0.6,roughness:0.3}));\n jewel.scale.set(0.55,0.9,0.55); jewel.position.set(0,sy+0.3,0); pagoda.add(jewel);\n",
+                "additions": 1,
+                "deletions": 1
+              },
+              "truncated": false
+            },
+            "title": "tmp/ocb/task-1-voxel-zen-garden/muse-spark-1.3/index.html",
+            "time": {
+              "start": 1791704801191,
+              "end": 1791704801217
+            }
+          },
+          "metadata": {
+            "openai": {
+              "itemId": "fc_01a129ed9bc47547a89e52faa1b53a11"
+            }
+          },
+          "id": "prt_129ed9da9001aoV1KAlRuWfx5p",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ed9aa4002psrzo4s1bZf0tT"
+        },
+        {
+          "reason": "tool-calls",
+          "type": "step-finish",
+          "tokens": {
+            "total": 26497,
+            "input": 1375,
+            "output": 171,
+            "reasoning": 6,
+            "cache": {
+              "write": 0,
+              "read": 24945
+            }
+          },
+          "cost": 0,
+          "id": "prt_129ed9fc4001ZVk70ZqAQ5A5WW",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ed9aa4002psrzo4s1bZf0tT"
+        }
+      ]
+    },
+    {
+      "info": {
+        "parentID": "msg_129ec1455001FspLhQesbDJx4C",
+        "role": "assistant",
+        "mode": "build",
+        "agent": "build",
+        "variant": "xhigh",
+        "path": {
+          "cwd": "/tmp/ocb/task-1-voxel-zen-garden/muse-spark-1.3",
+          "root": "/"
+        },
+        "cost": 0,
+        "tokens": {
+          "total": 26703,
+          "input": 40,
+          "output": 169,
+          "reasoning": 13,
+          "cache": {
+            "write": 0,
+            "read": 26481
+          }
+        },
+        "modelID": "muse-spark-1.3-contributor-free",
+        "providerID": "opencode",
+        "time": {
+          "created": 1791704801236,
+          "completed": 1791704804099
+        },
+        "finish": "tool-calls",
+        "id": "msg_129ed9fd3002zFE7ge7SEAWx95",
+        "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd"
+      },
+      "parts": [
+        {
+          "type": "step-start",
+          "id": "prt_129eda2cb001Ebvtk3yRgo1LZW",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ed9fd3002zFE7ge7SEAWx95"
+        },
+        {
+          "type": "reasoning",
+          "text": "",
+          "time": {
+            "start": 1791704802003,
+            "end": 1791704802013
+          },
+          "metadata": {
+            "openai": {
+              "itemId": "rs_6acb3ee1f37b1a7821fe4f8a:rs_01a129eda0c27744a288dd15cf0ead74",
+              "reasoningEncryptedContent": "Q-PaDgHhKDFX5mBD7X66PEIFRGDS3QcGnbnst-9IjMPc82UZwAaaUZUox4SQh32YVhtyVe_bDuhed2CftBMRdjHbSSy7E1YoHTqTNpqqlgGtwhxqbbKQ7-mScICwkYVkiW5_Ew8uXCbhbGkxzdD68bgEv55ls8YX1HIAYEDS3BmGNZQZYXfKakiy_aawhqjSBzg3dZAcJT4USEAMOnyodYvNdeXLDKF_Wk5PrELRDNPIc5aCDPT8NALmdFJXzZ31VugYgnrSC-t-3uVQgIr1-h16QG_8A_8k4JBvQGgQ_SeHvImT5McqhIK0esquSkOO7-OIwBENClVkCYIjyeAULln3zIOQjed_bYyko21UbU5z-g1QPCAYmCB64wzemHEo4BX04HVMt6P2qRWY_aWHVDMjqxJS4wv05Rh776r5r1B2mw_0GiHxHiBMpXAqVN3bbj7GnDWRiTMDV3Y-r--OQPrIsgQN2Jsx6JSk0kum34ezfgzCTC7Zp_lkHj_pfDu9LAYut2HZ7acvW6NjF9KXR-ZV6hL1KHPSE20f18N9_ZqPgB4aaqC7CdNjMIuabJqQRox-81YGbPejXRq_uQxkiP3hhvuNKeYPvc9Zp-mkI8cj1-kyDNzpXtNffzRgLgqrBrhHqmgHnOXkdqabAK_Uy_MNj8FjNF_LODj-q-xA27N-luRyBQeSEIPUX9IsFaKgOhaZPDJAFRwxeWxotBrGrWiBlquzeLrbXeU0Ai5ha3ds1XIl0ikiYa5aw3Cn78lqnFR-k5fF9MX0tPKHhTipvgYIeOX2-pDErE7AQJsxvmk38_ycOoMCB6arOESOma08rGS9riG9fOaj-LCQX4YkdQCXTbgO6XJw-39FYjsAI9AGN8ANWTg8-75ixGLA34W9yzyKJvOgll6zNzXeJs80CTbqL0izvEFCDTyn-PtriXIxxxAbHlIlmyC5lWrxbesyUnHGax2RKp5aSJ9xKyWxq_wMM3nlLFzAPpsVesRf-nyCmHCjPjAgrhyzVJxMLRytjE4Ibb99kWiHYbdW7Rc7nZYVdAyj-J8_itpbasnyKP6XgBrAEpV_c9hoxbxczuaSiKyhJcsZ2VvDtS9aXTXRko1qQSd6d6n4BJ1MCFhi6E2rkn_jL04VSvGiX5LRL4Qycfdx5RaURbMdvdKsK-LMuEG_CqXBYdYPXaBZhh31nSV91eO3oaceVvOp73iYwkyWPpb83W_Zahbv4lqHtzE9jVzr3HHwXR4jzS0bqpau34NSM59AOgCogDGthUVK8dLt6-bfcQLIOAkHK9RDQKhy6CH4LPoWrl4mTAr_Tq6LvoL06Vxubm4c26RaKgCukIpKMtvjypeKP98yw3H0j3O1KcTAlFumCnWl5TGDa859CwtR9h5qpFWfv1GgI6nPpr01guk0GQ260v4e2ndhog"
+            }
+          },
+          "id": "prt_129eda2d3001t1C0EWTS8MlVKn",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ed9fd3002zFE7ge7SEAWx95"
+        },
+        {
+          "type": "tool",
+          "tool": "bash",
+          "callID": "call_01a129eda5757093baf0fff2a55078c3",
+          "state": {
+            "status": "completed",
+            "input": {
+              "command": "python3 -c \"import re; h=open('index.html').read(); m=re.search(r'<script type=\\\"module\\\">(.*?)</script>', h, re.S); open('/tmp/check.mjs','w').write(m.group(1)); print('extracted', len(m.group(1)))\" && node --check /tmp/check.mjs && echo \"JS SYNTAX OK\" && ls -la",
+              "workdir": "/tmp/ocb/task-1-voxel-zen-garden/muse-spark-1.3"
+            },
+            "output": "extracted 22579\nJS SYNTAX OK\ntotal 30\ndrwxr-xr-x 2 sandbox sandbox  4096 Oct 11 07:46 .\ndrwxr-xr-x 3 sandbox sandbox    60 Oct 11 07:44 ..\n-rw-r--r-- 1 sandbox sandbox 26263 Oct 11 07:46 index.html\n",
+            "metadata": {
+              "output": "extracted 22579\nJS SYNTAX OK\ntotal 30\ndrwxr-xr-x 2 sandbox sandbox  4096 Oct 11 07:46 .\ndrwxr-xr-x 3 sandbox sandbox    60 Oct 11 07:44 ..\n-rw-r--r-- 1 sandbox sandbox 26263 Oct 11 07:46 index.html\n",
+              "exit": 0,
+              "truncated": false
+            },
+            "title": "python3 -c \"import re; h=open('index.html').read(); m=re.search(r'<script type=\\\"module\\\">(.*?)</script>', h, re.S); open('/tmp/check.mjs','w').write(m.group(1)); print('extracted', len(m.group(1)))\" && node --check /tmp/check.mjs && echo \"JS SYNTAX OK\" && ls -la",
+            "time": {
+              "start": 1791704803890,
+              "end": 1791704804083
+            }
+          },
+          "metadata": {
+            "openai": {
+              "itemId": "fc_01a129eda5757093baf0fff2a55078c3"
+            }
+          },
+          "id": "prt_129eda769001qV5V5QKDwaql5S",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ed9fd3002zFE7ge7SEAWx95"
+        },
+        {
+          "reason": "tool-calls",
+          "type": "step-finish",
+          "tokens": {
+            "total": 26703,
+            "input": 40,
+            "output": 169,
+            "reasoning": 13,
+            "cache": {
+              "write": 0,
+              "read": 26481
+            }
+          },
+          "cost": 0,
+          "id": "prt_129edaaf900128mPtfwOK2ryNE",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129ed9fd3002zFE7ge7SEAWx95"
+        }
+      ]
+    },
+    {
+      "info": {
+        "parentID": "msg_129ec1455001FspLhQesbDJx4C",
+        "role": "assistant",
+        "mode": "build",
+        "agent": "build",
+        "variant": "xhigh",
+        "path": {
+          "cwd": "/tmp/ocb/task-1-voxel-zen-garden/muse-spark-1.3",
+          "root": "/"
+        },
+        "cost": 0,
+        "tokens": {
+          "total": 27001,
+          "input": 322,
+          "output": 135,
+          "reasoning": 63,
+          "cache": {
+            "write": 0,
+            "read": 26481
+          }
+        },
+        "modelID": "muse-spark-1.3-contributor-free",
+        "providerID": "opencode",
+        "time": {
+          "created": 1791704804108,
+          "completed": 1791704805850
+        },
+        "finish": "tool-calls",
+        "id": "msg_129edab0c002XECapczd7X3cVI",
+        "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd"
+      },
+      "parts": [
+        {
+          "type": "step-start",
+          "id": "prt_129edafa9001n8rhW22u5eXUqy",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129edab0c002XECapczd7X3cVI"
+        },
+        {
+          "type": "reasoning",
+          "text": "",
+          "time": {
+            "start": 1791704805294,
+            "end": 1791704805298
+          },
+          "metadata": {
+            "openai": {
+              "itemId": "rs_6acb3ee495345092d5014585:rs_01a129edab21745c86e49b78dbc16d9a",
+              "reasoningEncryptedContent": "Q-PaDgHZ0a-28i_dahEl3MlZFXouoM-Emv_2amPtrrglofDuSmQ9KPpaUv9Dym1Ay_ZvNOte4JfjHBr3zK349VCEtLL576D79PircY4pFsACp8_6oEyb-m1viduh2OHEw_uUuYfpFwcCVtFFmsv2AOEiaMLRhhuu3R70nXHxqsTWL6vGz3Zu1esS9q-iW0MyM7ZAjRfm2lswTBYIcI9_xBLoImWS5JZnlXcx9tSBzZSXecCCgwAV6HL3YzN9pwCkvwUGehv_XehLf3Uz91slFoog3w6JnrzX6uE3PI0YPuiakTK4Epfh3rYdVZDQrtj48Q3fu3d35I_t62r16oHpm3mLqQSJQmazR28zU_ztX7J-MKMVPqC910bEmu0QsbZJF7jL8Y1o36YkEDR4MFsdTCjhawst6oNT8-t3HwNKslVzHTkqJauwVmoftF7f4TQ62wEvwIu-lEjLJcDivXcQGsP9r9uNAa-7-E7sBfC85sNIfmf0H4TQqWR4GAKi33ynFVMFWkjMODAQxabul6GyYD3EkbVT5hYj0iSJvLRXV_xYCJZzakeOCnsSh47nSkC22Tx6W1kdpYq1AH3Gzdd9yUwtjIO4Hv2ONwlV3T202Q7QAPvpQJnNT2elcBctYQJb35RmMoOvy0XiwHfSXZSXjwv91_61d2-fRGV7Qyz2Dkjqs2z-KdZ4gOKlubFU4Ei-8dstQHh4LwWzSn-qF9EOgl9RUWMsj_W38h8rFhamfYTc_z03XdFCAFY2Gl7beXGLGnEhz7PXzSzBpg6MZV2UIyhvYHgEzAXV0DPskSwIobDosZGThIYHzQZzwVFsSGf8Dp0IbXzam5dlqTyBOfySJ1Yr5nubNox6c3g8AgY5f0lgJWkpTOPu44khh0y3j0b1mqnj3M5M5_C7HMUpudNTCbrEMyQz9EXmf1nm5fMNjqZZbfraYXwhn8azDlvMwE1U08d22zjQQjoVf3lQskj12QdxXY1B7hkMPAMo83jxIll7UcHC2H0hPllPjdGTIQeUQtmFt4BjbqbMQfrIwO7sBn6Y5StZiNzKSw2HlRpHiBRCSiUVi4HtMJwNCj3KN2Y_By5RRX6aSkE-R2ApKefF6ufP7hUHh9P_1yl6byQkCfiOHSXt64rcbk30iS3O89-KuAFZBn7oWlvW_GwwxXiML6iaNlIBY7LhFo-cNzasBwe5pmAuSlaro6wz5dNkRJvdnTscaYCr7g0Sp6xxQK62LtWZT9W_YbJ0xMRIkqGgRqs1LNF7fw5sH6AHfPsCvUeaNzdz1-sOVgQuDwDBFB5absGcneFP65omxeU5Z2eAwrQWBmfRzxPUshVDOEL1IzVkRkJlm4RSWc_RwZsE8K9C8xBCVgNpfghvBE51y6QxyPZ5ULlTHUjdlTy79gOG0Nnp_6lEQ2zBxdOaNfU-9A"
+            }
+          },
+          "id": "prt_129edafae001MWEUWvWlxmd3uM",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129edab0c002XECapczd7X3cVI"
+        },
+        {
+          "type": "tool",
+          "tool": "bash",
+          "callID": "call_01a129edad7172c482bc568ee4a7aaad",
+          "state": {
+            "status": "completed",
+            "input": {
+              "command": "rg -n \"https?://|src=|href=\" index.html; echo \"---\"; rg -c \"vox\\(|InstancedMesh|requestAnimationFrame|timeSlider|pointerdown|koiPos|petal\" index.html",
+              "workdir": "/tmp/ocb/task-1-voxel-zen-garden/muse-spark-1.3"
+            },
+            "output": "53:{ \"imports\": { \"three\": \"https://unpkg.com/three@0.160.0/build/three.module.js\" } }\n---\n79\n",
+            "metadata": {
+              "output": "53:{ \"imports\": { \"three\": \"https://unpkg.com/three@0.160.0/build/three.module.js\" } }\n---\n79\n",
+              "exit": 0,
+              "truncated": false
+            },
+            "title": "rg -n \"https?://|src=|href=\" index.html; echo \"---\"; rg -c \"vox\\(|InstancedMesh|requestAnimationFrame|timeSlider|pointerdown|koiPos|petal\" index.html",
+            "time": {
+              "start": 1791704805794,
+              "end": 1791704805837
+            }
+          },
+          "metadata": {
+            "openai": {
+              "itemId": "fc_01a129edad7172c482bc568ee4a7aaad"
+            }
+          },
+          "id": "prt_129edafb6001kjXv73JMkkccTL",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129edab0c002XECapczd7X3cVI"
+        },
+        {
+          "reason": "tool-calls",
+          "type": "step-finish",
+          "tokens": {
+            "total": 27001,
+            "input": 322,
+            "output": 135,
+            "reasoning": 63,
+            "cache": {
+              "write": 0,
+              "read": 26481
+            }
+          },
+          "cost": 0,
+          "id": "prt_129edb1d1001VXRgYroi8QcF9s",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129edab0c002XECapczd7X3cVI"
+        }
+      ]
+    },
+    {
+      "info": {
+        "parentID": "msg_129ec1455001FspLhQesbDJx4C",
+        "role": "assistant",
+        "mode": "build",
+        "agent": "build",
+        "variant": "xhigh",
+        "path": {
+          "cwd": "/tmp/ocb/task-1-voxel-zen-garden/muse-spark-1.3",
+          "root": "/"
+        },
+        "cost": 0,
+        "tokens": {
+          "total": 27246,
+          "input": 64,
+          "output": 115,
+          "reasoning": 74,
+          "cache": {
+            "write": 0,
+            "read": 26993
+          }
+        },
+        "modelID": "muse-spark-1.3-contributor-free",
+        "providerID": "opencode",
+        "time": {
+          "created": 1791704805857,
+          "completed": 1791704807544
+        },
+        "finish": "tool-calls",
+        "id": "msg_129edb1e1002LiM0quPGLaqX9D",
+        "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd"
+      },
+      "parts": [
+        {
+          "type": "step-start",
+          "id": "prt_129edb4e0001awCFd9oRXgxW51",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129edb1e1002LiM0quPGLaqX9D"
+        },
+        {
+          "type": "reasoning",
+          "text": "",
+          "time": {
+            "start": 1791704806631,
+            "end": 1791704807166
+          },
+          "metadata": {
+            "openai": {
+              "itemId": "rs_6acb3ee5209051f056ac4041:rs_01a129edb21375f28556c92f1b0bc504",
+              "reasoningEncryptedContent": "Q-PaDgFJFUYen9f3T3SFi-NowQLtCDZafRrs0Oa4SyhdolOuYNK88zEq6V-Zf6-wjmPmDsALZOxPke4tKT1JbgG8NZR-Sdl8ep2r53IboV4O9-PspTkRj5VklEmdvLmNAnq4COXtdmAn4eh-Nx_z9le9TyICMiszP0aLan4Be_VqOdZBtd2QeKbEjqQfAsWi1tJzid4gYEHi8uc0ltzvxKRpHqarr01p3MCj8c6CskIPRvq_GVGR7pHS-V87ggyx55wTTAWwWUuQdTXPnLbopv-m6q5i8kgWCH27XXx9iWi7_Q6dYImhicyE3tuXehiRQLY_MzOf4KYTd4sEDoRBfeo-0iwhX_vC_-cY9QphxvftK6qiPpOLCOCUH-o8xk7IMkOh_mQVahGhf60F8-8tPiw_BCWBKfYAFGlszuOl2cYI0YLgHmcaJFqKOyviFP1zjhYec6vVWaW1MeC_xx2kBDFEPeni6fMLuWv2YDwRdQhXMztoWDGHXkHwwI4NWx7MD0MjtreTLczYnlJeXeV0viwDVl4WdIQ_dDFbrLm5guV1b5UtnoVHxPJw-ui3CcmxpwNbcfXnvNLORjVti8bOAytknKaRa41Eoxdf93amMeYNZxV5kQKx-vuBA-hHFeA08XQWM2unZWCyDHE4Au6Jpo84iTOqImuH1ymxgNJ4ngvbF3zhJ3zVBAG1LGAhCVVdzHtVg1zjP5LuCOat_YjrM49O3URLWJuSKPcq00h_sPBUY_C23uOxry-ZVFCEkwm64Z66MOj4FLxKd1fSrldYgvjKt1iuX7upOCLYtnJgOqRuc_lk2XDBmZ8dw_8TG6yCM1-jSW5WgBRs54jo9MoggMfwTRVPUjpf0de5JkHBXjA6Adqo7nghkaYWNUJwJHtnoDNxpwa2ODlHggtjyHHGe9JOJseVrRRa-3_-_cHyzYLH9kjIG948FiBLzwaAwXT4yA9NxxglkayRNyVBApzw-YHSdhWllz3SMXg98zVk25ptheQiN3AW3fRRFdEolu2AoIA_QUlxFVLwiGn5-_zn2waHFENkUzOZD3IDxDK6fOfweUpFpsaaV9IoMbhhiD8ogE7hU9Ax3YBUtMLeFJHYTMOn4ExaP02bjTE0XRoCBWw0xvbb79PCQV0sl_li3rFL43X-Xso9MZrBuD7f-kChsQ9xr4M4ETDtaCzHG0Id5kdH_a0G0otPxaY2iPJZInNZsHQMdJBPsYBWGFeKT6T0QvWVtp2m23-blLDbiq69w7bOgTip8cOb4AOibcoYrSg0g-ZOAzIcnG5uwza751vhAOxxELusCLMQbJSAb4DCbt75y5suN9iSt2Pfn8HbY1DoMOG78ZL3hZZFs8xe7oIkmqvZx0OxWcqpYkyvnwgWjHhLnRqsEaMer8gPRItvgETEJyZ31usvLmkGEx4tXw"
+            }
+          },
+          "id": "prt_129edb4e7001CLniXHZrQsf0y3",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129edb1e1002LiM0quPGLaqX9D"
+        },
+        {
+          "type": "tool",
+          "tool": "todowrite",
+          "callID": "call_01a129edb5937070862b9e5815e6ca7f",
+          "state": {
+            "status": "completed",
+            "input": {
+              "todos": [
+                {
+                  "content": "Write self-contained index.html with garden, koi, petals, day/night, orbit",
+                  "priority": "high",
+                  "status": "completed"
+                },
+                {
+                  "content": "Verify file runs (syntax check + open test)",
+                  "priority": "medium",
+                  "status": "completed"
+                }
+              ]
+            },
+            "output": "[\n  {\n    \"content\": \"Write self-contained index.html with garden, koi, petals, day/night, orbit\",\n    \"status\": \"completed\",\n    \"priority\": \"high\"\n  },\n  {\n    \"content\": \"Verify file runs (syntax check + open test)\",\n    \"status\": \"completed\",\n    \"priority\": \"medium\"\n  }\n]",
+            "metadata": {
+              "todos": [
+                {
+                  "content": "Write self-contained index.html with garden, koi, petals, day/night, orbit",
+                  "status": "completed",
+                  "priority": "high"
+                },
+                {
+                  "content": "Verify file runs (syntax check + open test)",
+                  "status": "completed",
+                  "priority": "medium"
+                }
+              ],
+              "truncated": false
+            },
+            "title": "0 todos",
+            "time": {
+              "start": 1791704807526,
+              "end": 1791704807533
+            }
+          },
+          "metadata": {
+            "openai": {
+              "itemId": "fc_01a129edb5937070862b9e5815e6ca7f"
+            }
+          },
+          "id": "prt_129edb72f001YJGrKr5zHBLnS1",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129edb1e1002LiM0quPGLaqX9D"
+        },
+        {
+          "reason": "tool-calls",
+          "type": "step-finish",
+          "tokens": {
+            "total": 27246,
+            "input": 64,
+            "output": 115,
+            "reasoning": 74,
+            "cache": {
+              "write": 0,
+              "read": 26993
+            }
+          },
+          "cost": 0,
+          "id": "prt_129edb871001ZLarpJCDpCBUlX",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129edb1e1002LiM0quPGLaqX9D"
+        }
+      ]
+    },
+    {
+      "info": {
+        "parentID": "msg_129ec1455001FspLhQesbDJx4C",
+        "role": "assistant",
+        "mode": "build",
+        "agent": "build",
+        "variant": "xhigh",
+        "path": {
+          "cwd": "/tmp/ocb/task-1-voxel-zen-garden/muse-spark-1.3",
+          "root": "/"
+        },
+        "cost": 0,
+        "tokens": {
+          "total": 27594,
+          "input": 356,
+          "output": 240,
+          "reasoning": 5,
+          "cache": {
+            "write": 0,
+            "read": 26993
+          }
+        },
+        "modelID": "muse-spark-1.3-contributor-free",
+        "providerID": "opencode",
+        "time": {
+          "created": 1791704807552,
+          "completed": 1791704809519
+        },
+        "finish": "stop",
+        "id": "msg_129edb880002h58OGMC2QwcySt",
+        "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd"
+      },
+      "parts": [
+        {
+          "type": "step-start",
+          "id": "prt_129edbcea001BxfBMidXt5OZ74",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129edb880002h58OGMC2QwcySt"
+        },
+        {
+          "type": "reasoning",
+          "text": "",
+          "time": {
+            "start": 1791704808686,
+            "end": 1791704808690
+          },
+          "metadata": {
+            "openai": {
+              "itemId": "rs_6acb3ee78bc16d4fd3204703:rs_01a129edb8ea728b9b57b8f17772d858",
+              "reasoningEncryptedContent": "Q-PaDgGe_Mheu8JCG3q70yyH09VNs9ejRsYGMXIDPKmxzLyJW7taFBX41YREuVY0_po95lfgYNv62OvD75mpE0YmIZ-ORjxBLHHbE02rrPsuuJi17zHyUidKwXjkRTlJE3J4Sw9ygLgdNG0pZclMCWMRkbbqSfvy9jyPmuAq_021Wr6f6N6XA0nplhV7mbzoF69nVSii8Ebv5zSTp-quDDN6v2OvvTxgECMVBnZaW3Lhh9loZaOsopdA7ktXI2c1GZylNMP0VCe9QoNe5uwQuvImrbwjfGCaZC0sfHC-mq8gHwDjTV6uoncsMhNBGVfozPh10ixtIUF9DBkv4liODUY3xrrb8e4u8GKyGNFAGUcQt0DVxiCIvKURiCev78-BIGrS1Ql0PuC0_2Lmhlq_UOoyOyFMtVXucivyJ8y6N1gN6qcq1rbu_2IuPc_FQHnHKkf6PKdm7klK5wjIP3d1Lg_QB2dURerhtNnd2agp3yGeRGdXPdcNGLx35oknqjRcFN_a5uNKaVgrGtKqnCxkSD3DKKi2lNiE21cXdGAyCEfWAGGKKuTUHsTMfzjxD9In7tlowdpaDPPnOUuVsyvOqAFZ87XSW8cXVE2UfZno8bG0xW3WSo5Q7elxAE4A-GdUPYZ2tTolTo4qp7-QGF6w5OsW-Srw1XmP3oX_U1THA1YTRDgarkBfISmsIGLNKJui80ZuV9lAdaEbVBjI5GILVARpwRq0v2uRvFOKrGsKLdilAlyDNKpKgB0LVpHeCaOumjC32s1BPo9cplMs0da5WDVUxMuZdW-lkE4-kFK0p9odi4Sh8rdvslxBQu-x-EJze9XC1jZnMoJlhMvmTZrvSPiCF9PolrKg84Kb2xjljJVdulc862JwmYK-oTJ6XBehaviqVPP0W3Ppra_R7VrEMjyCV1tfXHDkyFtpZDoR_dJrtxctER0X2CTkMGvg9uG-85TjcSQEaCaM2Wu5czrfDZs0y57rX-IhdfQw7R308wwrVy0seK2TDz36nWwvHG7qaBocYTJ1UQp-SaXy1-it7wTx63FqKutA44oj1h9UUdAWXDIiWcTdWai74khIVFyKKDhnAEKxecJobixCsZcqn8DTZ6-KorMWAUTC20ZQ_gUenvJPwOrPwA1wWzAiyqHlKiVM6S2m5bPZtMfI2yTHpirIz_1FU39CO_WM28OoUzNav9ekcJtfziMbxPT7L-PJ91XkX0Bn0EWYtTSnKArNjMM2UX4AGgHZTphEo_yCGI4WqXEDKaRBNM67in8Xshqdj55DA-pfBCc8UEvpT7oF0hKiSietkSY44IvS5JXsWojco9MNa_joSIUD3a_9PD3SjkvOHqsLaOJakUQwQRbVWad66pzRpePpdiIPbvjEopK6DGaNAwTZoUKR189-d0j8Kzzjrpg2mWhxdhJBwQ"
+            }
+          },
+          "id": "prt_129edbcee001NjjsQkJy3udynu",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129edb880002h58OGMC2QwcySt"
+        },
+        {
+          "type": "text",
+          "text": "Done. Single file at `index.html` (26KB, only external is Three.js CDN `unpkg three@0.160.0`).\n\n- Opens via `file://` and starts attract mode immediately: auto-orbit, swimming koi, falling petals, day-cycle advancing from 10:00 (~95s/day).\n- Voxel garden: 3-tier pagoda with spire + glowing windows, 5 cherry trees (instanced canopy), sunken koi pond with stone rim, 10 koi on curved clamped ellipse+wobble paths with tail wag, 280 instanced petals, torii, bridge, stone lanterns with night point lights, stars/sun/moon.\n- Day/night: 11-keyframe lerp of sky/fog/sun/hemi/lanterns/stars/water; bottom time slider (0-24) + clock readout + Pause/Play.\n- Camera: slow auto-orbit, drag to orbit (resumes after 4s), wheel zoom, touch via Pointer Events.\n- Verified: `node --check` passes, no external assets besides Three.js.",
+          "time": {
+            "start": 1791704808692,
+            "end": 1791704809472
+          },
+          "metadata": {
+            "openai": {
+              "itemId": "msg_01a129edb94b7798b0364460e8ed23e9"
+            }
+          },
+          "id": "prt_129edbcf40010s7WJHwkfhjyS5",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129edb880002h58OGMC2QwcySt"
+        },
+        {
+          "reason": "stop",
+          "type": "step-finish",
+          "tokens": {
+            "total": 27594,
+            "input": 356,
+            "output": 240,
+            "reasoning": 5,
+            "cache": {
+              "write": 0,
+              "read": 26993
+            }
+          },
+          "cost": 0,
+          "id": "prt_129edc028001Q1jE6iQ8I685GU",
+          "sessionID": "ses_ed615fee8ffevxm3c7PxTfGkKd",
+          "messageID": "msg_129edb880002h58OGMC2QwcySt"
+        }
+      ]
+    }
+  ]
+}
