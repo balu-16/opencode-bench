@@ -1,0 +1,1066 @@
+{
+  "info": {
+    "id": "ses_ed63d7cd1ffespkrWGcBM5u003",
+    "slug": "brave-island",
+    "projectID": "global",
+    "directory": "/tmp/ocb/task-1-voxel-zen-garden/step-5-preview",
+    "path": "tmp/ocb/task-1-voxel-zen-garden/step-5-preview",
+    "title": "Voxel Japanese garden in Three.js",
+    "agent": "build",
+    "model": {
+      "id": "step-5-preview-free",
+      "providerID": "opencode",
+      "variant": "high"
+    },
+    "version": "1.19.0",
+    "summary": {
+      "additions": 0,
+      "deletions": 0,
+      "files": 0
+    },
+    "cost": 0,
+    "tokens": {
+      "input": 31447,
+      "output": 1655,
+      "reasoning": 33805,
+      "cache": {
+        "read": 3456,
+        "write": 0
+      }
+    },
+    "permission": [
+      {
+        "permission": "question",
+        "pattern": "*",
+        "action": "deny"
+      },
+      {
+        "permission": "plan_enter",
+        "pattern": "*",
+        "action": "deny"
+      },
+      {
+        "permission": "plan_exit",
+        "pattern": "*",
+        "action": "deny"
+      }
+    ],
+    "time": {
+      "created": 1791701975854,
+      "updated": 1791706822902
+    }
+  },
+  "messages": [
+    {
+      "info": {
+        "role": "user",
+        "time": {
+          "created": 1791701975938
+        },
+        "agent": "plan",
+        "model": {
+          "providerID": "opencode",
+          "modelID": "step-5-preview-free",
+          "variant": "high"
+        },
+        "summary": {
+          "diffs": []
+        },
+        "id": "msg_129c28382001gJC2InczlWyc2H",
+        "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003"
+      },
+      "parts": [
+        {
+          "type": "text",
+          "text": "\"Deliver one self-contained index.html (Three.js via CDN allowed, no other external assets). It must run when opened and start an automatic demo or attract mode without any user input. Build a 3D voxel Japanese garden in Three.js: a pagoda, cherry blossom trees, a koi pond with koi swimming on curved paths, and falling petal particles. Add a day/night cycle with a time slider and lighting that changes smoothly. The camera slowly orbits by default, and the user can drag to orbit.\"",
+          "id": "prt_129c28396001bmq4iAEuiTBJao",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_129c28382001gJC2InczlWyc2H"
+        }
+      ]
+    },
+    {
+      "info": {
+        "parentID": "msg_129c28382001gJC2InczlWyc2H",
+        "role": "assistant",
+        "mode": "plan",
+        "agent": "plan",
+        "variant": "high",
+        "path": {
+          "cwd": "/tmp/ocb/task-1-voxel-zen-garden/step-5-preview",
+          "root": "/"
+        },
+        "cost": 0,
+        "tokens": {
+          "total": 12780,
+          "input": 6322,
+          "output": 860,
+          "reasoning": 3806,
+          "cache": {
+            "write": 0,
+            "read": 1792
+          }
+        },
+        "modelID": "step-5-preview-free",
+        "providerID": "opencode",
+        "time": {
+          "created": 1791701976568,
+          "completed": 1791702097999
+        },
+        "finish": "stop",
+        "id": "msg_129c285f8002rQqs3USMzRDncC",
+        "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003"
+      },
+      "parts": [
+        {
+          "type": "step-start",
+          "id": "prt_129c28dbd00175jXEa9swmzwT7",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_129c285f8002rQqs3USMzRDncC"
+        },
+        {
+          "type": "reasoning",
+          "text": "The user wants a self-contained index.html with Three.js via CDN, building a 3D voxel Japanese garden. But wait — I'm in plan mode, which is READ-ONLY. I cannot make any file edits. I can only observe, analyze, and plan.\n\nThe instruction says: \"The user indicated that they do not want you to execute yet -- you MUST NOT make any edits, run any non-readonly tools.\"\n\nSo I should present a plan for the implementation. Let me think about what needs to be planned:\n\n1. **Self-contained index.html** - Three.js via CDN (use ES modules with importmap, e.g., three@0.160.0 or similar from unpkg/jsdelivr CDN). No other external assets — everything procedurally generated (voxel geometry via BoxGeometry/InstancedMesh, textures via CanvasTexture if needed, or just materials with colors).\n\n2. **Auto-start demo/attract mode** - On load, camera slowly orbits automatically. No user input required to see the demo. Day/night cycle runs automatically.\n\n3. **3D voxel Japanese garden containing:**\n   - Pagoda (multi-tiered, 3-5 levels with curved roofs — roofs made of voxels stepped outward at decreasing sizes per tier)\n   - Cherry blossom trees (voxel trunk + canopy of pink blocks)\n   - Koi pond with koi fish swimming on curved paths (e.g., CatmullRomCurve3 closed loops)\n   - Falling petal particles (Points or small instanced boxes drifting downward, with sway)\n\n4. **Day/night cycle:**\n   - Time slider (HTML input range 0-24)\n   - Lighting changes smoothly — sun/moon position orbiting, sky color lerp, ambient light intensity, fog color\n   - Auto-advance time in attract mode; slider interaction pauses or overrides? The spec says \"time slider and lighting that changes smoothly\" — I'd have the slider reflect current time; if user drags, it sets time. Auto cycle continues from there. \n\n5. **Camera:**\n   - Slowly orbits by default (OrbitControls with autoRotate = true)\n   - User drag to orbit (OrbitControls handles this; maybe pause auto-rotate while dragging then resume after idle, or just keep autoRotate — OrbitControls autoRotate continues even while... actually autoRotate continues; user can drag on top. Perhaps disable autoRotate while pointer is down and re-enable after a few seconds of inactivity).\n\nImplementation plan details:\n\n- Use importmap:\n```html\n<script type=\"importmap\">\n{ \"imports\": { \"three\": \"https://unpkg.com/three@0.160.0/build/three.module.js\", \"three/addons/\": \"https://unpkg.com/three@0.160.0/examples/jsm/\" } }\n</script>\n```\nImport OrbitControls from three/addons/controls/OrbitControls.js.\n\n- Voxel approach: use InstancedMesh for performance — one InstancedMesh per color (or use setColorAt on a single InstancedMesh). Actually Three.js InstancedMesh supports per-instance color via setColorAt. So I can have one InstancedMesh of BoxGeometry(1,1,1) with instance colors — voxels as cubes. That's the cleanest \"voxel\" look.\n\n- Collect all voxels into an array of {x,y,z,color}, then build InstancedMesh. Voxel size maybe 0.5 or 1 units. Scale garden to fit.\n\n- Components:\n  - Ground: flat voxel plane of grass (varying green shades), raked sand area with wavy lines (light tan voxels), pond basin (water voxels slightly lower, blue translucent material — water can't be in the instanced mesh if translucent; separate mesh with transparent material).\n  - Pagoda: 5 tiers. Each tier: body box (voxel walls with dark red/red-brown), roof: stepped voxel rings that flare out — each roof layer is a square ring that shrinks as it goes up, creating curved eaves; top spire with stacked rings. Maybe 5 tiers with decreasing size.\n  - Cherry trees: trunk (brown voxels with branches), canopy: clusters of pink (multiple shades of pink — light pink, rose) in a blobby spherical arrangement. 3-5 trees.\n  - Pond: square/rounded irregular shape recessed into terrain, water surface voxels (or one flat box) with slight transparency, koi fish (small voxel bodies: white/orange/black patches) swimming along CatmullRomCurve3 closed loops inside the pond; each koi's orientation follows the curve tangent; slight bobbing.\n  - Rocks: gray voxel boulders scattered.\n  - Stone lanterns (toro): small stacked voxels — base, pedestal, firebox, roof, finial. At night, firebox glows (emissive material swap or point light).\n  - Bridge: arched red bridge over pond (voxel arc).\n  - Bamboo fence maybe.\n\n- Petals: falling petal particles — use InstancedMesh of tiny flattened boxes or THREE.Points with a canvas-generated petal texture (self-contained). Points with size attenuation; pink colors; spawn above garden, drift down with sine sway, wrap around. Animation: update positions per frame in JS array.\n\n- Day/night:\n  - time t in [0,24). sun angle = (t/24)*2π. Elevation = sin curve. Sun directional light position from spherical. Moon is just opposite light (dim, bluish).\n  - Sky: use a large sphere with vertex-color gradient? Or scene.background color lerped, plus fog. Smooth: lerp colors based on sun elevation — night (dark navy), dawn/dusk (orange), day (light blue). Could use a canvas-generated gradient texture on a sky dome for nicer look. Keep simple: scene.background = color lerp; plus a big inverted sphere with gradient canvas texture whose colors update? Simplest robust: HSL-ish presets keyed by time of day, lerping between key colors (night, dawn, morning, noon, dusk).\n  - Hemisphere light intensity varies; directional intensity varies; ambient low at night; shadows: directional light casts shadows — enable shadowMap; sun/moon cast shadows; at night moonlight dim cast.\n  - Stars at night: Points with random positions on dome, opacity fades in at night. Nice touch.\n  - Windows/lantern lights at night: lantern emissive + point lights.\n\n- UI:\n  - Time slider (input range 0..2400 step 5) with label; dragging sets time; display as HH:MM.\n  - Buttons maybe: pause/play auto-cycle, toggle auto-rotate. Keep minimal but helpful: slider + time display + a \"Pause cycle\" toggle and \"Auto-rotate camera\" toggle? Spec: \"time slider and lighting that changes smoothly\" and \"camera slowly orbits by default, and the user can drag to orbit.\" So required: slider, orbit default, drag orbit. Extra toggons are fine but keep small. I'll include: slider, time display, play/pause auto-advance, auto-orbit toggle. Plus loading overlay maybe not needed.\n  - Voxel toggle? Not needed. Keep focused.\n\n- Renderer: antialias, shadowMap PCFSoft, ACESFilmicToneMapping, sRGB output, pixelRatio clamp to 2.\n\n- Performance: instanced meshes, petal count ~300-600 instanced boxes. Fine.\n\n- Fallback if CDN fails: show message. Since \"Three.js via CDN allowed\". Use importmap + module script. Add onerror fallback message.\n\nStructure of the file:\n- <head>: styles for UI panel, body margin 0, canvas full screen.\n- <body>: UI overlay div with title, slider, toggles.\n- module script: import * as THREE, OrbitControls.\n- Sections: constants, palette, voxel builder helper `addVoxel(x,y,z,color,opts)`, build terrain, pagoda, trees, pond+fish, rocks, lanterns, bridge, fence; create InstancedMesh at end from collected voxels (single InstancedMesh with setColorAt).\n- Water: separate mesh (BoxGeometry or transparent instanced voxels — I'll make water as flat instanced voxels with transparent material? InstancedMesh single material; transparency applies to all voxels — not good if water shares the instanced mesh. So water separate: slight blue box planes or instanced voxel set with its own material (transparent, opacity 0.7), plus maybe animate subtle vertical bob/opacity.\n- Koi: build each koi as small Group of 3-5 voxels using separate small meshes (few fish, fine) — body (elongated box), tail, white patches; swim along curve; tangent orientation; slight tail wiggle optional.\n- Petals: InstancedMesh of small box scaled (0.08,0.02,0.08) pink with per-instance color variance; 400 instances; positions updated each frame; reset to top when y<ground.\n- Sky dome: big sphere BackSide with canvas gradient texture; update? Simpler: scene.background = Color lerp + fog. Add stars Points.\n- Lights: DirectionalLight (sun) with shadow camera bounds covering garden; HemisphereLight; AmbientLight; night: reduce sun intensity, swap to moon light (directional with cooler color, lower intensity) — could use same light, just recolor: day -> warm white; night -> pale blue dim. Plus lantern PointLights at night (few, cheap: 2-3).\n- UI wiring: slider input -> setTime(value); auto-advance when playing; requestAnimationFrame loop: dt, update time if playing and not (user dragging slider? if user drags slider we set time; keep playing enabled but user drag overrides as they drag — standard: dragging sets time; auto continues after release. Or pause auto while pointerdown on slider. I'll implement: pointerdown on slider pauses auto until release. Actually simpler: slider sets time; auto-advance continues, so slider acts as scrub that gets overridden — annoying. Better: when user interacts with slider (input event), set auto-cycle paused (toggle checkbox reflects). I'll auto-pause on slider interaction and flip the play button state. Hmm, but spec says automatic demo without input — starts auto; user can scrub. Good UX: scrub pauses; press play to resume. I'll do that and note in plan.\n\n- Camera: PerspectiveCamera at (dist ~ 55, height ~ 38, angle) looking at center (0, 6, 0). OrbitControls: enableDamping, autoRotate=true, autoRotateSpeed ~0.6, minDistance/maxDistance, maxPolarAngle < π/2 to keep above ground, target set. Disable autoRotate while user drags (control events 'start'/'end'; on end, resume after 3s idle).\n\n- Smooth lighting transitions: all light params are functions of time; time itself changes continuously (auto) or via slider (instant set, but then smoothly follows slider steps — \"lighting changes smoothly\" meaning no popping; slider drag of 5-min steps yields near-continuous change. Good.)\n\nAlso I should consider mentioning Three.js version pinned (0.160.0 or newer like 0.170). Use unpkg or jsdelivr. I'll pin e.g. three@0.169.0. Any recent works. I'll pick 0.169.0. Actually safer well-known: 0.160.0. Either fine. I'll say pin a specific version (e.g. 0.169.0) via importmap on unpkg with jsdelivr fallback? Importmap can't fallback. Just pick one CDN, e.g. unpkg.\n\nCLI UI layout: top-left panel: title \"Voxel Zen Garden\", time slider, HH:MM readout, buttons: ▶/⏸ auto cycle, ⟳ auto-orbit toggle; bottom hint text: \"Drag to orbit · Scroll to zoom\". Minimal CSS, dark translucent panel.\n\nWait — the system reminder says I'm in plan mode and must not edit. But the user's request is a direct delivery request. Per plan mode, I should present a plan and ask for opinions/tradeoffs, not implement. The system reminder explicitly says the user indicated they don't want me to execute yet. So my response: present a well-researched, concise plan, maybe ask one clarifying question (e.g., preferred CDN/pinned version, whether extra UI toggles are OK, file size concerns). Keep it concise but comprehensive.\n\nActually, should I ask clarifying questions or just present the plan? The guidance: \"Ask the user clarifying questions or ask for their opinion when weighing tradeoffs.\" There are minor tradeoffs (CDN choice, toggles, sky approach). I'll present the plan tightly with a couple of noted decisions and one or two quick questions. Keep the response reasonably short given CLI constraints — but plans can be longer; the instruction says comprehensive yet concise. I'll use a compact bulleted plan.\n\nLet me write the plan:\n\n**Plan: self-contained `index.html` (single file, ~1000-1300 lines)**\n\n1. Bootstrap & CDN\n- Three.js pinned via importmap (unpkg, three@0.169.0 + OrbitControls addon), module script, no other assets; error fallback banner if CDN fails.\n\n2. Voxel engine\n- Helper collects voxels {x,y,z,color,scale?} into array; single InstancedMesh(BoxGeometry 1×1×1) with per-instance color → crisp voxel look, one draw call.\n- Voxel unit 1; garden fits ~48×48 studs; camera dist ~55.\n\n3. Scene contents\n- Terrain: studded grass with 2 green shades; raked-sand zone with concentric wavy sand lines (tan/cream voxels).\n- Pond: irregular rounded basin recessed 2 voxels; water = separate transparent blue mesh (instanced voxels, opacity ~0.75) gently bobbing/opacity shimmer.\n- Koi: 5 fish, each a small voxel-built group (body + tail + patches, white/orange/black palettes) swimming closed loop CatmullRomCurve3 inside pond, oriented to tangent, slight sine bob + speed variance.\n- Pagoda: 5 tiers; each tier = studded walls (dark red/cream trim), stepped flare roof rings (evergreen voxel rings shrinking upward → curved eaves), top spire; cast shadow.\n- Cherry trees ×3: branching trunk, blobby canopies in 3-4 pink shades; a few petal-colored scattered fallen voxels on ground.\n- Rocks, 2 stone lanterns (torō), arched red bridge over pond, low bamboo fence border; rocks/lanterns = gray/brown voxel stacks.\n\n4. Petals\n- ~500 instanced tiny boxes (flattened 0.09×0.015×0.09), per-instance pink/jade variance, spawn above canopy, fall with sine sway + spin, respawn at top.\n\n5. Day/night\n- t∈[0,24) advanced automatically (~1 full cycle per 3 min, adjustable speed).\n- Sun = DirectionalLight orbiting from elevation curve; warm white at day, intensity by sin(elevation); at night same light becomes dim cool \"moon\" (or second dim light). Hemisphere/ambient tracked to time.\n- Sky: lerped background + fog across key colors (dawn orange, noon azure, dusk rose, night navy). Star Points fade in at night. Lanterns get emissive firebox + small PointLights at night; koi/petals colors constant.\n- Shadow map PCFSoft on the sun/moon light; shadow camera sized to garden.\n\n6. Camera\n- Slow auto-orbit default (OrbitControls autoRotate, damped); drag to orbit (auto-rotate resumes 2.5 s after release); scroll zoom; polar clamp to stay above ground; target garden center, slight height.\n\n7. UI\n- Translucent panel: title, range slider 0–24 (5-min steps) + HH:MM readout, buttons: play/pause auto-cycle, auto-orbit toggle. Slider scrub pauses auto-cycle (button state flips); play resumes. Bottom hint line.\n\n8. Loop\n- Single rAF loop: dt → time advance (if playing), sun/sky/ambient/star/lantern updates, koi along curves, petals, controls.update, render. renderer: antialias, sRGB, ACES tone mapping, pixelRatio ≤2, resize handler.\n\n9. Verify\n- Open file locally; checks: no console errors, auto-orbits on load, slider smoothly shifts lighting 0→24, night shows stars + lantern glow, koi loop, petals fall, drag orbit works.\n\nTradeoffs / questions:\n- CDN: unpkg vs jsdelivr (unpkg proposed).\n- Extra UI toggons (play/pause, auto-orbit) OK, or slider only?\n- Sky: gradient-shader background vs lerped color+stars — proposed lerped color + procedural gradient dome + starfield.\n\nI think that's good. Maybe offer a \"day cycle speed\" too? Could add speed select (slow/normal/fast). Minor. Mention as optional.\n\nKeep it tight. Format with headers/bullets, under maybe 80 lines. The instruction about <4 lines applies to normal answers, but plan mode asks for comprehensive plan — the plan itself is the deliverable, so it can be longer. I'll aim for concise but complete.",
+          "time": {
+            "start": 1791701978658,
+            "end": 1791702079845
+          },
+          "id": "prt_129c28e22001cDx7WY072YGtbW",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_129c285f8002rQqs3USMzRDncC"
+        },
+        {
+          "type": "text",
+          "text": "I can't write any files in plan mode, so here's the full build plan for `index.html`. Ready to execute on your approval.\n\n## Plan: `index.html` — Voxel Zen Garden\n\n**1. Bootstrap & CDN**\n- Importmap pinning `three@0.169.0` from unpkg + `OrbitControls` addon; single module script, zero other external assets. Fallback banner if the CDN fails.\n\n**2. Voxel engine**\n- Helper collects `{x,y,z,color}` voxels into one array → a single `InstancedMesh(BoxGeometry)` with per-instance colors: crisp voxel look, one draw call. Unit voxels, garden ~48×48 studs.\n\n**3. Scene contents**\n- **Terrain**: grass voxels in 2–3 green shades, plus a raked-sand zone with concentric wavy sand lines.\n- **Pond**: recessed irregular basin; water = separate transparent blue voxel mesh (opacity ~0.75) with a subtle bob/shimmer.\n- **Koi**: 5 voxel-bodied fish (body + tail + white/orange/black patches) swimming closed `CatmullRomCurve3` loops inside the pond, oriented to the tangent, with slight vertical bob and per-fish speed variance.\n- **Pagoda**: 5 tiers — studded walls in dark red with cream trim, stepped flare roof rings shrinking upward per tier (curved eaves), top spire, casts shadow.\n- **Cherry trees** ×3: branching voxel trunk, blobby canopies in 3–4 pink shades, fallen-pink voxels scattered beneath.\n- **Props**: boulders, 2 stone lanterns (tōrō), arched red bridge over the pond, bamboo fence border.\n\n**4. Petals**\n- ~500 instanced flattened pink boxes: spawn above canopies, fall with sine sway + spin, respawn at top.\n\n**5. Day/night cycle**\n- `t ∈ [0,24)` auto-advancing (~3 min/cycle). Sun = one `DirectionalLight` orbiting an elevation curve — warm/intense by day, dim cool blue at night. Hemisphere + ambient tracked to time.\n- Background + fog lerped across key colors (dawn orange → noon azure → dusk rose → night navy). Star `Points` fade in at night; lantern fireboxes go emissive with small `PointLight`s at night. Shadows: PCFSoft, ortho frustum sized to the garden.\n\n**6. Camera**\n- `OrbitControls`: slow `autoRotate` by default, damped; auto-rotate pauses on drag and resumes ~2.5s after release; scroll zoom; polar clamp keeps camera above ground; target on garden center.\n\n**7. UI**\n- Translucent panel: title, time slider (5-min steps) + HH:MM readout, **Play/Pause** auto-cycle button, **Auto-orbit** toggle. Scrubbing the slider pauses auto-advance (button reflects it); Play resumes. Bottom hint: \"Drag to orbit · Scroll to zoom\".\n\n**8. Render loop**\n- Single rAF: dt → advance time, update sun/sky/stars/lanterns, move koi, update petals, `controls.update()`, render. Antialias, sRGB output, ACES tone mapping, pixelRatio ≤2, resize handler.\n\n**9. Verification** (after you approve)\n- Open the file: no console errors, demo starts with orbit immediately, slider scrubs 0→24 with smooth lighting shifts, night shows stars/lantern glow, koi loop the pond, petals fall, drag orbits.\n\n**Open questions before I build:**\n1. CDN preference — unpkg (proposed) or jsDelivr?\n2. Extra toggons (Play/Pause, Auto-orbit) — wanted, or slider-only minimal UI?\n3. Cycle speed — fixed ~3 min/day, or a speed selector?\n\nApprove (or adjust) and I'll implement it.",
+          "time": {
+            "start": 1791702079853,
+            "end": 1791702097981
+          },
+          "id": "prt_129c4196d001xX2kvGhhk5rTtv",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_129c285f8002rQqs3USMzRDncC"
+        },
+        {
+          "reason": "stop",
+          "type": "step-finish",
+          "tokens": {
+            "total": 12780,
+            "input": 6322,
+            "output": 860,
+            "reasoning": 3806,
+            "cache": {
+              "write": 0,
+              "read": 1792
+            }
+          },
+          "cost": 0,
+          "id": "prt_129c46046001lEW1PrDGmTc4Ui",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_129c285f8002rQqs3USMzRDncC"
+        }
+      ]
+    },
+    {
+      "info": {
+        "role": "user",
+        "time": {
+          "created": 1791702133107
+        },
+        "agent": "plan",
+        "model": {
+          "providerID": "opencode",
+          "modelID": "step-5-preview-free",
+          "variant": "high"
+        },
+        "summary": {
+          "diffs": []
+        },
+        "id": "msg_129c4e973001z2ZfIaNgkUdFQi",
+        "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003"
+      },
+      "parts": [
+        {
+          "type": "text",
+          "text": "\"No preference. Use your own judgment.\"",
+          "id": "prt_129c4e97700140KpTdR6LST3qk",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_129c4e973001z2ZfIaNgkUdFQi"
+        }
+      ]
+    },
+    {
+      "info": {
+        "parentID": "msg_129c4e973001z2ZfIaNgkUdFQi",
+        "role": "assistant",
+        "mode": "plan",
+        "agent": "plan",
+        "variant": "high",
+        "path": {
+          "cwd": "/tmp/ocb/task-1-voxel-zen-garden/step-5-preview",
+          "root": "/"
+        },
+        "cost": 0,
+        "tokens": {
+          "total": 14185,
+          "input": 11967,
+          "output": 721,
+          "reasoning": 665,
+          "cache": {
+            "write": 0,
+            "read": 832
+          }
+        },
+        "modelID": "step-5-preview-free",
+        "providerID": "opencode",
+        "time": {
+          "created": 1791702133625,
+          "completed": 1791702171881
+        },
+        "finish": "stop",
+        "id": "msg_129c4eb79002OKGgyje5O4a1HW",
+        "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003"
+      },
+      "parts": [
+        {
+          "type": "step-start",
+          "id": "prt_129c4f490001aPe2mLaCDrbekw",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_129c4eb79002OKGgyje5O4a1HW"
+        },
+        {
+          "type": "reasoning",
+          "text": "The user said \"No preference. Use your own judgment.\" I'm still in plan mode, so I cannot write the file. I should finalize the plan with my own judgment on the open questions and present it for approval. Let me make the decisions:\n\n1. CDN: unpkg pinned.\n2. UI: slider + HH:MM + Play/Pause + Auto-orbit toggle — these add value and match \"attract mode\" spec nicely. Keep minimal.\n3. Cycle speed: ~2.5-3 min per full day, with a small speed selector? Judgment: keep it simple — fixed ~3 min/day is fine, but a tiny speed toggle is cheap. I'll include a compact 3-way speed selector (Slow/Med/Fast) — actually, keep the UI tight; I'll add it as a small select since it's low cost and improves the demo. Judgment call: include it, small.\n\nAlso finalize other details:\n- Sky: I'll go with a gradient dome (procedural canvas texture on an inverted sphere, BackSide) whose texture I re-render or recolor? Simplest robust approach that looks good: a large BackSide sphere with a custom shader-ish gradient via vertex colors, plus lerped scene.fog. Actually, simplest reliable: update a 2×256 canvas gradient texture's colors each frame based on time (cheap enough at 2px wide). That gives a nice sky gradient that changes smoothly. Alternatively use `scene.background` color lerp + fog + stars. A gradient dome is prettier. I'll do a gradient dome with a CanvasTexture regenerated a few times per second (e.g., 4-6 updates/sec) plus fog matching horizon color, and star Points with fade.\n\n- Water shimmer: subtle opacity oscillation via material.opacity, cheap.\n- Koi orientation along CatmullRomCurve3, closed loops; keep water level just above pond bottom voxels; fish y bob.\n- Petals: instanced 400-600.\n- Shadows: single directional light with shadow, ortho bounds ~±35, mapSize 2048.\n- Lanterns: emissive material toggle at night + 2 PointLights (distance ~14, low intensity).\n- Tone mapping ACESFilmic, exposure ~1.0-1.2.\n- Pixel ratio clamp 2.\n- Resolution of cycle time: slider 0..1440 minutes, step 5. HH:MM display.\n- Auto-advance default speed: full day per ~180s (24h realtime / 180s → 1 game-hour per 7.5s).\n- Camera default position: azimuth slow orbit at radius ~52, height ~34, target (0, 5, 0); maxPolarAngle ~1.45 rad; min/max distance 25..90.\n- Voxel scale: 1 unit; pagoda height ~24; pond ~16×12.\n\nPresent the final plan concisely with decisions baked in and ask for approval to implement. Since they said use my judgment, I don't need more questions — just present final plan and request go-ahead.\n\nKeep it compact.",
+          "time": {
+            "start": 1791702135957,
+            "end": 1791702154953
+          },
+          "id": "prt_129c4f495001AdM6MVmX3XT8D1",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_129c4eb79002OKGgyje5O4a1HW"
+        },
+        {
+          "type": "text",
+          "text": "Decisions locked in (my judgment): unpkg pinned `three@0.169.0`; UI = slider + HH:MM + Play/Pause + Auto-orbit toggle + a 3-way cycle-speed selector (Slow/Med/Fast, default Med ≈ 3 min/day); sky = procedural gradient dome (offscreen-canvas texture refreshed ~6×/s) + matching fog + night Star Points with fade-in. Everything else as outlined. This is the final plan — say \"go\" and I'll write `index.html` and verify it loads.\n\n## Final Plan\n\n**File:** single `index.html` (~all-in-one, ~1100 lines)\n\n**Sections:**\n1. **Imports** — importmap: `three` + `three/addons/` from unpkg, version-pinned; `OrbitControls` addon; inline `<style>` UI; CDN-failure banner.\n2. **Voxel builder** — `addVoxel(x,y,z,color)` → array → single `InstancedMesh(BoxGeometry)` with per-instance color. One draw call.\n3. **Garden build**\n   - Grass ground (2–3 greens) + raked-sand zone with wavy concentric lines\n   - Recessed pond, water = separate transparent instanced voxels (opacity bob/shimmer)\n   - **Pagoda**: 5 tiers, studded dark-red walls, cream trim, stepped flared roof rings, spire\n   - **Cherry trees** ×3: voxel branch structure, blobby canopies in 4 pink shades, fallen petal voxels below\n   - **Koi** ×5: voxel bodies (white/orange/black), closed `CatmullRomCurve3` loops, tangent-aligned + bob + per-fish speed\n   - Rocks, 2 tōrō lanterns (emissive firebox + `PointLight` at night), arched red bridge, bamboo fence\n4. **Petals** — ~550 instanced flattened pink boxes: sway+spin fall, respawn at canopy height.\n5. **Day/night** — `t∈[0,1440]` min, auto-advance; one sun/moon `DirectionalLight` (elevation curve, warm↔cool dim), hemisphere+ambient tracked; background dome + fog keyframe-lerped across dawn/noon/dusk/night; stars fade; lantern lights toggle at night; PCFSoft shadows, 2048 map.\n6. **Camera** — damped `OrbitControls`, `autoRotate` default on, pauses on drag + resumes after 2.5 s, zoom clamped, polar clamp, elegant initial framing.\n7. **UI** — translucent panel: title, slider (5-min steps), HH:MM, Play/Pause, Auto-orbit ✓, speed select; bottom hint line. Scrubbing slider auto-pauses cycle.\n8. **Loop** — one rAF: dt → time → lighting/sky/stars → koi → petals → controls → render (ACES, sRGB, pixelRatio ≤2, resize handler).\n9. **Verify** — open file: zero console errors; demo auto-orbits on load; slider scrubs 0→24 smoothly; night shows stars + lantern glow; koi loop; petals fall; drag orbits; pause/play/speed work.",
+          "time": {
+            "start": 1791702154960,
+            "end": 1791702171862
+          },
+          "id": "prt_129c53ed0001WVZe20qs7hWOAy",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_129c4eb79002OKGgyje5O4a1HW"
+        },
+        {
+          "reason": "stop",
+          "type": "step-finish",
+          "tokens": {
+            "total": 14185,
+            "input": 11967,
+            "output": 721,
+            "reasoning": 665,
+            "cache": {
+              "write": 0,
+              "read": 832
+            }
+          },
+          "cost": 0,
+          "id": "prt_129c580df0012KXnwAD0lvItj1",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_129c4eb79002OKGgyje5O4a1HW"
+        }
+      ]
+    },
+    {
+      "info": {
+        "role": "user",
+        "time": {
+          "created": 1791702174087
+        },
+        "agent": "build",
+        "model": {
+          "providerID": "opencode",
+          "modelID": "step-5-preview-free",
+          "variant": "high"
+        },
+        "summary": {
+          "diffs": []
+        },
+        "id": "msg_129c58987001aszJd2POG1MaWv",
+        "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003"
+      },
+      "parts": [
+        {
+          "type": "text",
+          "text": "\"Build it.\"",
+          "id": "prt_129c5899d001GGsYilJe0nZINC",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_129c58987001aszJd2POG1MaWv"
+        }
+      ]
+    },
+    {
+      "info": {
+        "parentID": "msg_129c58987001aszJd2POG1MaWv",
+        "role": "assistant",
+        "mode": "build",
+        "agent": "build",
+        "variant": "high",
+        "path": {
+          "cwd": "/tmp/ocb/task-1-voxel-zen-garden/step-5-preview",
+          "root": "/"
+        },
+        "cost": 0,
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "reasoning": 0,
+          "cache": {
+            "read": 0,
+            "write": 0
+          }
+        },
+        "modelID": "step-5-preview-free",
+        "providerID": "opencode",
+        "time": {
+          "created": 1791702174686
+        },
+        "id": "msg_129c58bde002DcRn3Z3L9VJDm2",
+        "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003"
+      },
+      "parts": [
+        {
+          "type": "step-start",
+          "id": "prt_129c59fe0001tco5Ucj4Bb5OSa",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_129c58bde002DcRn3Z3L9VJDm2"
+        },
+        {
+          "type": "reasoning",
+          "text": "",
+          "time": {
+            "start": 1791702179813
+          },
+          "id": "prt_129c59fe5001j69MyRYszq3m5w",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_129c58bde002DcRn3Z3L9VJDm2"
+        }
+      ]
+    },
+    {
+      "info": {
+        "role": "user",
+        "time": {
+          "created": 1791702870948
+        },
+        "agent": "build",
+        "model": {
+          "providerID": "opencode",
+          "modelID": "step-5-preview-free",
+          "variant": "high"
+        },
+        "summary": {
+          "diffs": []
+        },
+        "id": "msg_129d02ba4001E2XppkceKzlJye",
+        "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003"
+      },
+      "parts": [
+        {
+          "type": "text",
+          "text": "\"Build it.\"",
+          "id": "prt_129d02ba8001wCiuImOCxQXPUZ",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_129d02ba4001E2XppkceKzlJye"
+        }
+      ]
+    },
+    {
+      "info": {
+        "parentID": "msg_129d02ba4001E2XppkceKzlJye",
+        "role": "assistant",
+        "mode": "build",
+        "agent": "build",
+        "variant": "high",
+        "path": {
+          "cwd": "/tmp/ocb/task-1-voxel-zen-garden/step-5-preview",
+          "root": "/"
+        },
+        "cost": 0,
+        "tokens": {
+          "total": 43398,
+          "input": 13158,
+          "output": 74,
+          "reasoning": 29334,
+          "cache": {
+            "write": 0,
+            "read": 832
+          }
+        },
+        "modelID": "step-5-preview-free",
+        "providerID": "opencode",
+        "time": {
+          "created": 1791702871651,
+          "completed": 1791703603042
+        },
+        "finish": "tool-calls",
+        "id": "msg_129d02e63002BVSFDuvqoxL7G9",
+        "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003"
+      },
+      "parts": [
+        {
+          "type": "step-start",
+          "id": "prt_129d03a020014wCv6F0nzmbujJ",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_129d02e63002BVSFDuvqoxL7G9"
+        },
+        {
+          "type": "reasoning",
+          "text": "I need to build the index.html file. Let me check the working directory first, then write the file.\n\nLet me plan the code carefully:\n\n- Single self-contained index.html\n- Three.js via importmap from unpkg, three@0.169.0\n- OrbitControls addon\n- Voxel InstancedMesh builder\n- Terrain, pagoda, trees, pond + koi, petals, rocks, lanterns, bridge, fence\n- Day/night cycle with slider, sky dome, fog, stars, lantern lights\n- Auto-orbit camera\n- UI panel\n\nLet me write this carefully. It'll be a large file (~1100 lines). Let me structure it well.\n\nKey implementation details:\n\n1. Importmap:\n```html\n<script type=\"importmap\">\n{\n  \"imports\": {\n    \"three\": \"https://unpkg.com/three@0.169.0/build/three.module.js\",\n    \"three/addons/\": \"https://unpkg.com/three@0.169.0/examples/jsm/\"\n  }\n}\n</script>\n```\n\n2. Voxel builder:\n```js\nconst voxels = []; // {x, y, z, color}\nfunction vox(x, y, z, color, sx=1, sy=1, sz=1) { ... }\n```\nFor instanced mesh with per-instance color: set matrix with scale for each voxel. Use one InstancedMesh where instance matrix includes scale. Good — allows non-uniform voxels (e.g. slabs).\n\n3. Terrain: grass voxels across e.g. 44x44 with height variation? Keep flat pond area. Add slight height noise for organic feel — but keep pond flat. Let's do a simple height function: base 0, with a few bumps away from pond/bridge zones. Simpler: flat ground with occasional grass tuft voxels raised. I'll add gentle noise using a seeded pseudo-random with 2-value palette. Actually flat plus scattered detail voxels looks clean voxel-style. I'll add gentle rolling: skip; flat is fine and clean, plus rocks/trees add verticality.\n\nLayout plan (units = 1 voxel):\n- Ground: x from -22..22, z from -22..22, top at y=0. Grass shades.\n- Pond: irregular blob centered around (-6, 0, 6)? Let's place pond offset from center so pagoda is prominent. Layout:\n  - Pagoda at (8, 0, -8) area, on a stone platform.\n  - Pond centered at (-7, 0, 7), roughly 16x12.\n  - Bridge over pond.\n  - Trees: 3 cherry trees at (-14, 0, -12), (14, 0, 10), (2, 0, -18) or so.\n  - Lanterns near pond and path.\n  - Sand rake zone around pagoda front.\n\nPond shape: define a set of (x,z) cells belonging to pond via distance to center with radius modulation:\n```js\nfunction inPond(x, z) {\n  const dx = (x + 7) / 10, dz = (z - 7) / 7;   // ellipse\n  const d = dx*dx + dz*dz;\n  // organic wobble\n  return d < 0.85 + 0.18 * Math.sin(x * 0.55) * Math.cos(z * 0.4);\n}\n```\nPond basin: for pond cells, top voxel at y=-1 (recessed 1, maybe 2). Water voxel plane at y=-0.35? Water should be slightly below grass top: water voxels top at y=-0.1, bottom... Let's do: pond cells get dirt voxel at y=-1 (dark brown), then water voxels (opaque-ish blue) occupying y=0 partially? Simplest visual: grass surface y=0 means voxel spans y=-1..0. For pond: remove grass at pond cells, place sand/dirt at y=-1..0, then water voxel box spanning y=0 top lowered: water voxel at scale y 0.55 centered at y=-0.75+... let me compute. Grass voxel top at y=0 (center at -0.5 with size 1). Water: place voxel center at y=-0.45, scale (1, 0.9, 1) so top at y=0... water slightly below grass: center y=-0.5, scale 1 → top at y=0. To inset water, use scale 0.9, center -0.5 → top y=-0.05. Fine. Separate transparent material.\n\nWater mesh: build InstancedMesh for water voxels too (own material, transparent, opacity 0.8, roughness low, maybe emissive slight). Animate opacity subtle: material.opacity = 0.72 + 0.06*sin(t).\n\nKoi swim at water level: y ≈ -0.35 center of fish, with bob ±0.08.\n\nCurves: closed CatmullRomCurve3 with 6-8 points spread through pond. Points must be inside pond; pond ellipse a=10.5 x, b=7.5 z roughly (dx up to 1 → 10.5). Curve points at radius ~0.5-0.65 of ellipse with varied angles. Good.\n\nKoi orientation: pos = curve.getPointAt(u); tangent = curve.getTangentAt(u); fish.lookAt(pos + tangent) — but fish model faces +Z or -X? I'll build fish facing +Z (nose at +z). Then use quaternion from tangent: `fish.quaternion.setFromUnitVectors(new THREE.Vector3(0,0,1), tangent)` — plus keep upright: since moving up/down slightly, could use matrix basis. Simpler: setFromUnitVectors toward tangent, then slight roll wobble. Tail wiggle: rotate tail voxels group by sin.\n\nKoi model: group with body voxels:\n- body: 3 voxels along z: (0,0,0) size (0.9,0.5,1), (0,0,±1)... Let's build small voxel fish: length ~3 voxels: nose at z=+1. Colors: base white/orange with black/red patches. Build with a few boxes (not via instanced terrain — separate small meshes; 5 fish × ~8 boxes = 40 draw calls... acceptable but better: build one koi geometry BufferGeometry merged? Simplest: use shared BoxGeometry and MeshLambert-ish MeshStandardMaterial per voxel with different colors — 40 small draw calls is fine performance-wise. Or build fish via a mini instanced mesh per fish. I'll just create individual meshes with MeshStandardMaterial — fine.\n\nActually cleanliness: create `makeKoi(colors)` returning THREE.Group with body (2-3 boxes + tail fins). Good.\n\n4. Pagoda build:\n- Stone platform: 12x12 at y=0 top, two steps.\n- Tier i (0..4): \n  - wall box: width w = 7 - i*1.2, height 2.2, colors dark red (#8f2d2d-ish) with cream trim at corners; windows: darker voxels.\n  - roof: stepped flare: layers from bottom: at roof base y, ring of width w+3, then w+2.2, w+1.4, w+0.6, top cap. Roof color: dark slate/teal voxel? Japanese pagoda roofs are dark gray-blue tile with warm ridge. Use slate blue (#4a5568) or deep indigo. Curved eaves: stepping produces the concave curve.\n- Between tiers: small gap + thinner pillar ring.\n- Spire: stacked rings (finial) 3-4 voxels tall gold-ish.\n\nImplementation detail for wall voxelization: fill hollow box walls (only perimeter) with corner pillars. Keep voxel count sane: perimeter of 7x7 is 24 voxels, fine.\n\nRoof ring: for each layer, perimeter ring of size s. 4 layers per roof × 5 tiers = 20 rings × ~30 voxels = 600 voxels. OK.\n\n5. Cherry tree:\n- Trunk: 1x1 brown voxels up 4-5 with slight lean, branches 2-3.\n- Canopy: blobby: for offsets within radius ~3 of cluster centers, place pink voxels with probability decreasing with distance; 4 shades of pink; count ~200 per tree. Use simple noise: `if (r < R + noise)` place.\n- Fallen petals under tree: scatter 20 pink voxels at y=1 (on grass top y=0, center 0.5? grass voxel center at -0.5, so falling petal voxel center y=0.15).\n\n6. Rocks: boulder = cluster: center big voxel scaled 2-2.5 + surrounding smaller; gray shades; 4-5 rocks.\n\n7. Lantern (tōrō): base 2x2 (1 high), pedestal 1x1 x2, firebox 1.5x1 (hollow with emissive center), roof stepped small pyramid, finial. Height ~5. Emissive: separate mesh for the fire glow voxel referencing material shared; at night set emissiveIntensity high.\n\n8. Bridge: arched over pond: x-axis or z-axis bridge from pond edge to edge: arc y = h * sin(pi * t), width 2 voxels, red voxels with rail posts.\n\n9. Fence: along one edge (e.g., back edge z=-22): posts every 2, rails. Bamboo tan color.\n\n10. Sand zone: in front of pagoda (rect 12x6 at z around -4..-14?) Let me place sand garden rectangle on opposite side of pond: sand at (10, -2) area? Keep it: rectangle from x∈[-2,10], z∈[10,20]? Hmm need overall layout coherence:\n\nCoordinates:\n- Pagoda platform center: (10, 0, -10), platform 13x13 → spans x 3.5..17... let me define platform from x=4..16, z=-4..-16 (12x12).\n- Sand area: in front of pagoda: z from -3..3, x 4..16 → 12x7 sand with raked rings around a couple of rocks.\n- Pond center: (-8, 0, 6), ellipse rx=9, rz=6.5.\n- Bridge across pond on the +x side: from x=-1 to... bridge spans pond along x: from x=-4..x=-12 at z=6? If pond rx=9 centered x=-8, then spans x -17..1. Bridge crossing at z=6 from x=-2 to x=-14. Arch. Hmm, then pagoda at x 4..16, bridge ends at x=-2 near pagoda side. Good: bridge connects sand area to far side.\n- Trees: (−17, 0, −14), (16, 0, 14), (−2, 0, 18)... keep within ground bounds x,z ∈ [-22,22]. Pond + bridge also near z=6.\n- Lanterns: one at (-2,0,-1) near bridge start by sand; one at pond far edge (-16,0,3).\n- Fence along z=-22 from x=-20..20, and maybe along x=±22 partially. Keep fence on back edge (behind pagoda area won't make sense...). Let me put fence along the boundary sections: x=-22 edge from z=-20..20? Pond at x -17, ok fence at x=-22 fine. And z=+22 edge from x=-20..20. Two sides forming a corner. Nice.\n\nGround 45x45.\n\nKoi pond depth: grass top y=0 (voxel center y=-0.5). For pond cells: bottom voxel at y=-2 (center), top edge -1; water occupies from y=-1 to -0.05: water voxel center y = -0.525, scale (1, 0.95, 1)? Water top then -0.05 + ... let me just make water top at y=-0.1 and bottom at -1: height 0.9, center y=-0.55. And pond bank: rim voxels: grass cells adjacent to pond get a stone rim voxel? Add small stone edging around pond perimeter (y=0 height, gray). Nice touch.\n\n11. Petals: InstancedMesh box geometry 1x1x1, per-instance scale set to (0.12, 0.02, 0.18)? Petals look like small quads; flattened box. Per-instance color: pinks + occasional white. Positions: random within garden bounds x,z ∈ [-20,20], spawn y ∈ [12, 22]; fall speed 0.7-1.4; sway: x += sin(t*speed + phase)*0.3*dt etc; rotate: quaternion from euler each frame — 500 matrix composes per frame is fine. Actually to save CPU, use dummy Object3D compose — 500 is trivial. On y < 0.05 → respawn at top with new x,z, phase. Also count.\n\n12. Sky dome: SphereGeometry(400, 24, 16) BackSide, MeshBasicMaterial with CanvasTexture gradient; regenerate canvas ~6 fps. Colors by phase:\n- night (t<5 or t>20.5): top #0b1026, mid #1b2450, horizon #2a3566\n- dawn (5-7): top #3a5a8c, horizon #f2a56b\n- day (7-17): top #4a90d9 → horizon #bcd9f0 (light)\n- dusk (17.5-20): top #2b3a67, horizon #f08a5d\nInterpolate by keyframes function skyColors(t) → {top, mid, hor, sunColor, sunIntensity, hemiIntensity, ambient, fog, starOpacity, lanternOn}. Smooth lerp between defined keyframes at t=0,4.5,6,8,12,17,19,20.5,24.\n\nSun elevation: dayPeak at 12: elevation = sin((t-6)/12*PI) for t in 6..18, negative at night. Sun position: angle θ = ((t - 6) / 12) * PI; azim fixed-ish: light dir = (cos θ * dir) where dir on circle: sun position = (cos(θ)*30, sin(θ)*55, 18). For night, moon: elevation for moon = sin((t-18)/12*PI)? Use same light: when sun below horizon, intensity from moon curve with blueish color at low value; simpler: compute keyframe-based intensity (handles twilight gracefully).\n\nShadow: when sun high, normal shadow; at night, keep small intensity moon shadow. Directional light position updated; shadow camera ±40, far 200.\n\n13. Stars: 600 Points on sphere radius 380 upper hemisphere, PointsMaterial size 1.6, transparent, opacity = starOpacity; rotate slowly.\n\n14. UI/CSS: panel top-left: rgba(10,14,24,0.55), backdrop blur, white text, border-radius 12px, padding 12-16px, font system-ui. Slider styled accent-color. Buttons small. Readout mono font. Bottom-center hint. Mobile: panel width max 90vw.\n\nAlso a small legend/vignette? Keep minimal per plan.\n\n15. Loop & time:\n- `state.time` in minutes [0,1440), speed multiplier: slow 0.5x, med 1x, fast 3x of base 8 min per game-hour? Base: full 1440 game-min per 180 real seconds → 1 game hour = 7.5s → per frame at 60fps: 1440/180/60 = 0.1333 game-min per frame. Use dt: timeMin += dt * 8.0 * speedMult (8 game-min per real second = 480/hour... wait 1440 game-min per 180 s = 8 game-min/s. Yes `timeMin += dt*8*speed`.\n- Playing flag default true.\n- Slider input: value 0..1440 step 5; on input: time = value, pause playing (update button label).\n- updateSlider fill: use background gradient on slider? Simple: accent-color plus a label showing HH:MM. Optionally style range track with linear-gradient by percent. I'll do JS-updated CSS var for fill.\n\n16. Pause on hidden tab: dt clamp to 0.1s.\n\n17. Error handling: window.addEventListener('error'...) show banner if module/CDN fails. Add a 6s timeout checking `window.__gardenReady` and showing a message.\n\n18. Also handle Three.js version features: `renderer.outputColorSpace = THREE.SRGBColorSpace` default in modern; use `THREE.ACESFilmicToneMapping`. InstancedMesh setColorAt: colors need `instanceColor.needsUpdate`. Note: with sRGB, setColorAt uses color as-is (linear conversion happens via material? For InstancedMesh, instance colors are multiplied into diffuse; Three assumes colors in linear working space — passing hex strings authored as sRGB should be converted: `new THREE.Color(hex).convertSRGBToLinear()`? In Three r152+, `Color.setHex` uses SRGBColorSpace by default? `new THREE.Color('#ff0000')` sets via setStyle with colorSpace default SRGB → then `.convertSRGBToLinear()`? Actually `Color.setStyle(style, colorSpace = SRGBColorSpace)` converts to working (linear) automatically if `ColorManagement.enabled`. Default enabled in recent versions. So `new THREE.Color('#hex')` is fine.\n\nFor the dome CanvasTexture: set `texture.colorSpace = THREE.SRGBColorSpace`.\n\n19. `dummy = new THREE.Object3D()` for matrix composition.\n\nWater material: MeshStandardMaterial({color: 0x2e7f9e, transparent:true, opacity:0.75, roughness:0.15, metalness:0.1}). \n\nPond inner dirt color: #3a3129 or mossy.\n\n20. Petal instanced mesh material: MeshStandardMaterial({roughness:0.6}) with vertexColors via instance colors — for InstancedMesh, setColorAt works with standard materials.\n\nLet me also decide tone: renderer.toneMappingExposure = 1.05.\n\nSun light: DirectionalLight color keyframes: dawn #ffb27a, day #fff4e0, dusk #ff9a62, night #7f9dd4? Moon #93a7d8 intensity 0.18.\n\nHemisphere light: sky color tracks time (light blue day, dark navy night), ground color #3b3428; intensity 0.25 night..0.75 day.\n\nAmbient: small, 0.06..0.25.\n\nFog: FogExp2(0.0 density 0.0035) color = horizon color; also star fade.\n\nLantern PointLights: intensity 0 → 12 at night (with distance 14, decay 2) — color #ffb45c. Two lanterns → 2 point lights. Also emissive firebox material intensity.\n\nKoi colors: white base #f5f2ea with red patches #d8542f / orange #e8862f / black #22242a.\n\nNow, code size. Let me write it carefully and completely. I'll write the file with the write tool. Then run a quick syntax check with node (parse the module JS? The HTML embeds JS module; I can extract and `node --check`? Node check works on files as scripts; for ESM use `node --input-type=module --check`? Simpler: copy the script content to a .mjs and run `node --check file.mjs`? `node --check` supports ESM if file has .mjs extension. Imports of 'three' won't resolve but --check only parses, doesn't resolve. Good.\n\nAlso verify the file loads in a browser? No browser here presumably. Could try `npx playwright`? Probably not installed; skip. I can at least run a headless check if puppeteer exists — unlikely. I'll do static checks: node --check for syntax, and maybe a quick DOM-less smoke test impossible. Let me also open with a tiny static server? Verification: syntax check + manual reasoning. Maybe check if `python3 -m http.server` + curl to ensure file served — trivial. The important is code correctness; I'll be careful.\n\nEdge: unpkg URLs — three@0.169.0 build path: `https://unpkg.com/three@0.169.0/build/three.module.js` (exists) and addons at `https://unpkg.com/three@0.169.0/examples/jsm/controls/OrbitControls.js` which imports from 'three' — resolved by importmap. Good.\n\nLet me now write the whole file.\n\n```html\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>Voxel Zen Garden — Day/Night</title>\n<style>...</style>\n</head>\n<body>\n<div id=\"app\"></div> (canvas appended)\nUI panel markup\n<script type=\"importmap\">...</script>\n<script type=\"module\">...</script>\n</body>\n</html>\n```\n\nJS structure:\n\n```js\nimport * as THREE from 'three';\nimport { OrbitControls } from 'three/addons/controls/OrbitControls.js';\n\n// ---------- config ----------\nconst PALETTE = {...}\nconst GARDEN = 22; // ground half-extent\nconst voxels = [];\nfunction vox(x,y,z,color,sx=1,sy=1,sz=1){ voxels.push({x,y,z,color,sx,sy,sz}); }\nfunction rand(a,b){return a+Math.random()*(b-a);}\nfunction randi(a,b){return Math.floor(rand(a,b+1));}\nfunction pick(arr){return arr[Math.floor(Math.random()*arr.length)];}\n```\n\nColors:\n- grass: ['#5a8f3c','#548634','#619a41','#4e7d31']\n- grassDark\n- sand: ['#d9c9a3','#d2c199','#e0d2ae']\n- rock: ['#8d939b','#7c828a','#9aa0a8','#6d737b']\n- wood/trunk: ['#6b4a2f','#5d3f28']\n- pink shades: ['#f7c8d8','#f4b6cd','#ef9fbe','#fbdce6','#e88aae']\n- pagoda walls: '#9e3b34' dark red, trim '#e8dcc0', roof: ['#4b5b6e','#43505f','#556374'], spire gold '#c9a227'\n- bridge red '#b8453a'\n- fence bamboo '#b09456'\n- water '#2f7f9c'\n- koi colors\n- lantern stone '#9b968c', glow '#ffcf87'\n\nHelper functions:\n\n```js\nfunction boxVoxels(x0,x1,y0,y1,z0,z1,color, opts){ loop push }\nfunction ring(cx,cz, size, y, color, fill=false) // square ring on integer grid\n```\n\nLet me write `squareRing(cx, cz, r, y, color)`: for i from -r..r, j from -r..r, if max(|i|,|j|)===r push (cx+i, y, cz+j).\n\nPagoda:\n```js\nfunction buildPagoda(cx, cz){\n  const tiers = 5;\n  let baseY = 0;\n  // platform 13x13 two steps\n  boxFill(cx-6.5? use ints)\n```\nUse integer cells. Platform: 13x13 centered (cx,cz): from cx-6..cx+6, y=0 (center -0.5? careful: terrain top voxel center y=-0.5, so \"level y\" for placing: define `level(n)` => center y = n - 0.5. I'll write helper `place(x,y,z,...)` where y is integer layer index, voxel center at y-0.5.\n\nPlatform layers: y=0? Terrain grass occupies y=-1 layer (center -0.5) i.e. layer index -1. Platform step1 at layer 0 (center -0.5+... hmm. Let me define: grass top layer index = -1 meaning center y = -0.5. Next layer up index 0 → center 0.5?? Wait voxel of size 1 with center c spans c±0.5. Grass voxel center at -0.5 spans -1..0, top at 0. So a voxel at \"layer k\" has center k-0.5? That makes layer 0 span -0.5..0.5 overlapping grass grass occupies -1..0 so overlapping. Better: define layer y as integer where voxel center = y + 0.0? Let me define: center y = y*1 - 0.5 for integer stacking starting at y=0 → center -0.5 (spans -1..0). Layer 1 center 0.5 (0..1). Good: `cy(l) = l - 0.5`.\n\nSo `vox(x, l, z, color)` helper maps layer to center: in addVoxel I'll store center directly; my `vox` wrapper takes layer and computes center = l - 0.5. Fine, I'll name `voxel(x,layer,z,...)`.\n\nTerrain grass: layer -1 everywhere (center -0.5). Good.\n\nPond: dirt layers -2,-1 (centers -1.5,-0.5). Water: from y=-1 to -0.1: center -0.55, scale (0.98,0.9,1)? spans -1..-0.1. Good, center y=-0.55, height 0.9. I'll add water voxel via direct push with custom center (bypass helper) or pass sy and let helper compute center from sy? I'll make low-level `addVox(x, cy, z, color, sx,sy,sz)` and wrappers: `v(x,layer,z,...)` uses cy = layer-0.5. Water uses addVox directly.\n\nPagoda tiers: for each tier t (0..4):\n- wall halfsize h = 3 - t*0.5 → not integer... Use half sizes: [3,3,2,2,2]? Let's do width per tier: [5,5,3,3,1]... Actually pagodas have wide lower tiers and thin upper. Tier widths (side length): 9,7,7,5,5? voxel counts okay. Let me do side lengths [9,8,7,6,5], each tier: wall height 3 layers, roof stack 3-4 layers with flare.\n\nWall ring: squareRing(cx,cz, half-1? Let me define side s → ring radius r = (s-1)/2 integer offsets. s=9 → r=4. Ring = perimeter.\n\nTier builder:\n```js\nfunction tier(cx, lz, base, s, wallH, wallColor, trimColor, roofColors){\n  const r = (s-1)/2;\n  // corner pillars trim + wall\n  for y in base..base+wallH-1:\n    for i in -r..r, j in -r..r:\n      edge if max(|i|,|j|)===r\n      corner if |i|===r && |j|===r → trim color\n      middle → wall color; add window voxel dark at center rows: if y===base+1 and (i===0||j===0) → dark? windows on walls: place '#2b1d18' at wall faces center.\n  // roof: 3 layers stepping out\n  roofLayer(cx,cz, base+wallH, r+2, roofColor1) // eave\n  roofLayer(... r+1)\n  roofLayer(... r+0? cap top)\n```\nRoof layers (flare): layer sizes r+2 (bottom, slight droop: add 1 layer below at corners?), r+1.5→ integer r+1, r, and cap r-1? For curved look: thickness 1 each. With r+2 → r+1 → r (cap). 3 layers enough with corner voxels dropped at bottom for upward tilt: at eave corners, skip corner voxels on next layer up to create concave curve. Also add \"droop\" voxels at corners below? Keep 3-layer flare + corner cut.\n\nTier spacing: base tier at layer 0? Pagoda sits on platform top layer 1 (platform: layers 0 and 1? platform height 2). Let me do platform layers 0,1 (top layer 1, top y=1.5). Pagoda base layer 2.\n\nTier t base = 2 + t*7; wallH=3; roof 3 → next base = base+6.\n\nTier heights: base 2, 9, 16, 23, 30; wall top +3 → roofs at 5..? Tower total ~ 30+3+3 = 36 + spire 3 → y≈39. That's tall; camera framing: garden radius 22, pagoda height 39 fine. Maybe reduce: tiers 5 with pitch 6: bases 2,8,14,20,26; top +6 → 32, spire → 35. OK. Side lengths reduce faster: [9,8,7,6,5] but with wall heights 3 the proportions get thin — okay stylized voxel pagoda. Actually reduce side lengths [9,8,7,5,4]? Spire on top: gold small rings r=1,0 etc.\n\nAdd balcony rail at each tier: trim color voxels at wall corners extended 1 up.\n\nI'll finesse in code.\n\nCherry tree:\n```js\nfunction tree(cx, cz, h){\n  // trunk\n  for l=-1..h-1: vox(cx,l,cz, trunk) maybe slight lean: alternate x\n  // branches at top: 3 directions length 2\n  // canopy: cluster of blobs\n  const blobs = [[0,h+1,0,3.2],[2,h+2,1,2.2],...]\n  for dx -4..4 etc: if any blob distance < r+noise → pink voxel (shell only? full fill, but shell-only looks better & fewer voxels: place if within r and (distance > r-1.2 || top)). I'll fill solid but limit radius ~2.5-3 → counts ~100/tree.\n}\n```\nSolid canopy blobs look good in voxel style with varied pink. I'll shell-fill for surface + a few inner for depth: simpler solid.\n\nAdd hanging blossom strings? skip.\n\nPetal voxels on ground: 12 per tree at random within radius 4, layer 0? Grass top at y=0; a fallen petal voxel center y=0.06 scale (0.5,0.06,0.5) — use addVox with sy small. color pink.\n\nBridge: over pond crossing x direction at z=cz0 (pond center z=6): from x=-2 to x=-15 at z=6±0 (width 1) use width: for z 5..7? width 3 rails. Arc: y = round(1.6*sin(pi*u)) layers: plank layer at y=layer+arch, plus rail posts at y+1 alternating.\n\nActually pond rx=9 cx=-8 → spans x∈[-17,1]; bridge from x=-1 to -17 crossing at z=6. Posts into water? Bridge deck from layer 0 up arch peak 2. Rails at +1 with posts every 2. Ends: stone steps at both ends.\n\nFence: along x=-21..21 at z=21, posts every 3 (height 3, bamboo), rails at layer 0,1? typical: posts 3 tall, two horizontal rails. Also corner along x=21 z from 21 down to -21? Just two edges back corner: z=21 all x, x=21 for z from -21..21. Hmm but pagoda near x 4..16,z -4..-16, pond... fence at +x +z edges away from structures. Pond far edge x=-17, fence at x=+21 safe. Trees at (16,14) inside fence, fine.\n\nAlso add stepping stones path from bridge end to pagoda? A few flat stone voxels at layer 0 across ground from (-1, 6) to (8, 6) then to pagoda. Optional; add small stone path (flat gray voxels replacing grass tops) — I'll add subtle path voxels.\n\nKoi pond curves:\n```js\nconst pondCenter = new THREE.Vector3(-8, -0.55, 6);\nconst koiSpecs: for i in 5: create closed curve with 7 points: angle a_i = i/7*2π + seed; r factor varies per point 0.35..0.75; point = center + (cos*9-1? rx*cos, sin*6.5*sin) plus y noise small -0.55.\nnew THREE.CatmullRomCurve3(pts, true, 'catmullrom', 0.5);\n```\nCheck inside pond: inPond function must contain points with margin. inPond wobble: d<0.85+0.18sin... With max d ~ (0.75)^2=0.56 < 0.85 margin ok.\n\nKoi update: u = (t*speed + offset) % 1; pos=curve.getPointAt(u); tangent; group.position.copy(pos); quaternion from (0,0,1)→tangent.normalized? setFromUnitVectors keeps up vector arbitrary; fish may roll weirdly when tangent vertical — not an issue (nearly planar). Add slight roll: rotate on local z by sin wiggle. Tail wiggle: tailGroup.rotation.y = sin(time*14+phase)*0.5.\n\nKoi build:\n```js\nfunction makeKoi(base, patch){\n  group;\n  body: box (0.55,0.4,1.1) at z=0 base color\n  mid: (0.5,0.35,0.8) z=0.9 base; patch voxel small\n  head: (0.42,0.32,0.6) z=1.5 base with tiny white\n  tail: (0.3,0.25,0.7) z=-1.1 patch color; tail as pivot group for wiggle\n  top fin small\n}\n```\nUse BoxGeometry shared, MeshStandardMaterial per color.\n\nLantern:\n```js\nfunction lantern(cx,cz, allowGlow){\n base 3x3 stone layer 0;\n shaft 1x1 stone layers 1-2 (center);\n platform 3x3 stone layer 3;\n firebox: frame stone 3x3 hollow at layers 4-5? glow voxel center (0.55 scale) emissive material shared;\n roof: layers 6 (r1), 7 (r0 cap: 1x1? small pyramid) dark\n finial layer 8.\n}\n```\nGlow material shared `glowMat` emissive #ffb45c intensity animated.\n\nWater extra: pond edge rim: for cells adjacent to pond but not pond: stone rim voxel at layer 0? Would raise lip; instead skip, put sparsely: place small rocks at edges occasionally.\n\nDay/night config:\n```js\nconst SKY_KEYS = [\n {t:0,   top:#070b1c, hor:#141c3a, fog:#141c3a, sun:#8fa8e0, sunI:0.06, hemi:#1a2340, hemiI:0.18, amb:0.10, star:1},\n {t:270, top:#1b2450, hor:#5a4a78, sun:#ff9e5e, sunI:0.10, hemi:#3a3f63, hemiI:0.25, amb:0.12, star:0.5}, // 4:30 predawn\n {t:360, top:#3f5d92, hor:#e8985f, sun:#ffb27a, sunI:0.55, hemi:#6a718f, hemiI:0.4, amb:0.14, star:0.08}, //6:00 dawn\n {t:480, top:#3f7fc4, hor:#cfe3f2, sun:#ffe6bc, sunI:0.9, hemi:#9fc0e8, hemiI:0.55, amb:0.18, star:0}, //8:00\n {t:720, top:#2f7fd0, hor:#cfe6f7, sun:#fff3d8, sunI:1.15, hemi:#bcd8f2, hemiI:0.7, amb:0.22, star:0}, //12:00\n {t:1020,...dusk}, //17:00\n {t:1140,...}, //19:00\n {t:1200, top:#141c3a ...}, //20:00\n {t:1440 → same as 0\n];\n```\nInterpolate: find bracketing keys, lerp colors via Color.lerpColors, numbers linear.\n\nSky texture: canvas 2x256 gradient: horizon color at v=0.5 (middle), top above, below (ground haze) darker horizon. Actually sphere UV: gradient across vertical: set texture on sphere; CanvasTexture with 1D gradient vertically: y=0 bottom → v=0 → for sphere UV v=0 at bottom. Draw: bottom (horizon-ish dark), middle horizon color bright, top sky color. 3-stop gradient. Fill canvas 4x256.\n\nUpdate at throttled 6/s or when time jumped (slider). Also always update fog color & light each frame cheaply (no texture regen).\n\nStars: 700 points, `radius 350..380`, upper hemisphere y>0.05, size 1.8 sizeAttenuation false? Use size 2.2, sizeAttenuation: false → constant pixel size. Opacity animate + slight rotation y += dt*0.004.\n\nLantern lights: two PointLights at glow positions, intensity = 14*lanternness where lanternness = smooth 0..1 (star factor reuse). Color #ffb45c, distance 13, decay 2. And glowMat.emissiveIntensity = 1.6*lanternness + 0.05.\n\nAuto orbit: controls.autoRotate = true; autoRotateSpeed = 0.55 (deg? units: rotations per... 30 * speed? autoRotateSpeed = 2.0 means 30s per orbit at 60fps (default 2.0 → 30s/rotation). For slow: 0.6 → 100s/rotation. Use autoRotateSpeed 0.7. On 'start' event (user interaction) → autoRotate=false, record idle timer; on 'end' → if autoOrbitEnabled, resume after 2.5s (setTimeout). Also if user zoom (wheel) doesn't fire start? Wheel fires 'start'/'end' too I think. That would pause auto orbit on zoom — acceptable? Plan said pause on drag. Wheel triggers 'start'/'end' events as well in OrbitControls. To keep auto-rotate through wheel, check event via controls.addEventListener('start', e => if (isTouchOrMouse)) hmm can't distinguish. Simpler: resume after 2.5s idle regardless — wheel then resumes 2.5s later. Fine.\n\nCamera init: position (38, 30, 42) target (0, 6, 0). Distance ~62. minDistance 20, maxDistance 120; maxPolarAngle 1.48 (just above horizontal). enableDamping true, dampingFactor 0.06. enablePan false (avoid disorienting; or keep pan with right-drag — keep false for tidiness).\n\nRenderer: shadowMap.enabled = true, type PCFSoftShadowMap. Sun castShadow, shadow.mapSize 2048, camera ortho ±42, near 1 far 160, bias -0.0006, normalBias 0.02? For voxels normalBias 0.5 helps acne? Use normalBias 0.05.\n\nGround receives shadow; instanced voxel mesh cast+receive.\n\nAlso add subtle \"lanterns\" and \"bridge\" cast shadows fine.\n\nUI: \n```html\n<div id=\"ui\">\n  <div class=\"title\">Voxel Zen Garden</div>\n  <div class=\"row\"><span class=\"clock\" id=\"clock\">12:00</span><span id=\"phase\">Midday</span></div>\n  <input id=\"time\" type=\"range\" min=\"0\" max=\"1440\" step=\"5\" value=\"720\">\n  <div class=\"row\">\n    <button id=\"play\">⏸ Pause</button>\n    <button id=\"orbit\">⟳ Orbit: On</button>\n    <select id=\"speed\"><option value=1>Med</option>...</select>\n  </div>\n</div>\n<div id=\"hint\">Drag to orbit · Scroll to zoom</div>\n```\nAvoid emojis? \"Only use emojis if the user explicitly requests it.\" Use text glyphs instead: \"Pause\"/\"Play\". Use ▶/⏸? Those are unicode symbols, not emoji per se — but to be safe use text: \"Pause\", \"Play\", \"Auto-Orbit: On\". Use plain text. Speed select options: Slow / Medium / Fast.\n\nSlider fill: background: linear-gradient(90deg, accent 0..p%, track p%..100%) updated via style. Use CSS var --p.\n\nLoading overlay: dark screen with title, fades out on first frame. \n\nError banner: `#cdn-error` hidden, shown if `window.__ready` not true after 8s or on window error event with message about CDN. Also module script failures: add `window.addEventListener('error', e => ...)`. For import failures, an error event fires with message containing \"three\" maybe. Keep it generic: show banner with hint to check connection.\n\nNow koi update, petals update, sky update functions. Write loop:\n\n```js\nlet last = performance.now();\nfunction animate(){\n  requestAnimationFrame(animate);\n  const now = performance.now();\n  let dt = (now-last)/1000; last=now;\n  dt = Math.min(dt, 0.1);\n  if (state.playing) { state.time += dt * 8 * state.speed; if (state.time>=1440) state.time-=1440; syncSliderThrottled(); }\n  const t = state.time;\n  updateSky(t);\n  updateKoi(t, dt);\n  updatePetals(t, dt);\n  controls.update();\n  renderer.render(scene, camera);\n}\n```\nsyncSlider: update every frame if playing (cheap): slider.value = time; update clock text, phase label, fill.\n\nPhase labels: Night (0-300? /22-24) etc: compute:\n- 5:00-7:00 Dawn, 7-11 Morning, 11-15 Midday, 15-18 Afternoon, 18-20 Dusk, else Night.\n\nPetals data arrays: positions Float32? I'll keep JS array of objects {p:Vector3, v:Vector3, spin, phase, rot}. 520 petals.\n\nPetal respawn: also allow \"petals drift from trees\" but random top spawn is fine; bias spawn near canopy positions at start (60% near tree canopies).\n\nLet me now write out full code. Also remember no comments unless asked — instructions say DO NOT ADD ANY COMMENTS unless asked. So write clean code without comments. Hmm, a huge file without comments — that's the rule. I'll keep code self-documenting with good naming. Keep zero comments.\n\nLet me draft the entire file now mentally, then write.\n\nPond cell test:\n```js\nconst POND = { cx: -8, cz: 6, rx: 9.5, rz: 6.5 };\nfunction pondDepth(x, z){\n  const dx = (x - POND.cx) / POND.rx;\n  const dz = (z - POND.cz) / POND.rz;\n  const d = dx*dx + dz*dz;\n  const wob = 0.16*Math.sin(x*0.45+1.3) * Math.cos(z*0.5-0.7);\n  return d + wob; // <1 inside\n}\nfunction isPond(x,z){ return pondDepth(x,z) < 1; }\n```\nEllipse max dx=1 → x within ±9.5; with wob ±0.16. Bridge crossing at z=6: check inside/outside along z=6, x from 0 to -20: isPond false until x<-2ish → x∈[-17.7, 1.7]. I'll compute bridge dynamically: find pond crossings by scanning and only build deck over pond region plus 1 voxel margin each side.\n\nBridge builder:\n```js\nfunction buildBridge(){\n  const zc = POND.cz;\n  // scan x from POND.cx+POND.rx+1 down\n  const x0 = 2, x1 = -20;\n  // find pond extents along z=zc\n  let minX=99, maxX=-99;\n  for (x=-22..22) if (isPond(x,zc)||isPond(x,zc+1)||isPond(x,zc-1)) {minX=Math.min(minX,x);maxX=Math.max(maxX,x);}\n  // deck from maxX+1 to minX-1 arch; plus support posts at ends? \n  for (x=maxX+1..minX-1){ u=(x-maxX-1)/(minX-maxX-1)... }\n```\nSimplify: deck spans x from maxX to minX inclusive (through pond), arch h = 2 at middle, y at ends 0. For each x: h = Math.round(1.8*Math.sin(Math.PI*(x-xMin)/(xMax-xMin))); deck voxels at (x, h, zc) + (x, h, zc-1)? width 2: zc and zc+1? Rails at zc-1 and zc+2 at h+1? For width-2 deck, rails on both sides: posts at z=zc-1, zc+2 height h+1 → becomes rails if continuous. Red voxels plank at layer h (center y = h-0.5+? careful: layer index h → center h-0.5, top at h+0.5). Rails continuous at layer h+1 along edges. Plus rail posts skip middle? Continuous rail is fine (looks like a balustrade).\n\nBut wait: deck voxels replace water? Deck at h≥0 top y=0.5 > water surface -0.1 → floats above water, ok. At ends h=0 → touches ground.\n\nAdd stones at ends: step voxels.\n\nPath: from bridge end at (maxX+1≈2, z=6) toward pagoda: path voxels at layer -1? That replaces grass top: skip replacing; add flat stone plates slightly raised at layer 0 along a few points — could look like dots. I'll do stepping stones: circles at positions along polyline, single voxel scaled flat (0.8,0.15,0.8) center y=0.08 gray.\n\nAlright — also add a couple of \"cloud\" voxels? skip.\n\nGround fill: loop x,z in [-22,22]: if pond cell → dirt layers -2 and -1 dark; rim cells (not pond but adjacent) → mostly grass, some stone lip. Water voxel per pond cell at center y -0.55 scale 1,0.9,1 → separate list.\n\nPerf: 45*45 = 2025 ground voxels; canopy 3*~150=450; pagoda ~500; props ~200; water ~180; total ~3400 instances — fine.\n\nInstancedMesh count: voxels.length. Build: create InstancedMesh(geo, mat, count), per voxel dummy.position.set(x, cy, z), dummy.scale.set(sx,sy,sz), dummy.updateMatrix(), setMatrixAt, setColorAt with color.\n\nNote: scale on instanced boxes with unit geometry — shadow acne minimal. setColorAt needs instanceColor allocated automatically (three handles when calling setColorAt before render). Need `mesh.instanceColor.needsUpdate = true`? setColorAt creates instanceColor; three sets needsUpdate when? Actually setColorAt creates `this.instanceColor = new InstancedBufferAttribute(new Float32Array(count*3),3)` and sets `.setUsage(StaticDrawUsage)`; you should set needsUpdate true after filling (three does check in WebGLRenderer? Not automatically) — set needsUpdate manually.\n\nFor flat petal-like fallen petals & stones, use addVox with custom scale and center.\n\nSky dome texture creation:\n```js\nfunction makeSkyTexture(topColor, midColor, botColor){\n  canvas 8x256; gradient from y=0(bottom) → bot color; 0.45→mid; 1→top.\n}\n```\nSphere UV mapping: v=0 at bottom (theta start at top? SphereGeometry: uv.y=1 at top). Canvas row 0 = texture bottom (v=0) = sphere bottom. Draw: row0 → bottom color (fog-ish horizon dark), row 128 → horizon color, row 255 → top color. \n\nSun disc? Could add sprite but \"no external assets\"; a radial-gradient canvas sprite sun + moon is doable — nice touch: two meshes (circle) aligned with light position: sun mesh MeshBasicMaterial with canvas radial texture, size 14; at night moon size 8. Position = light.position normalized * 330. Fade opacity by day/night. That's polish; include — it's procedural and self-contained. Yes, add sun & moon billboards.\n\nSun light position must match sun disc direction: light.position = dirVector.multiplyScalar(50) where shadow camera follows. Sun disc at dir*340.\n\nCompute dir: \n```js\nconst ang = ((t-360)/720)*Math.PI*2; // 6:00 sunrise → angle -90°\n```\nLet: θ = ((t - 360) / 1440) * 2π → at t=360 (6:00) θ=0 → sunrise east; t=720 (noon) θ=π/2 → peak; t=1080 (18:00) → θ=π sunset; t=0/1440 → θ=2π midnight nadir.\nel = sin(θ) → day positive.\naz = cos(θ).\nSun position: (az*38, el*46, 18 + ...) Keep z offset 16 for nice raking light: dir = normalize(az*38, el*46+? , 16). At night swap to moon: use opposite: moon ang t: θm = θ+π; moon dir (−az*38, −el*46, 16)? Then light intensity: day = sunI (bright), night = moonI (dim), using smooth transition around elevation thresholds with smoothstep. Simpler: intensity = max(sunI*smoothstep(-0.06,0.08,el), moonI*(1-smoothstep(-0.06,0.08,el))). And color lerp warm↔moon-blue by same factor. Keyframe approach was planned... I'll do elevation-based procedural, easier & inherently smooth:\n\n```js\nconst dayF = smoothstep(-0.08, 0.10, el); // 0 night 1 day\nsun.color.lerpColors(moonColor, sunColorDay, dayF)\nsun.intensity = lerp(0.18, 1.15, dayF)\nhemi.intensity = lerp(0.22, 0.7, dayF)\nhemi.color: lerp(nightHemi, dayHemi, dayF)\nambient.intensity = lerp(0.09, 0.22, dayF)\n```\nTwilight tint: add warm factor near el≈0: warm = (1-|el|*6 clamp) when |el|<0.16 → mix extra orange into sun color and sky horizon. \n\nSky colors procedural:\n```js\nfunction skyColorsAt(t, el, dayF){\n  top = lerp(nightTop, dayTop, dayF),\n  hor = lerp(nightHor, dayHor, dayF) then lerp toward twilight warm by w = clamp(1-|el|*8,0,1)*((el>-0.15&&el<0.25)?1:0)\n}\n```\nTwilight warm color: #f2a25c. Also dawn/dusk difference (east vs west) not distinguishable on dome — fine, uniform warm horizon.\n\nFog color = hor color slightly darkened. Star opacity = 1-dayF*0.98? star = clamp(1-dayF*1.1)... Also stars fade: 1 - smoothstep(-0.02, 0.12, el). Lantern factor = 1 - smoothstep(-0.05, 0.18, el).\n\nSun disc: visible when el > -0.15, opacity fade; moon disc opposite when el < 0.05.\nSun disc position from dir; moon dir = opposite-ish: moonDir = (-az, -el, 16)? Compute moon elevation = -el; position normalize(-az*38, -el*46, 16)*340? At night -el>0 good.\n\nSun/moon canvas textures: sun: radial gradient white→yellow transparent edge; moon: pale disc with slight crater shading? just soft white-blue.\n\nStar texture: use PointsMaterial with sprite circle texture (small canvas radial white). Good.\n\nNow write the updateSky:\n\n```js\nfunction smoothstep(a,b,x){ const t = Math.min(1,Math.max(0,(x-a)/(b-a))); return t*t*(3-2*t); }\nfunction lerpN(a,b,k){return a+(b-a)*k;}\n```\n\nupdateSky(t):\n```js\nconst theta = ((t - 360) / 1440) * Math.PI * 2;\nconst el = Math.sin(theta), az = Math.cos(theta);\nconst dayF = smoothstep(-0.08, 0.10, el);\nconst twilight = clamp(1 - Math.abs(el) * 7, 0, 1) * (el > -0.22 && el < 0.20 ? 1 : 0);\nsunDir.set(az * 40, el * 50, 14).normalize();\nsun.position.copy(sunDir).multiplyScalar(60);\n// colors\nconst topC = tmpA.set(nightTop).lerp(dayTop, dayF);\nconst horC = tmpB.set(nightHor).lerp(dayHor, dayF);\nconst warmC = tmpC.set(twilightHor);\nhorC.lerp(warmC, twilight * 0.85);\nconst fogC = horC.clone().multiplyScalar(0.9);\nscene.fog.color.copy(fogC);\nscene.background = skyTex? dome visible; background set fog-ish color anyway (in case dome hidden): scene.background = horC? Background shows behind dome? Dome covers everything, background unused. Still set scene.background to horC for safety.\nsun.color.copy(moonC).lerp(sunWarm, dayF).lerp(twilightWarm, twilight*0.5);\nsun.intensity = lerpN(0.22, 1.2, dayF);\nsun.shadow.intensity? not available; fine.\nhemi.color.copy(nightHemi).lerp(dayHemi, dayF); hemi.groundColor constant; hemi.intensity = lerpN(0.25, 0.75, dayF);\namb.intensity = lerpN(0.10, 0.24, dayF);\nstarMat.opacity = 1 - smoothstep(-0.05, 0.12, el);\nlanternF = 1 - smoothstep(-0.03, 0.16, el);\nglowMat.emissiveIntensity = 0.15 + lanternF * 1.8;\nfor each lantern light: light.intensity = lanternF * 12;\nwaterMat.opacity = 0.62 + dayF*0.18; water color lerp night blue→day teal? waterMat.color lerp(#1d4e63, #3f9fbf, dayF).\ndome material: if |t-lastSkyUpdate| or slider jump → redraw canvas texture with current top/hor colors.\nsun disc mesh: position sunDir*340, opacity fade = smoothstep(-0.18, -0.02, el); visible...\nmoon disc: position (-az*? ) moonDir = new Vector3(-az*40, -el*50, 14).normalize() *340; opacity = smoothstep(0.12, -0.02, el) i.e., 1 when el<-0.02.\n```\nShadow: sun.position changes → shadow camera updates automatically.\n\nSun disc + moon must render behind dome? Dome radius 400, disc 340 < 400 → inside dome, dome material transparent? Dome with BackSide basic material opaque would hide disc. Make dome material transparent with opacity 1... Transparent sphere with depthWrite false, renderOrder -1: draw dome first, then stars/discs beyond? Stars at 350-380 < 400 inside dome; disc at 340 inside. Order: set dome.renderOrder = -2, stars.renderOrder=-1, depthTest false for stars/discs, and dome.depthWrite=false. Simpler: dome radius 400 with `material.depthWrite=false; renderOrder=-10`, stars/discs renderOrder=-5 with depthTest false → they draw after dome (within transparent pass, sorted by renderOrder), visible. Camera far must be > 420. far = 1000. Fog would affect? FogExp2 affects dome material (MeshBasicMaterial fog:true default) → dome gets fogged → horizon blends with fog nicely, but far distance 400 with density 0.0035 → exp2 fog at 400 = 1 - exp(-(0.0035*400)^2)= e^-1.96 → 0.86 → heavy fog on dome top = uniform fog color. That's okay-ish (sky becomes fogged). Better set dome.material.fog = false, stars fog false, discs fog false. Yes.\n\nStars rotation: scene stars object rotation.y += dt*0.005.\n\nPetal update:\n```js\nfor p of petals:\n  p.vel.y -? petal fall: p.pos.y -= (0.9+ p.speed)*dt; drift: p.pos.x += Math.sin(timeBase*1.7+p.phase)*0.35*dt*60? careful scale: use dt: p.pos.x += Math.sin(now*2+p.phase)*0.25*dt... let me: p.pos.x += Math.sin(now*1.9 + p.phase) * 0.5 * dt; z: cos(now*1.5+ph)*0.5*dt;\n  rotation: p.rot.x += dt*2*s; p.rot.y += dt*3*s; p.rot.z += dt*1.5 (tumble)\n  if y < 0.02 → respawn: y = rand(14,22), x within bounds near random tree crown? pick random x,z in [-19,19], y=rand(13,21), keep clear? petals pass through geometry—acceptable stylized; but falling through pagoda looks slightly off; respawn height above everything so mostly visible before landing. fine.\n  dummy.position/rotation/scale compose; petal scale per-instance (0.14,0.03,0.22)*sizeVar.\n```\nSet once static? Since scale varies, compose each frame anyway — 520 compose cost trivial.\n\nKoi:\n```js\nkois: array {group, curve, speed, offset, tail, phase}\nupdate: u = (t*0.02*speed + offset)%1? base speed: full loop per ~45s: u += dt*speed/45. keep own accumulator.\npos = curve.getPointAt(u); tan = curve.getTangentAt(u);\ngroup.position.copy(pos).add(new Vector3(0, bob, 0)) where bob = Math.sin(now*2+ph)*0.05; precompute q = setFromUnitVectors(forward(0,0,1), tan) then group.quaternion.slerp? direct copy then group.rotateZ(wiggle). Tail: tail.rotation.y = sin(now*9+ph)*0.45.\n```\nCurve points y: -0.45 varying ±0.15 gentle.\n\nAlso koi color variety: 5 fish: white-red, orange-white, black-orange, all-orange, white-black patches.\n\nUI wiring:\n```js\nconst slider = ...; \nslider.addEventListener('input', e => { state.time = +slider.value; if (state.playing) togglePlay(false); updateAllTimeUI(true); });\nplayBtn.onclick → togglePlay(!state.playing)\norbitBtn → state.autoOrbit = flip; controls.autoRotate = state.autoOrbit;\nspeedSel → state.speed = +value;\n```\ntogglePlay(v): playing=v; controls resume logic: when playing turned on? unrelated. Update labels: playBtn.textContent = playing? 'Pause' : 'Play'.\n\nOrbit controls events:\n```js\ncontrols.addEventListener('start', ()=>{ controls.autoRotate=false; clearTimeout(orbitTimer); });\ncontrols.addEventListener('end', ()=>{ if(state.autoOrbit) orbitTimer=setTimeout(()=> controls.autoRotate=true, 2500); });\n```\nAlso orbit button label reflects controls.autoRotate? Keep simple: label shows state.autoOrbit, and control sets.\n\nSlider fill update: `slider.style.setProperty('--p', pct+'%')`.\n\nKeyboard: space toggles play, O toggles orbit, arrows nudge time. Add keydown handler — nice for demo; but \"without any user input\" only for attract mode start. Include small key support (document it in hint? hint mentions keys). I'll add space/O.\n\nLoading overlay: `#loader` with text \"Voxel Zen Garden\" + \"loading…\", remove after first render (fade). If error → show.\n\nResize handler with devicePixelRatio clamp.\n\nNow the write. Also title <title>. Body background dark to avoid white flash.\n\nCSS:\n```css\n*{box-sizing:border-box}\nhtml,body{margin:0;height:100%;overflow:hidden;background:#0a0f1e;font-family:ui-sans-serif,system-ui,...}\ncanvas{display:block}\n#ui{position:fixed;top:16px;left:16px;...}\n```\nSlider style with accent-color: var(--accent) simplified + custom track fill:\n```css\ninput[type=range]{ -webkit-appearance:none; width:100%; height:6px; border-radius:3px;\n background: linear-gradient(90deg, var(--accent) 0%, var(--accent) var(--p,50%), rgba(255,255,255,.18) var(--p,50%)); outline:none;}\ninput[type=range]::-webkit-slider-thumb{ -webkit-appearance:none; width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:0 0 6px rgba(0,0,0,.5); cursor:pointer;}\ninput[type=range]::-moz-range-thumb{...}\n```\nButtons: small pill buttons; select styled dark.\n\nPanel width ~ 250px; mobile @media max-width 520px: panel left 10 right 10 width auto font smaller.\n\nAlso add subtle vignette overlay via radial-gradient div pointer-events none — nice.\n\nPhase label color maybe.\n\nClock font-variant-numeric: tabular-nums.\n\nOK also ensure `scene.background` set as Color to avoid transparent bg if dome hidden.\n\nFog: FogExp2 density 0.0042? With dome radius 400 & fog=false on dome, fog affects garden objects up to ~60 units. Density 0.004 → at 60: (0.24)^2 = 0.058 exp → visible slight haze at distance. Good. Start 0.0025 near, 0.006 dusk haze? Modulate density: 0.0022 + dayF*0.0015? Fog color = hor fog color.\n\nOne more: petals color variance: ['#f9d7e3','#f4b9cf','#efa8c2','#fdf0f4'].\n\nKoi tail color matches patch.\n\nSky gradient canvas draw function:\n```js\nfunction drawSky(topColor, horColor){\n  const c = skyCanvas.getContext('2d');\n  const g = c.createLinearGradient(0, 0, 0, 256);\n  g.addColorStop(0, '#'+topColor.getHexString());\n  g.addColorStop(0.52, '#'+horColor.getHexString());\n  g.addColorStop(0.62, '#'+horShadow.getHexString()); // just below horizon darker\n  g.addColorStop(1, '#'+horShadow.getHexString());\n  c.fillStyle = g; c.fillRect(0,0,8,256);\n  skyTex.needsUpdate = true;\n}\n```\nNote texture colorSpace SRGB.\n\nNow, ground & structures need the terrain function to skip pond cells; trees avoid pond: chosen positions check `isPond` false.\n\nAlso ensure pagoda/tree positions inside bounds; platform 13x13 at (10,-10) spans x 3..17, z -17..-3 inside.\n\nLet me write all builders in order:\n1. buildTerrain (grass/dirt/water/rim)\n2. buildBridge\n3. buildPagoda\n4. buildTrees\n5. buildRocks\n6. buildLanterns (returns glow anchors for lights)\n7. buildFence\n8. buildSandArea (rake rings + rocks) — sand area in front of pagoda: x 3..17, z -2..2? pagoda z -17..-3; sand z -2..2 → adjacent. Sand replaces grass top? Sand voxel at layer -1 same level as grass — replaces? Can't \"replace\" in instance approach: just don't push grass for those cells. So terrain builder needs sandArea test before pushing grass. Rake rings: concentric rounded rectangles in sand at layer 0? Slightly raised patterns: use flat thin voxels (0.8,0.06,0.8) darker sand color on top — thin scale trick. Simpler: sand cells use different base palette (already) and add ring voxels at layer -1 as darker sand over? Overlap z-fighting. Use thin raised: rings with addVox(x, 0.06, z, rakeColor, 0.82, 0.1, 0.82). Do rings in rectangle pattern: for each sand cell, d = chebyshev to center → if (round(d) parity?) classic raked: rings every 1.5 cells: if (Math.floor(d/1.5)%2===0) thin voxel darker. Looks like sand ripples. Fine.\n\nOrder of build: compute terrain with regions: for each cell decide type: 'grass' | 'sand' | 'pond' (dirt) with rim.\n\n9. Petals init.\n10. Sky, sun/moon, stars init.\n\nLet me also double check inPond margins for trees/rocks placements: tree at (−17,−14): isPond? dx=(−17+8)/9.5=−0.947, dz=(−14−6)/6.5=−3.08 → d≈0.9+9.5 → outside. (16,14): dx=2.5, dz=1.23 → outside. (−2,18): dx=0.63,dz=1.85 → outside. Good.\n\nLantern at (−2,−1): dx=0.63,dz=-1.08 → outside pond. Lantern at (−16,3): dx=−0.84, dz=−0.46 → d=0.71+0.21=0.92 + wob(±~0.1) <1 → might be IN pond. Move to (−16,1): dz=−0.77 → 0.59+0.14=0.73 outside ok. Or (−15,2): dx=−0.74(0.55)+dz −0.62(0.38)=0.93 borderline. Use (−16,0): dx −0.84 (0.71), dz −0.92 (0.85) → 1.56 outside good.\n\nRocks: place at fixed coords avoiding pond.\n\nFence at z=21 & x=21; pond max x: cx+rx=1.5 → fine.\n\nWalkway stones from bridge end (2,6) to sand area edge (3..17? sand z −2..2 → step at (16,0)? path polyline [(2,6),(4,4),(6,2),(16,2),(16,-2)]? Keep a simple line from (3,6) to (14,3) to (14,-2). Eh — I'll do small path along x from bridge end to pagoda front: points [(3,6),(6,5),(9,4),(12,3),(14,2)] then into sand. Flat stones each ~1.2 spacing. Good enough.\n\nCamera target (0,6,0) but pagoda at z=-10, pond at z=+6, centerish (0, -2)? target (−1, 4, −2). Camera pos: (44, 30, 40).\n\nAuto-orbit radius: distance from target: pos - target ≈ (45,26,42) → ~66. Good; radius ~66, autoRotateSpeed: at 60fps, orbit full = 2π/(speed*? ) Three's autoRotate: `rotateLeft(2π/60 * autoRotateSpeed * deltaTime? ` Actually implementation: `rotateLeft(2*Math.PI/60/60*autoRotateSpeed)` per frame (frame-rate dependent-ish). With autoRotateSpeed=2.0 → 30s per revolution at 60fps. So ~0.9 → ~66s/rev. Slow-ish. Use 1.2 → ~50s per rev. \"Slowly orbits\": 1.0 ≈ 60s. Go 1.1.\n\nAlso `controls.screenSpacePanning` irrelevant with pan disabled.\n\nNow shadows: sun.position from direction*60, target (0,0,0), shadow camera ortho ±45, near 10 far 160, mapSize 2048, bias -0.0004, normalBias 0.6? Instanced unit boxes scaled slightly—normalBias 0.05. Also since light moves, shadow updates each frame automatically.\n\nAlso perhaps add contact shadow: fine.\n\nTone mapping ACES, exposure 1.08.\n\nColors note: MeshStandardMaterial color space fine.\n\nLet me now also handle `state.speed` values: slow 0.4, medium 1, fast 2.5.\n\nTime labels: HH:MM from minutes: h=floor(t/60), m=floor(t%60/5)*5 → pad.\n\nNow write the final code. Also add `window.__ready` set true after first frame, and loader fade.\n\nLet me write file now. I'll be careful with syntax. After writing, extract module JS and `node --check`.\n\nAlso quick serve test with python http.server + curl HEAD to confirm 200? Minor but cheap; the JS check is the real verification. Maybe run a headless smoke test if node + jsdom? No WebGL. Skip; static check only. I could also verify three@0.169.0 URL exists via webfetch HEAD? webfetch fetches content (big file ~1.2MB). Could check `curl -sI https://unpkg.com/three@0.169.0/build/three.module.js` in bash — cheap and verifies CDN availability. Do that.\n\nLet me write the file. Aim: complete, correct, no comments.\n\nDetailed code:\n\n```html\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>Voxel Zen Garden — Day / Night</title>\n<style>\n  :root{\n    --accent:#e8a0b4;\n    --panel:rgba(12,16,28,.62);\n    --stroke:rgba(255,255,255,.14);\n    --text:#f2f5fa;\n    --muted:rgba(242,245,250,.65);\n  }\n  *{box-sizing:border-box}\n  html,body{height:100%}\n  body{margin:0;overflow:hidden;background:#0a0f1e;color:var(--text);\n    font-family:ui-sans-serif,system-ui,-apple-system,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif;\n    -webkit-font-smoothing:antialiased}\n  canvas{display:block}\n  #vignette{position:fixed;inset:0;pointer-events:none;\n    background:radial-gradient(ellipse at center,transparent 55%,rgba(2,5,14,.42) 100%)}\n  #ui{position:fixed;top:16px;left:16px;width:252px;padding:14px 16px 12px;\n    background:var(--panel);border:1px solid var(--stroke);border-radius:14px;\n    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);\n    box-shadow:0 10px 30px rgba(0,0,0,.35)}\n  #ui h1{margin:0 0 2px;font-size:15px;letter-spacing:.04em;font-weight:650}\n  #ui .sub{font-size:11px;color:var(--muted);margin-bottom:10px;letter-spacing:.02em}\n  .timeline{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:8px}\n  #clock{font-size:22px;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:.02em}\n  #phase{font-size:11px;color:var(--accent);letter-spacing:.08em;text-transform:uppercase}\n  input[type=range]{width:100%;height:6px;border-radius:99px;appearance:none;-webkit-appearance:none;outline:none;cursor:pointer;\n    background:linear-gradient(90deg,var(--accent) 0%,var(--accent) var(--p,50%),rgba(255,255,255,.16) var(--p,50%),rgba(255,255,255,.16) 100%)}\n  input[type=range]::-webkit-slider-thumb{appearance:none;-webkit-appearance:none;width:15px;height:15px;border-radius:50%;\n    background:#fff;border:none;box-shadow:0 1px 6px rgba(0,0,0,.55)}\n  input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;background:#fff;border:none;box-shadow:0 1px 6px rgba(0,0,0,.55)}\n  .marks{display:flex;justify-content:space-between;font-size:9.5px;color:var(--muted);margin:5px 2px 10px;letter-spacing:.06em}\n  .controls{display:flex;gap:6px;flex-wrap:wrap}\n  button,select{font:inherit;font-size:11.5px;color:var(--text);background:rgba(255,255,255,.08);\n    border:1px solid var(--stroke);border-radius:8px;padding:5px 9px;cursor:pointer}\n  button:hover,select:hover{background:rgba(255,255,255,.16)}\n  button.active{background:rgba(232,160,180,.22);border-color:rgba(232,160,180,.5)}\n  select{appearance:none;padding-right:9px}\n  #hint{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);font-size:11.5px;\n    color:var(--muted);background:var(--panel);border:1px solid var(--stroke);border-radius:99px;\n    padding:6px 14px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);white-space:nowrap}\n  #loader{position:fixed;inset:0;display:grid;place-content:center;justify-items:center;gap:8px;\n    background:#0a0f1e;z-index:10;transition:opacity .6s ease}\n  #loader .t{font-size:18px;letter-spacing:.14em;text-transform:uppercase}\n  #loader .s{font-size:12px;color:var(--muted)}\n  #loader.hidden{opacity:0;pointer-events:none}\n  #cdn-error{position:fixed;inset:auto 16px 16px 16px;padding:12px 14px;border-radius:12px;display:none;\n    background:rgba(80,20,28,.85);border:1px solid rgba(255,120,120,.4);font-size:12.5px;z-index:20}\n  @media (max-width:560px){#ui{width:calc(100vw - 32px)}#hint{font-size:10.5px}}\n</style>\n</head>\n<body>\n<div id=\"loader\"><div class=\"t\">Voxel Zen Garden</div><div class=\"s\">loading three.js from cdn…</div></div>\n<div id=\"ui\">\n  <h1>Voxel Zen Garden</h1>\n  <div class=\"sub\">Attract mode — drag to orbit</div>\n  <div class=\"timeline\"><span id=\"clock\">12:00</span><span id=\"phase\">Midday</span></div>\n  <input id=\"time\" type=\"range\" min=\"0\" max=\"1440\" step=\"5\" value=\"720\" aria-label=\"Time of day\">\n  <div class=\"marks\"><span>00</span><span>06</span><span>12</span><span>18</span><span>24</span></div>\n  <div class=\"controls\">\n    <button id=\"play\" class=\"active\">Pause</button>\n    <button id=\"orbit\" class=\"active\">Orbit: On</button>\n    <select id=\"speed\" aria-label=\"Cycle speed\">\n      <option value=\"0.4\">Speed · Slow</option>\n      <option value=\"1\" selected>Speed · Med</option>\n      <option value=\"2.5\">Speed · Fast</option>\n    </select>\n  </div>\n</div>\n<div id=\"hint\">Drag to orbit · Scroll to zoom · Space pause · O orbit</div>\n<div id=\"vignette\"></div>\n<div id=\"cdn-error\">Could not load three.js from the CDN. Check your connection and reload.</div>\n<script type=\"importmap\">\n{\n  \"imports\": {\n    \"three\": \"https://unpkg.com/three@0.169.0/build/three.module.js\",\n    \"three/addons/\": \"https://unpkg.com/three@0.169.0/examples/jsm/\"\n  }\n}\n</script>\n<script type=\"module\">\nimport * as THREE from 'three';\nimport { OrbitControls } from 'three/addons/controls/OrbitControls.js';\n...\n</script>\n</body>\n</html>\n```\n\nThen the module. Let me write it fully:\n\n```js\nconst clamp = (v,a,b)=>Math.min(b,Math.max(a,v));\nconst lerpN = (a,b,k)=>a+(b-a)*k;\nconst smoothstep = (a,b,x)=>{const t=clamp((x-a)/(b-a),0,1);return t*t*(3-2*t);};\nconst rand = (a,b)=>a+Math.random()*(b-a);\nconst randi = (a,b)=>Math.floor(rand(a,b+1));\nconst pick = arr=>arr[Math.floor(Math.random()*arr.length)];\n\nconst C = {\n  grass:['#59893a','#517f33','#639a42','#4a7a2e'],\n  dirt:['#4a3a2a','#564530'],\n  sand:['#d8c69c','#d2bf92','#e2d3ab'],\n  sandRake:['#c4ad7e','#bda471'],\n  rock:['#8b9199','#7b818a','#97a0a8','#6f757e'],\n  stone:['#a9a49a','#98928a'],\n  trunk:['#6d4a2c','#5e3f26'],\n  pink:['#f6c9d9','#f3b4cc','#ee9dbe','#fbdde8','#e989b0'],\n  petal:['#f9d9e5','#f4bad0','#fceff4'],\n  wall:['#a03c33','#93362f'],\n  trim:'#e9dcbe',\n  roof:['#47566a','#3f4e61','#51627a'],\n  spire:'#c9a227',\n  bridge:'#b2453a',\n  bridgeDark:'#8e332c',\n  bamboo:'#b3945a',\n  water:'#2f7f9c',\n  koi:{white:'#f4f0e6',red:'#d8542f',orange:'#e8862f',black:'#26282e'},\n};\n```\n\nVoxel store:\n```js\nconst voxels=[];\nfunction addVox(x,cy,z,color,sx=1,sy=1,sz=1){ voxels.push({x,y:cy,z,color,sx,sy,sz}); }\nfunction v(x,layer,z,color,sx=1,sz=1){ addVox(x, layer-0.5, z, color, sx,1,sz); }\n```\nWait v() with sx/sz non-1 but sy 1 default: addVox(x, layer-0.5, z, color, sx,1,sz) ok. For flat: sy param needed; add addVoxFlat? I'll just call addVox directly when needed.\n\nTerrain:\n```js\nconst GROUND = 22;\nconst POND = {cx:-8, cz:6, rx:9.5, rz:6.5};\nconst isPond = (x,z)=>{\n  const dx=(x-POND.cx)/POND.rx, dz=(z-POND.cz)/POND.rz;\n  return dx*dx+dz*dz + 0.16*Math.sin(x*0.45+1.3)*Math.cos(z*0.5-0.7) < 1;\n};\nconst SAND = {x0:3,x1:17,z0:-2,z1:2};\nconst inSand = (x,z)=> x>=SAND.x0-1 && x<=SAND.x1+1 && z>=SAND.z0-1 && z<=SAND.z1+1;\n\nfunction buildTerrain(){\n  const water=[];\n  for(let x=-GROUND;x<=GROUND;x++){\n    for(let z=-GROUND;z<=GROUND;z++){\n      const pond = isPond(x,z);\n      if(pond){\n        v(x,-2,z,pick(C.dirt));\n        v(x,-1,z,pick(C.dirt),0.98,0.98);\n        water.push({x,z});\n        continue;\n      }\n      const col = inSand(x,z)? C.sand : C.grass;\n      if(inSand(x,z)) { v(x,-1,z,pick(C.sand)); }\n      else {\n        const edge = isPond(x+1,z)||isPond(x-1,z)||isPond(x,z+1)||isPond(x,z-1);\n        if(edge && Math.random()<0.6) { v(x,-1,z,pick(C.stone)); continue; }\n        v(x,-1,z,pick(C.grass));\n        if(Math.random()<0.06) addVox(x+rand(-0.3,0.3), 0.12+rand(0,0.1), z+rand(-0.3,0.3), pick(C.grass), 0.25,0.22,0.25);\n      }\n    }\n  }\n  buildRakeRipples();\n  return water;\n}\n```\n\nRake ripples:\n```js\nfunction buildRakeRipples(){\n  const cx=(SAND.x0+SAND.x1)/2, cz=(SAND.z0+SAND.z1)/2;\n  for(let x=SAND.x0;x<=SAND.x1;x++) for(let z=SAND.z0;z<=SAND.z1;z++){\n    const d=Math.max(Math.abs(x-cx),Math.abs(z-cz));\n    if(d%3===1 || (Math.abs(d%3-... hmm simpler: if(Math.floor(d)%2===0 && d>2) add ripple voxel darker.\n  }\n}\n```\nLet me: `const d=Math.max(Math.abs(x-cx),Math.abs(z-cz)); if(d>2 && Math.floor((d-2)/2)%2===0) addVox(x,0.05,z,pick(C.sandRake),0.7,0.08,0.7);` — produces concentric ripple lines. Place small rock centers in sand: 2 rocks at (9,0),(13,1)? Rocks builder.\n\nBridge:\n```js\nfunction buildBridge(){\n  const z0=POND.cz, z1=POND.cz+1;\n  let minX=99,maxX=-99;\n  for(let x=-GROUND;x<=GROUND;x++){\n    let inw=false;\n    for(let z=z0-1;z<=z1+1;z++) if(isPond(x,z)) inw=true;\n    if(inw){minX=Math.min(minX,x);maxX=Math.max(maxX,x);}\n  }\n  minX-=1; maxX+=1;\n  for(let x=minX;x<=maxX;x++){\n    const u=(x-minX)/Math.max(1,(maxX-minX));\n    const h=Math.round(1.9*Math.sin(Math.PI*clamp(u,0,1)));\n    for(let z=z0;z<=z1;z++){\n      v(x,h,z, Math.abs(z-z0+z1)... just alternate: pick(C.bridge));\n      addVox? deck plank slightly larger: v(x,h,z,C.bridge[i%2]);\n      if((x+z)%3===0) addVox(x,h+0.5+? plank top: thin slat: addVox(x, h+0.45, z, C.bridgeDark,1,0.1,1)\n    }\n    for(const z of [z0-1, z1+1]){\n      v(x,h+1,z,C.bridgeDark);\n      if((x-minX)%3===1) v(x,h,z,C.bridgeDark); // posts lower\n    }\n  }\n  // end steps\n  v(minX-1, -1?... \n}\n```\nHmm deck at u=0 h=0 → layer 0 (center -0.5+1? my v(x, layer) → center layer-0.5 → layer 0 center -0.5 spans -1..0 top 0 — same level as grass top 0. Wait grass at layer -1 center -0.5 top 0. Layer 0 center +0.5?? v(x, 0, z) → center -0.5?? v computes center = layer - 0.5 → layer 0 center -0.5 → spans -1..0 top 0 — same as grass! Overlapping. Let me recheck: layer -1 → center -1.5 spans -2..-1 top -1?? That's wrong.\n\nRedefine clearly: voxel with size 1 centered at cy spans [cy-0.5, cy+0.5]. Grass surface: top at 0 → center -0.5 → that's \"layer 0\" if layer l has center l-0.5. So layer l center = l - 0.5; layer 0 = grass level (top 0). Above: layer 1 center 0.5 (top 1). Below: layer -1 center -1.5 (top -1).\n\nSo terrain grass = v(x, 0, z, ...) i.e. layer 0. Pond dirt layers -2 and -1? Pond bottom: water bottom should be around -1.6: dirt layer -2 (center -2.5, spans -3..-2), layer -1 center -1.5 spans -2..-1 → water above from -1 up to -0.1: center -0.55, height 0.9. Good: pond dirt layers -1, -2.\n\nBridge layer h → center h-0.5, top = h+0.5. At h=0 top 0.5 — half-above grass top 0: visually deck raised 0.5. Ends at h=0 top 0.5, add step down voxels: at minX-1 and maxX+1: v(x,-? add thin step: addVox(x, 0.25, z, stone, 1, 0.5, 1)? Simpler: at ends place v(x,0,z,stone) — occupies -0.5..0.5 same as deck bottom half; overlaps ground? Ground top at 0, so voxel straddles: sunk half — looks like a step stone. Fine.\n\nPagoda: platform layers 0,1 (top 1.5) with plate voxels maybe scaled. Pagoda base layer 2.\n\nTier base l: 2 + tier*6; wallH 3; roof 3 layers at l+3..l+5 hmm wall at base..base+2 (3 layers), roof eave at base+3 (r+2 size), base+4 (r+1), base+5 (r) cap? That leaves next tier base = base+6 touching cap top at base+5+0.5=base+5.5 vs next layer base+6 center+5.5 → contiguous. Good: next tier base = prev base + 6.\n\nTier side lengths: t0 s=9 (r=4), t1 s=8 (r=3.5→ use 8? (s-1)/2 needs odd s for center). Odd sizes: [9,7,7,5,3]. Pitch 6: heights: base2 → roofs 5,6,7 (layers) next base 8; ... t0 roof occupies 5..7, t1 base 8 wall 8..10 roof 11..13, t2 base14..., t3 base20, t4 base26 wall 26..28 roof 29..31, spire from 32..34. Total height ~34.5 top. Good ratio.\n\nWith r=4 eave extends to r+2=6 → platform must be ≥ 13. Platform 13x13 centered (10,-10): x 4..16. eave t0 max radius 6 from center → within ±6.5 platform edge. \n\nWall building per tier:\n```js\nfunction pagodaTier(cx, cz, baseL, s, wallCols){\n  const r=(s-1)/2;\n  for(let l=baseL;l<baseL+3;l++)\n    for(let i=-r;i<=r;i++) for(let j=-r;j<=r;j++){\n      const m=Math.max(Math.abs(i),Math.abs(j));\n      if(m<r) continue; // hollow interior (except door)\n      const corner=Math.abs(i)===r && Math.abs(j)===r;\n      let col = corner? C.trim : wallCols[l-baseL];\n      // door on +z face at ground tier\n      if(baseL===2 && j===r && Math.abs(i)<=1 && l-baseL<3) col='#2c1c17';\n      if(baseL===2 && i===r && Math.abs(j)<=1 && l-baseL<3) col='#2c1c17';\n      v(cx+i, l, cz+j, col);\n    }\n  // window band\n  if(baseL>2){ ... dark windows at l=baseL+1 on faces center }\n  // roof flare\n  roofRing(cx,cz, baseL+3, r+2, C.roof[0], true);\n  roofRing(cx,cz, baseL+4, r+1, C.roof[1], true);\n  roofRing(cx,cz, baseL+5, r, C.roof[2], true);\n}\n```\nWait roof flare: eave r+2 bigger than wall r → overhang 2 all around. Stack: r+2, r+1, r, then cap r-1 small? I have 3 roof layers: r+2, r+1, r → then next tier sits at baseL+6 with same r... next tier wall radius r2 < r so sits inside cap r area? t1 r=3 < t0 r=4 — t1 base at l=8 radius 3 sits on cap r=4 ring at l=7. top of cap layer 7 center 6.5 → next tier layer 8 center 7.5 sits above. Good.\n\nroofRing: square ring at layer with radius rr: perimeter voxels; drop corner for upper layers to fake curvature: for layer index within roof drop corners if layer>0 and |i|===rr && |j|===rr && Math.random()<0.5 — skip? Deterministic better: drop corner on layer r+1 and r rings (the 2nd and 3rd roof layers) to create concave curve. Also add downward \"eave tips\": at r+2 layer corners add 1 lower voxel? eave tips point up typically (upturned corners). Add small upturn: at r+2 corners place voxel at baseL+3? that's the eave itself; upturn: at (cx±(r+2), baseL+3? , cz±(r+2)) add one at baseL+3+? hmm eave corner upturn = voxel at the corner position shifted outward: at (cx±(r+3), baseL+3, cz±(r+3))? Let me: for each corner direction, place upturn voxel at (cx±(r+2), baseL+3, cz±(r+2)) already ring; upturn voxel at (cx±(r+2), baseL+4? no — outward: (cx±(r+3), baseL+4, cz±(r+3))? confusing. Skip fancy upturn; stepped rings look good.\n\nSpire:\n```js\n// spire: rings\nfor(let l=32;l<=34;l++){ ... small rings r=1 then r=0 gold }\n```\n\nAlso tier wall colors: [C.wall[0], C.wall[1], C.wall[0], C.wall[1], C.wall[0]].\n\nPlatform: 13x13 two layers + edge trim:\n```js\nfor(let i=-6;i<=6;i++) for(let j=-6;j<=6;j++){\n  v(10+i, 0, -10+j, pick(C.stone));\n  if(i%6===0||j%6===0) v(10+i,1,-10+j,C.stone[1]) else v(10+i,1,-10+j,pick(C.stone));\n}\n```\nHmm layer1 full 13x13 solid; plus trim. ok. Also step at front: voxels extending z=-2 layer 0.\n\nTrees:\n```js\nfunction buildTree(cx,cz,lean){\n  const h=4+randi(0,1);\n  for(let l=0;l<h;l++) v(cx + (l>=h-2? lean:0), l+2? \n```\nTrunk from layer 1 (on grass layer 0, trunk layers 1..h+1? Let trunk layers 1..4, canopy center layer 6.\n```js\nfor(let l=1;l<=5;l++) v(cx,l,cz, pick(C.trunk), 1,1,1);\n// branches\nv(cx+1,5,cz,pick(C.trunk)); v(cx-1,6,cz,...); v(cx,5,cz+1,...); v(cx,6,cz-1?);\n// canopy blobs\nconst blobs=[[0,7,0,3],[1,8,1,2.2],[-2,7,-1,2],[0,6,2,1.8],[2,7,-2,1.6]];\nfor(dx=-4..4) dy=4..10 dz=-4..4: for each blob: dist<r-rand(0,0.9)? → v pink. shell: place if within r and (dist>r-1.4 or rand<0.4).\n```\nCanopy counts: 5 blobs r~2.2 → ~4/3πr³ ≈ 45 each shell less → ~120/tree. \n\nRocks:\n```js\nfunction buildRock(cx,cz,size){\n  for(dx=-size..size) ... place where dist<size-rand: v(cx+dx, 1+dy...) \n```\nBoulder: layered: for l=0..1: radius r_l: voxels where |dx|,|dz| ≤ r_l and (dx*dx+dz*dz)<r_l²; plus top voxel single. Use y=l.\n\nSimplest good-looking: \n```js\nfunction buildRock(cx, cz){\n  const s = randi(2,3);\n  for(let l=0;l<2;l++){\n    const r = l===0? s : s-1;\n    for(let dx=-r;dx<=r;dx++)for(let dz=-r;dz<=r;dz++){\n      if(dx*dx+dz*dz <= r*r+1) v(cx+dx,1+l,cz+dz, pick(C.rock));\n    }\n  }\n  v(cx, 3, cz, pick(C.rock)); // cap\n}\n```\nRock base at layer 1 (center 0.5, top 1) sits on grass top 0 → base half-sunk? v(x,1) spans 0..1 → sits directly on grass. Good.\n\nLantern:\n```js\nfunction buildLantern(cx,cz){\n  // base 3x3\n  for(let dx=-1;dx<=1;dx++)for(let dz=-1;dz<=1;dz++) v(cx+dx,1,cz+dz, pick(C.stone));\n  // shaft\n  v(cx,2,cz,C.stone[0]); v(cx,3,cz,C.stone[0]);\n  // platform\n  for(dx=-1..1)for(dz=-1..1) v(cx+dx,4,cz+dz, stone);\n  // firebox frame: 3x3 hollow at layers 5,6 with center glow\n  for(l=5;l<=6;l++) for(i=-1..1)for(j=-1..1){ if(i===0&&j===0) glowVox(cx,l,cz) else if(Math.abs(i)+Math.abs(j)<=2? just perimeter) v(...stone) }\n```\nGlow voxel: pushed as separate scene mesh (not instanced) with shared glowMat (emissive). I'll collect `glowParts: [{x,l,z}]` then after materials created, build small instanced mesh for them too with glowMat. Or simply push to a separate list and create InstancedMesh(glowGeo, glowMat, n). Good.\n```js\n  // roof: layers 7 (r=1 ring), 8 cap\n  ring at l=7 r=1 stone; v(cx,8,cz, stone); v(cx,9,cz, spire?) finial small.\n  // light position\n  lanternLights.push({x:cx,y:6,z:cz});\n```\nGlow tint: glowMat color #ffcf87 emissive #ffb45c.\n\nFence:\n```js\nfunction buildFence(){\n  for(let x=-20;x<=20;x++){\n    if(x%3===0){ v(x,1,21,C.bamboo); v(x,2,21,C.bamboo); }\n    else { v(x,1,21,C.bamboo); }\n  }\n  for(let z=-20;z<=21;z++){\n    if(z%3===0){ v(21,1,z,C.bamboo); v(21,2,z,C.bamboo); }\n    else v(21,1,z,C.bamboo);\n  }\n}\n```\nRails at layer 2 continuous instead: posts (layer 1,2,3 every 3), rails layer 1 & 2 continuous:\n```js\nrails: for all x: v(x,1,21) v(x,2,21); posts every 3: v(x,3,21).\n```\nNice bamboo fence: two rails + posts higher.\n\nSand rocks: buildRock(9,0), buildRock(13,2).\n\nRocks scattered: (-16,10) near pond edge? isPond(-16,10): dx=-0.842(0.71) dz=0.615(0.38)=1.09+ wobble... could be pond; use (-18,12): dx=-1.05 → 1.1+ → outside. ok. Rocks: (-18,12,s2), (-2,-14,s3 near pagoda front-left), (12,14), (-14,-6), (2,-16)? small garden cluster left of pagoda (17,-14) maybe. Choose safe: (-18,12),(-15,-18),(-19,-2),(13,14),(-2,3)? (-2,3): dx=0.63(.4) dz=-0.46(0.21)=0.61+... wobble could push to 0.75<1 → in pond? margin .25 vs wobble .16 → ok-ish. Use (-4,3): dx .42(.18)+dz-.46(.21)=.39 safe.\n\nPath stones: from (2,6) to (14,-2): points list, each flat stone:\n```js\nconst path=[[2,6],[5,5],[8,4],[11,2],[13,-1]];\nfor([x,z] of path){ addVox(x,0.1,z,pick(C.stone),1.1,0.2,1.1); }\n```\nAlso stone step at bridge end.\n\nWater mesh: from buildTerrain return, build InstancedMesh box with water color material; position center (x, -0.55, z), scale (0.99, 0.9, 0.99). Slight color variance per instance setColorAt with lightened/deep blue tint.\n\nKoi:\n```js\nfunction buildKoi(){\n  const pal = [\n    [C.koi.white, C.koi.red],\n    [C.koi.white, C.koi.orange],\n    [C.koi.orange, C.koi.white],\n    [C.koi.white, C.koi.black],\n    [C.koi.orange, C.koi.red],\n  ];\n  for(let i=0;i<5;i++){\n    const group=new THREE.Group();\n    const base=new THREE.MeshStandardMaterial({color:pal[i][0],roughness:.55});\n    const patchM=new THREE.MeshStandardMaterial({color:pal[i][1],roughness:.55});\n    const dark=new THREE.MeshStandardMaterial({color:C.koi.black,roughness:.5});\n    const g=new THREE.BoxGeometry(1,1,1);\n    const add=(mat,sx,sy,sz,x,y,z)=>{const m=new THREE.Mesh(g,mat);m.scale.set(sx,sy,sz);m.position.set(x,y,z);m.castShadow=false;return m;};\n    group.add(add(base,0.5,0.34,1.0, 0,0,0));\n    group.add(add(base,0.44,0.3,0.7, 0,0,0.75));\n    group.add(add(patchM,0.46,0.36,0.55, 0,0,-0.5));\n    group.add(add(patchM,0.2,0.2,0.3, 0.18,0.05,0.35));\n    group.add(add(dark,0.1,0.1,0.1, -0.12,0.14,1.02)); // eye\n    group.add(add(dark,0.1,0.1,0.1, 0.12,0.14,1.02));\n    // tail\n    const tail=new THREE.Group();\n    const t1=add(patchM,0.34,0.22,0.6,0,0,-0.45); tail.add(t1);\n    tail.position.set(0,0,-0.55);\n    group.add(tail);\n    // fins\n    group.add(add(patchM,0.26,0.08,0.3, 0,0.18,0.1));\n    group.add(add(patchM,0.08,0.22,0.26, 0.26,0,-0.2));\n    group.add(add(patchM,0.08,0.22,0.26, -0.26,0,-0.2));\n    // curve\n    const pts=[]; const n=7;\n    for(let k=0;k<n;k++){\n      const a = (k/n)*Math.PI*2 + i*0.7;\n      const rr = 0.42 + 0.25*Math.sin(k*1.9+i);\n      pts.push(new THREE.Vector3(POND.cx + Math.cos(a)*POND.rx*0.82*rr, -0.42+0.12*Math.sin(a*2+i), POND.cz + Math.sin(a)*POND.rz*0.82*rr));\n    }\n    const curve=new THREE.CatmullRomCurve3(pts,true,'catmullrom',0.5);\n    group.userData={curve, u:Math.random(), speed:rand(0.85,1.2)/38, phase:Math.random()*10, tail};\n    scene.add(group);\n    kois.push(group);\n  }\n}\n```\nWait curve rr uses 0.82*rr*... with rr varying 0.42-0.67 → radii up to 0.55 of ellipse → d=0.3 safely inside wobble .16. Good.\n\nKoi speed: full loop per ~1/speed seconds: speed=1/38 → 38s per loop; ok gentle.\n\nPetals:\n```js\nfunction buildPetals(){\n  const N=520;\n  const geo=new THREE.BoxGeometry(1,1,1);\n  const mat=new THREE.MeshStandardMaterial({roughness:.6, metalness:0});\n  petals=new THREE.InstancedMesh(geo, mat, N);\n  petals.castShadow=false; petals.receiveShadow=false;\n  const tmpC=new THREE.Color();\n  for(let i=0;i<N;i++){\n    tmpC.set(pick(C.petal)); petals.setColorAt(i,tmpC);\n    petalsData.push({p:new THREE.Vector3(), s:rand(0.6,1.4), ph:rand(0,Math.PI*2), sp:rand(1.2,2.2), rot:new THREE.Euler(), rs:new THREE.Vector3(rand(-2,2),rand(-3,3),rand(-1.5,1.5))});\n    spawnPetal(petalsData[i], true);\n  }\n  petals.instanceColor.needsUpdate=true;\n  scene.add(petals);\n}\nfunction spawnPetal(d, initial){\n  const treeCrowns=[[-17,-14],[16,14],[-2,18]];\n  if(!initial && Math.random()<0.4){\n    const c=pick(treeCrowns);\n    d.p.set(c[0]+rand(-3.5,3.5), rand(6,9), c[1]+rand(-3.5,3.5));\n  }else{\n    d.p.set(rand(-20,20), rand(10,22), rand(-20,20));\n  }\n}\n```\nUpdate in loop.\n\nSun/moon/sprites:\n```js\nfunction discTexture(inner, outer){\n  const c=document.createElement('canvas'); c.width=c.height=128;\n  const ctx=c.getContext('2d');\n  const g=ctx.createRadialGradient(64,64,4,64,64,62);\n  g.addColorStop(0, inner); g.addColorStop(0.35, outer); g.addColorStop(1,'rgba(255,255,255,0)');\n  ctx.fillStyle=g; ctx.fillRect(0,0,128,128);\n  const t=new THREE.CanvasTexture(c); t.colorSpace=THREE.SRGBColorSpace; return t;\n}\nconst sunMat=new THREE.SpriteMaterial({map:discTexture('rgba(255,247,220,1)','rgba(255,196,110,0.55)'), transparent:true, depthTest:false, depthWrite:false, fog:false});\nconst moonMat=new THREE.SpriteMaterial({map:discTexture('rgba(226,236,255,1)','rgba(150,170,220,0.4)'), transparent:true, depthTest:false, depthWrite:false, fog:false});\nsun=new THREE.Sprite(sunMat); sun.scale.set(46,46,1); sun.renderOrder=-5; sunCenter.\nmoon=new THREE.Sprite(moonMat); moon.scale.set(24,24,1); renderOrder -5.\n```\nSprites always face camera — good for sun/moon. depthTest false ensures drawn over dome; but also over garden if camera looks away? Sprites positioned far 340 away; depthTest false could draw over mountains? no mountains; they'd draw over the pagoda if aligned — edge case acceptable (sun behind pagoda would glitch through). Hmm, keep depthTest true? Then dome (BackSide, opaque-ish?) Dome material opaque with depthWrite true drawn first (renderOrder -1) then sprites at 340 inside dome radius 400 → sprite depth < dome depth → passes depth test → visible. If pagoda in front, pagoda closer → occludes correctly. That's better: keep depthTest true, dome radius 400, sprites 330, stars 370. Dome opaque. But sprites inside dome means dome drawn first with depthWrite — sprites behind garden occluded properly. \n\nSet dome.renderOrder=-1 and material.depthWrite=true, opaque. Stars: PointsMaterial depthTest true; they're beyond sprites. Order within opaque pass: dome (renderOrder -1) renders first? renderOrder default 0 for others → sorted; dome renderOrder -1 draws first, then garden, stars, sprites in normal order sorted by... transparent pass separate for sprites (transparent:true). Sprites transparent → drawn after opaques with depth test against dome — fine.\n\nStars: PointsMaterial({map: dotCanvas, size:2.4, sizeAttenuation:false? wait sizeAttenuation false gives constant screen size — good, transparent:true, depthWrite:false}). Star positions on dome radius 370 upper hemisphere. Rotate slowly.\n\nFog won't hit dome (fog:false) but garden fog color set.\n\nMain assembly order in code:\n\n```js\nconst container=document.getElementById('app')? I'll append renderer.domElement to body.\nscene, camera, renderer setup.\nconst controls=new OrbitControls(camera, renderer.domElement);\nlights: sun, hemi, amb.\nconst waterList=buildTerrain();\nbuildSandStones? path.\nbuildPagoda(10,-10);\nbuildTrees();\nbuildRocks();\nconst glowAnchors=[]; buildLanterns(glowAnchors);\nbuildFence();\nbuildBridge();\nbuildKoi();\nbuildPetals();\n// instanced meshes\nbuildInstancedVoxels();\nbuildWaterMesh(waterList);\nbuildGlowMesh(glowAnchors);\n// sky dome, stars, sun/moon sprites\n// UI wiring, loop\n```\n\nLantern glow anchors: two lanterns at (-2,-1) & (-16,0). Lights: PointLight at (x, 6.5, z)? glow voxel center at layer 5 center 4.5 → light at (x, 5, z). intensity up to 10, distance 15, decay 2. Color 0xffb26a.\n\nVoxel instanced build:\n```js\nfunction buildInstancedVoxels(){\n  const geo=new THREE.BoxGeometry(1,1,1);\n  const mat=new THREE.MeshStandardMaterial({roughness:.85, metalness:0});\n  const mesh=new THREE.InstancedMesh(geo, mat, voxels.length);\n  const d=new THREE.Object3D(); const col=new THREE.Color();\n  voxels.forEach((b,i)=>{\n    d.position.set(b.x,b.y,b.z); d.scale.set(b.sx,b.sy,b.sz); d.rotation.set(0,0,0); d.updateMatrix();\n    mesh.setMatrixAt(i,d.matrix);\n    col.set(b.color);\n    if(Math.random()<0.06) col.offsetHSL(0,0,rand(-0.03,0.03)); // subtle variance — but deterministic per instance, fine\n    mesh.setColorAt(i,col);\n  });\n  mesh.instanceColor.needsUpdate=true;\n  mesh.castShadow=true; mesh.receiveShadow=true;\n  scene.add(mesh);\n}\n```\noffsetHSL randomness: ok. But setColorAt before color management converts? fine.\n\nWater mesh similar with per-instance shade.\n\nUI & loop as planned.\n\nupdateSky function with sky tex redraw throttle:\n```js\nlet lastSkyT=-999;\nfunction updateSky(tMin){\n  const th=((tMin-360)/1440)*Math.PI*2;\n  const el=Math.sin(th), az=Math.cos(th);\n  const dayF=smoothstep(-0.08,0.12,el);\n  const tw=clamp(1-Math.abs(el)*6,0,1);\n  const twF=tw*smoothstep(-0.16,0.0,el)*smoothstep(0.3,0.08,el); // only near sunrise/sunset elevations\n  ...\n}\n```\nsimpler twilight: twF = clamp(1 - Math.abs(el)*6, 0, 1) * (el>-0.25 && el<0.32 ? 1:0)? Since |el| small near horizon anyway, just twF=clamp(1-|el|*6,0,1).\n\nsunDir.set(az*42, el*50, 15).normalize();\nsun.position.copy(sunDir).multiplyScalar(70);\nsunColor: warm day 'ffe9c4', moon '93a7e0' lerp by dayF; add twilight tint 'ff9a52' by twF*0.45.\nsun.intensity = lerpN(0.25, 1.25, dayF);\nsunTarget (0,0,0) default.\nhemi: day sky 'bcd8f2', night '1c2545'; intensity lerp .3 → .75; groundColor '3a3428' constant.\namb.intensity lerp .12 → .26.\n\ntopC: day '3f8fd4', night '0a1030'; horC: day 'cfe6f6', night '16204a'; lerp by dayF; then horC.lerp('f0a05e', twF*0.8); topC.lerp('7c5a8c', twF*0.35).\nfog: FogExp2(fog color = horC darkened .92, density lerp .0026→.0042 by dayF? plus tw). fog.color & density each frame.\n\nsky redraw if tMin - lastSkyT > 40 min? Since speed 8min/s * dt .016 = .128 min/frame — throttle: if tMin-lastSkyT>30 (game minutes) → redraw. At Fast speed 2.5 → .32min/frame → 30min = 94 frames ≈1.6s. Slider jumps: on input set lastSkyT=-999. Also initial draw.\n\nStars: starMat.opacity = 1 - smoothstep(-0.05, 0.16, el); also twinkle: skip.\nlanternF = 1 - smoothstep(-0.02, 0.14, el);\nglowMat.emissiveIntensity = 0.05 + lanternF*2.2; lantern lights intensity = lanternF*9.\nwater: waterMat.color lerp('17405a','3aa3c9', dayF); opacity = 0.66 + dayF*0.16.\n\nsun sprite: position sunDir*330; material.opacity = smoothstep(-0.16,0.0,el); \nmoon sprite: moonDir = (-az*42? compute: moonEl=-el, moonAz=-az): moonDir.set(-az*42, -el*50, 15).normalize()*330; opacity = smoothstep(0.16,0,el) i.e. 1 when el<=0... smoothstep(0.14,-0.02,el)? define visibleWhen below: 1 - smoothstep(-0.12, 0.02, el).\n\nClock/phase update:\n```js\nfunction updateTimeUI(){\n  const tm=((state.time%1440)+1440)%1440;\n  const h=Math.floor(tm/60), m=Math.floor((tm%60)/5)*5;\n  clock.textContent=`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;\n  phase.textContent = phaseName(tm);\n  const p=tm/1440*100; slider.style.setProperty('--p', p+'%');\n}\nfunction phaseName(tm){\n  if(tm<300) return 'Night';\n  if(tm<390) return 'Dawn';\n  if(tm<660) return 'Morning';\n  if(tm<840) return 'Midday';\n  if(tm<1020) return 'Afternoon';\n  if(tm<1170) return 'Dusk';\n  return 'Night';\n}\n```\nSlider programmatic update only when playing or set; to avoid fighting user drag: oninput sets state.time & pauses; loop sets slider.value when playing. Fine.\n\nLoader hide:\n```js\nfunction firstFrame(){ document.getElementById('loader').classList.add('hidden'); window.__ready=true; setTimeout(()=>loader.remove(),700); }\n```\nCall once after first render.\n\nError banner:\n```js\nwindow.addEventListener('error', e => { if(!window.__ready){ document.getElementById('cdn-error').style.display='block'; } });\nsetTimeout(()=>{ if(!window.__ready) document.getElementById('cdn-error').style.display='block'; }, 9000);\n```\n\nKeys:\n```js\naddEventListener('keydown', e=>{\n  if(e.code==='Space'){ e.preventDefault(); togglePlay(!state.playing); }\n  else if(e.code==='KeyO'){ setOrbit(!state.autoOrbit); }\n  else if(e.code==='ArrowLeft'){ setTime((state.time-15+1440)%1440); }\n  else if(e.code==='ArrowRight'){ setTime((state.time+15)%1440); }\n});\n```\n\nsetTime(t): state.time=t; lastSkyT=-999; updateTimeUI(); (pause playing? manual scrub pauses — but arrows are \"nudge\" — keep playing state unchanged for arrows; slider drag pauses. I'll make setTime not change playing; only slider 'input' pauses.)\n\nActually slider input while playing: state.time = v; pause; updateTimeUI; lastSkyT=-999.\n\ntogglePlay(v): state.playing=v; playBtn.textContent = v? 'Pause':'Play'; playBtn.classList.toggle('active', v).\n\nSpeed select: state.speed=+e.target.value.\n\nOrbit button: setOrbit(v): state.autoOrbit=v; controls.autoRotate=v; label `Orbit: ${v?'On':'Off'}`; class active.\n\ncontrols 'start'/'end' handlers as planned with state.autoOrbit.\n\nAlso when user re-enables orbit via button, immediate.\n\nLoop:\n\n```js\nconst clockObj=new THREE.Clock();\nfunction animate(){\n  requestAnimationFrame(animate);\n  const dt=Math.min(clockObj.getDelta(),0.1);\n  const now=performance.now()/1000;\n  if(state.playing){\n    state.time=(state.time + dt*8*state.speed)%1440;\n    slider.value=Math.round(state.time/5)*5;\n    updateTimeUI();\n  }\n  updateSky(state.time);\n  updateKoi(dt, now);\n  updatePetals(dt, now);\n  stars.rotation.y += dt*0.004;\n  controls.update();\n  renderer.render(scene,camera);\n  if(!firstDone){firstDone=true; firstFrame();}\n}\n```\n\nupdateKoi:\n```js\nconst fwd=new THREE.Vector3(0,0,1);\nfunction updateKoi(dt, now){\n  for(const k of kois){\n    const ud=k.userData;\n    ud.u=(ud.u + ud.speed*dt)%1;\n    const p=ud.curve.getPointAt(ud.u);\n    const tan=ud.curve.getTangentAt(ud.u).normalize();\n    k.position.set(p.x, p.y + Math.sin(now*2.1+ud.phase)*0.05, p.z);\n    k.quaternion.setFromUnitVectors(fwd, tan);\n    k.rotateZ(Math.sin(now*1.6+ud.phase)*0.06);\n    ud.tail.rotation.y=Math.sin(now*9+ud.phase)*0.4;\n  }\n}\n```\nNote: getPointAt requires arc-length lookup — CatmullRomCurve3 supports; ok per frame ×5 fish ×2 calls fine.\n\nupdatePetals:\n```js\nconst dummyObj=new THREE.Object3D();\nfunction updatePetals(dt, now){\n  for(let i=0;i<petalsData.length;i++){\n    const d=petalsData[i];\n    d.p.y -= d.sp*dt*(0.9);\n    d.p.x += Math.sin(now*1.7+d.ph)*0.55*dt;\n    d.p.z += Math.cos(now*1.3+d.ph*1.3)*0.55*dt;\n    d.rot.x += d.rs.x*dt; d.rot.y += d.rs.y*dt; d.rot.z += d.rs.z*dt;\n    if(d.p.y<0.06) spawnPetal(d,false);\n    dummyObj.position.copy(d.p);\n    dummyObj.rotation.copy(d.rot);\n    dummyObj.scale.set(0.16*d.s, 0.03*d.s, 0.24*d.s);\n    dummyObj.updateMatrix();\n    petals.setMatrixAt(i,dummyObj.matrix);\n  }\n  petals.instanceMatrix.needsUpdate=true;\n}\n```\n\nSky dome:\n```js\nfunction buildSky(){\n  const geo=new THREE.SphereGeometry(400, 32, 18);\n  skyCanvas=document.createElement('canvas'); skyCanvas.width=8; skyCanvas.height=256;\n  skyTex=new THREE.CanvasTexture(skyCanvas); skyTex.colorSpace=THREE.SRGBColorSpace;\n  const mat=new THREE.MeshBasicMaterial({map:skyTex, side:THREE.BackSide, fog:false, depthWrite:false});\n  skyDome=new THREE.Mesh(geo,mat); skyDome.renderOrder=-2; scene.add(skyDome);\n}\nfunction redrawSky(topC, horC){\n  const ctx=skyCanvas.getContext('2d');\n  const g=ctx.createLinearGradient(0,0,0,256);\n  const hs='#'+horC.getHexString();\n  const ds='#'+horC.clone().multiplyScalar(0.45).getHexString();\n  const ts='#'+topC.getHexString();\n  g.addColorStop(0, ds);\n  g.addColorStop(0.46, hs);\n  g.addColorStop(0.58, hs);\n  g.addColorStop(1, ts);\n  ctx.fillStyle=g; ctx.fillRect(0,0,8,256);\n  skyTex.needsUpdate=true;\n}\n```\ngetHexString returns sRGB hex after converting from working color? Color.getHexString(colorSpace = SRGBColorSpace) — yes returns sRGB-encoded. Good.\n\nCamera framing: position (46, 34, 46) target (0,6,-2). Let me set target (−1, 5, −2).\n\nrenderer setup:\n```js\nconst renderer=new THREE.WebGLRenderer({antialias:true, powerPreference:'high-performance'});\nrenderer.setPixelRatio(Math.min(devicePixelRatio,2));\nrenderer.setSize(innerWidth, innerHeight);\nrenderer.shadowMap.enabled=true; renderer.shadowMap.type=THREE.PCFSoftShadowMap;\nrenderer.toneMapping=THREE.ACESFilmicToneMapping; renderer.toneMappingExposure=1.05;\ndocument.body.appendChild(renderer.domElement);\n```\n\nCamera: PerspectiveCamera(50, aspect, .1, 1000).\n\nSun:\n```js\nconst sun=new THREE.DirectionalLight(0xffe9c4, 1.2);\nsun.castShadow=true; sun.shadow.mapSize.set(2048,2048);\nsun.shadow.camera.left=-48; right=48; top=48; bottom=-48; near=8; far=170; sun.shadow.bias=-0.0005; sun.shadow.normalBias=0.05;\nscene.add(sun); scene.add(sun.target); sun.target.position.set(0,0,0);\n```\n\nHemi, amb.\n\nNow — total file maybe 950 lines. Fine.\n\nLet me also double-check `v(x, l, z, col, sx, sz)` signature conflicts with flat stones using addVox directly.\n\nOne more check — `MeshStandardMaterial` on InstancedMesh + setColorAt: colors multiply material.color (white) → correct.\n\nWater instanced: material with transparent true; shadows: castShadow false, receive true? Set false both to avoid artifacts; water slightly below surface anyway.\n\nGlow mesh: material MeshStandardMaterial({color:'#3a2a18', emissive:'#ffb45c', emissiveIntensity:1}). Actually glow voxels should look bright: color dark + emissive strong.\n\nNow positions double-check pagoda vs sand: sand z −2..2, pagoda base platform z −17..−3, front step at z=−2? ok.\n\nBridge at z 6..7 from x 3?maxX = max x pond approx 1.5 +1 → deck extends x [-18, 3]. Bridge end at x=3 near path stones. \n\nFence z=21 & x=21; trees at (16,14) inside. Pond spans to x=−17.5; fence fine.\n\nRocks at (−19,−2): near fence edge, isPond? dx=(−19+8)/9.5=−1.16 → outside. Fine. (−15,−18): dx −0.74(0.55) dz −3.7 → outside. (13,14): dx 2.2 outside. (−4,3): computed safe. (9,0),(13,2) in sand — wait sand spans z −2..2, x 3..17 → (13,2) edge ok, (9,0) ok.\n\nTrees at (−17,−14): need ground: isPond? dx=−0.947(0.897) dz=−3.08(9.49) → outside ✓. (16,14): dx 2.53 outside ✓. (−2,18): dx 0.63(.4) dz 1.85(3.42) → 3.8 outside ✓.\n\nPetal spawn canopy of tree at (−2,18) ok.\n\nKoi y: water top −0.1; fish center −0.42 with body height .34 → top −0.25 below surface? Fish would be submerged (invisible-ish through transparent water). Better: fish center y = −0.3, top ≈ −0.13 slightly below surface. Transparent water will still show them; koi visible through water — good look. Set curve y base −0.3, bob ±0.05.\n\nPond dirt layers: layer -1 & -2: layer -1 center -1.5 spans -2..-1; layer -2 center -2.5 spans -3..-2. Water bottom at -1: water voxel center -0.55, height 0.9 spans -1..-0.1 ✓ sits on dirt top -1 ✓.\n\nGrass rim stone cells: v(x,0,z,pick(stone)) — replaces grass at rim, fine (adds stone edging).\n\nWater instance color variance: col.set('#2f7f9c').offsetHSL(0,0,rand(-0.05,0.05)).\n\nNow writing the actual file. Also add small `hint` fade after few seconds? Keep visible.\n\nAlso consider controls.enablePan=false; minPolarAngle 0.15; maxPolarAngle 1.48; minDistance 18; maxDistance 140; rotateSpeed 0.85; zoomSpeed 0.8.\n\nLet me write it now. I'll write to /tmp/ocb/task-1-voxel-zen-garden/step-5-preview/index.html. Check directory exists first with ls.\n\nAlso verify CDN reachable with curl -sI.\n\nAfter writing: extract module script → node --check. Implementation: use python or sed? Use a quick node script to extract between `<script type=\"module\">` and `</script>`. Write to /tmp/ocb/check.mjs and run node --check. Also validate importmap JSON parse via node.\n\nLet me write the file with the write tool now.\n\nCareful about escaping: the file is plain HTML; no template literal issues.\n\nOne more detail: `slider.value=Math.round(state.time/5)*5` каждой frame during playing — fine.\n\nWrite code now. Length is big; let me be systematic and avoid syntax errors. I'll then run node --check.\n\nPetal respawn bounds x/z rand(-19,19).\n\nFor updateTimeUI when playing each frame — cheap DOM writes ok.\n\nLet me finalize and write.",
+          "time": {
+            "start": 1791702874630,
+            "end": 1791703602714
+          },
+          "id": "prt_129d03a06001wkoUKvJnviHppk",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_129d02e63002BVSFDuvqoxL7G9"
+        },
+        {
+          "type": "tool",
+          "tool": "bash",
+          "callID": "call_f8ce4b0b55b74354899aa135",
+          "state": {
+            "status": "completed",
+            "input": {
+              "command": "ls -la /tmp/ocb/task-1-voxel-zen-garden/step-5-preview && curl -sI https://unpkg.com/three@0.169.0/build/three.module.js | head -3"
+            },
+            "output": "total 4\ndrwxr-xr-x 2 sandbox sandbox 4096 Oct 11 06:59 .\ndrwxr-xr-x 3 sandbox sandbox   60 Oct 11 07:11 ..\nHTTP/1.1 200 Connection Established\r\n\r\nHTTP/2 200 \r\n",
+            "metadata": {
+              "output": "total 4\ndrwxr-xr-x 2 sandbox sandbox 4096 Oct 11 06:59 .\ndrwxr-xr-x 3 sandbox sandbox   60 Oct 11 07:11 ..\nHTTP/1.1 200 Connection Established\r\n\r\nHTTP/2 200 \r\n",
+              "exit": 0,
+              "truncated": false
+            },
+            "title": "ls -la /tmp/ocb/task-1-voxel-zen-garden/step-5-preview && curl -sI https://unpkg.com/three@0.169.0/build/three.module.js | head -3",
+            "time": {
+              "start": 1791703602747,
+              "end": 1791703603022
+            }
+          },
+          "id": "prt_129db56270018qQJ9G6lJCCkmG",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_129d02e63002BVSFDuvqoxL7G9"
+        },
+        {
+          "reason": "tool-calls",
+          "type": "step-finish",
+          "tokens": {
+            "total": 43398,
+            "input": 13158,
+            "output": 74,
+            "reasoning": 29334,
+            "cache": {
+              "write": 0,
+              "read": 832
+            }
+          },
+          "cost": 0,
+          "id": "prt_129db5754001p1Q916ZnvOZyNg",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_129d02e63002BVSFDuvqoxL7G9"
+        }
+      ]
+    },
+    {
+      "info": {
+        "parentID": "msg_129d02ba4001E2XppkceKzlJye",
+        "role": "assistant",
+        "mode": "build",
+        "agent": "build",
+        "variant": "high",
+        "path": {
+          "cwd": "/tmp/ocb/task-1-voxel-zen-garden/step-5-preview",
+          "root": "/"
+        },
+        "cost": 0,
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "reasoning": 0,
+          "cache": {
+            "read": 0,
+            "write": 0
+          }
+        },
+        "modelID": "step-5-preview-free",
+        "providerID": "opencode",
+        "time": {
+          "created": 1791703603050,
+          "completed": 1791704491105
+        },
+        "error": {
+          "name": "UnknownError",
+          "data": {
+            "message": "{\"message\":\"Streaming response failed: [504] Upstream idle timeout exceeded\",\"type\":\"server_error\"}"
+          }
+        },
+        "id": "msg_129db576a0027ju0uLUSxikV36",
+        "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003"
+      },
+      "parts": [
+        {
+          "type": "step-start",
+          "id": "prt_129db6b1d001P65D0Ah7ypmLxm",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_129db576a0027ju0uLUSxikV36"
+        },
+        {
+          "type": "reasoning",
+          "text": "CDN is reachable. Now write the file.",
+          "time": {
+            "start": 1791703608099,
+            "end": 1791703608728
+          },
+          "id": "prt_129db6b23001wNdOu1V2Vj753f",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_129db576a0027ju0uLUSxikV36"
+        },
+        {
+          "type": "text",
+          "text": "",
+          "time": {
+            "start": 1791703608733
+          },
+          "id": "prt_129db6d9d001dDt7AOw3qIb4u0",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_129db576a0027ju0uLUSxikV36"
+        },
+        {
+          "type": "step-start",
+          "id": "prt_129dd5525001Emf4V2RtLgBP4p",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_129db576a0027ju0uLUSxikV36"
+        },
+        {
+          "type": "reasoning",
+          "text": "",
+          "time": {
+            "start": 1791703733551
+          },
+          "id": "prt_129dd552f001xTrss0zyh7LJdt",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_129db576a0027ju0uLUSxikV36"
+        },
+        {
+          "type": "step-start",
+          "id": "prt_129e05dab001jDPHk9EeygeFD4",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_129db576a0027ju0uLUSxikV36"
+        },
+        {
+          "type": "reasoning",
+          "text": "",
+          "time": {
+            "start": 1791703932339
+          },
+          "id": "prt_129e05db30010NFaRXh63X372u",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_129db576a0027ju0uLUSxikV36"
+        },
+        {
+          "type": "step-start",
+          "id": "prt_129e26be1001dNcypljgZrUgzu",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_129db576a0027ju0uLUSxikV36"
+        },
+        {
+          "type": "reasoning",
+          "text": "CDN reachable. Now write the file. Let me write the complete index.html carefully.",
+          "time": {
+            "start": 1791704067542,
+            "end": 1791704067549
+          },
+          "id": "prt_129e26dd6001treDSR1bXHuo92",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_129db576a0027ju0uLUSxikV36"
+        },
+        {
+          "type": "text",
+          "text": "",
+          "time": {
+            "start": 1791704067554
+          },
+          "id": "prt_129e26de2001HLfHwD7SMbUSqT",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_129db576a0027ju0uLUSxikV36"
+        },
+        {
+          "type": "step-start",
+          "id": "prt_129e493d00014juQYuX5IEcirL",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_129db576a0027ju0uLUSxikV36"
+        },
+        {
+          "type": "reasoning",
+          "text": "Directory exists, CDN reachable. Now write the file.",
+          "time": {
+            "start": 1791704208343,
+            "end": 1791704209081
+          },
+          "id": "prt_129e493d7001EXJIYsKdF2yu94",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_129db576a0027ju0uLUSxikV36"
+        },
+        {
+          "type": "text",
+          "text": "",
+          "time": {
+            "start": 1791704209086
+          },
+          "id": "prt_129e496be001IyYFr9uCAQ32sD",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_129db576a0027ju0uLUSxikV36"
+        },
+        {
+          "type": "step-start",
+          "id": "prt_129e70e97001kFfphRM593jYId",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_129db576a0027ju0uLUSxikV36"
+        },
+        {
+          "type": "tool",
+          "tool": "write",
+          "callID": "call_0775cb798a104b48b2f6f007",
+          "state": {
+            "status": "error",
+            "input": {},
+            "raw": "",
+            "error": "Tool execution aborted",
+            "metadata": {
+              "interrupted": true
+            },
+            "time": {
+              "start": 1791704491101,
+              "end": 1791704491101
+            }
+          },
+          "id": "prt_129e70ea1001SO7DLf8BelDBSl",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_129db576a0027ju0uLUSxikV36"
+        }
+      ]
+    },
+    {
+      "info": {
+        "role": "user",
+        "time": {
+          "created": 1791705645847
+        },
+        "agent": "build",
+        "model": {
+          "providerID": "opencode",
+          "modelID": "step-5-preview-free",
+          "variant": "high"
+        },
+        "summary": {
+          "diffs": []
+        },
+        "id": "msg_129fa831700116sLK5xt4Nr0xA",
+        "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003"
+      },
+      "parts": [
+        {
+          "type": "text",
+          "text": "\"Build it.\"",
+          "id": "prt_129fa831a001R5cDAsNCUtw5xj",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_129fa831700116sLK5xt4Nr0xA"
+        }
+      ]
+    },
+    {
+      "info": {
+        "parentID": "msg_129fa831700116sLK5xt4Nr0xA",
+        "role": "assistant",
+        "mode": "build",
+        "agent": "build",
+        "variant": "high",
+        "path": {
+          "cwd": "/tmp/ocb/task-1-voxel-zen-garden/step-5-preview",
+          "root": "/"
+        },
+        "cost": 0,
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "reasoning": 0,
+          "cache": {
+            "read": 0,
+            "write": 0
+          }
+        },
+        "modelID": "step-5-preview-free",
+        "providerID": "opencode",
+        "time": {
+          "created": 1791705646525
+        },
+        "id": "msg_129fa85bd0028zOjJrJOIqF1a5",
+        "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003"
+      },
+      "parts": [
+        {
+          "type": "step-start",
+          "id": "prt_129fa9786001h5ef5YHX2fkUqa",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_129fa85bd0028zOjJrJOIqF1a5"
+        },
+        {
+          "type": "reasoning",
+          "text": "CDN is reachable. Directory exists. Now write the full index.html.",
+          "time": {
+            "start": 1791705651105,
+            "end": 1791705651639
+          },
+          "id": "prt_129fa97a1001b57dTYXudXxIRR",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_129fa85bd0028zOjJrJOIqF1a5"
+        },
+        {
+          "type": "text",
+          "text": "",
+          "time": {
+            "start": 1791705651644
+          },
+          "id": "prt_129fa99bc001ZcNTbLAvMb41Ie",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_129fa85bd0028zOjJrJOIqF1a5"
+        }
+      ]
+    },
+    {
+      "info": {
+        "role": "user",
+        "time": {
+          "created": 1791706143842
+        },
+        "agent": "build",
+        "model": {
+          "providerID": "opencode",
+          "modelID": "step-5-preview-free",
+          "variant": "high"
+        },
+        "summary": {
+          "diffs": []
+        },
+        "id": "msg_12a021c62001R4sIyw7QS7IS1C",
+        "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003"
+      },
+      "parts": [
+        {
+          "type": "text",
+          "text": "\"Build it.\"",
+          "id": "prt_12a021c660019i3Em25zcZ1IGP",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_12a021c62001R4sIyw7QS7IS1C"
+        }
+      ]
+    },
+    {
+      "info": {
+        "parentID": "msg_12a021c62001R4sIyw7QS7IS1C",
+        "role": "assistant",
+        "mode": "build",
+        "agent": "build",
+        "variant": "high",
+        "path": {
+          "cwd": "/tmp/ocb/task-1-voxel-zen-garden/step-5-preview",
+          "root": "/"
+        },
+        "cost": 0,
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "reasoning": 0,
+          "cache": {
+            "read": 0,
+            "write": 0
+          }
+        },
+        "modelID": "step-5-preview-free",
+        "providerID": "opencode",
+        "time": {
+          "created": 1791706144432,
+          "completed": 1791706730025
+        },
+        "error": {
+          "name": "APIError",
+          "data": {
+            "message": "Upstream request failed: Endpoint is unavailable.",
+            "statusCode": 429,
+            "isRetryable": true,
+            "responseHeaders": {
+              "cf-placement": "remote-ORD",
+              "cf-ray": "a48c6fb0698e5ee5-PDX",
+              "connection": "keep-alive",
+              "content-length": "95",
+              "content-type": "application/json",
+              "date": "Sun, 11 Oct 2026 08:18:49 GMT",
+              "server": "cloudflare",
+              "x-opencode-log-id": "3f4f40ca-a687-4dd6-8231-da6f5cd75bd1"
+            },
+            "responseBody": "{\"error\":{\"type\":\"server_error\",\"message\":\"Upstream request failed: Endpoint is unavailable.\"}}",
+            "metadata": {
+              "url": "https://opencode.ai/zen/v1/chat/completions"
+            }
+          }
+        },
+        "id": "msg_12a021eb0002coosGhpLcgxlq5",
+        "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003"
+      },
+      "parts": [
+        {
+          "type": "step-start",
+          "id": "prt_12a0266ab001lYadA1f49IdS6x",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_12a021eb0002coosGhpLcgxlq5"
+        },
+        {
+          "type": "text",
+          "text": "",
+          "time": {
+            "start": 1791706162863
+          },
+          "id": "prt_12a0266af001EiNILCiTeZFO6V",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_12a021eb0002coosGhpLcgxlq5"
+        },
+        {
+          "type": "step-start",
+          "id": "prt_12a0454d3001zIAFtk3p9HhTGF",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_12a021eb0002coosGhpLcgxlq5"
+        },
+        {
+          "type": "tool",
+          "tool": "write",
+          "callID": "call_8f8cddb1211143b7834163d2",
+          "state": {
+            "status": "error",
+            "input": {},
+            "raw": "",
+            "error": "Tool execution aborted",
+            "metadata": {
+              "interrupted": true
+            },
+            "time": {
+              "start": 1791706730020,
+              "end": 1791706730020
+            }
+          },
+          "id": "prt_12a045581001QZlABIBKkVi3Bx",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_12a021eb0002coosGhpLcgxlq5"
+        },
+        {
+          "type": "step-start",
+          "id": "prt_12a0645c6001LSh3N3zwHG5yoB",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_12a021eb0002coosGhpLcgxlq5"
+        },
+        {
+          "type": "reasoning",
+          "text": "",
+          "time": {
+            "start": 1791706416588
+          },
+          "id": "prt_12a0645cc001he7TqI8qysA209",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_12a021eb0002coosGhpLcgxlq5"
+        },
+        {
+          "type": "step-start",
+          "id": "prt_12a086245001GV5bFi1BWtiblJ",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_12a021eb0002coosGhpLcgxlq5"
+        },
+        {
+          "type": "reasoning",
+          "text": "",
+          "time": {
+            "start": 1791706554957
+          },
+          "id": "prt_12a08624d0014OHNEkVkyXJgn1",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_12a021eb0002coosGhpLcgxlq5"
+        }
+      ]
+    },
+    {
+      "info": {
+        "role": "user",
+        "time": {
+          "created": 1791706822226
+        },
+        "agent": "build",
+        "model": {
+          "providerID": "opencode",
+          "modelID": "step-5-preview-free",
+          "variant": "high"
+        },
+        "summary": {
+          "diffs": []
+        },
+        "id": "msg_12a0c7652001oFANxWNee1Tfpz",
+        "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003"
+      },
+      "parts": [
+        {
+          "type": "text",
+          "text": "\"Build it.\"",
+          "id": "prt_12a0c7654001eZHX1WWB9vvp4T",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_12a0c7652001oFANxWNee1Tfpz"
+        }
+      ]
+    },
+    {
+      "info": {
+        "parentID": "msg_12a0c7652001oFANxWNee1Tfpz",
+        "role": "assistant",
+        "mode": "build",
+        "agent": "build",
+        "variant": "high",
+        "path": {
+          "cwd": "/tmp/ocb/task-1-voxel-zen-garden/step-5-preview",
+          "root": "/"
+        },
+        "cost": 0,
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "reasoning": 0,
+          "cache": {
+            "read": 0,
+            "write": 0
+          }
+        },
+        "modelID": "step-5-preview-free",
+        "providerID": "opencode",
+        "time": {
+          "created": 1791706822869,
+          "completed": 1791707570568
+        },
+        "error": {
+          "name": "UnknownError",
+          "data": {
+            "message": "{\"message\":\"Streaming response failed: [504] Upstream idle timeout exceeded\",\"type\":\"server_error\"}"
+          }
+        },
+        "id": "msg_12a0c78d5002AhW21t6j8HtVSN",
+        "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003"
+      },
+      "parts": [
+        {
+          "type": "step-start",
+          "id": "prt_12a0d330b001s5Knj9u89Pc3bN",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_12a0c78d5002AhW21t6j8HtVSN"
+        },
+        {
+          "type": "reasoning",
+          "text": "",
+          "time": {
+            "start": 1791706870545
+          },
+          "id": "prt_12a0d3311001QO1sP3VZ571uht",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_12a0c78d5002AhW21t6j8HtVSN"
+        },
+        {
+          "type": "step-start",
+          "id": "prt_12a0f3120001P4FyPGByXQevT8",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_12a0c78d5002AhW21t6j8HtVSN"
+        },
+        {
+          "type": "reasoning",
+          "text": "",
+          "time": {
+            "start": 1791707001126
+          },
+          "id": "prt_12a0f3126001oIzsFsxPQGdPcC",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_12a0c78d5002AhW21t6j8HtVSN"
+        },
+        {
+          "type": "step-start",
+          "id": "prt_12a1138be0015593gIpfvBFr6s",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_12a0c78d5002AhW21t6j8HtVSN"
+        },
+        {
+          "type": "tool",
+          "tool": "write",
+          "callID": "call_a9242d536b244cd1899945af",
+          "state": {
+            "status": "error",
+            "input": {},
+            "raw": "",
+            "error": "Tool execution aborted",
+            "metadata": {
+              "interrupted": true
+            },
+            "time": {
+              "start": 1791707570560,
+              "end": 1791707570560
+            }
+          },
+          "id": "prt_12a1138c4001HLc8K3bf22Jp0p",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_12a0c78d5002AhW21t6j8HtVSN"
+        },
+        {
+          "type": "step-start",
+          "id": "prt_12a1359db001ZewMoWHiYe1Mw4",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_12a0c78d5002AhW21t6j8HtVSN"
+        },
+        {
+          "type": "tool",
+          "tool": "write",
+          "callID": "call_afa20f5c899944e4b65a4d7f",
+          "state": {
+            "status": "error",
+            "input": {},
+            "raw": "",
+            "error": "Tool execution aborted",
+            "metadata": {
+              "interrupted": true
+            },
+            "time": {
+              "start": 1791707570565,
+              "end": 1791707570565
+            }
+          },
+          "id": "prt_12a1359e2001SLCXhNQYqaTZ7t",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_12a0c78d5002AhW21t6j8HtVSN"
+        },
+        {
+          "type": "step-start",
+          "id": "prt_12a1608ae001BH6KYEvhTrtW8K",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_12a0c78d5002AhW21t6j8HtVSN"
+        },
+        {
+          "type": "reasoning",
+          "text": "Build mode is now active. I have a clear plan. Let me write the index.html file now, then verify with node --",
+          "time": {
+            "start": 1791707449524,
+            "end": 1791707570298
+          },
+          "id": "prt_12a1608b4001C4By863rFGrZIR",
+          "sessionID": "ses_ed63d7cd1ffespkrWGcBM5u003",
+          "messageID": "msg_12a0c78d5002AhW21t6j8HtVSN"
+        }
+      ]
+    }
+  ]
+}
