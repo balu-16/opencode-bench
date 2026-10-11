@@ -54,9 +54,8 @@ See `results.csv` and the per-task table below (updated as tasks complete).
 | task-1-voxel-zen-garden | [LongCat 2.5 Preview](task-1-voxel-zen-garden/longcat-2.5-preview/notes.md) | high | 39.9 | 842.6 | 882.5 | 0 | no | **works** | 0 |
 | task-1-voxel-zen-garden | [Space Bunny](task-1-voxel-zen-garden/space-bunny/notes.md) | max | 97.9 | 3862.6 | 3960.5 | 1 | no | **works** | 0 |
 | task-1-voxel-zen-garden | [MiMo V2.6 Flash](task-1-voxel-zen-garden/mimo-v2.6-flash/notes.md) | default | 143.7 | 2685.9 | 2829.6 | 0 | no | **works** | 0 |
+| task-1-voxel-zen-garden | [Step 5 Preview](task-1-voxel-zen-garden/step-5-preview/notes.md) | high | 165.6 | 3657.4 | 3823.0 | 1 | no | **broken (no output)** | 1 |
 | task-1-voxel-zen-garden | [Muse Spark 1.3](task-1-voxel-zen-garden/muse-spark-1.3/notes.md) | xhigh | 31.5 | 111.5 | 143.0 | 1 | no | **works** | 0 |
-
-_Step 5 Preview (task 1) is still pending: its build was interrupted by sandbox resets and provider 504 errors (see below); its row, files and the task-1 grid will be added when it completes._
 
 <!-- /RESULTS_TABLE -->
 
@@ -71,5 +70,7 @@ Task 1 hit four harness bugs before the protocol was stable. The affected attemp
 4. **Step 5 Preview, attempt 0** — a scheduling bug in the queue script let Step's plan request start while MiMo's build was still running (strictly-sequential rule broken for ~1 min). Step's attempt was voided without using its output and re-run in a fresh session once MiMo had finished; MiMo's run was kept (no rate limit was hit during the overlap).
 
 **Sandbox resets.** The machine running the benchmark restarted roughly every 50 minutes, killing whatever was running. That interrupted three task-1 builds: Space Bunny (after ~29 min), MiMo (after ~9 min) and Step (after ~5 min). In each case the work directory and session survived, and the identical `Build it.` message was re-sent **in the same session** (a logged retry, like a rate-limit retry, not a re-roll). The model carried on from whatever was already on disk and in its session history. Build time = time until the reset + time of the resumed run, so these build times include some repeated thinking. Each model's `notes.md` gives the split.
+
+**Step 5 Preview provider failures (task 1).** Step's build request was sent 5 times in the same session: two sends were killed by sandbox resets (after 326 s and 70 s) and three failed because the free provider endpoint kept returning `[504] Upstream idle timeout exceeded` (once `[429] Endpoint is unavailable`) until OpenCode gave up. Retries were then stopped. Step never wrote a file, so it is recorded as **broken (no output)**; its build time (3657.4 s) is the sum of all five sends, its "console error" is just "no index.html", and its grid panel is black.
 
 The official LongCat task-1 run (attempt 2) happened after fix 2 but before the jail; its tool calls were audited and it never touched anything outside its own dir and temp scratch. All later runs use the jail. Transcripts have sandbox proxy credentials redacted (`[REDACTED_SANDBOX_PROXY]`); nothing else is changed.
