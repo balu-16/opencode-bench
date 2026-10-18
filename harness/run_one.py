@@ -26,6 +26,12 @@ MODELS = {
     "mimo-v2.6-flash":     ("opencode/mimo-v2.6-flash-free", None),   # no variants -> default
     "step-5-preview":      ("opencode/step-5-preview-free", "high"),
     "muse-spark-1.3":      ("opencode/muse-spark-1.3-contributor-free", "xhigh"),
+    "exo":                 ("opencode/exo-free", "high"),   # added 2026-10-14 as 6th model (only variant = high)
+    # extra models added 2026-10-18 (max reasoning variant from models.json), run on opencode 1.19.0
+    "deepseek-v4.1-flash":   ("opencode/deepseek-v4.1-flash-free", "max"),
+    "beam":                  ("opencode/beam-free", "max"),
+    "nemotron-3.5-super-vl": ("opencode/nemotron-3.5-super-vl-free", "xhigh"),
+    "glm-5.3-flash":         ("opencode/glm-5.3-flash-free", "max"),
 }
 TIMEOUT = 2400  # 40 min per phase
 MAX_ATTEMPTS = 2  # provider-error policy (task 2+): current attempt + one retry
@@ -83,7 +89,8 @@ def oc_run(task, folder, agent, message, session=None, tag="phase"):
         # rate limit detection -> retry same request (logged, not a re-roll)
         txt = open(logf).read()[-20000:] + open(errf).read()[-5000:]
         rl = (("rate limit" in txt.lower()) or (" 429" in txt) or ('"statusCode":429' in txt)
-              or ("[504]" in txt) or ("upstream idle timeout" in txt.lower())) and not timed_out
+              or ("[504]" in txt) or ("upstream idle timeout" in txt.lower())
+              or ("unexpected server error" in txt.lower())) and not timed_out   # 2026-10-18: Zen UnknownError counts as provider error
         produced = '"type":"text"' in txt or '"type":"tool_use"' in txt
         # task-2 policy: provider failure (429/504) -> the current attempt plus ONE more identical retry, then stop.
         if rl and attempt < MAX_ATTEMPTS and rc != 0:
@@ -93,12 +100,14 @@ def oc_run(task, folder, agent, message, session=None, tag="phase"):
         return rc, round(total_dt, 1), timed_out, attempt   # dt = sum of all attempts (retry wait excluded)
 
 def session_from(logf):
+    # last sessionID in the log: after a provider-error retry of a fresh plan, the retry's (new) session is the live one
+    sid = None
     for line in open(logf):
         try:
             j = json.loads(line)
-            if j.get("sessionID"): return j["sessionID"]
+            if j.get("sessionID"): sid = j["sessionID"]
         except Exception: pass
-    return None
+    return sid
 
 def last_text(logf):
     out = []
