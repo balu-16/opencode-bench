@@ -34,7 +34,7 @@ MODELS = {
     "glm-5.3-flash":         ("opencode/glm-5.3-flash-free", "max"),
 }
 TIMEOUT = 2400  # 40 min per phase
-MAX_ATTEMPTS = 2  # provider-error policy (task 2+): current attempt + one retry
+MAX_ATTEMPTS = int(os.environ.get("OCB_MAX_ATTEMPTS", 2))  # provider-error policy (task 2+): current attempt + one retry (env override when a retry is sent by hand)
 
 def paths(task, folder):
     # model's fresh empty dir lives OUTSIDE the bench tree so the model cannot see spec/other runs
@@ -90,7 +90,8 @@ def oc_run(task, folder, agent, message, session=None, tag="phase"):
         txt = open(logf).read()[-20000:] + open(errf).read()[-5000:]
         rl = (("rate limit" in txt.lower()) or (" 429" in txt) or ('"statusCode":429' in txt)
               or ("[504]" in txt) or ("upstream idle timeout" in txt.lower())
-              or ("unexpected server error" in txt.lower())) and not timed_out   # 2026-10-18: Zen UnknownError counts as provider error
+              or ("unexpected server error" in txt.lower()) or ("endpoint is unavailable" in txt.lower())
+              or ('"statusCode":503' in txt)) and not timed_out   # 2026-10-18: Zen UnknownError counts as provider error
         produced = '"type":"text"' in txt or '"type":"tool_use"' in txt
         # task-2 policy: provider failure (429/504) -> the current attempt plus ONE more identical retry, then stop.
         if rl and attempt < MAX_ATTEMPTS and rc != 0:
