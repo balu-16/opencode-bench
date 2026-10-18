@@ -1,6 +1,6 @@
 # OpenCode free-model benchmark
 
-Five free models served through [OpenCode](https://opencode.ai) (Zen, `opencode/*-free`), five coding tasks, one strict protocol. Every output is published as-is — working, half-working or broken.
+Five free models served through [OpenCode](https://opencode.ai) (Zen, `opencode/*-free`), five coding tasks, one strict protocol. **Four extra free models were added on 18 Oct 2026** (DeepSeek V4.1 Flash, Beam, Nemotron 3.5 Super VL, GLM 5.3 Flash) and run later under the same protocol on OpenCode 1.19.0; see [Extra models](#extra-models-added-18-oct-2026). Every output is published as-is — working, half-working or broken.
 
 ## Models
 
@@ -11,6 +11,10 @@ Five free models served through [OpenCode](https://opencode.ai) (Zen, `opencode/
 | MiMo V2.6 Flash | `opencode/mimo-v2.6-flash-free` | `default` (model exposes no variants) |
 | Step 5 Preview | `opencode/step-5-preview-free` | `high` |
 | Muse Spark 1.3 | `opencode/muse-spark-1.3-contributor-free` | `xhigh` |
+| DeepSeek V4.1 Flash *(extra, 18 Oct)* | `opencode/deepseek-v4.1-flash-free` | `max` |
+| Beam *(extra, 18 Oct)* | `opencode/beam-free` | `max` |
+| Nemotron 3.5 Super VL *(extra, 18 Oct)* | `opencode/nemotron-3.5-super-vl-free` | `xhigh` |
+| GLM 5.3 Flash *(extra, 18 Oct)* | `opencode/glm-5.3-flash-free` | `max` |
 
 Variants come from `opencode models --verbose` (OpenCode 1.19.0). No API key was needed for any of these free models.
 
@@ -35,7 +39,7 @@ Variants come from `opencode models --verbose` (OpenCode 1.19.0). No API key was
 ```
 task-N-name/
   prompt.md                 exact prompt sent
-  grid.png  grid.mp4        all 5 models side by side, labeled
+  grid.png  grid.mp4        all models side by side, labeled (3x3 since the extra models were added)
   <model>/
     index.html (+ any other files the model created)
     screenshot.png  recording.mp4  transcript.json (opencode export)  notes.md
@@ -56,6 +60,10 @@ See `results.csv` and the per-task table below (updated as tasks complete).
 | task-1-voxel-zen-garden | [MiMo V2.6 Flash](task-1-voxel-zen-garden/mimo-v2.6-flash/notes.md) | default | 143.7 | 2685.9 | 2829.6 | 0 | no | **works** | 0 |
 | task-1-voxel-zen-garden | [Step 5 Preview](task-1-voxel-zen-garden/step-5-preview/notes.md) | high | 165.6 | 3657.4 | 3823.0 | 1 | no | **broken (no output)** | 1 |
 | task-1-voxel-zen-garden | [Muse Spark 1.3](task-1-voxel-zen-garden/muse-spark-1.3/notes.md) | xhigh | 31.5 | 111.5 | 143.0 | 1 | no | **works** | 0 |
+| task-1-voxel-zen-garden | [DeepSeek V4.1 Flash](task-1-voxel-zen-garden/deepseek-v4.1-flash/notes.md) | max | 182.4 | 197.2 | 379.6 | 0 | no | **broken (no output)** | 1 |
+| task-1-voxel-zen-garden | [Beam](task-1-voxel-zen-garden/beam/notes.md) | max | 17.7 | 609.9 | 627.6 | 0 | no | **works** | 0 |
+| task-1-voxel-zen-garden | [Nemotron 3.5 Super VL](task-1-voxel-zen-garden/nemotron-3.5-super-vl/notes.md) | xhigh | 536.7 | 12.3 | 549.0 | 0 | no | **partially works** | 0 |
+| task-1-voxel-zen-garden | [GLM 5.3 Flash](task-1-voxel-zen-garden/glm-5.3-flash/notes.md) | max | 121.5 | 1213.0 | 1334.5 | 0 | no | **broken (no output)** | 1 |
 | task-2-asteroid-run | [LongCat 2.5 Preview](task-2-asteroid-run/longcat-2.5-preview/notes.md) | high | 129.4 | 845.1 | 974.5 | 1 | no | **partially works** | 0 |
 | task-2-asteroid-run | [Space Bunny](task-2-asteroid-run/space-bunny/notes.md) | max | 69.4 | 1540.0 | 1609.4 | 1 | no | **works** | 0 |
 | task-2-asteroid-run | [MiMo V2.6 Flash](task-2-asteroid-run/mimo-v2.6-flash/notes.md) | default | 82.6 | 3122.0 | 3204.6 | 0 | no | **broken (no output)** | 1 |
@@ -64,6 +72,18 @@ See `results.csv` and the per-task table below (updated as tasks complete).
 
 <!-- /RESULTS_TABLE -->
 
+
+## Extra models (added 18 Oct 2026)
+
+Four more free models were added on 18 Oct 2026, a week after the original five, and run on OpenCode 1.19.0 (same version as the original runs). Everything is identical to the original protocol: byte-identical `prompt.md`, fresh jailed empty dir per run, plan agent then `Build it.` with the build agent in the same session, max reasoning variant from OpenCode's `models.json`, the neutral answer only for explicit questions, at most one crash-on-load fix, 40-min phase cap, provider errors get the current attempt plus one identical retry, strictly sequential runs ~60 s apart. Each model's endpoint was checked first with a one-line "Reply OK" outside the benchmark tree (all four answered). The task grids now show all nine models (3x3).
+
+**Task 1 (voxel-zen-garden), extra models:**
+- **Beam:** works. 18 s plan, 10 min build, full garden (pagoda, cherry trees, koi pond, petals, auto-advancing time slider). The default framing crops the pagoda top and the orbit is very slow.
+- **Nemotron 3.5 Super VL:** partially works. In the *plan* phase its write/edit calls were denied (plan agent), so it wrote `index.html` with bash heredocs (bash is auto-approved under `--auto`, the same for every model) and reported it as delivered. `Build it.` first hit a provider error (`Unexpected server error`). The one identical retry replied that the file was already built and changed nothing, so the published file is the plan-phase file. The lighting changes with the slider, but the sky stays black even at noon, and the camera sits so close that the trees hide the pagoda and pond.
+- **DeepSeek V4.1 Flash** and **GLM 5.3 Flash:** broken (no output). On `Build it.`, each model's first step ended with finish reason `length` after 32,000 reasoning tokens and 0 output tokens. OpenCode's catalog caps both models' output at 32,000 tokens, so at `max` reasoning they used the whole budget thinking and never called a tool. OpenCode exits normally (rc 0) in that case, so this is the model's result, not a provider error, and no retry was sent.
+- **Incidents:** GLM's first plan request and Nemotron's first build request failed with Zen `UnknownError: Unexpected server error` (zero output). Each got its one identical retry; GLM's plan retry ran in a fresh session in the same empty dir, as with Muse in task 2, and the failed seconds are included in the phase time. A sandbox reset killed GLM's build after 419 s, and the identical `Build it.` was re-sent in the same session (build time 419 + 794 s). Harness changes: "Unexpected server error" now counts as a provider error, and the plan session ID is taken from the last attempt rather than the first.
+
+<!-- EXTRA_NOTES -->
 
 ## Task 2 (asteroid-run) notes
 
