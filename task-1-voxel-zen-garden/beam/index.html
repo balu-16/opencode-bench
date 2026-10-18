@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Voxel Zen Garden</title>
+  <style>
+    html, body { margin: 0; height: 100%; overflow: hidden; background: #000; }
+    canvas { display: block; }
+    #ui {
+      position: fixed; left: 16px; bottom: 16px; z-index: 10;
+      background: rgba(0,0,0,0.45); color: #fff; padding: 12px 16px;
+      border-radius: 12px; backdrop-filter: blur(8px);
+      width: min(340px, calc(100vw - 32px)); font-family: system-ui, sans-serif;
+    }
+    #ui h1 { margin: 0 0 8px; font-size: 14px; font-weight: 600; }
+    .row { display: flex; align-items: center; gap: 10px; }
+    input[type="range"] { flex: 1; }
+    #hint { margin-top: 6px; font-size: 12px; opacity: 0.75; }
+  </style>
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="ui">
+    <h1>Voxel Zen Garden</h1>
+    <div class="row">
+      <span>Time</span>
+      <input id="time" type="range" min="0" max="24" step="0.01" value="8" />
+      <span id="timeVal">08:00</span>
+    </div>
+    <div id="hint">Auto demo · drag to orbit</div>
+  </div>
+  <script type="module">
+    import * as THREE from 'three';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+    const voxelPositions = [];
+    const voxelColors = [];
+    function addVoxel(x, y, z, color) {
+      voxelPositions.push(new THREE.Vector3(x, y, z));
+      voxelColors.push(new THREE.Color(color));
+    }
+
+    function addPagoda(cx, cz) {
+      for (let x = -5; x <= 5; x++)
+        for (let z = -5; z <= 5; z++)
+          for (let y = 0; y < 2; y++)
+            addVoxel(cx + x, y, cz + z, '#6b5a45');
+      const sizes = [9, 7, 5, 3, 1];
+      let y = 2;
+      for (let t = 0; t < sizes.length; t++) {
+        const s = sizes[t];
+        const half = (s - 1) / 2;
+        for (let x = -half; x <= half; x++)
+          for (let z = -half; z <= half; z++)
+            for (let yy = 0; yy < 2; yy++)
+              addVoxel(cx + x, y + yy, cz + z, t % 2 === 0 ? '#8b4a2f' : '#7a4328');
+        const rh = s + 2;
+        const rHalf = (rh - 1) / 2;
+        for (let x = -rHalf; x <= rHalf; x++)
+          for (let z = -rHalf; z <= rHalf; z++)
+            addVoxel(cx + x, y + 2, cz + z, t === sizes.length - 1 ? '#d4af37' : '#2f5d3a');
+        y += 3;
+      }
+      for (let yy = 0; yy < 6; yy++) addVoxel(cx, y + yy, cz, '#d4af37');
+    }
+
+    function addTree(cx, cz) {
+      for (let y = 0; y < 7; y++)
+        for (let dx = 0; dx < 2; dx++)
+          for (let dz = 0; dz < 2; dz++)
+            addVoxel(cx + dx, y, cz + dz, '#5b3a22');
+      const branches = [[1, 6, 0], [0, 6, 1], [-1, 5, 0], [0, 5, -1], [1, 5, 1], [-1, 4, 1]];
+      for (const [dx, dy, dz] of branches) {
+        for (let i = 0; i < 3; i++) addVoxel(cx + dx + i, dy, cz + dz, '#5b3a22');
+      }
+      const center = { x: cx + 0.5, y: 7.5, z: cz + 0.5 };
+      let seed = 12345;
+      function rnd() { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
+      for (let i = 0; i < 300; i++) {
+        const u = rnd() * 2 - 1;
+        const v = rnd() * 2 - 1;
+        const w = rnd() * 2 - 1;
+        if (u * u + v * v + w * w > 1) continue;
+        const x = Math.round(center.x + u * 3.4);
+        const yy = Math.round(center.y + v * 2.8);
+        const z = Math.round(center.z + w * 3.4);
+        if (yy < 5) continue;
+        addVoxel(x, yy, z, rnd() > 0.5 ? '#ff9ec9' : '#ffc0dd');
+      }
+    }
+
+    function addLantern(x, z) {
+      for (let y = 0; y < 4; y++) addVoxel(x, y, z, '#5b3a22');
+      addVoxel(x, 4, z, '#ffd27f');
+      addVoxel(x - 1, 0, z, '#7a7a72');
+      addVoxel(x + 1, 0, z, '#7a7a72');
+      addVoxel(x, 0, z - 1, '#7a7a72');
+      addVoxel(x, 0, z + 1, '#7a7a72');
+    }
+
+    addPagoda(-15, -10);
+    addTree(12, -7);
+    addTree(-11, 9);
+    addLantern(-6, -2);
+    addLantern(6, -2);
+    addLantern(-6, 10);
+    addLantern(6, 10);
+
+    const pondX = 0, pondZ = 4;
+    const pondRadius = 8;
+    for (let i = 0; i < 64; i++) {
+      const a = i / 64 * Math.PI * 2;
+      const x = Math.round(pondX + Math.cos(a) * pondRadius);
+      const z = Math.round(pondZ + Math.sin(a) * pondRadius);
+      addVoxel(x, 0, z, '#7a7a72');
+      addVoxel(x, 1, z, '#7a7a72');
+    }
+    for (let i = 0; i < 12; i++) {
+      const a = i / 12 * Math.PI * 2;
+      addVoxel(Math.round(pondX + Math.cos(a) * (pondRadius + 2)), 0, Math.round(pondZ + Math.sin(a) * (pondRadius + 2)), '#5f8f4f');
+    }
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 200);
+    camera.position.set(0, 17, 30);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    document.body.appendChild(renderer.domElement);
+
+    const voxelGeo = new THREE.BoxGeometry(1, 1, 1);
+    const voxelMat = new THREE.MeshStandardMaterial({ roughness: 0.78, metalness: 0.04 });
+    const voxelMesh = new THREE.InstancedMesh(voxelGeo, voxelMat, voxelPositions.length);
+    const matrix = new THREE.Matrix4();
+    voxelPositions.forEach((p, i) => {
+      matrix.makeTranslation(p.x, p.y, p.z);
+      voxelMesh.setMatrixAt(i, matrix);
+      voxelMesh.setColorAt(i, voxelColors[i]);
+    });
+    voxelMesh.instanceMatrix.needsUpdate = true;
+    voxelMesh.instanceColor.needsUpdate = true;
+    scene.add(voxelMesh);
+
+    const groundGeo = new THREE.PlaneGeometry(90, 90);
+    const groundMat = new THREE.MeshStandardMaterial({ color: '#4f7f45', roughness: 0.95 });
+    const ground = new THREE.Mesh(groundGeo, groundMat);
+    ground.rotation.x = -Math.PI / 2;
+    scene.add(ground);
+
+    const waterGeo = new THREE.CircleGeometry(pondRadius - 0.5, 64);
+    const waterMat = new THREE.MeshStandardMaterial({ color: '#1f5f7a', transparent: true, opacity: 0.8, roughness: 0.05, metalness: 0.15 });
+    const water = new THREE.Mesh(waterGeo, waterMat);
+    water.rotation.x = -Math.PI / 2;
+    water.position.set(pondX, 0.08, pondZ);
+    scene.add(water);
+
+    const ambientLight = new THREE.AmbientLight(0x404060, 0.3);
+    scene.add(ambientLight);
+    const hemiLight = new THREE.HemisphereLight(0x87ceeb, 0x3a4a2a, 0.6);
+    scene.add(hemiLight);
+    const sunLight = new THREE.DirectionalLight(0xffffff, 1);
+    sunLight.position.set(20, 30, 10);
+    scene.add(sunLight);
+
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+    controls.autoRotate = true;
+    controls.autoRotateSpeed = 0.35;
+    controls.target.set(0, 2, 0);
+    controls.minDistance = 12;
+    controls.maxDistance = 50;
+    controls.minPolarAngle = 0.25;
+    controls.maxPolarAngle = Math.PI / 2.05;
+    controls.enablePan = false;
+
+    const koiPoints = [];
+    const rx = 6.5, rz = 5.5;
+    for (let i = 0; i < 16; i++) {
+      const a = i / 16 * Math.PI * 2;
+      koiPoints.push(new THREE.Vector3(pondX + rx * Math.cos(a), 0.2, pondZ + rz * Math.sin(a)));
+    }
+    const koiCurve = new THREE.CatmullRomCurve3(koiPoints, true);
+
+    const fishList = [];
+    const fishColors = ['#ff8c42', '#f5f5f5', '#ff6b35'];
+    for (let i = 0; i < 3; i++) {
+      const g = new THREE.Group();
+      const mat = new THREE.MeshStandardMaterial({ color: fishColors[i], roughness: 0.45 });
+      const body = new THREE.Mesh(new THREE.BoxGeometry(0.9, 0.35, 0.45), mat);
+      g.add(body);
+      const head = new THREE.Mesh(new THREE.BoxGeometry(0.35, 0.3, 0.35), mat);
+      head.position.set(0.55, 0, 0);
+      g.add(head);
+      const tail = new THREE.Mesh(new THREE.BoxGeometry(0.4, 0.25, 0.35), mat);
+      tail.position.set(-0.6, 0, 0);
+      g.add(tail);
+      if (i === 1) {
+        const bmat = new THREE.MeshStandardMaterial({ color: '#1a1a1a', roughness: 0.45 });
+        const patch = new THREE.Mesh(new THREE.BoxGeometry(0.28, 0.2, 0.28), bmat);
+        patch.position.set(0.1, 0.18, 0);
+        g.add(patch);
+      }
+      scene.add(g);
+      fishList.push({ group: g, tail, curve: koiCurve, t: i / 3, speed: 0.055 + i * 0.012, phase: i * 2.1 });
+    }
+
+    const PETAL_COUNT = 450;
+    const petalGeo = new THREE.BoxGeometry(0.12, 0.04, 0.12);
+    const petalMat = new THREE.MeshStandardMaterial({ color: '#ffb7c5', emissive: '#ff8fb3', emissiveIntensity: 0.2, roughness: 0.8 });
+    const petalMesh = new THREE.InstancedMesh(petalGeo, petalMat, PETAL_COUNT);
+    const petalPos = [];
+    const petalVel = [];
+    const dummy = new THREE.Object3D();
+    for (let i = 0; i < PETAL_COUNT; i++) {
+      const x = (Math.random() - 0.5) * 42;
+      const y = Math.random() * 24;
+      const z = (Math.random() - 0.5) * 42;
+      petalPos.push(new THREE.Vector3(x, y, z));
+      petalVel.push(new THREE.Vector3((Math.random() - 0.5) * 0.4, -(0.6 + Math.random() * 1.1), (Math.random() - 0.5) * 0.4));
+      dummy.position.copy(petalPos[i]);
+      dummy.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI);
+      dummy.updateMatrix();
+      petalMesh.setMatrixAt(i, dummy.matrix);
+    }
+    petalMesh.instanceMatrix.needsUpdate = true;
+    scene.add(petalMesh);
+
+    let time = 8;
+    let resumeTime = 0;
+    const timeSlider = document.getElementById('time');
+    const timeVal = document.getElementById('timeVal');
+
+    function formatTime(t) {
+      const h = Math.floor(t);
+      const m = Math.floor((t - h) * 60);
+      return String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0');
+    }
+
+    function setTime(t) {
+      time = ((t % 24) + 24) % 24;
+      const hourAngle = ((time - 6) / 24) * Math.PI * 2;
+      const elevation = Math.sin(hourAngle);
+      const dayFactor = THREE.MathUtils.smoothstep(elevation, -0.15, 0.25);
+
+      const sunCol = new THREE.Color();
+      if (elevation < -0.05) {
+        const f = THREE.MathUtils.clamp((elevation + 0.2) / 0.15, 0, 1);
+        sunCol.lerpColors(new THREE.Color('#6b7cff'), new THREE.Color('#ff8a3d'), f);
+      } else if (elevation < 0.2) {
+        const f = THREE.MathUtils.clamp((elevation + 0.05) / 0.25, 0, 1);
+        sunCol.lerpColors(new THREE.Color('#ff8a3d'), new THREE.Color('#fff1c1'), f);
+      } else {
+        sunCol.set('#fff1c1');
+      }
+
+      const skyCol = new THREE.Color();
+      if (elevation < -0.05) {
+        const f = THREE.MathUtils.clamp((elevation + 0.2) / 0.15, 0, 1);
+        skyCol.lerpColors(new THREE.Color('#07102a'), new THREE.Color('#ff9a6c'), f);
+      } else if (elevation < 0.2) {
+        const f = THREE.MathUtils.clamp((elevation + 0.05) / 0.25, 0, 1);
+        skyCol.lerpColors(new THREE.Color('#ff9a6c'), new THREE.Color('#87ceeb'), f);
+      } else {
+        skyCol.set('#87ceeb');
+      }
+
+      const r = 40;
+      sunLight.position.set(Math.cos(hourAngle) * r, Math.sin(hourAngle) * r, 15);
+      sunLight.color.copy(sunCol);
+      sunLight.intensity = 0.18 + 0.82 * THREE.MathUtils.smoothstep(elevation, -0.1, 0.2);
+
+      ambientLight.intensity = 0.12 + 0.30 * dayFactor;
+      ambientLight.color.lerpColors(new THREE.Color('#20284a'), new THREE.Color('#8090b0'), dayFactor);
+
+      hemiLight.intensity = 0.25 + 0.45 * dayFactor;
+      hemiLight.color.copy(skyCol);
+      hemiLight.groundColor.lerpColors(new THREE.Color('#2a3a1a'), new THREE.Color('#4f7f45'), dayFactor);
+
+      scene.background = skyCol;
+      scene.fog = new THREE.Fog(skyCol, 45, 110);
+    }
+
+    timeSlider.addEventListener('input', () => {
+      time = parseFloat(timeSlider.value);
+      resumeTime = performance.now() + 10000;
+      setTime(time);
+      timeVal.textContent = formatTime(time);
+    });
+
+    setTime(time);
+    timeVal.textContent = formatTime(time);
+    timeSlider.value = time;
+
+    const clock = new THREE.Clock();
+    let elapsed = 0;
+    function animate() {
+      requestAnimationFrame(animate);
+      const dt = Math.min(clock.getDelta(), 0.05);
+      elapsed += dt;
+
+      for (const fish of fishList) {
+        fish.t += fish.speed * dt;
+        if (fish.t >= 1) fish.t -= 1;
+        const pos = fish.curve.getPointAt(fish.t);
+        const tan = fish.curve.getTangentAt(fish.t);
+        fish.group.position.copy(pos);
+        const yaw = Math.atan2(tan.x, tan.z);
+        fish.group.rotation.set(0, yaw, 0);
+        fish.tail.rotation.y = Math.sin(elapsed * 7 + fish.phase) * 0.45;
+      }
+
+      for (let i = 0; i < PETAL_COUNT; i++) {
+        const p = petalPos[i];
+        const v = petalVel[i];
+        p.x += v.x * dt;
+        p.y += v.y * dt;
+        p.z += v.z * dt;
+        v.x += Math.sin(elapsed * 0.6 + i * 0.37) * 0.03 * dt;
+        if (p.y < 0) {
+          p.set((Math.random() - 0.5) * 42, 20 + Math.random() * 8, (Math.random() - 0.5) * 42);
+          v.set((Math.random() - 0.5) * 0.4, -(0.6 + Math.random() * 1.1), (Math.random() - 0.5) * 0.4);
+        }
+        dummy.position.copy(p);
+        dummy.rotation.x += 0.8 * dt;
+        dummy.rotation.y += 0.5 * dt;
+        dummy.updateMatrix();
+        petalMesh.setMatrixAt(i, dummy.matrix);
+      }
+      petalMesh.instanceMatrix.needsUpdate = true;
+
+      if (performance.now() >= resumeTime) {
+        time += dt * 0.2;
+        if (time >= 24) time -= 24;
+        setTime(time);
+        timeSlider.value = time;
+        timeVal.textContent = formatTime(time);
+      }
+
+      controls.update();
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+  </script>
+</body>
+</html>
