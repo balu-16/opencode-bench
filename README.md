@@ -69,6 +69,10 @@ See `results.csv` and the per-task table below (updated as tasks complete).
 | task-2-asteroid-run | [MiMo V2.6 Flash](task-2-asteroid-run/mimo-v2.6-flash/notes.md) | default | 82.6 | 3122.0 | 3204.6 | 0 | no | **broken (no output)** | 1 |
 | task-2-asteroid-run | [Step 5 Preview](task-2-asteroid-run/step-5-preview/notes.md) | high | 61.1 | 2500.1 | 2561.2 | 0 | no | **broken** | 1 |
 | task-2-asteroid-run | [Muse Spark 1.3](task-2-asteroid-run/muse-spark-1.3/notes.md) | xhigh | 2917.0 | 0 | 2917.0 | 0 | no | **broken (no output)** | 1 |
+| task-2-asteroid-run | [DeepSeek V4.1 Flash](task-2-asteroid-run/deepseek-v4.1-flash/notes.md) | max | 43.7 | 197.7 | 241.4 | 1 | no | **broken (no output)** | 1 |
+| task-2-asteroid-run | [Beam](task-2-asteroid-run/beam/notes.md) | max | 19.6 | 865.8 | 885.4 | 0 | no | **works** | 0 |
+| task-2-asteroid-run | [Nemotron 3.5 Super VL](task-2-asteroid-run/nemotron-3.5-super-vl/notes.md) | xhigh | 248.8 | 7.9 | 256.7 | 0 | yes | **broken** | 1 |
+| task-2-asteroid-run | [GLM 5.3 Flash](task-2-asteroid-run/glm-5.3-flash/notes.md) | max | 97.0 | 1397.5 | 1494.5 | 1 | no | **works** | 0 |
 
 <!-- /RESULTS_TABLE -->
 
@@ -82,6 +86,13 @@ Four more free models were added on 18 Oct 2026, a week after the original five,
 - **Nemotron 3.5 Super VL:** partially works. In the *plan* phase its write/edit calls were denied (plan agent), so it wrote `index.html` with bash heredocs (bash is auto-approved under `--auto`, the same for every model) and reported it as delivered. `Build it.` first hit a provider error (`Unexpected server error`). The one identical retry replied that the file was already built and changed nothing, so the published file is the plan-phase file. The lighting changes with the slider, but the sky stays black even at noon, and the camera sits so close that the trees hide the pagoda and pond.
 - **DeepSeek V4.1 Flash** and **GLM 5.3 Flash:** broken (no output). On `Build it.`, each model's first step ended with finish reason `length` after 32,000 reasoning tokens and 0 output tokens. OpenCode's catalog caps both models' output at 32,000 tokens, so at `max` reasoning they used the whole budget thinking and never called a tool. OpenCode exits normally (rc 0) in that case, so this is the model's result, not a provider error, and no retry was sent.
 - **Incidents:** GLM's first plan request and Nemotron's first build request failed with Zen `UnknownError: Unexpected server error` (zero output). Each got its one identical retry; GLM's plan retry ran in a fresh session in the same empty dir, as with Muse in task 2, and the failed seconds are included in the phase time. A sandbox reset killed GLM's build after 419 s, and the identical `Build it.` was re-sent in the same session (build time 419 + 794 s). Harness changes: "Unexpected server error" now counts as a provider error, and the plan session ID is taken from the last attempt rather than the first.
+
+**Task 2 (asteroid-run), extra models** (autopilot scores come from the same evaluation-only 90 s idle probe used for the original five):
+- **Beam:** works. A 3D shooter that loads straight into an AI attract mode. Autopilot score went from 520 at 10 s to **6440 at 90 s** with all 3 lives left. A key gives control to the player, and 3 s without a keydown hands it back to the AI.
+- **GLM 5.3 Flash:** works. A polished chase-cam shooter (2,400-particle explosions, synthesized audio, best score) that opens on an AI demo. Autopilot reached **4990 by 70 s**, lost its last life around 75 s, and the game restarted on its own. The plan's first request failed with provider 503 "Endpoint is unavailable"; its one retry (fresh session, same empty dir) succeeded. A sandbox reset cut the build after 626 s, and the identical `Build it.` was re-sent in the same session.
+- **Nemotron 3.5 Super VL:** broken. As in task 1, it wrote `index.html` with bash during the plan phase, and `Build it.` changed nothing. The page crashed on load (`color:#ffffff` in JS, a SyntaxError), so the **one allowed fix message** was sent. After the fix it still throws `animate is not defined`, so only the static title overlay renders. Autopilot score 0.
+- **DeepSeek V4.1 Flash:** broken (no output). The same 32,000-reasoning-token `length` stop as in task 1; no file was written.
+- **Harness changes (task 2):** a 503 "Endpoint is unavailable" now counts as a provider error. A hand-sent retry runs with `OCB_MAX_ATTEMPTS=1`, so the policy stays at the current attempt plus one retry.
 
 <!-- EXTRA_NOTES -->
 
